@@ -1,0 +1,5056 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>맘곁 태교 — 이론편</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf6f0;
+  --bg-soft: #fffcf6;
+  --text: #2c2826;
+  --text-soft: #5b5450;
+  --accent: #8c6e4e;
+  --line: #e3dccf;
+  --serif: 'Noto Serif KR', 'Apple SD Gothic Neo', 'Nanum Myeongjo', serif;
+  --sans: 'Noto Sans KR', 'Apple SD Gothic Neo', system-ui, -apple-system, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.95;
+  font-weight: 400;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.book {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+.cover {
+  text-align: center;
+  padding: 80px 0 64px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 32px;
+}
+.front-page {
+  text-align: center;
+  padding: 80px 24px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 0;
+}
+.front-page.half-title .ft-brand {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.45em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.front-page.half-title .ft-main {
+  font-size: 30px;
+  font-weight: 500;
+  margin: 0 0 14px;
+  letter-spacing: -0.005em;
+}
+.front-page.half-title .ft-sub {
+  font-size: 13.5px;
+  color: var(--text-soft);
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+.front-page.dedication {
+  padding: 110px 24px;
+  font-style: italic;
+  color: var(--text-soft);
+  font-size: 16px;
+  line-height: 2;
+}
+.front-page.dedication .dedi { margin: 0; }
+@media print {
+  .front-page { page-break-after: always; }
+}
+.cover .brand {
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.45em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.cover h1 {
+  font-size: 44px;
+  font-weight: 500;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+.cover .sub {
+  font-size: 15px;
+  color: var(--text-soft);
+  letter-spacing: 0.3em;
+}
+.cover .cover-tagline {
+  margin-top: 24px;
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--text-soft);
+  letter-spacing: 0.05em;
+  font-style: italic;
+}
+.cover .cover-authors {
+  margin-top: 36px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--text);
+  letter-spacing: 0.15em;
+}
+.cover .cover-publisher {
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--text-soft);
+  letter-spacing: 0.15em;
+}
+.front-page.half-title .ft-authors {
+  margin-top: 28px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  color: var(--text);
+  letter-spacing: 0.15em;
+}
+.toc {
+  margin: 48px 0;
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.toc h2 {
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.35em;
+  color: var(--accent);
+  font-weight: 500;
+  margin: 0 0 22px;
+  text-transform: uppercase;
+}
+.toc ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.toc li {
+  margin: 6px 0;
+  font-size: 16px;
+}
+.toc a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px dotted transparent;
+  padding-bottom: 2px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.toc a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.chapter {
+  margin: 96px 0 80px;
+  scroll-margin-top: 32px;
+}
+.chapter-header {
+  margin-bottom: 48px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.chapter-num {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.45em;
+  color: var(--accent);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.chapter-title {
+  font-size: 28px;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+}
+.chapter-body p {
+  margin: 0 0 1.5em;
+}
+.chapter-body .subhead {
+  font-size: 19px;
+  font-weight: 500;
+  margin: 2.4em 0 1em;
+  color: var(--accent);
+  letter-spacing: -0.005em;
+}
+.chapter-body .subhead-2 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 1.8em 0 0.7em;
+  color: var(--text);
+  letter-spacing: -0.003em;
+  font-family: var(--sans);
+}
+.chapter-body hr.section-break {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2.2em auto;
+  width: 60px;
+}
+.chapter-body ul.bullets {
+  margin: 1.2em 0 1.5em;
+  padding-left: 1.4em;
+}
+.chapter-body ul.bullets li {
+  margin: 0.5em 0;
+}
+.chapter-body blockquote.meta-note {
+  margin: 1.6em 0;
+  padding: 14px 22px;
+  background: var(--bg-soft);
+  border-left: 3px solid var(--line);
+  font-size: 14.5px;
+  color: var(--text-soft);
+  font-family: var(--sans);
+  line-height: 1.75;
+}
+sup.fn-ref {
+  font-size: 10.5px;
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 1px;
+}
+sup.fn-ref a {
+  color: var(--accent);
+  text-decoration: none;
+  padding: 0 2px;
+}
+sup.fn-ref a:hover { text-decoration: underline; }
+aside.footnotes {
+  margin: 3em 0 1em;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--text-soft);
+}
+aside.footnotes h4 {
+  font-size: 11.5px;
+  letter-spacing: 0.35em;
+  font-weight: 500;
+  color: var(--accent);
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
+aside.footnotes ol {
+  padding-left: 1.4em;
+  margin: 0;
+}
+aside.footnotes li {
+  margin: 0.7em 0;
+  padding-left: 4px;
+}
+aside.footnotes a.fn-back {
+  color: var(--accent);
+  text-decoration: none;
+  margin-left: 6px;
+  font-size: 14px;
+}
+aside.footnotes a.fn-back:hover { text-decoration: underline; }
+aside.footnotes em { font-style: italic; }
+aside.footnotes code {
+  font-family: var(--sans);
+  background: var(--bg);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 12.5px;
+}
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.8em 0 2em;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+  border: 1px solid var(--line);
+}
+table.data thead { background: var(--bg-soft); }
+table.data th, table.data td {
+  text-align: left;
+  vertical-align: top;
+  padding: 11px 13px;
+  border: 1px solid var(--line);
+  word-break: keep-all;
+}
+table.data th {
+  font-weight: 500;
+  color: var(--accent);
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+}
+table.data td { color: var(--text); }
+@media (max-width: 600px) {
+  table.data { font-size: 13px; }
+  table.data th, table.data td { padding: 9px 10px; }
+}
+@media print {
+  table.data { font-size: 9pt; page-break-inside: avoid; }
+}
+.chapter-body a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+.chapter-body a:hover {
+  border-bottom-color: var(--accent);
+}
+.chapter-body strong {
+  font-weight: 600;
+  color: var(--text);
+}
+.chapter-body em {
+  font-style: italic;
+}
+.chapter-body mark {
+  color: inherit;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+.chapter-body mark.pen-yellow {
+  background: linear-gradient(180deg,
+    transparent 0%, transparent 55%,
+    rgba(245, 211, 100, 0.5) 55%, rgba(245, 211, 100, 0.5) 92%,
+    transparent 92%);
+}
+.chapter-body mark.pen-peach {
+  background: linear-gradient(180deg,
+    transparent 0%, transparent 55%,
+    rgba(244, 178, 154, 0.45) 55%, rgba(244, 178, 154, 0.45) 92%,
+    transparent 92%);
+}
+.chapter-body mark.pen-sage {
+  background: linear-gradient(180deg,
+    transparent 0%, transparent 55%,
+    rgba(167, 198, 169, 0.45) 55%, rgba(167, 198, 169, 0.45) 92%,
+    transparent 92%);
+}
+@media print {
+  .chapter-body mark.pen-yellow { background: rgba(245, 211, 100, 0.35); }
+  .chapter-body mark.pen-peach { background: rgba(244, 178, 154, 0.3); }
+  .chapter-body mark.pen-sage { background: rgba(167, 198, 169, 0.3); }
+}
+
+/* =========== Hamburger menu + Drawer + Back-to-top + Resume =========== */
+#menu-toggle {
+  position: fixed; top: 18px; left: 18px; z-index: 50;
+  width: 44px; height: 44px; padding: 0;
+  background: var(--bg-soft); border: 1px solid var(--line);
+  border-radius: 50%; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: background 0.18s, transform 0.18s;
+}
+#menu-toggle:hover { background: #fff; }
+#menu-toggle:active { transform: scale(0.95); }
+#menu-toggle span {
+  display: block; width: 18px; height: 1.5px;
+  background: var(--accent); border-radius: 1px;
+}
+
+#drawer-backdrop {
+  position: fixed; inset: 0; z-index: 55;
+  background: rgba(20, 18, 16, 0.32);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+#drawer-backdrop.visible { opacity: 1; pointer-events: auto; }
+
+#drawer {
+  position: fixed; top: 0; left: 0; z-index: 60;
+  width: 340px; max-width: 88vw; height: 100vh;
+  background: var(--bg-soft); border-right: 1px solid var(--line);
+  transform: translateX(-100%);
+  transition: transform 0.28s ease;
+  display: flex; flex-direction: column; overflow: hidden;
+  box-shadow: 4px 0 24px rgba(0,0,0,0.06);
+}
+#drawer[aria-hidden="false"] { transform: translateX(0); }
+
+.drawer-head {
+  padding: 18px 20px; border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.drawer-title {
+  font-family: var(--sans); font-size: 12px; letter-spacing: 0.4em;
+  color: var(--accent); text-transform: uppercase; font-weight: 500;
+}
+#drawer-close {
+  background: none; border: none; font-size: 26px; line-height: 1;
+  color: var(--text-soft); cursor: pointer; padding: 0 4px;
+}
+#drawer-close:hover { color: var(--text); }
+
+.drawer-nav { flex: 1; overflow-y: auto; padding: 8px 0 24px; }
+.drawer-toc-list { list-style: none; padding: 0; margin: 0; }
+.toc-item { border-bottom: 1px solid #f0eadd; }
+.toc-row { display: flex; align-items: stretch; }
+.toc-link {
+  flex: 1; padding: 12px 16px; text-decoration: none; color: var(--text);
+  display: flex; flex-direction: column; gap: 3px; font-size: 14px;
+}
+.toc-link:hover { background: var(--bg); }
+.toc-link .toc-num {
+  font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.25em;
+  color: var(--accent); text-transform: uppercase;
+}
+.toc-link .toc-title { font-family: var(--serif); line-height: 1.4; }
+.toc-expand {
+  background: none; border: none; border-left: 1px solid #f0eadd;
+  width: 40px; cursor: pointer; color: var(--text-soft);
+  font-size: 13px; transition: transform 0.2s, background 0.2s;
+}
+.toc-expand:hover { background: var(--bg); }
+.toc-expand.expanded { transform: rotate(180deg); }
+
+.toc-subs {
+  list-style: none; padding: 4px 0 10px; margin: 0;
+  background: var(--bg);
+}
+.toc-subs li { margin: 0; }
+.toc-subs a {
+  display: block; padding: 7px 16px 7px 28px; font-size: 13px;
+  color: var(--text-soft); text-decoration: none;
+  border-left: 2px solid transparent;
+}
+.toc-subs a:hover {
+  color: var(--text); border-left-color: var(--accent); background: var(--bg-soft);
+}
+
+#back-to-top {
+  position: fixed; bottom: 24px; right: 24px; z-index: 40;
+  width: 46px; height: 46px; border-radius: 50%; padding: 0;
+  background: var(--accent); color: #fff; border: none;
+  font-size: 20px; cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  transition: transform 0.2s, opacity 0.25s;
+}
+#back-to-top:hover { transform: translateY(-2px); }
+#back-to-top[hidden] { display: none; }
+
+#resume-toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  z-index: 70; max-width: 92vw;
+  background: var(--text); color: #fff;
+  padding: 13px 18px; border-radius: 8px;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.2);
+}
+#resume-toast[hidden] { display: none; }
+.resume-msg { flex: 1; line-height: 1.5; }
+.resume-btn {
+  background: rgba(255,255,255,0.14); color: #fff;
+  border: 1px solid rgba(255,255,255,0.22);
+  padding: 6px 12px; border-radius: 5px;
+  font-size: 13px; cursor: pointer;
+  font-family: var(--sans);
+  white-space: nowrap;
+}
+.resume-btn:hover { background: rgba(255,255,255,0.24); }
+.resume-btn.resume-yes {
+  background: var(--accent); border-color: var(--accent);
+}
+.resume-btn.resume-yes:hover {
+  background: #a18260;
+}
+
+@media (max-width: 600px) {
+  #menu-toggle { top: 12px; left: 12px; width: 40px; height: 40px; }
+  #back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 17px; }
+  #resume-toast { bottom: 16px; padding: 11px 14px; gap: 8px; font-size: 13px; }
+}
+
+@media print {
+  #menu-toggle, #drawer, #drawer-backdrop, #back-to-top, #resume-toast { display: none !important; }
+}
+.chapter.is-appendix .chapter-num {
+  color: #6b6358;
+}
+.chapter.is-appendix table.data {
+  font-size: 13px;
+}
+@media (max-width: 700px) {
+  .chapter.is-appendix table.data { font-size: 12px; }
+  .chapter.is-appendix table.data th,
+  .chapter.is-appendix table.data td { padding: 7px 8px; }
+}
+
+/* =========== Infographics =========== */
+.infographic {
+  margin: 2em auto;
+  font-family: var(--sans);
+  color: var(--text);
+}
+.infographic-caption {
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--text-soft);
+  margin-top: 12px;
+  letter-spacing: 0.02em;
+}
+
+/* 1. Concentric circles: 태아 ← 자궁 ← 엄마 ← 가족 ← 사회 */
+.infographic-circle {
+  position: relative;
+  width: 360px;
+  max-width: 90vw;
+  aspect-ratio: 1 / 1;
+  margin: 2em auto;
+}
+.infographic-circle .ring {
+  position: absolute;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 12.5px;
+  color: var(--text-soft);
+  padding-top: 7px;
+  background: rgba(255, 252, 246, 0.4);
+}
+.infographic-circle .ring-society { width: 100%; height: 100%; left: 0; top: 0; }
+.infographic-circle .ring-family  { width: 78%;  height: 78%;  left: 11%; top: 11%; }
+.infographic-circle .ring-mother  { width: 58%;  height: 58%;  left: 21%; top: 21%; }
+.infographic-circle .ring-uterus  { width: 38%;  height: 38%;  left: 31%; top: 31%; }
+.infographic-circle .ring-fetus   {
+  width: 18%; height: 18%; left: 41%; top: 41%;
+  background: var(--accent);
+  color: #fff;
+  align-items: center;
+  padding-top: 0;
+  font-size: 13px;
+}
+
+/* 2. 280-day timeline */
+.infographic-timeline {
+  display: flex;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.infographic-timeline .trimester {
+  flex: 1;
+  padding: 14px 14px;
+  background: var(--bg-soft);
+  border-right: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.65;
+}
+.infographic-timeline .trimester:last-child { border-right: none; }
+.infographic-timeline .t-label {
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 6px;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+}
+.infographic-timeline .t-content { color: var(--text); }
+
+/* 3. Sajudang ↔ Modern medicine card pairs */
+.infographic-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.infographic-cards .card-pair {
+  display: grid;
+  grid-template-columns: 1fr 32px 1fr;
+  align-items: stretch;
+  gap: 8px;
+}
+.infographic-cards .card {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.infographic-cards .card.sajudang { background: var(--bg-soft); }
+.infographic-cards .card.modern { background: #fff; }
+.infographic-cards .card-label {
+  display: block;
+  font-size: 10.5px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.infographic-cards .card-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 16px;
+}
+
+/* 4. 부담 → 돌봄 flow */
+.infographic-flow {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  align-items: center;
+  gap: 10px;
+}
+.infographic-flow .flow-side {
+  padding: 16px 18px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.infographic-flow .flow-from {
+  background: #f3ece2;
+  border: 1px solid var(--line);
+  color: var(--text-soft);
+}
+.infographic-flow .flow-to {
+  background: var(--accent);
+  color: #fff;
+}
+.infographic-flow .flow-arrow {
+  text-align: center;
+  font-size: 22px;
+  color: var(--accent);
+}
+.infographic-flow .flow-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  margin-bottom: 4px;
+  opacity: 0.75;
+  text-transform: uppercase;
+}
+.infographic-flow small {
+  display: block;
+  font-size: 12px;
+  margin-top: 6px;
+  opacity: 0.85;
+}
+
+/* 5. 다섯 원칙 만다라 */
+.infographic-mandala {
+  position: relative;
+  width: 380px;
+  max-width: 92vw;
+  aspect-ratio: 1 / 1;
+  margin: 2.4em auto;
+}
+.infographic-mandala .mandala-center {
+  position: absolute;
+  width: 38%;
+  height: 38%;
+  left: 31%;
+  top: 31%;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.infographic-mandala .mandala-petal {
+  position: absolute;
+  width: 31%;
+  height: 31%;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  background: var(--bg-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--text);
+  text-align: center;
+  padding: 6px;
+  line-height: 1.35;
+}
+.infographic-mandala .p1 { left: 34.5%; top: 0%; }
+.infographic-mandala .p2 { left: 65%;   top: 22%; }
+.infographic-mandala .p3 { left: 53%;   top: 64%; }
+.infographic-mandala .p4 { left: 16%;   top: 64%; }
+.infographic-mandala .p5 { left: 4%;    top: 22%; }
+
+@media (max-width: 600px) {
+  .infographic-cards .card-pair { grid-template-columns: 1fr; }
+  .infographic-cards .card-arrow { display: none; }
+  .infographic-flow { grid-template-columns: 1fr; }
+  .infographic-flow .flow-arrow { transform: rotate(90deg); }
+  .infographic-timeline { flex-direction: column; }
+  .infographic-timeline .trimester { border-right: none; border-bottom: 1px solid var(--line); }
+  .infographic-mandala { width: 320px; }
+}
+@media print {
+  .infographic-circle .ring,
+  .infographic-mandala .mandala-petal { background: white; }
+  .infographic-flow .flow-to { background: #555; }
+  .infographic-mandala .mandala-center { background: #555; }
+  .infographic-cards .card.sajudang { background: #f8f8f8; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 16px; line-height: 1.85; }
+  .book { padding: 32px 20px 64px; }
+  .cover { padding: 48px 0 32px; }
+  .cover h1 { font-size: 30px; }
+  .cover .sub { font-size: 13px; letter-spacing: 0.25em; }
+  .chapter { margin: 64px 0; }
+  .chapter-title { font-size: 23px; }
+  .chapter-body .subhead { font-size: 17px; }
+}
+
+@media print {
+  body { background: white; font-size: 11pt; line-height: 1.7; }
+  .book { max-width: 100%; padding: 0; }
+  .toc, .cover { page-break-after: always; }
+  .chapter { page-break-before: always; margin: 0; padding: 24pt 0; }
+  .chapter-header { border-bottom-color: #888; }
+  a { color: inherit; text-decoration: none; }
+  sup.fn-ref a { color: #555; }
+  aside.footnotes { font-size: 9pt; }
+}
+</style>
+</head>
+<body>
+
+<button id="menu-toggle" type="button" aria-label="차례 열기">
+  <span></span><span></span><span></span>
+</button>
+
+<div id="drawer-backdrop"></div>
+
+<aside id="drawer" aria-hidden="true">
+  <header class="drawer-head">
+    <span class="drawer-title">차례</span>
+    <button id="drawer-close" type="button" aria-label="차례 닫기">×</button>
+  </header>
+  <nav class="drawer-nav">
+<ol class="drawer-toc-list">
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#prologue"><span class="toc-title">들어가며</span></a></div></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#ch1"><span class="toc-num">1장</span><span class="toc-title">태교는 왜 지금 다시 필요할까</span></a><button class="toc-expand" type="button" data-target="ch1-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="ch1-subs" class="toc-subs" hidden><li><a href="#ch1-s1">잘해야 하는 태교가 아니라, 연결되는 태교</a></li><li><a href="#ch1-s2">정보가 많은 시대의 부담</a></li><li><a href="#ch1-s3">왜 지금 태교인가 — 한국 사회의 세 가지 변화</a></li><li><a href="#ch1-s4">태교의 원래 자리</a></li><li><a href="#ch1-s5">현대 의학도 같은 방향을 가리킨다</a></li><li><a href="#ch1-s6">정보가 아니라 분위기, 활동이 아니라 관계</a></li><li><a href="#ch1-s7">안심에서 출발하기</a></li><li><a href="#ch1-s8">이 장의 정리</a></li><li><a href="#ch1-s9">다음 장으로</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#ch2"><span class="toc-num">2장</span><span class="toc-title">사주당 이씨</span></a><button class="toc-expand" type="button" data-target="ch2-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="ch2-subs" class="toc-subs" hidden><li><a href="#ch2-s1">조선의 한 여성 학자</a></li><li><a href="#ch2-s2">그녀가 태교를 본 자리</a></li><li><a href="#ch2-s3">혼자 태어난 책이 아니다</a></li><li><a href="#ch2-s4">세 가지 통찰</a></li><li><a href="#ch2-s5">오늘과의 대화</a></li><li><a href="#ch2-s6">권위가 아니라, 대화 상대로</a></li><li><a href="#ch2-s7">이 장의 정리</a></li><li><a href="#ch2-s8">다음 장으로</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#ch3"><span class="toc-num">3장</span><span class="toc-title">현대 의학이 보는 태아의 발달</span></a><button class="toc-expand" type="button" data-target="ch3-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="ch3-subs" class="toc-subs" hidden><li><a href="#ch3-s1">신경계 발달의 큰 흐름</a></li><li><a href="#ch3-s2">시간 속에서 깊어지는 관계</a></li><li><a href="#ch3-s3">자궁 안의 청각 환경</a></li><li><a href="#ch3-s4">엄마의 정서가 만드는 환경</a></li><li><a href="#ch3-s5">출생 후 작은 단서들</a></li><li><a href="#ch3-s6">전통과 다시 만나는 자리</a></li><li><a href="#ch3-s7">그래서 태교는 환경의 일이다</a></li><li><a href="#ch3-s8">이 장의 정리</a></li><li><a href="#ch3-s9">다음 장으로</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#ch4"><span class="toc-num">4장</span><span class="toc-title">임신 중의 식·운동·생활</span></a><button class="toc-expand" type="button" data-target="ch4-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="ch4-subs" class="toc-subs" hidden><li><a href="#ch4-s1">사주당이 본 일상의 자리</a></li><li><a href="#ch4-s2">식생활</a></li><li><a href="#ch4-s3">움직임과 운동</a></li><li><a href="#ch4-s4">잠과 쉼</a></li><li><a href="#ch4-s5">보고 듣는 것의 결</a></li><li><a href="#ch4-s6">일상이 곧 환경이다</a></li><li><a href="#ch4-s7">이 장의 정리</a></li><li><a href="#ch4-s8">다음 장으로</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#ch5"><span class="toc-num">5장</span><span class="toc-title">오감으로 만나는 태아</span></a><button class="toc-expand" type="button" data-target="ch5-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="ch5-subs" class="toc-subs" hidden><li><a href="#ch5-s1">임신 시기별 태아의 발달과 감각의 자리</a></li><li><a href="#ch5-s2">소리와 리듬</a></li><li><a href="#ch5-s3">촉감과 몸의 긴장 완화</a></li><li><a href="#ch5-s4">냄새와 맛, 생활의 기억</a></li><li><a href="#ch5-s5">빛과 시각 환경</a></li><li><a href="#ch5-s6">다섯 감각, 한눈에 정리</a></li><li><a href="#ch5-s7">감각의 중심에 있는 감정</a></li><li><a href="#ch5-s8">이 장의 정리</a></li><li><a href="#ch5-s9">다음 장으로</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#ch6"><span class="toc-num">6장</span><span class="toc-title">엄마의 감정은 태아의 환경이 된다</span></a><button class="toc-expand" type="button" data-target="ch6-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="ch6-subs" class="toc-subs" hidden><li><a href="#ch6-s1">연구가 가리키는 방향</a></li><li><a href="#ch6-s2">감정은 어떻게 환경이 되는가 — DOHaD의 자리</a></li><li><a href="#ch6-s3">감정은 메시지가 아니라 환경이다</a></li><li><a href="#ch6-s4">죄책감에서 돌봄으로</a></li><li><a href="#ch6-s5">감정을 돌보는 작은 방법</a></li><li><a href="#ch6-s6">몸과 감정은 함께 움직인다</a></li><li><a href="#ch6-s7">숨기는 대신 이해받기</a></li><li><a href="#ch6-s8">이 장의 정리</a></li><li><a href="#ch6-s9">다음 장으로</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#ch7"><span class="toc-num">7장</span><span class="toc-title">가족의 태교</span></a><button class="toc-expand" type="button" data-target="ch7-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="ch7-subs" class="toc-subs" hidden><li><a href="#ch7-s1">사주당이 본 자리 — "어미 혼자 하는 것이 아니다"</a></li><li><a href="#ch7-s2">왕실의 임신은 한 사람의 일이 아니었다 — 산실청과 호산청</a></li><li><a href="#ch7-s3">거창하지 않아도 된다 — 일상의 다섯 장면</a></li><li><a href="#ch7-s4">조부모·형제·돌봄 공동체의 자리</a></li><li><a href="#ch7-s5">가족이 만드는 환경 — 정서적 안전기지라는 자리</a></li><li><a href="#ch7-s6">함께 만드는 안정감</a></li><li><a href="#ch7-s7">이 장의 정리</a></li><li><a href="#ch7-s8">다음 장으로</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#ch8"><span class="toc-num">8장</span><span class="toc-title">아빠의 태교</span></a><button class="toc-expand" type="button" data-target="ch8-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="ch8-subs" class="toc-subs" hidden><li><a href="#ch8-s1">임신 전부터 시작되는 자리</a></li><li><a href="#ch8-s2">정자의 후성유전 — 임신 전부터 시작되는 자리</a></li><li><a href="#ch8-s3">한국 아빠가 놓인 자리</a></li><li><a href="#ch8-s4">임신 중 아빠가 만드는 환경</a></li><li><a href="#ch8-s5">목소리, 접촉, 태담</a></li><li><a href="#ch8-s6">아빠도 흔들린다</a></li><li><a href="#ch8-s7">보조가 아니라 또 다른 부모</a></li><li><a href="#ch8-s8">이 장의 정리</a></li><li><a href="#ch8-s9">다음 장으로</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#ch9"><span class="toc-num">9장</span><span class="toc-title">좋은 태교와 부담스러운 태교의 차이</span></a><button class="toc-expand" type="button" data-target="ch9-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="ch9-subs" class="toc-subs" hidden><li><a href="#ch9-s1">차이는 "얼마나"가 아니라 "무엇을 중심에 두었는가"</a></li><li><a href="#ch9-s2">비교라는 함정</a></li><li><a href="#ch9-s3">감정을 실패로 보지 않기</a></li><li><a href="#ch9-s4">맘곁이 생각하는 좋은 태교의 기준</a></li><li><a href="#ch9-s5">이 장의 정리</a></li><li><a href="#ch9-s6">다음 장으로</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#ch10"><span class="toc-num">10장</span><span class="toc-title">맘곁 태교의 다섯 원칙</span></a><button class="toc-expand" type="button" data-target="ch10-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="ch10-subs" class="toc-subs" hidden><li><a href="#ch10-s1">1. 연결</a></li><li><a href="#ch10-s2">2. 반복</a></li><li><a href="#ch10-s3">3. 기록</a></li><li><a href="#ch10-s4">4. 다정한 생활</a></li><li><a href="#ch10-s5">5. 실천으로 이어지는 이해</a></li><li><a href="#ch10-s6">다섯 원칙 한눈에 — 강도별 실천 매트릭스</a></li><li><a href="#ch10-s7">한 가지부터 해도 충분하다</a></li><li><a href="#ch10-s8">이 장의 정리</a></li><li><a href="#ch10-s9">실천편으로 이어지는 길</a></li><li><a href="#ch10-s10">사주당 이씨에게</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#epilogue"><span class="toc-title">닫으며</span></a></div></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-a"><span class="toc-num">부록 A</span><span class="toc-title">『태교신기』 35절 전문 — 사주당 이씨와 현대 의학의 대화</span></a><button class="toc-expand" type="button" data-target="appendix-a-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-a-subs" class="toc-subs" hidden><li><a href="#appendix-a-s1">A-1. 부록의 자리</a></li><li><a href="#appendix-a-s2">A-2. 35절 전문 매핑</a></li><li><a href="#appendix-a-s3">A-3. 35절을 한눈에 — 핵심 메시지 분포</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-b"><span class="toc-num">부록 B</span><span class="toc-title">임신 280일 환경 점검 체크리스트</span></a><button class="toc-expand" type="button" data-target="appendix-b-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-b-subs" class="toc-subs" hidden><li><a href="#appendix-b-s1">B-1. 체크리스트의 자리</a></li><li><a href="#appendix-b-s2">B-2. 시기별 환경 점검표</a></li><li><a href="#appendix-b-s3">B-3. 체크리스트 사용 원칙</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-c"><span class="toc-num">부록 C</span><span class="toc-title">참고문헌</span></a><button class="toc-expand" type="button" data-target="appendix-c-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-c-subs" class="toc-subs" hidden><li><a href="#appendix-c-s1">C-1. 1차 사료 — 조선 태교 의서 계보 (1434~1800)</a></li><li><a href="#appendix-c-s2">C-2. 1차 사료 — 관제·의례</a></li><li><a href="#appendix-c-s3">C-3. 현대 학술 — DOHaD · 태내 환경</a></li><li><a href="#appendix-c-s4">C-4. 현대 학술 — 모성 정서·산전우울·MBCP</a></li><li><a href="#appendix-c-s5">C-5. 현대 학술 — 태아 청각·감각 학습</a></li><li><a href="#appendix-c-s6">C-6. 현대 학술 — 부성 영향 (아빠의 태교 근거)</a></li><li><a href="#appendix-c-s7">C-7. 공공 가이드라인 · 통계</a></li><li><a href="#appendix-c-s8">C-8. 학습 이론 · 기타</a></li><li><a href="#appendix-c-s9">C-9. 본 권의 자체 자산</a></li><li><a href="#appendix-c-s10">부록 일러두기</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-d"><span class="toc-num">부록 D</span><span class="toc-title">도움 요청 가이드 · 용어집 · 빠른 찾아보기</span></a><button class="toc-expand" type="button" data-target="appendix-d-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-d-subs" class="toc-subs" hidden><li><a href="#appendix-d-s1">D-1. 도움 요청 가이드</a></li><li><a href="#appendix-d-s2">D-2. 용어집</a></li><li><a href="#appendix-d-s3">D-3. 빠른 찾아보기</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-e"><span class="toc-num">부록 E</span><span class="toc-title">맘곁 태교 시리즈 안내</span></a><button class="toc-expand" type="button" data-target="appendix-e-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-e-subs" class="toc-subs" hidden><li><a href="#appendix-e-s1">E-1. 시리즈의 자리</a></li><li><a href="#appendix-e-s2">E-2. 함께 읽는 길</a></li><li><a href="#appendix-e-s3">E-3. 매체별 만남</a></li><li><a href="#appendix-e-s4">E-4. 그 너머의 자리</a></li></ol></li>
+</ol>
+  </nav>
+</aside>
+
+<button id="back-to-top" type="button" aria-label="맨 위로" hidden>↑</button>
+
+<div id="resume-toast" hidden role="status">
+  <span class="resume-msg">이전에 보시던 자리에서 이어 볼까요?</span>
+  <button class="resume-btn resume-yes" type="button">이어서</button>
+  <button class="resume-btn resume-no" type="button">처음부터</button>
+</div>
+
+<div class="book">
+<header class="cover">
+  <div class="brand">맘곁</div>
+  <h1>맘곁 태교</h1>
+  <div class="sub">이론편</div>
+  <div class="cover-tagline">사주당 이씨와 오늘의 의학이 같은 자리에서 만난다</div>
+  <div class="cover-authors">권의철 · 최소라 공저</div>
+  <div class="cover-publisher">펴낸곳 : 바비즈코리아</div>
+</header>
+
+<section class="front-page dedication">
+  <p class="dedi">
+    아이를 기다리는 모든 부모와<br>
+    그 곁에 함께 머무는 사람들에게.
+  </p>
+</section>
+
+<nav class="toc"><h2>차례</h2><ol>
+<li><a href="#prologue">들어가며</a></li>
+<li><a href="#ch1">1장 — 태교는 왜 지금 다시 필요할까</a></li>
+<li><a href="#ch2">2장 — 사주당 이씨</a></li>
+<li><a href="#ch3">3장 — 현대 의학이 보는 태아의 발달</a></li>
+<li><a href="#ch4">4장 — 임신 중의 식·운동·생활</a></li>
+<li><a href="#ch5">5장 — 오감으로 만나는 태아</a></li>
+<li><a href="#ch6">6장 — 엄마의 감정은 태아의 환경이 된다</a></li>
+<li><a href="#ch7">7장 — 가족의 태교</a></li>
+<li><a href="#ch8">8장 — 아빠의 태교</a></li>
+<li><a href="#ch9">9장 — 좋은 태교와 부담스러운 태교의 차이</a></li>
+<li><a href="#ch10">10장 — 맘곁 태교의 다섯 원칙</a></li>
+<li><a href="#epilogue">닫으며</a></li>
+<li><a href="#appendix-a">부록 A — 『태교신기』 35절 전문 — 사주당 이씨와 현대 의학의 대화</a></li>
+<li><a href="#appendix-b">부록 B — 임신 280일 환경 점검 체크리스트</a></li>
+<li><a href="#appendix-c">부록 C — 참고문헌</a></li>
+<li><a href="#appendix-d">부록 D — 도움 요청 가이드 · 용어집 · 빠른 찾아보기</a></li>
+<li><a href="#appendix-e">부록 E — 맘곁 태교 시리즈 안내</a></li>
+</ol></nav>
+<section id="prologue" class="chapter">
+<header class="chapter-header"><h2 class="chapter-title">들어가며</h2></header>
+<div class="chapter-body">
+<p>이 책을 펴는 사람은<br>
+대부분 임신 중이거나<br>
+임신을 준비하고 있거나,<br>
+혹은 곁에 그런 사람을 두고 있을 것이다.</p>
+<p>들어와 주어 고맙다는 말을 먼저 남기고 싶다.</p>
+<p>태교에 대한 책은 이미 많다.<br>
+이 책은 그중 또 한 권이지만,<br>
+한 가지만 다르게 쓰려 했다.</p>
+<p><mark class="pen-yellow">무엇을 해야 한다고 가르치는 책이 아니라,<br>
+무엇이 이미 일어나고 있는지를 함께 보는 책으로.</mark><br>
+잘해야 하는 과제로서의 태교가 아니라,<br>
+이해해도 괜찮은 한 시간으로서의 태교를 이야기하는 책으로.</p>
+<p>긴 서문을 두지는 않으려 한다.<br>
+이론편은 모두 9장으로 짧게 정리되어 있다.<br>
+한 번에 다 읽지 않아도 좋다.<br>
+오늘은 한 장만,<br>
+혹은 마음이 가는 부분만 천천히 펴 보아도 충분하다.</p>
+<p><mark class="pen-peach">이 책의 어느 한 문장이라도<br>
+당신의 어떤 하루를 조금 부드럽게 해 줄 수 있다면,<br>
+이 책은 자기 일을 다 한 셈이다.</mark></p>
+<p>이제 시작한다.</p>
+</div>
+</section>
+<section id="ch1" class="chapter">
+<header class="chapter-header"><span class="chapter-num">1장</span><h2 class="chapter-title">태교는 왜 지금 다시 필요할까</h2></header>
+<div class="chapter-body">
+<p>태교라는 말을 들으면 많은 사람이 먼저 떠올리는 장면이 있다.<br>
+잔잔한 음악을 틀어 놓고,<br>
+예쁜 그림을 보고,<br>
+좋은 글을 읽는 모습이다.</p>
+<p>누군가에게는 따뜻하고 아름다운 시간으로 느껴지지만,<br>
+또 누군가에게는 막연하고 부담스러운 과제로 다가오기도 한다.<br>
+무엇을 해야 하는지 분명하지 않고,<br>
+혹시 내가 잘하지 못하면 아이에게 미안한 일이 생길까<br>
+걱정되기 때문이다.</p>
+<p>그래서 오늘날 태교는 한편으로는 너무 감성적인 이야기로,<br>
+다른 한편으로는 너무 많은 정보와 조언 속의 숙제로 남아 있곤 한다.</p>
+<h3 id="ch1-s1" class="subhead">잘해야 하는 태교가 아니라, 연결되는 태교</h3>
+<p>태교를 조금 다르게 이해해 보면<br>
+이 말은 훨씬 편안해진다.</p>
+<p><mark class="pen-yellow">태교는 무엇을 더 많이 해야 하는 경쟁이 아니다.<br>
+아이를 맞이하는 동안<br>
+엄마와 아기가 어떤 환경 속에 머무는지를 돌아보는 일에 더 가깝다.</mark><br>
+다시 말해 태교는 대단한 이벤트가 아니라 관계의 시작이다.</p>
+<p>뱃속의 아이는 아직 말을 하지 못한다.<br>
+그러나 이미 엄마의 몸과 리듬,<br>
+하루의 분위기,<br>
+반복되는 소리와 정서 속에서 자라고 있다.<br>
+이 사실을 떠올리면<br>
+태교는 특별한 기술이라기보다<br>
+연결의 감각으로 이해되기 시작한다.</p>
+<h3 id="ch1-s2" class="subhead">정보가 많은 시대의 부담</h3>
+<p>지금 다시 태교를 이야기해야 하는 이유도 여기에 있다.</p>
+<p>오늘의 부모는 과거보다 훨씬 많은 정보를 접한다.<br>
+검색만 해도 임신 주수별 발달, 음식, 영양, 운동, 감정 관리,<br>
+태담, 음악 태교, 독서 태교에 대한 자료가 끝없이 쏟아진다.<br>
+정보가 많아진 것은 분명 도움이 되지만,<br>
+동시에 무엇이 정말 중요한지 구분하기 어렵게 만들기도 한다.</p>
+<p>때로는 태교가<br>
+아이의 미래 능력을 높이는 도구처럼 포장되기도 하고,<br>
+때로는 엄마의 작은 감정 변화까지<br>
+과도하게 불안의 언어로 설명되기도 한다.<br>
+그렇게 되면 태교는 엄마의 마음을 편안하게 만드는 일이 아니라<br>
+오히려 "잘해야 하는 과제"가 되어 버린다.</p>
+<h3 id="ch1-s3" class="subhead">왜 지금 태교인가 — 한국 사회의 세 가지 변화</h3>
+<p>오늘 태교를 다시 이야기해야 하는 이유를<br>
+조금 더 사회적 자리에서 살펴볼 수 있다.<br>
+한국에서 임신과 출산을 둘러싼 환경은<br>
+지난 한 세대 동안 크게 바뀌었다.<br>
+크게 보면 세 가지 흐름이 겹친다.</p>
+<h4 class="subhead-2">첫 번째 — 출산이 줄어드는 시대</h4>
+<p>한국의 출생아 수와 합계출산율은<br>
+지속적으로 낮아져 왔다.<sup class="fn-ref"><a href="#fn-ch1-2" id="fnref-ch1-2">2</a></sup><br>
+출산 자체가 흔하지 않은 일이 되면서<br>
+임신과 출산을 둘러싼 정보·풍속·관계가<br>
+이전 세대처럼 가까이 흐르지 않는다.<br>
+임신부가 일상에서 비슷한 경험을 하는 사람을 만나기가<br>
+이전보다 어려워졌다.</p>
+<p>이 변화 자체를 한탄할 일은 아니다.<br>
+다만 한 가지가 함께 따라온다.<br>
+임신부가 <em>혼자가 된 듯한 느낌</em>이 들기 쉽다는 점이다.<br>
+가까운 사람의 경험을 자연스럽게 빌려 받기 어려운 자리에서<br>
+태교를 다시 이야기해야 하는 이유 가운데 하나가 여기에 있다.</p>
+<h4 class="subhead-2">두 번째 — 산모의 평균 연령이 높아지는 시대</h4>
+<p>같은 기간 동안 산모의 평균 출산연령도 꾸준히 높아져 왔다.<br>
+첫 출산을 30대 중반 이후에 맞이하는 비율이<br>
+이전보다 훨씬 늘었다.<sup class="fn-ref"><a href="#fn-ch1-2" id="fnref-ch1-2-2">2</a></sup></p>
+<p>평균 연령의 변화는<br>
+산모의 건강·심리·사회적 자원의 모양을 함께 바꾼다.<br>
+임신을 더 길게 준비하는 자리도 있고,<br>
+직장과 임신을 함께 통과해야 하는 자리도 있다.<br>
+이 다양한 자리에 한 가지 공통점이 있다.<br>
+*임신은 더 이상 자동으로 흘러가는 시간이 아니라<br>
+의식적으로 디자인하는 시간이 되어 가고 있다*는 점이다.</p>
+<h4 class="subhead-2">세 번째 — 정서적 어려움이 더 잘 보이는 시대</h4>
+<p>세 번째 변화는 정서의 자리다.<br>
+임신부와 산모가 임신 중·산후에<br>
+정서적 어려움을 경험할 가능성에 대한 사회적 인식이<br>
+지난 십수 년 사이에 눈에 띄게 커졌다.<br>
+국내 모성건강 보고는<br>
+임신 중·산후 우울이 <em>드문 일이 아니다</em>라는 점을 일관되게 시사한다.<sup class="fn-ref"><a href="#fn-ch1-3" id="fnref-ch1-3">3</a></sup><br>
+10명 가운데 1~2명 정도가 비슷한 시기를 통과한다고 보면<br>
+비교적 가까운 그림이 된다.</p>
+<p>이 인식이 커진 자리는<br>
+임신부에게 두 가지 의미를 함께 가진다.<br>
+첫째, <em>내가 이런 마음이 드는 것은 나만의 문제가 아니다</em>라는<br>
+안도의 자리.<br>
+둘째, 도움이 필요할 때 그 자리를 알아차리고<br>
+손을 내미는 것이 더 자연스러워졌다는 자리다.</p>
+<h4 class="subhead-2">한눈에 — 한국에서 임신을 둘러싼 변화</h4>
+<table class="data">
+<thead><tr>
+<th>영역</th>
+<th>한 세대 전</th>
+<th>오늘</th>
+</tr></thead><tbody>
+<tr>
+<td>출생아 수 / 합계출산율</td>
+<td>비교적 안정</td>
+<td>지속적 하락</td>
+</tr>
+<tr>
+<td>산모 평균 출산연령</td>
+<td>20대 후반 중심</td>
+<td>30대 중반으로 이동</td>
+</tr>
+<tr>
+<td>가구 형태</td>
+<td>다인 가구 우세</td>
+<td>1·2인 가구 비중 증가</td>
+</tr>
+<tr>
+<td>임신·출산 정보</td>
+<td>가족·이웃 구전 중심</td>
+<td>인터넷·SNS 중심</td>
+</tr>
+<tr>
+<td>산전·산후 정서</td>
+<td>사회적 인식이 미약</td>
+<td>의료·공공의 이해 확대</td>
+</tr>
+</tbody></table>
+<p>세부 수치는 출간 시점의 통계청·보건복지부 발표 자료로 채워진다.<br>
+중요한 것은 어느 한 칸의 숫자가 아니라<br>
+다섯 칸이 함께 가리키는 한 가지 방향이다.<br>
+<em>임신부가 놓인 환경 자체가 달라졌다</em>는 자리.<br>
+이 변화를 인정하는 것이<br>
+오늘의 태교를 다시 시작하는 출발선이다.</p>
+<h3 id="ch1-s4" class="subhead">태교의 원래 자리</h3>
+<p>그러나 태교의 핵심은 원래 거기에 있지 않았다.</p>
+<p>전통 태교서인 『태교신기』를 보면 —<br>
+사실 이 책은 한 사람의 천재성에서 갑자기 나온 것이 아니라,<br>
+세종 시대부터 약 400년에 걸쳐 다듬어져 온 흐름의 끝자락에 놓인 책이다 —<br>
+태교는 임신 중인 여성이 혼자 모든 것을 수행해야 하는 의무가 아니다.<br>
+태아를 둘러싼 환경 전체를 바르게 하는 일로 이해된다.<br>
+사주당 이씨는 태아를<br>
+임신부 혼자가 아니라<br>
+집안 사람들 모두가 함께 조심하고 돌보아야 하는 존재로 보았다.</p>
+<p>이 시선은 오늘날에도 깊은 울림을 준다.<br>
+아이는 한 사람의 노력만으로 자라는 존재가 아니라<br>
+관계와 분위기와 반복되는 생활 속에서 자라기 때문이다.<br>
+이 자리를 더 자세히 들여다보는 것이 다음 장의 일이다.</p>
+<h3 id="ch1-s5" class="subhead">현대 의학도 같은 방향을 가리킨다</h3>
+<p>현대 의학과 심리학도 비슷한 방향을 보여 준다.</p>
+<p>임신 중 스트레스와 우울은<br>
+모-태아 애착이나 임신기 정서적 안정과 관련될 수 있다는 점이<br>
+국내·외 모성건강 연구에서 꾸준히 보고되어 왔다.<sup class="fn-ref"><a href="#fn-ch1-1" id="fnref-ch1-1">1</a></sup><br>
+임신이 진행될수록 태아의 존재감은 더 선명해지고,<br>
+엄마의 심리적 상태 역시 중요한 환경 요소로 다뤄진다.</p>
+<p>여기서 중요한 점은<br>
+엄마가 한 번도 흔들리지 않아야 한다는 뜻이 아니다.<br>
+감정을 이해하고, 조절하고, 회복하는 과정이 중요하다는 사실에 가깝다.</p>
+<p>좋은 태교는 한결같은 평온함이 아니다.<br>
+흔들림 속에서도 다시 안정의 리듬으로 돌아갈 수 있는 환경을 만드는 일에<br>
+더 가깝다.</p>
+<h3 id="ch1-s6" class="subhead">정보가 아니라 분위기, 활동이 아니라 관계</h3>
+<p>그래서 지금 우리에게 필요한 태교는<br>
+"무엇을 더 해야 하는가"를 몰아붙이는 태교가 아니다.<br>
+"무엇이 정말 연결을 만드는가"를 이해하게 해 주는 태교다.</p>
+<p>음악을 듣는 일도,<br>
+책을 읽는 일도,<br>
+배를 쓰다듬는 일도 모두 의미가 있을 수 있다.<br>
+다만 그보다 더 중요한 것은<br>
+그 행동이 어떤 마음에서 나오고,<br>
+엄마와 아기 사이에 어떤 리듬을 만들고,<br>
+하루를 얼마나 편안하게 정돈해 주는가이다.</p>
+<p><mark class="pen-yellow">태교는 정보가 아니라 분위기에 가깝고,<br>
+활동이 아니라 관계에 가깝다.</mark></p>
+<h3 id="ch1-s7" class="subhead">안심에서 출발하기</h3>
+<p>맘곁이 이번 이론편에서 말하고 싶은 것도 바로 이 지점이다.</p>
+<p>태교는 훌륭한 엄마가 되기 위한 시험이 아니다.<br>
+아이를 맞이하는 시간 속에서<br>
+몸과 마음과 생활을 조금 더 다정하게 바라보는 연습이다.</p>
+<p>어떤 날은 기분이 좋을 수도,<br>
+어떤 날은 마음이 복잡할 수도,<br>
+어떤 날은 아무것도 하지 못한 것처럼 느껴질 수도 있다.<br>
+그럼에도 아이와의 연결은 이미 시작되고 있다.<br>
+<mark class="pen-peach">그 연결을 이해하는 순간<br>
+태교는 부담이 아니라 안심이 된다.</mark></p>
+<p>이 책은 바로 그 안심에서 출발한다.<br>
+먼저 왜 태교를 다시 이해해야 하는지,<br>
+무엇이 실제로 엄마와 아기를 이어 주는지,<br>
+그리고 전통과 현대가 이 주제를 어떻게 함께 비추는지를<br>
+차근차근 살펴보려 한다.<br>
+이해의 바탕이 생기면<br>
+이후의 실천은 훨씬 부드럽고 자연스럽게 이어질 수 있다.</p>
+<h3 id="ch1-s8" class="subhead">이 장의 정리</h3>
+<ul class="bullets">
+<li>태교는 <em>더 많이 잘해야 하는 경쟁</em>이 아니다. 엄마와 아기가 어떤 하루를 보내고 있는지 살펴보는 일이다.</li>
+<li>출산이 줄고, 첫 아이를 낳는 나이가 올라가고, 임신 중 마음의 어려움이 더 잘 드러나는 시대다. 그래서 지금 다시 태교를 묻게 된다.</li>
+<li>200년 전 사주당 이씨가 본 자리와 오늘의 의학이 가리키는 자리는 의외로 같다. 표현이 다를 뿐이다.</li>
+<li>좋은 태교는 한 번도 흔들리지 않는 게 아니다. 흔들려도 다시 편안한 자리로 돌아오는 일이다.</li>
+<li>태교는 <em>정보</em>보다 <em>분위기</em>에 가깝고, <em>무언가를 하는 것</em>보다 <em>관계를 만드는 일</em>에 가깝다.</li>
+</ul>
+<h3 id="ch1-s9" class="subhead">다음 장으로</h3>
+<p>다음 장에서는 그 이해의 출발점으로<br>
+사주당 이씨와 『태교신기』의 자리를 먼저 들여다본다.<br>
+오래된 통찰 하나를<br>
+오늘의 언어로 다시 펴 보는 일이<br>
+이 책의 첫걸음이다.</p>
+<aside class="footnotes">
+<h4>각주</h4>
+<ol>
+<li id="fn-ch1-1">임신 중 스트레스·우울이 모-태아 애착 및 임신기 정서적 안정과 관련될 수 있다는 국내·외 모성건강 연구 — 본 챕터는 입문 위치라 일반 합의 수준에서 인용. 보다 자세한 1차 자료는 3장 <code>[^3]</code> 및 6장 <code>[^1]</code>·<code>[^2]</code>에서 다루는 한국간호과학회지(JKAN)·한국보건사회연구원 보고서·모성간호학 학술지를 출발점으로 의학 검수자가 1건을 좁혀 표기. <a class="fn-back" href="#fnref-ch1-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch1-2">한국의 출생아 수·합계출산율 추이 및 산모 평균 출산연령 변화 — 통계청(KOSIS) 인구동태통계, OECD Family Database. 본 장에서는 비율 단정 없이 "지속적으로 낮아져 왔다", "30대 중반으로 이동" 수준의 일반 추세 진술로만 인용. 출간 전 검수자가 가장 최근 발표 자료의 연도·수치를 채워 표기. 부록 C-7 공공 가이드라인·통계 항목과 동일 자료 계통을 사용한다. <a class="fn-back" href="#fnref-ch1-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch1-3">한국의 산전·산후 우울 인식 및 유병률 — 보건복지부·한국보건사회연구원 『산후우울 실태조사』 등의 공공 보고서. 본 장에서는 단정적 비율 대신 "10명 가운데 1~2명 정도가 비슷한 시기를 통과한다" 식의 부드러운 표현을 사용했다. 출간 전 검수자가 가장 최신 보고서의 정확한 비율과 발간 연도로 보강. 6장 <code>[^1]</code>과 동일 자료 계통. <a class="fn-back" href="#fnref-ch1-3" aria-label="본문으로 돌아가기">↩</a></li>
+</ol>
+</aside>
+</div>
+</section>
+<section id="ch2" class="chapter">
+<header class="chapter-header"><span class="chapter-num">2장</span><h2 class="chapter-title">사주당 이씨</h2></header>
+<div class="chapter-body">
+<p>오늘은 태교에 대한 정보가 어느 때보다 많은 시대다.<br>
+임신 주차별 가이드, 태담 예시, 음악 추천, 영양 안내까지<br>
+무엇을 해야 할지 알려주는 자료는 끝이 없다.</p>
+<p>하지만 자료가 많아질수록 오히려 어려워지는 질문들이 있다.</p>
+<p>태교는 왜 중요한가.<br>
+무엇이 정말 아이에게 닿는가.<br>
+이 모든 일을 엄마 혼자 감당해야 하는가.</p>
+<p>이런 질문 앞에서, 200년쯤 전에 쓰인 한 권의 책을 다시 펼쳐 보면<br>
+의외로 답에 가까운 시선을 만나게 된다.<br>
+그 책의 저자가 사주당 이씨다.</p>
+<h3 id="ch2-s1" class="subhead">조선의 한 여성 학자</h3>
+<p>사주당 이씨(師朱堂 李氏, 1739–1821)는 조선 후기를 대표하는<br>
+여성 성리학자다.<br>
+본관은 전주이며,<br>
+태종의 넷째 왕자이자 세종의 스승이었던<br>
+경녕군(敬寧君)의 11대손으로 알려져 있다.<sup class="fn-ref"><a href="#fn-ch2-1" id="fnref-ch2-1">1</a></sup></p>
+<p>그녀가 남긴 책은 한 권뿐이지만,<br>
+그 한 권은 수십 년에 걸친 학문적 삶의 결산에 가깝다.<br>
+<mark class="pen-yellow">『태교신기』는 어쩌다 쓴 글이 아니다.</mark></p>
+<p>『태교신기(胎敎新記)』.<br>
+1800년에 완성되었고,<br>
+이듬해 아들 유희가 한글 음을 달아<br>
+더 많은 사람이 읽을 수 있도록 정리했다.<sup class="fn-ref"><a href="#fn-ch2-1" id="fnref-ch2-1-2">1</a></sup><br>
+이 책이 오늘까지 다시 읽히는 이유는<br>
+저자 자신이 한 사람의 학자로 자기 자리를 갖춘 사람이었기 때문이다.</p>
+<h4 class="subhead-2">호(號)에 새긴 자기 선언</h4>
+<p>그녀가 처음 사용한 호는 <em>희현당(希賢堂)</em>이었다.<br>
+"현자(賢者)를 희구한다"는 뜻이다.<br>
+훗날 그녀는 이 호를 <em>사주당(師朱堂)</em>으로 바꾼다.<br>
+"주자(朱子)를 스승으로 삼는다"는 뜻이다.<sup class="fn-ref"><a href="#fn-ch2-8" id="fnref-ch2-8">8</a></sup></p>
+<p>이 변경은 단순한 이름 바꿈이 아니다.<br>
+<em>현자를 우러러 보는 자리</em>에서<br>
+<em>그 현자의 사상을 직접 자기 학문의 기준으로 삼는 자리</em>로<br>
+한 칸 옮겨 가는 자기 선언에 가깝다.<br>
+조선 사회에서 여성에게 학문의 길이 넓게 열려 있지 않았다는 점을 떠올리면,<br>
+이 자기 선언은 그 자체로 깊은 결을 가진다.</p>
+<h4 class="subhead-2">바늘을 던진 날 — 학문으로 들어서는 순간</h4>
+<p>전해지는 일화 가운데 하나가 있다.<br>
+어릴 적 길쌈과 바느질에 능했던 사주당이<br>
+어느 날 바늘을 던지며 한마디를 남겼다고 한다.</p>
+<blockquote class="meta-note"><em>"사람이 사람 노릇 하는 것이 어찌 여기에 있겠는가."</em><sup class="fn-ref"><a href="#fn-ch2-9" id="fnref-ch2-9">9</a></sup></blockquote>
+<p>이 한 문장은<br>
+그녀가 <em>여성으로서 주어진 자리</em>에 머무르는 것이 아니라<br>
+<em>사람으로서 어디에 서 있어야 하는가</em>를 묻기 시작한<br>
+한 순간을 보여 준다.<br>
+바늘을 놓은 자리에서 그녀는<br>
+유교 경전과 성리학의 책들로 손을 옮겼고,<br>
+이후 평생을 그 책상 앞에서 살았다.</p>
+<p>부친상 때 18~19세의 나이로 3년상을 치르며 효녀로 인정받았던 일도,<br>
+같은 시기 그녀가 자기 자리를 학문 쪽으로 옮겨 가던 흐름과<br>
+무관하지 않다.</p>
+<h4 class="subhead-2">지적 동반자였던 부부 — 30년의 토론</h4>
+<p>25세이던 1763년,<br>
+사주당은 20세 연상의 유한규(柳漢奎)의 네 번째 부인이 되었다.<br>
+연상의 학자와의 결혼은<br>
+당시로서는 학문적 대화를 이어 갈 수 있는 자리이기도 했다.</p>
+<p>이후 30년간 두 사람은<br>
+유교 경전을 함께 읽고 토론하는 <em>지우(知友)</em>에 가까운 관계를 이어 갔다.<br>
+편지 형식의 학술 논쟁이 여러 차례 오갔고,<br>
+그 가운데에는 사주당이 주자의 견해에 반대하며<br>
+정자(程子)의 의견을 택한 기록도 남아 있다.<sup class="fn-ref"><a href="#fn-ch2-10" id="fnref-ch2-10">10</a></sup></p>
+<p>이 사실은 작지만 의미가 깊다.<br>
+<mark class="pen-yellow">사주당의 호는 "주자를 스승으로 삼는다"는 뜻이지만,<br>
+그녀의 학문은 주자를 무비판적으로 따르는 자리가 아니었다.</mark><br>
+스승으로 모시되 필요한 자리에서는 다른 자리를 택할 수 있는,<br>
+한 사람의 학자로서 자기 결을 갖춘 모습이 거기에 있다.</p>
+<p>처음 태교에 관한 글을 쓴 시점도 이 시기다.<br>
+1772년 무렵,<br>
+사주당이 적은 글을 남편 유한규가 정리하며<br>
+<em>「교자집요(敎子輯要)」</em>라는 이름을 붙였다.<br>
+훗날 『태교신기』의 뿌리가 되는 글이다.</p>
+<h4 class="subhead-2">동시대 학자들의 인정</h4>
+<p>사주당의 학문은 가족 안에만 머물지 않았다.<br>
+이면눌(李勉訥)·이양연(李亮淵) 같은 젊은 학자들이<br>
+직접 그녀를 찾아와 가르침을 청했다는 기록이 전한다.<br>
+한원진(韓元震)·송명흠(宋明欽) 같은 거유(巨儒)의 자취와 관련한 일화도<br>
+한국학 연구에서 함께 다뤄져 왔다.<sup class="fn-ref"><a href="#fn-ch2-11" id="fnref-ch2-11">11</a></sup></p>
+<p>당시 여성 학자가 다른 학자들에게 <em>학문적으로 인정받았다</em>는 사실은<br>
+그녀의 학문이 가정의 사적인 정성이 아니라<br>
+공적 학문 공동체에서도 자리를 가졌다는 점을 보여 준다.</p>
+<h4 class="subhead-2">가족 안의 학문 네트워크</h4>
+<p>사주당이 자기 학문을 자식 세대에까지 이어 간 자리는 더 또렷하다.<br>
+35세에 낳은 아들 유희(柳僖, 1773–1837)는<br>
+훗날 한국어 언어학에 큰 자취를 남긴 학자가 된다.<br>
+『언문지(諺文志)』와 『물명고(物名攷)』를 비롯한 그의 저작은<br>
+한국어 음운과 어휘를 체계적으로 정리한 초기 시도들이다.</p>
+<p>가족 안의 학문 네트워크는 여기에서 그치지 않는다.<br>
+사주당은 19세기 초 한국 여성 백과사전이라 불리는<br>
+『규합총서(閨閤叢書)』를 지은 빙허각 이씨(憑虛閣 李氏)의<br>
+외숙모이기도 하다.<sup class="fn-ref"><a href="#fn-ch2-12" id="fnref-ch2-12">12</a></sup><br>
+<em>사주당 → 유희</em>로 이어지는 직계의 학문과,<br>
+<em>사주당과 빙허각</em>으로 이어지는 친족 안 학문의 결이<br>
+한 시대의 한 가족 안에서 흐르고 있었다.</p>
+<h4 class="subhead-2">신사임당과는 다른 자리</h4>
+<p>사주당을 이야기할 때 종종 신사임당(申師任堂)과 함께 비교된다.<br>
+두 인물을 같은 자리에 두기는 어렵다.</p>
+<p><mark class="pen-yellow">신사임당이 성현을 기르는 어머니의 자리에 더 깊이 머물렀다면,<br>
+사주당은 스스로 학자가 되는 자리를 향해 한 걸음 더 옮겨 갔다.</mark></p>
+<p>이 차이는 우열의 자리가 아니다.<br>
+시대의 자리이자 한 사람이 선택한 결의 자리다.<br>
+다만 한 가지가 분명해진다.<br>
+*『태교신기』를 어머니로서 쓴 글로만 읽기보다,<br>
+한 학자가 자식과 후세를 위해 정리한 학문적 결산으로 다시 읽을 때*<br>
+이 책이 가진 깊이가 더 또렷하게 보인다는 점이다.</p>
+<h4 class="subhead-2">가장 깊은 한 문장</h4>
+<p>『태교신기』에서 오늘까지 가장 자주 인용되는 한 문장이 있다.</p>
+<blockquote class="meta-note">훌륭한 의사는 병이 나기 전에 손을 쓰고,<br>
+훌륭한 교사는 아직 태어나기 전에 가르친다.<br>
+그러므로 어진 스승의 십 년 가르침이<br>
+어머니의 열 달의 가르침만 못하다.</blockquote>
+<p>&gt;</p>
+<blockquote class="meta-note">— 사주당 이씨, 『태교신기』 1장 2절<sup class="fn-ref"><a href="#fn-ch2-13" id="fnref-ch2-13">13</a></sup></blockquote>
+<p>이 한 문장이 사주당 학문의 결을 가장 또렷하게 보여 준다.<br>
+<mark class="pen-yellow">의학과 교육이 본래 같은 자리에 놓여 있다는 시선,<br>
+가장 깊은 가르침은 일이 일어나기 <em>전</em>에 이미 시작된다는 통찰</mark>.<br>
+이 자리는 200년이 지난 오늘<br>
+DOHaD(태아기 환경의 평생 영향) 가설이 도달한 자리와 그리 멀지 않다.</p>
+<h4 class="subhead-2">책이 닿은 자리</h4>
+<p>『태교신기』의 영향은 한국에 머물지 않았다.<br>
+1932년에는 일본어로 옮겨져<br>
+일본의 여중·고등학교에서 한 시기 교과서처럼 읽힌 적도 있다.<sup class="fn-ref"><a href="#fn-ch2-14" id="fnref-ch2-14">14</a></sup><br>
+오늘날 한국학·여성학 연구에서는<br>
+*여성 학자가 쓴 임신·태교 전문서로서<br>
+세계적으로도 매우 이른 시기에 속하는 책*으로 평가하기도 한다.</p>
+<p>이런 평가는 이 책의 무게를 짐작케 하는 자리다.<br>
+다만 이 책에서는 그 평가를 권위로 두지 않는다.<br>
+사주당 자신이 자기 책을 <em>대단한 첫 자리</em>에 두려 했던 사람이 아니라,<br>
+<em>있어야 할 자리에 있는 책</em>으로 두려 했던 사람에 가깝기 때문이다.<br>
+이 책 전체가 사주당을 <em>권위가 아니라 대화 상대</em>로 마주 두는 자리도<br>
+같은 곳에서 나온다.</p>
+<h4 class="subhead-2">그녀의 생애 — 한눈에</h4>
+<table class="data">
+<thead><tr>
+<th>시기</th>
+<th>사건</th>
+</tr></thead><tbody>
+<tr>
+<td>1739년</td>
+<td>충북 청주 서면 지동에서 출생 (부친 이창식)</td>
+</tr>
+<tr>
+<td>18~19세</td>
+<td>부친상 후 3년상을 치르며 효녀로 인정받음</td>
+</tr>
+<tr>
+<td>1763년 (25세)</td>
+<td>20세 연상의 유한규의 네 번째 부인이 됨</td>
+</tr>
+<tr>
+<td>1772년경</td>
+<td>첫 태교 관련 글 집필 — 남편이 「교자집요(敎子輯要)」라 명명</td>
+</tr>
+<tr>
+<td>1773년 (35세)</td>
+<td>아들 유희(柳僖) 출산. 이후 세 딸</td>
+</tr>
+<tr>
+<td>1783년 (45세)</td>
+<td>남편 사별. 사남매를 데리고 용인으로 분가</td>
+</tr>
+<tr>
+<td>1800년</td>
+<td>『태교신기』 완성</td>
+</tr>
+<tr>
+<td>1801년</td>
+<td>아들 유희가 한글로 음을 달고 발문을 씀</td>
+</tr>
+<tr>
+<td>1821년</td>
+<td>83세로 별세</td>
+</tr>
+</tbody></table>
+<p>이 80년 남짓한 생애에서<br>
+<em>한 권의 책</em>은 마지막 20여 년의 자리에 놓여 있다.<br>
+그 한 권이 어떻게 가능했는지를 묻는 일이<br>
+이 장의 자리이기도 하다.</p>
+<p>『태교신기』가 특별한 이유는 분량이나 학술적 무게에 있지 않다.<br>
+그녀가 태교를 바라본 시선 자체가 다른 책들과 달랐다는 점이다.</p>
+<h3 id="ch2-s2" class="subhead">그녀가 태교를 본 자리</h3>
+<p>조선 시대의 태교는 종종 임신부를 위한 금기 목록처럼 전해졌다.<br>
+무엇을 먹지 말고, 무엇을 보지 말고, 어떤 자세로 앉지 말 것.<br>
+이런 규범 안에서 임신부는 늘 조심해야 하는 존재로 남기 쉬웠다.</p>
+<p>사주당 이씨가 한 일은<br>
+이 금기들을 단순히 더 정교하게 다듬는 데에서 그치지 않았다.<br>
+그녀는 질문이 머무는 자리를 한 칸 옮겨 놓았다.</p>
+<p>태교는 임신부 한 사람이 지켜야 할 규범이 아니라<br>
+아이를 맞이하는 사람들 모두가 함께 만들어 가는 환경이라는 시선.</p>
+<p>그래서 그녀의 글에는 임신부에게만 향하는 당부 대신<br>
+집안의 분위기, 가족의 말과 태도, 부부의 관계,<br>
+그리고 아이를 기다리는 마음 전체가 함께 등장한다.</p>
+<p>태교는 행동이라기보다 환경에 가깝고,<br>
+환경은 한 사람의 일이 아니라 관계의 일이라는 것.<br>
+그녀가 200년 전에 이미 이 자리에 서 있었다는 점은<br>
+오늘 다시 읽어도 놀랍다.<sup class="fn-ref"><a href="#fn-ch2-2" id="fnref-ch2-2">2</a></sup></p>
+<h3 id="ch2-s3" class="subhead">혼자 태어난 책이 아니다</h3>
+<p>『태교신기』를 처음 만나는 사람은 종종 한 가지 인상을 받는다.<br>
+200년 전 한 여성 학자가 어느 날 갑자기<br>
+이렇게 깊은 통찰을 적어 내려갔다는 사실이<br>
+어떻게 가능했을까 하는 인상이다.</p>
+<p>그러나 조금 더 들여다보면<br>
+이 책은 갑자기 솟아오른 것이 아니다.<br>
+<mark class="pen-yellow">사주당 이씨는 자신보다 앞서 흘러온<br>
+약 400년의 흐름 위에서<br>
+한 칸 옆자리에 발을 옮겨 놓은 것에 가깝다.</mark></p>
+<p>그 흐름을 짧게라도 따라가 보면<br>
+『태교신기』가 왜 그토록 단단하면서도 따뜻한지가<br>
+조금 더 분명하게 보이기 시작한다.</p>
+<h4 class="subhead-2">첫 번째 마디 — 세종의 시대, 태교가 글로 정리되다</h4>
+<p>조선에서 태교가 처음으로 글의 형태로 정리되기 시작한 자리는<br>
+1434년, 세종 16년이다.<br>
+세종은 어의 노중례에게 명하여 『태산요록(胎産要錄)』을 짓게 했다.<br>
+임신과 출산, 갓 태어난 아이의 건강을 함께 다룬<br>
+조선의 본격적인 첫 전문 의서로 전해진다.<sup class="fn-ref"><a href="#fn-ch2-4" id="fnref-ch2-4">4</a></sup></p>
+<p>이 책에서 노중례는<br>
+임신 3개월 무렵부터 본격적인 태교를 시작해야 한다고 적었다.<br>
+이 시기부터 태아의 형상이 변하기 시작하므로<br>
+어머니가 머무는 환경의 결이 그대로 아이에게 새겨진다는 이해였다.</p>
+<p>세종이 이 책을 짓게 한 이유는<br>
+의학적 호기심만은 아니었다.<br>
+좋은 군주는 좋은 환경에서부터 길러진다는 생각,<br>
+그리고 그 길을 백성에게도 열어 주어야 한다는 생각이<br>
+함께 있었다.</p>
+<p>태교는 이때 처음으로<br>
+한 가정의 사적인 정성에서 한 발 더 나아가,<br>
+국가가 책으로 정리해 다음 세대에 전해야 할<br>
+공적인 지식의 자리에 놓이게 되었다.</p>
+<h4 class="subhead-2">두 번째 마디 — 허준의 시대, 한글로 옮겨지다</h4>
+<p>그로부터 약 170년 뒤, 또 한 번 결이 바뀐다.<br>
+1608년, 어의 허준은 선조의 명을 받아<br>
+『언해태산집요(諺解胎産集要)』를 펴낸다.<br>
+임신과 출산에 관한 핵심 지식을<br>
+처음으로 한글로 옮긴 산서로 전해진다.<sup class="fn-ref"><a href="#fn-ch2-5" id="fnref-ch2-5">5</a></sup><br>
+2년 뒤인 1610년에는 잘 알려진 『동의보감』이 완성되고,<br>
+그 안의 부인문 항목에서<br>
+임신부의 몸과 마음을 어떻게 돌볼지가 본격적으로 다뤄진다.</p>
+<p>여기서 중요한 변화는<br>
+책이 한 권 더 늘었다는 사실이 아니다.<br>
+그 전까지 태교에 관한 지식은<br>
+한문을 읽을 수 있는 일부 사람들의 자리에 머물러 있었다.<br>
+한글본이 등장하면서 비로소<br>
+왕실의 여성, 그리고 의녀처럼 실제 돌봄을 맡은 사람들이<br>
+그 지식을 직접 읽고 쓸 수 있게 되었다.<br>
+태교가 한 걸음 더 사람에게 가까워진 시기다.</p>
+<h4 class="subhead-2">세 번째 마디 — 왕실의 일상으로, 그리고 가정으로</h4>
+<p>조선 후기에 이르면 태교는 책 속의 권고에서 한 발 더 나아가<br>
+실제 일상의 절차로 자리를 잡는다.<br>
+왕비나 세자빈이 임신을 하면<br>
+출산 몇 달 전 산실청(産室廳)이라는 임시 기구가 꾸려졌고,<br>
+후궁의 경우에는 호산청(護産廳)이 설치되었다.<sup class="fn-ref"><a href="#fn-ch2-6" id="fnref-ch2-6">6</a></sup><br>
+이 기구들은 단지 출산을 돕는 의료 조직만은 아니었다.<br>
+임신부의 거처를 정돈하고, 식이를 살피고,<br>
+들리는 소리와 만나는 사람을 함께 조절하는 일까지 맡았다.</p>
+<p>가장 인상적인 것은<br>
+사회 전체가 그 환경의 일부가 된다는 점이다.<br>
+임신부가 머무는 동안에는 형벌 집행이 멈추고,<br>
+큰 소리가 나는 일도 줄였다고 전해진다.<br>
+한 사람의 임신을 한 사람만의 일로 두지 않으려는<br>
+오래된 마음이 거기에 담겨 있었다.</p>
+<p>같은 시기,<br>
+한 왕실 여성에게서 다음 왕실 여성에게<br>
+손에서 손으로 전해진 작은 첩이 있었다.<br>
+출산 직전부터 산후 백일 무렵까지<br>
+무엇을 살펴야 하는지를 순한글로 정리한<br>
+『임산예지법(臨産豫知法)』이다.<sup class="fn-ref"><a href="#fn-ch2-7" id="fnref-ch2-7">7</a></sup><br>
+이 첩은 오늘날 조선 왕실의 출산 지침을 보여 주는<br>
+사실상 유일한 1차 자료로 남아 있다.</p>
+<p>이 시기 사대부 가문에서도 같은 흐름이 흐르고 있었다.<br>
+태교에 관한 지식과 실천은 왕실에 머물지 않고,<br>
+책과 구전을 통해 양반가 여성들의 일상으로<br>
+차츰 스며들었다.<br>
+사주당 이씨가 『태교신기』를 써 내려간 1800년의 자리는<br>
+바로 이 흐름의 끝자락이자, 동시에 새로운 시작이었다.</p>
+<h4 class="subhead-2">사주당 이씨가 한 일</h4>
+<p>이 흐름 위에서 보면<br>
+『태교신기』의 자리는 더 분명하게 드러난다.<br>
+사주당 이씨는 새로운 사실을 처음 발견한 사람이 아니다.<br>
+이미 360여 년에 걸쳐 의서와 일상 속에 흩어져 있던 태교의 지혜를,<br>
+한 여성 학자의 시선으로 다시 엮어 낸 사람이다.<br>
+그녀가 한 일은 크게 세 가지로 정리할 수 있다.</p>
+<p>첫째, 흩어진 자료를 정리했다.<br>
+의서와 경전, 가문의 경험을 모아<br>
+한 권의 본격적인 태교서로 묶어 냈다.</p>
+<p>둘째, 태교의 자리를 옮겼다.<br>
+이전까지 태교가 왕실과 일부 사대부 가문의<br>
+정성스러운 절차의 자리에 머물렀다면,<br>
+그녀의 책에서는 임신부 한 사람만의 의무도,<br>
+신분이 높은 사람만의 일도 아닌<br>
+가족 전체의 환경의 문제로 다시 놓였다.</p>
+<p>셋째, 글의 결을 다정하게 바꾸었다.<br>
+같은 권고라도 그것이 누구의 자리에서,<br>
+어떤 마음으로 쓰였느냐에 따라<br>
+받는 사람의 느낌은 달라진다.<br>
+사주당 이씨의 문장은<br>
+임신부를 감시하는 자리가 아니라,<br>
+함께 아이를 기다리는 사람의 자리에 서 있다.</p>
+<p>이 세 가지가 더해졌기에<br>
+『태교신기』는 오늘까지도 다시 읽힌다.<br>
+의서의 권위에 기대지 않고,<br>
+한 가정의 풍경 안으로 태교를 데려다 놓은 책이기 때문이다.</p>
+<h4 class="subhead-2">그래서 이 책의 시선도 그렇다</h4>
+<p>맘곁이 사주당 이씨를 이 책의 앞자리에 둔 이유도<br>
+같은 자리에 있다.<br>
+그녀의 통찰은 한 사람의 천재성이 아니라,<br>
+오랜 시간에 걸쳐 다듬어진 한 사회의 마음이<br>
+한 사람을 통해 정리된 결과에 가깝다.</p>
+<p>그래서 우리도 이 책을 권위로 펼치지 않는다.<br>
+400년의 흐름이 사주당 이씨에게 닿았듯이,<br>
+그녀의 시선이 오늘의 부모에게 다정하게 닿을 수 있다면,<br>
+태교는 다시 한 번<br>
+한 사람의 무게가 아니라<br>
+함께 만들어 가는 환경으로 돌아올 수 있다.</p>
+<h4 class="subhead-2">한눈에 — 35절 가운데 12절 (대표 발췌)</h4>
+<p>『태교신기』 35절을 모두 옮길 수는 없지만,<br>
+이 책 전체의 결을 보여 주는 12절을 발췌하면 다음과 같다.<sup class="fn-ref"><a href="#fn-ch2-2" id="fnref-ch2-2-2">2</a></sup><br>
+풀스펙 매핑은 부록 A에 따로 두었다.</p>
+<table class="data">
+<thead><tr>
+<th>절</th>
+<th>핵심 메시지</th>
+<th>본 권에서 다시 만나는 자리</th>
+</tr></thead><tbody>
+<tr>
+<td>1-1</td>
+<td>사람의 성품은 하늘을 본받고, 기질은 부모에게서 받는다</td>
+<td>1·8장 부모 환경</td>
+</tr>
+<tr>
+<td>1-3</td>
+<td>태교의 책임은 오로지 아버지에게 있다</td>
+<td>8장 아빠의 태교</td>
+</tr>
+<tr>
+<td>1-4</td>
+<td>자궁은 원초적 교육 환경이다</td>
+<td>3·5장 태아 발달</td>
+</tr>
+<tr>
+<td>2-1</td>
+<td>사람의 성품은 임신 전부터 이루어진다</td>
+<td>4장 임신 전 케어</td>
+</tr>
+<tr>
+<td>4-1</td>
+<td>태교는 온 가족이 함께 / 칠정은 장부에 직접 영향</td>
+<td>7장 가족의 태교</td>
+</tr>
+<tr>
+<td>4-4</td>
+<td>듣는 것을 삼가야 / 시 읊는 소리·책 읽는 소리가 좋다</td>
+<td>5장 청각</td>
+</tr>
+<tr>
+<td>4-5</td>
+<td>7가지 삼갈 마음 — 정서 자기관찰</td>
+<td>6장 엄마의 감정</td>
+</tr>
+<tr>
+<td>4-10</td>
+<td>임신부의 보행 / 적당한 운동과 휴식</td>
+<td>4장 운동</td>
+</tr>
+<tr>
+<td>4-11</td>
+<td>임신부의 잠자는 법 / 만삭 시 좌우 교대</td>
+<td>4장 잠과 쉼</td>
+</tr>
+<tr>
+<td>5-1</td>
+<td>태교의 요점은 삼가 함(愼)에 있다</td>
+<td>10장 두 번째 원칙 — 반복</td>
+</tr>
+<tr>
+<td>9-1</td>
+<td>옛 사람은 옥판에 새겨 보관했다</td>
+<td>10장 세 번째 원칙 — 기록</td>
+</tr>
+<tr>
+<td>10-1</td>
+<td>태교의 책임은 장부에게 있다</td>
+<td>8장 아빠의 태교</td>
+</tr>
+</tbody></table>
+<p>표가 보여 주는 한 가지가 있다.<br>
+35절 가운데 <em>어머니에게만</em> 향한 절은 의외로 많지 않다는 사실이다.<br>
+첫 절(1-3)과 마지막 절(10-1)이 모두 <em>아버지의 자리</em>를 가리키고,<br>
+가운데 절(4-1)은 <em>온 가족의 자리</em>를 가리킨다.<br>
+이 책 전체를 관통하는 자리도 같은 곳에 있다.</p>
+<div class="infographic infographic-cards">
+  <div class="card-pair">
+    <div class="card sajudang"><span class="card-label">사주당</span>듣는 것을 삼가야 / 시·낭독이 좋다 (4-4)</div>
+    <div class="card-arrow">↔</div>
+    <div class="card modern"><span class="card-label">현대 의학</span>모성 음성·반복되는 일상의 결 (5장)</div>
+  </div>
+  <div class="card-pair">
+    <div class="card sajudang"><span class="card-label">사주당</span>보는 것을 조심 / 귀한 것·아름다운 것 (4-3)</div>
+    <div class="card-arrow">↔</div>
+    <div class="card modern"><span class="card-label">현대 의학</span>시각 환경의 안정과 예측 가능성 (5장)</div>
+  </div>
+  <div class="card-pair">
+    <div class="card sajudang"><span class="card-label">사주당</span>섭생 / 엄마의 영양이 태아의 영양 (4-12)</div>
+    <div class="card-arrow">↔</div>
+    <div class="card modern"><span class="card-label">현대 의학</span>균형 영양과 회피 항목 (4장)</div>
+  </div>
+  <div class="card-pair">
+    <div class="card sajudang"><span class="card-label">사주당</span>온 가족이 함께 / 칠정은 장부에 영향 (4-1)</div>
+    <div class="card-arrow">↔</div>
+    <div class="card modern"><span class="card-label">현대 의학</span>가족·사회적 지지의 보호 효과 (7장)</div>
+  </div>
+  <div class="card-pair">
+    <div class="card sajudang"><span class="card-label">사주당</span>요점은 삼가 함(愼)에 있다 (5-1)</div>
+    <div class="card-arrow">↔</div>
+    <div class="card modern"><span class="card-label">현대 의학</span>작은 일관성의 누적 효과 (10장)</div>
+  </div>
+</div>
+<div class="infographic-caption">사주당 ↔ 현대 의학 5쌍의 자리</div>
+<h3 id="ch2-s4" class="subhead">세 가지 통찰</h3>
+<p>『태교신기』 전체를 한 문장으로 요약하기는 어렵지만,<br>
+오늘의 독자가 가져갈 만한 시선은 크게 세 가지다.</p>
+<p>첫째, 태교는 엄마 혼자만의 일이 아니다.<br>
+가족의 분위기와 부부의 관계,<br>
+주변 사람들이 만들어 내는 공기 전체가<br>
+태아가 머무는 환경의 일부가 된다.</p>
+<p>둘째, 마음과 몸은 분리되지 않는다.<br>
+임신부의 정서, 일상의 리듬, 받는 돌봄의 결이<br>
+그대로 태내 환경의 질을 만든다.<br>
+그러므로 태교는 어떤 행위를 추가하는 일이라기보다<br>
+이미 흐르고 있는 생활을 부드럽게 정돈하는 일에 가깝다.</p>
+<p>셋째, 태아는 이미 관계 속의 존재다.<br>
+가르침이 시작되는 시점은 출생 이후가 아니다.<br>
+아이가 어떤 환경 안에서 자라기 시작하는가가<br>
+이미 한 사람의 첫 경험을 만든다.</p>
+<p>이 세 가지는 오늘의 임신과 출산에서도 여전히 유효한 질문으로 남는다.</p>
+<h3 id="ch2-s5" class="subhead">오늘과의 대화</h3>
+<p>물론 그녀가 살았던 세계는 지금과 다르다.<br>
+임신과 출산을 둘러싼 가족 구조도, 의학적 이해도,<br>
+여성에게 주어진 자리도 모두 달라졌다.<br>
+그러므로 『태교신기』에 적힌 모든 항목을<br>
+오늘날의 처방처럼 그대로 옮길 수는 없다.</p>
+<p>하지만 그녀가 짜놓은 큰 틀,<br>
+곧 "태교는 관계이며, 환경이며, 마음가짐이다"라는 시선은<br>
+지금도 충분히 새롭게 읽힌다.</p>
+<p>현대 의학과 심리학도 비슷한 방향을 가리킨다.<br>
+태아는 자궁이라는 한 사람의 신체 안에 있지만,<br>
+실제로는 엄마의 리듬과 정서, 관계, 생활 전체를 환경으로 두고 자란다.<br>
+가족과 주변 사람들이 만드는 공간의 질감,<br>
+임신부가 받는 지지의 정도,<br>
+하루의 안정감과 회복의 기회까지가<br>
+태아가 머무는 환경의 일부가 된다.<sup class="fn-ref"><a href="#fn-ch2-3" id="fnref-ch2-3">3</a></sup></p>
+<p>이 점에서 사주당 이씨의 시선과 현대의 이해는 같은 곳을 바라본다.<br>
+그녀가 단정으로 말한 부분을 우리는 가능성으로 풀어 읽고,<br>
+그녀가 시대적 한계 안에서 표현한 부분을 우리는 다른 언어로 다시 옮길 뿐이다.</p>
+<p>전통이 옳고 과학이 그것을 증명했다는 식의 단순한 정리보다는,<br>
+서로 다른 시대의 두 시선이 같은 자리에서 만나<br>
+오늘의 부모에게 도움이 되는 이해로 이어진다고 보는 편이 더 정직하다.</p>
+<h3 id="ch2-s6" class="subhead">권위가 아니라, 대화 상대로</h3>
+<p>맘곁이 사주당 이씨를 이 책의 앞자리에 두는 이유는<br>
+"옛 어른의 가르침을 따르라"고 권하기 위해서가 아니다.<br>
+오히려 반대다.</p>
+<p>사주당 이씨는 우리에게 답을 주지 않는다.<br>
+그녀는 좋은 질문을 남겼을 뿐이다.</p>
+<p>태교는 누구의 일인가.<br>
+무엇이 아이에게 닿는가.<br>
+어떤 환경 속에서 한 생명이 자라기 시작하는가.</p>
+<p>이 질문은 오늘의 우리도 여전히 안고 있다.<br>
+그래서 맘곁 태교는 그녀의 책을 권위로 모시기보다<br>
+대화 상대로 마주 두기로 했다.</p>
+<p>200년 전의 통찰과 오늘의 의학,<br>
+한 여성 학자의 글과 지금의 부모가 받는 정보가<br>
+같은 자리에서 만날 수 있다면,<br>
+태교는 비로소 더 부드럽고 더 분명한 모습으로 다시 시작될 수 있다.</p>
+<h3 id="ch2-s7" class="subhead">이 장의 정리</h3>
+<ul class="bullets">
+<li>사주당 이씨(1739–1821)는 조선 후기의 여성 학자였고, 『태교신기』(1800)는 그녀가 평생 공부한 결과를 한 권에 담은 책이다.</li>
+<li>처음 쓰던 호 <em>희현당</em>("현자를 닮고 싶다")을 <em>사주당</em>("주자를 스승으로 삼는다")으로 바꾼 일은 <em>나도 그런 학자가 되겠다</em>는 다짐과 같았다.</li>
+<li>남편과 30년 동안 책을 함께 읽고 토론했고, 다른 학자들도 그녀를 찾아왔으며, 아들 유희와 친척인 빙허각 이씨도 모두 학문에 깊은 사람들이었다.</li>
+<li>『태교신기』는 갑자기 쓰인 책이 아니다. 세종 때(1434)부터 약 400년에 걸쳐 차근차근 쌓여 온 흐름이 한 사람을 통해 정리된 책이다.</li>
+<li>그래서 우리는 사주당을 <em>옛 어른의 가르침</em>으로 따르는 게 아니라 <em>오늘 이야기를 나눌 수 있는 사람</em>으로 만난다.</li>
+</ul>
+<h3 id="ch2-s8" class="subhead">다음 장으로</h3>
+<p>다음 장에서는 그 만남의 한쪽,<br>
+즉 현대 의학이 보는 태아의 발달과 환경에 대해 천천히 따라가 본다.<br>
+사주당 이씨가 "환경"이라 불렀던 자리를<br>
+오늘의 언어로는 어떻게 설명할 수 있는지를<br>
+조심스럽게 풀어 보려 한다.</p>
+<p>전통이 먼저 도착해 있던 자리에<br>
+현대 의학이 어떤 방식으로 자기 언어를 보태는지를 보면,<br>
+태교라는 말이 조금 더 단단하게,<br>
+그러나 여전히 따뜻하게 손에 잡히기 시작할 것이다.</p>
+<aside class="footnotes">
+<h4>각주</h4>
+<ol>
+<li id="fn-ch2-1">한국민족문화대백과사전, 「태교신기(胎敎新記)」 항목 — 사주당 이씨의 저술 시기(1800), 아들 유희가 1801년 한글 음을 단 사실, 책의 구성과 위상에 대한 기본 출처. URL은 출간 전 검증. <a class="fn-back" href="#fnref-ch2-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-2">사주당 이씨, 『태교신기』 — 태교를 임신부 한 사람이 아니라 가족 전체의 마음가짐과 생활 환경의 문제로 다룬 본문 구절(흔히 "온 집안 사람들이 함께 기른다"는 취지로 인용되는 부분). 인용 시 정확한 장(章)과 한국어 번역본의 판본·역자·페이지를 명시할 것. <a class="fn-back" href="#fnref-ch2-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-3">임신기 정서 환경 및 모-태아 애착 관련 학술 문헌(예: 한국보건사회연구원·국내 간호학·산부인과 학술지의 임신 중 스트레스·우울과 모-태아 애착 연구). 구체 논문은 의학 검수자와 함께 본 챕터의 진술 범위에 맞는 1~2건으로 좁혀 표기할 것. <a class="fn-back" href="#fnref-ch2-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-4">노중례, 『태산요록(胎産要錄)』, 1434(세종 16년). 보물 제1179호. 임신·출산·영유아 양육에 관한 조선의 본격적인 첫 전문 의서로, 상권에 태교론·양태근신법 등 20개 항목이 실려 있는 것으로 전해진다. 본 챕터는 입문 위치이므로 책의 존재와 의의 수준에서 인용한다. 본문 직접 인용을 추가할 경우 출간 전 검수자가 해제 판본을 명시할 것. <a class="fn-back" href="#fnref-ch2-4" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-5">허준, 『언해태산집요(諺解胎産集要)』, 1608(선조 41년). 보물 제1088-1·2호. 임신부의 43개 증상별 처방을 처음으로 한글로 옮긴 산서로 전해진다. 같은 시기 편찬되어 1610년 완성된 『동의보감』 부인문 항목과 함께 보면 그 의의가 더 분명해진다. 출간 전 검수자가 해제 판본 정보를 보강할 것. <a class="fn-back" href="#fnref-ch2-5" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-6">산실청(産室廳)·호산청(護産廳)은 1603년(선조 36년) 인목왕후 출산을 앞두고 처음 명문화된 기록이 등장하며, 17세기 이후 제도화된 것으로 본다. 한국학중앙연구원 sillokwiki 「산실청」·「호산청」 항목 참고. 본 챕터에서는 제도 소개 수준에서만 다루었다. 출간 전 검수자가 1차 사료(『조선왕조실록』·『육전조례』 등)와 대조해 표기할 것. <a class="fn-back" href="#fnref-ch2-6" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-7">『임산예지법(臨産豫知法)』, 조선 후기. 한국학중앙연구원 장서각 소장. 순한글 첩(帖)으로 임산예지법·해만후근신제방·해태독법·단제법·진유법·세욕법·보호법 등 7개 항목이 수록되어 있는 것으로 전해진다. 조선 왕실 여성의 출산 지침을 보여 주는 사실상 유일한 1차 자료로 평가된다. 출간 전 검수자가 장서각 해제·소장 정보로 보강할 것. <a class="fn-back" href="#fnref-ch2-7" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-8">사주당 이씨의 호 변경 — 처음 사용한 <em>희현당(希賢堂)</em>에서 후에 <em>사주당(師朱堂)</em>으로 바꾼 사실은 한국민족문화대백과사전 「사주당이씨」 항목 및 관련 한국학 연구에서 자주 인용된다. 출간 전 검수자가 1차 자료(아들 유희가 남긴 행장(行狀) 등)에서 호 변경 시점·문헌 근거를 보강해 표기. <a class="fn-back" href="#fnref-ch2-8" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-9">사주당 이씨의 학문 입문 일화 — <em>"사람이 사람 노릇 하는 것이 어찌 여기에 있겠는가"</em>라는 발화로 학문의 길로 들어섰다는 일화는 한국학 연구에서 종종 인용된다. 출간 전 검수자가 사주당 행장·묘지명 등 1차 자료의 정확한 인용 형태와 출처를 보강해 표기. <a class="fn-back" href="#fnref-ch2-9" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-10">사주당 이씨와 유한규의 학문적 토론 — 30년의 결혼 생활 동안 두 사람이 유교 경전을 토론하는 <em>지우(知友)</em>의 관계였다는 점, 그리고 사주당이 주자의 견해에 반대하고 정자(程子, 정이)의 견해를 택한 기록이 남아 있다는 점은 한국학 연구에서 자주 다뤄져 왔다. 출간 전 검수자가 1차 자료(편지·행장 등)의 정확한 인용 근거를 보강. <a class="fn-back" href="#fnref-ch2-10" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-11">사주당 이씨의 학자 교유 — 이면눌(李勉訥)·이양연(李亮淵) 등 젊은 학자들이 직접 찾아와 가르침을 청했다는 기록과, 한원진(韓元震, 1682–1751)·송명흠(宋明欽, 1705–1768) 같은 거유와 관련된 일화는 한국학 자료에서 함께 다뤄진다. 한원진은 사주당이 어렸을 때 사망했으므로 직접 만남이 가능한 시기가 제한되며, 일화의 정확한 문맥(직접 만나지 못한 시점·이유 또는 학통 상의 거리)에 대해 출간 전 검수자가 1차 자료를 대조해 표기할 것. <a class="fn-back" href="#fnref-ch2-11" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-12">빙허각 이씨(憑虛閣 李氏, 1759–1824)와 사주당 이씨의 친족 관계 — <em>빙허각 이씨의 외숙모가 사주당 이씨</em>라는 통설은 한국 여성 학문사 연구에서 자주 함께 다뤄지는 자리다. 두 학자의 가까운 친족 관계 안에서 19세기 초 한국 여성 학문의 한 흐름이 형성되었다는 점이 강조된다. 출간 전 검수자가 정확한 친족 관계·세대 표기와 1차 자료 근거를 보강할 것. 빙허각의 『규합총서』는 부록 C에 함께 표기 가능. <a class="fn-back" href="#fnref-ch2-12" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-13">『태교신기』 1장 2절 — 본문 박스 인용은 <em>훌륭한 의사 / 훌륭한 교사</em>의 비유와 <em>어진 스승의 십 년 / 어머니의 열 달</em>이라는 대조로 자주 인용되는 한 문장이다. 한국학 자료에서 책의 핵심 명제로 가장 빈번히 인용되며, 본 권에서는 한국어 의역으로 옮겼다. 출간 전 검수자가 정확한 한문 원문과 1801년 유희 한글 음의본·해제 판본의 표기를 보강할 것. <a class="fn-back" href="#fnref-ch2-13" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-14">『태교신기』의 일본어 번역과 일본 학교 교과서 사용 — 1932년경 일본어로 옮겨져 일본의 여중·고등학교에서 한 시기 교재로 사용되었다는 기록은 한국학 자료와 학술지에서 종종 함께 언급된다. 출간 전 검수자가 1차 자료(번역 출판본의 역자·출판사·연도, 학교 채택 시기·범위)로 보강해 표기. "세계적으로 매우 이른 시기에 속하는 임신·태교 전문서"라는 학계의 평가는 한국 여성 학문사·동아시아 의학사 연구에서 다뤄져 왔으며, 본 권에서는 <em>대단한 첫 자리에 두지 않는다</em>는 톤을 유지한다. <a class="fn-back" href="#fnref-ch2-14" aria-label="본문으로 돌아가기">↩</a></li>
+</ol>
+</aside>
+</div>
+</section>
+<section id="ch3" class="chapter">
+<header class="chapter-header"><span class="chapter-num">3장</span><h2 class="chapter-title">현대 의학이 보는 태아의 발달</h2></header>
+<div class="chapter-body">
+<p>태교를 이야기할 때 가장 먼저 떠오르는 오해가 있다.<br>
+무엇을 많이 보여 주고 많이 들려주면<br>
+아이가 더 똑똑하고 더 뛰어난 존재로 자란다는 생각이다.</p>
+<p>이 시선은 태교를 결과 중심으로 본다는 점에서<br>
+오랫동안 익숙하게 자리 잡아 왔다.<br>
+그러나 현대 의학과 관련 연구가 가리키는 방향은 이보다 섬세하다.<br>
+태아는 자궁 안에서 점차 감각을 발달시키고,<br>
+엄마의 몸과 리듬, 정서적 상태, 반복되는 생활 환경 속에서 자란다.<br>
+<mark class="pen-yellow">태교의 핵심은 무엇을 얼마나 많이 주입하느냐가 아니라,<br>
+아이가 어떤 환경 속에 머무는가를 이해하는 일에 더 가깝다.</mark></p>
+<h3 id="ch3-s1" class="subhead">신경계 발달의 큰 흐름</h3>
+<p>태아의 발달을 이해할 때 도움이 되는 큰 그림이 하나 있다.</p>
+<p>임신 초기는 신경관과 신경세포의 기본 골격이 만들어지는 시기이고,<br>
+중기는 시냅스가 폭발적으로 늘어나며 감각계가 자리를 잡아 가는 시기이며,<br>
+후기는 신경세포 사이의 연결이 다듬어지고<br>
+미엘린화 같은 정교화 과정이 진행되는 시기다.<sup class="fn-ref"><a href="#fn-ch3-2" id="fnref-ch3-2">2</a></sup></p>
+<p>이 큰 흐름은 발생학과 태아 발달학 교과서에서 일반적으로 다루는 내용이다.<br>
+세부 시기와 속도는 사람마다 다르지만 한 가지는 공통된다.<br>
+태교라는 말이 가리키는 환경의 영향은<br>
+어느 한 시점에서 단번에 결정되는 것이 아니라<br>
+임신 전 기간에 걸쳐 천천히, 그러나 꾸준히 흐른다는 사실이다.</p>
+<h4 class="subhead-2">한눈에 — 임신 시기별 태아 발달의 큰 흐름</h4>
+<p>다음 표는 임신 시기에 따른 신경계·감각계·운동 발달의<br>
+일반적 흐름을 한눈에 보기 위한 것이다.<sup class="fn-ref"><a href="#fn-ch3-6" id="fnref-ch3-6">6</a></sup><br>
+표 안의 시기는 평균적인 흐름이며,<br>
+실제 태아의 발달 속도는 사람마다 다르다.</p>
+<table class="data">
+<thead><tr>
+<th>시기</th>
+<th>신경계</th>
+<th>청각</th>
+<th>시각</th>
+<th>촉각·운동</th>
+<th>미각·후각</th>
+</tr></thead><tbody>
+<tr>
+<td>1분기 (1–13주)</td>
+<td>신경관 형성, 뇌·척수 기본 골격</td>
+<td>와우관 형성 시작</td>
+<td>안구 기본 구조 형성</td>
+<td>초기 자발적 움직임 시작</td>
+<td>미각·후각 수용체 형성 시작</td>
+</tr>
+<tr>
+<td>2분기 초반 (14–22주)</td>
+<td>시냅스 형성 활발</td>
+<td>청각계 구조 자리잡음, 외부 소리 점차 반응</td>
+<td>안검 분리, 빛 자극 인지 시작</td>
+<td>양수 안에서 자기 몸 만지기</td>
+<td>양수 향에 노출 시작</td>
+</tr>
+<tr>
+<td>2분기 후반 (23–27주)</td>
+<td>대뇌피질 주름 형성</td>
+<td>모성 음성 인식 점차 또렷</td>
+<td>빛에 미세 반응</td>
+<td>손가락 빨기·발 차기</td>
+<td>양수 향·맛 학습</td>
+</tr>
+<tr>
+<td>3분기 (28–40주)</td>
+<td>미엘린화 진행, 신경 연결 정교화</td>
+<td>친숙한 소리·낯선 소리 구별</td>
+<td>강한 빛에 미세 반응</td>
+<td>수면-각성 주기 등장</td>
+<td>출생 후 미각·후각 선호와 연결</td>
+</tr>
+</tbody></table>
+<p>표의 각 칸은 <em>그 시기에 모든 태아가 똑같이 같은 일을 한다</em>는 뜻이 아니다.<br>
+<em>환경의 결이 어떤 자리에 닿을 수 있는지</em>를 보여 주는 표지에 가깝다.<br>
+1분기에는 엄마 자신의 영양·휴식·정서 안정이 중심이고,<br>
+2분기로 갈수록 청각·촉각의 결이 또렷해지며,<br>
+3분기에는 반복되는 소리·정서·생활 리듬이 태아에게 또 다른 환경이 된다.</p>
+<h3 id="ch3-s2" class="subhead">시간 속에서 깊어지는 관계</h3>
+<p>태아의 발달이 시간성을 가지듯,<br>
+엄마와 태아 사이의 관계도 시간 속에서 깊어진다.</p>
+<p>국내 간호학·모성건강 분야의 모-태아 애착 연구는<br>
+임신이 진행될수록<br>
+엄마가 아이를 한 사람의 존재로 인식하는 정도가<br>
+점진적으로 깊어지는 경향이 보고된다는 점을 보여 준다.<sup class="fn-ref"><a href="#fn-ch3-1" id="fnref-ch3-1">1</a></sup></p>
+<p>태아가 실제로 더 자주 느껴지고,<br>
+엄마 역시 신체와 정서의 변화 속에서<br>
+아이를 의식하는 시간이 늘어나기 때문이다.</p>
+<p>그러므로 태교는 어느 한순간 갑자기 시작되는 특별한 행위가 아니라,<br>
+임신의 진행과 함께 서서히 깊어지는 관계라고 볼 수 있다.</p>
+<h3 id="ch3-s3" class="subhead">자궁 안의 청각 환경</h3>
+<p>태아의 감각 발달 가운데 가장 자주 이야기되는 것은 청각이다.<br>
+와우관(달팽이관)과 청신경의 기본 구조는<br>
+임신 중기 무렵까지 형성되는 것으로 알려져 있고,<br>
+이후 점차 외부 자극에 반응할 수 있는 상태로 성숙한다.<sup class="fn-ref"><a href="#fn-ch3-2" id="fnref-ch3-2-2">2</a></sup></p>
+<p>여기서 한 가지 흥미로운 점이 있다.<br>
+자궁 안의 음향 환경은<br>
+우리가 듣는 바깥 세계와 같은 모습이 아니라는 사실이다.</p>
+<p>양수와 모체의 조직, 자궁벽은 저주파를 비교적 잘 전달하지만<br>
+고주파는 상당 부분 감쇠시키는 특성을 가진다.<br>
+그래서 태아에게 가장 안정적으로 닿는 소리는<br>
+엄마 자신의 심장 박동과 혈류처럼 반복되는 저주파 배경음이고,<br>
+그 위에 비교적 낮은 음역대를 포함한 엄마의 목소리가 얹힌다.</p>
+<p>이 음향적 특성 때문에<br>
+"어떤 음악이 가장 좋은가"라는 질문은<br>
+대부분의 음악이 자궁 안에서 대체로 흐릿하게 변환된다는 사실 앞에서<br>
+자연스럽게 무게가 줄어든다.<br>
+음악의 종류보다 또렷이 닿는 것은<br>
+엄마의 목소리, 가족의 대화,<br>
+하루 동안 반복되는 생활의 리듬이다.</p>
+<p>그래서 청각 태교를 말할 때<br>
+특별한 프로그램보다 일상의 목소리,<br>
+차분한 대화, 안정적인 생활 리듬이 먼저라는 점은<br>
+다시 강조할 만하다.</p>
+<h4 class="subhead-2">한눈에 — 자궁 안의 청각 환경</h4>
+<p>다음 표는 자궁 안의 청각 환경이<br>
+바깥 세계와 어떻게 다른지를 한눈에 보기 위한 것이다.<sup class="fn-ref"><a href="#fn-ch3-6" id="fnref-ch3-6-2">6</a></sup></p>
+<table class="data">
+<thead><tr>
+<th>항목</th>
+<th>자궁 안에서의 결</th>
+<th>의미</th>
+</tr></thead><tbody>
+<tr>
+<td>배경음</td>
+<td>모체의 심장 박동·혈류·소화음 (저주파 반복)</td>
+<td>늘 같은 결의 안정된 환경</td>
+</tr>
+<tr>
+<td>외부 소리 전달</td>
+<td>양수·복벽이 저주파를 비교적 잘 전달, 고주파는 감쇠</td>
+<td>외부 음악이 흐릿하게 변환됨</td>
+</tr>
+<tr>
+<td>모성 음성</td>
+<td>골 전도를 통해 비교적 또렷이 전달</td>
+<td>태아가 가장 일관되게 만나는 소리</td>
+</tr>
+<tr>
+<td>부성 음성</td>
+<td>저음 위주로 일부 전달</td>
+<td>가족 음성 환경의 일부</td>
+</tr>
+<tr>
+<td>시기별 반응</td>
+<td>임신 중기 무렵부터 반응 시작, 후기에 친숙·낯선 소리 구별</td>
+<td>발달의 결을 따라 점차 깊어짐</td>
+</tr>
+<tr>
+<td>효과적 자극</td>
+<td>음악 종류 자체보다 반복되는 일상의 결</td>
+<td>정서가 실린 일상의 소리</td>
+</tr>
+</tbody></table>
+<p>이 표가 가리키는 한 가지가 있다.<br>
+*자궁 안에서 가장 또렷이 닿는 소리는 외부 음악이 아니라<br>
+모체 자신의 몸과 목소리, 그리고 그 곁의 일상이라는 사실*이다.<br>
+청각 태교가 음악 선곡표보다<br>
+일상의 목소리·대화·리듬에 가까워야 하는 이유가 여기에 있다.</p>
+<h3 id="ch3-s4" class="subhead">엄마의 정서가 만드는 환경</h3>
+<p>현대 의학과 심리학이 함께 주목하는 또 다른 축은<br>
+임신 중 엄마의 정서다.</p>
+<p>임신 중 스트레스와 우울은<br>
+단지 엄마 개인의 기분 문제로만 다뤄지지 않는다.<br>
+국내 모성건강 분야의 여러 연구는<br>
+임부의 스트레스·우울 수준이<br>
+모-태아 애착이나 태아 건강과 무관하지 않다는 점을 시사한다.<sup class="fn-ref"><a href="#fn-ch3-3" id="fnref-ch3-3">3</a></sup></p>
+<p>이 관계가 어떤 통로를 통해 일어나는지는<br>
+여전히 활발히 연구되는 영역이다.<br>
+연구자들은 임신 중 모체의 스트레스 반응 —<br>
+시상하부-뇌하수체-부신(HPA) 축의 활성화와 코르티솔 분비의 변화,<br>
+자율신경계 변화 등 — 이<br>
+태내 환경의 신호를 바꿀 수 있는<br>
+가능한 통로 가운데 하나로 제안해 왔다.<sup class="fn-ref"><a href="#fn-ch3-4" id="fnref-ch3-4">4</a></sup><br>
+다만 그 통로 가운데 어떤 것도<br>
+단정적으로 모두 밝혀진 상태는 아니다.</p>
+<p>무엇보다 연구는<br>
+부정적 감정이 곧바로 나쁜 결과로 이어진다는 식의<br>
+단순한 인과를 지지하지 않는다.<br>
+오히려 다양한 연구가 함께 가리키는 방향은 보호 요인 쪽이다.<br>
+사회적 지지와 부부 관계의 안정,<br>
+정서를 조절하고 회복할 기회,<br>
+산전 우울에 대한 적절한 돌봄은<br>
+임신기의 정서 환경을 누그러뜨리는 보호 요인으로 작용할 수 있다.</p>
+<p>다시 말해, 좋은 태교는<br>
+한 번도 흔들리지 않는 평온함이 아니다.<br>
+누구나 임신 기간에는 몸의 변화, 미래에 대한 걱정,<br>
+관계의 변화, 출산과 양육에 대한 두려움을 경험할 수 있다.<br>
+중요한 것은 그 감정을 혼자 끌어안는 대신<br>
+이해하고, 조절하고, 회복할 수 있는 환경이 곁에 있는가이다.</p>
+<h3 id="ch3-s5" class="subhead">출생 후 작은 단서들</h3>
+<p>태아가 자궁 안에서 무엇을 경험하는지를 직접 묻기는 어렵다.<br>
+그래서 연구자들은 종종 출생 직후의 신생아 행동에서<br>
+거꾸로 단서를 읽어 왔다.</p>
+<p>신생아가 낯선 사람의 목소리보다<br>
+자기 어머니의 목소리에 더 강하게 반응한다는 보고는<br>
+이 영역의 고전적 연구 가운데 하나로 꼽힌다.<sup class="fn-ref"><a href="#fn-ch3-5" id="fnref-ch3-5">5</a></sup><br>
+양수와 모유를 통한 향 노출이<br>
+출생 후 영아의 후각·미각 경험에 영향을 줄 수 있다는 관찰도<br>
+오랫동안 이어져 왔다.<br>
+(이 부분은 5장에서 좀 더 자세히 다룬다.)</p>
+<p>이런 단서들은 강력한 인과를 증명하지 않는다.<br>
+다만 한 가지를 분명히 가리킨다.<br>
+태아가 자궁 안에서 경험한 환경은<br>
+출생이라는 경계선에서 갑자기 사라지지 않는다는 사실이다.<br>
+어떤 형태로든 다음 시기로 이어진다.</p>
+<h3 id="ch3-s6" class="subhead">전통과 다시 만나는 자리</h3>
+<p>이 지점에서 사주당 이씨가 본 자리와<br>
+현대 의학이 본 자리는 의외로 가까이 닿는다.</p>
+<p>전통 태교가 이야기한 몸가짐과 마음가짐,<br>
+집안의 분위기, 말과 행동의 조심스러움은<br>
+오늘날의 표현으로 옮기면<br>
+정서적 환경, 관계의 안정, 사회적 지지의 의미와 만난다.<br>
+현대 연구는 이 자리를<br>
+호르몬과 스트레스, 애착, 발달이라는 언어로 풀고,<br>
+전통은 같은 자리를<br>
+삶의 태도와 환경의 언어로 풀었을 뿐이다.</p>
+<p>두 설명은 분명히 다르지만, 가리키는 방향은 같다.<br>
+아이는 처음부터 관계 속에서 자란다.</p>
+<h3 id="ch3-s7" class="subhead">그래서 태교는 환경의 일이다</h3>
+<p>현대 의학이 보여 주는 태교는 결코 어려운 과학 실험이 아니다.<br>
+오히려 엄마가 너무 많은 정보를 짊어진 채 자신을 몰아붙이지 않고,<br>
+몸의 신호를 살피고, 충분히 쉬고, 주변의 지지를 받으며,<br>
+반복되는 안정감을 만들어 가는 일에 더 가깝다.</p>
+<p>식사, 수면, 호흡, 목소리, 대화, 산책, 휴식.<br>
+이 작은 요소들이 태아에게는 하나의 환경이 된다.<br>
+환경이 언제나 한결같을 수는 없어도,<br>
+충분히 따뜻하고 예측 가능할 수는 있다.</p>
+<p>맘곁이 말하는 "마음이 편안해지는 구조"도 바로 여기에서 나온다.<br>
+태교는 아이를 더 우수하게 만들기 위한 프로젝트가 아니라,<br>
+엄마와 아기가 함께 머무는 환경을 부드럽게 조율하는 일이다.</p>
+<h3 id="ch3-s8" class="subhead">이 장의 정리</h3>
+<ul class="bullets">
+<li>태교는 <em>얼마나 많이 들려주고 보여 주는가</em>보다 <em>아이가 어떤 환경 속에서 자라는가</em>의 문제다.</li>
+<li>태아의 뇌와 감각은 한 번에 다 자라지 않는다. 1·2·3분기로 가면서 한 단계씩 차근차근 자리잡는다.</li>
+<li>자궁 안에서 가장 또렷이 들리는 소리는 외부 음악이 아니라 <em>엄마 목소리</em>다. 양수가 낮은 소리는 잘 통과시키고 높은 소리는 흐릿하게 만들기 때문이다.</li>
+<li>임신 중 엄마의 스트레스가 호르몬을 통해 태아에게 닿을 <em>수 있다</em>는 연구가 이어지고 있다. 다만 <em>나쁜 감정 = 나쁜 결과</em>라는 단순한 식은 아니다.</li>
+<li>신생아가 엄마 목소리를 알아듣는다는 점은, 태아가 자궁 안에서 만난 환경이 출생 뒤로도 이어진다는 사실을 보여 준다.</li>
+</ul>
+<h3 id="ch3-s9" class="subhead">다음 장으로</h3>
+<p>다음 장에서는 이 환경의 결을<br>
+오감의 언어로 더 가까이 들여다본다.<br>
+오감은 태아에게 무엇을 주입하는 통로가 아니라,<br>
+엄마와 아기가 서로를 느끼는 길이다.</p>
+<p>이 시선을 가지고 다음 장을 따라가면,<br>
+청각·촉감·냄새·맛·시각이 왜 모두 정서와 연결되는지가<br>
+조금 더 분명하게 보이기 시작한다.</p>
+<aside class="footnotes">
+<h4>각주</h4>
+<ol>
+<li id="fn-ch3-1">모-태아 애착(Maternal-Fetal Attachment) 관련 국내 학술 문헌 — 임신 진행에 따른 애착 인식 변화 경향에 대한 출처. 한국간호과학회지(JKAN) 등 국내 간호학·모성건강 학술지에서 본 챕터의 진술 범위(임신 진행에 따른 점진적 인식 강화)에 부합하는 연구 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch3-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch3-2">태아 신경계·청각계 발달의 일반적 시기와 자궁 안 음향 환경의 음향학적 특성 — 산부인과·태아 발달학 교과서 수준의 합의에 해당. 특정 주차를 단정하지 않는 범위에서 표준 산부인과학 교과서, 국내 모성간호학 교재의 해당 단원, 또는 fetal acoustics 분야의 종설을 1차 자료로 1~2건 명시. 본 챕터에서는 신경계 발달의 큰 흐름과 청각 발달 둘 모두에 동일 자료 계통을 사용한다. <a class="fn-back" href="#fnref-ch3-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch3-3">임부 스트레스·우울과 모-태아 애착·태아 건강의 상관에 관한 국내 연구 — 한국보건사회연구원 보고서 및 한국간호과학회지·모성간호학 학술지의 관련 논문 등에서 본 챕터의 진술 범위(상관성의 시사, 사회적 지지의 보호 효과)에 부합하는 연구 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch3-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch3-4">임신 중 모체의 스트레스 반응(HPA 축 활성화와 코르티솔 분비 변화, 자율신경계 변화 등)이 태내 환경의 신호를 바꿀 수 있는 가능한 통로 가운데 하나로 제안되어 온 학술적 흐름 — 본 챕터의 진술 범위(가설·통로 수준의 시사, 단정 회피)에 부합하는 종설 1~2건으로 좁혀 표기. 효과 크기를 단정하는 자료는 채택하지 않는다. <a class="fn-back" href="#fnref-ch3-4" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch3-5">신생아의 어머니 목소리 선호 등 출생 직후 행동 단서를 통한 태내 경험의 연속성에 관한 고전 연구 — A. J. DeCasper와 W. P. Fifer의 <em>Of human bonding: Newborns prefer their mothers' voices</em> (1980, <em>Science</em> 208) 계열의 연구를 출발점으로, 본 챕터의 진술 범위(인과 단정 회피)에 부합하는 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch3-5" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch3-6">임신 시기별 태아 발달의 일반 흐름과 자궁 안 음향 환경의 음향학적 특성 — 표 두 개(시기별 발달, 자궁 안 청각 환경)가 동시에 참조하는 합집합 자료. 산부인과·태아 발달학 표준 교과서, ACOG 임신 발달 자료, 자궁 안 청각 환경 분야의 종설(예: Querleu D et al. <em>Hearing by the human fetus?</em> <em>Seminars in Perinatology</em>, 1989; Hepper PG, Shahidullah BS. <em>Development of fetal hearing</em>, <em>Archives of Disease in Childhood</em>, 1994)을 출발점으로, 본 챕터의 진술 범위(시기 단정 회피, 음향학적 일반 합의)에 부합하는 1~2건으로 좁혀 표기. 부록 C-5 태아 청각·감각 학습 항목과 동일 자료 계통. <a class="fn-back" href="#fnref-ch3-6" aria-label="본문으로 돌아가기">↩</a></li>
+</ol>
+</aside>
+</div>
+</section>
+<section id="ch4" class="chapter">
+<header class="chapter-header"><span class="chapter-num">4장</span><h2 class="chapter-title">임신 중의 식·운동·생활</h2></header>
+<div class="chapter-body">
+<p>이 장은 의학적 처방이나 개별 진료를 대신하지 않는다.<br>
+모든 임신은 사람마다 다르고,<br>
+식생활·운동·생활 리듬에 관한 구체적 결정은<br>
+산부인과 진료에서 의료진과 함께 내려야 한다.<br>
+이 장이 하는 일은<br>
+전통 태교가 권했던 일상의 자리를<br>
+오늘의 언어로 함께 비춰 보는 데 머문다.</p>
+<p>또한 이 장은<br>
+이미 정해진 식단을 지키지 못한 적이 있거나<br>
+운동을 충분히 하지 못한 독자를 비난하지 않는다.<br>
+임신 중 일상은 흔들리기 쉬운 시간이다.<br>
+중요한 것은 한 번도 흔들리지 않는 완전함이 아니라,<br>
+다시 안정의 결로 돌아갈 수 있는 흐름이다.</p>
+<hr class="section-break">
+<h3 id="ch4-s1" class="subhead">사주당이 본 일상의 자리</h3>
+<p>『태교신기』를 다시 펼치면 흥미로운 자리가 있다.<br>
+사주당 이씨는 임신부의 일상을<br>
+단순한 금기 목록으로 보지 않았다.<br>
+무엇을 먹고, 어떻게 움직이고,<br>
+무엇을 보고 듣고, 어떤 마음으로 자고 깨는지가<br>
+모두 태아가 머무는 환경의 일부라고 보았다.</p>
+<p>당시의 권고를 오늘 그대로 옮길 수는 없다.<br>
+시대마다 의학과 영양에 대한 이해가 다르고,<br>
+여성의 일과 일상도 달라졌기 때문이다.<br>
+그러나 사주당이 가리킨 큰 시선,<br>
+즉 "임산부의 하루 전체가 곧 태아의 환경"이라는 자리는<br>
+지금도 유효하다.<sup class="fn-ref"><a href="#fn-ch4-3" id="fnref-ch4-3">3</a></sup></p>
+<p>다음 표는 『태교신기』가 강조한 일상의 영역을<br>
+오늘의 언어로 옮긴 해석과 함께 나란히 둔 것이다.<br>
+세부 항목보다는 결의 차이를 함께 읽어 보길 바란다.</p>
+<table class="data">
+<thead><tr>
+<th>영역</th>
+<th>『태교신기』가 강조한 자리</th>
+<th>오늘의 언어로 옮긴 해석</th>
+</tr></thead><tbody>
+<tr>
+<td>식생활</td>
+<td>자극이 강한 음식과 절제되지 않은 식사 회피</td>
+<td>균형 잡힌 영양, 카페인·알코올·날것 등의 회피 권고</td>
+</tr>
+<tr>
+<td>움직임</td>
+<td>단정한 자세, 무리한 활동 회피</td>
+<td>의료진과 상의한 적정 강도의 운동, 낙상·충격 회피</td>
+</tr>
+<tr>
+<td>잠과 쉼</td>
+<td>충분한 휴식, 무리한 노동을 줄임</td>
+<td>충분한 수면, 좌식·기립 시간의 균형, 과로 의식</td>
+</tr>
+<tr>
+<td>보고 듣는 것</td>
+<td>자극적이거나 불안한 것을 피함</td>
+<td>과도한 정보·뉴스 부담의 의식적 관리</td>
+</tr>
+<tr>
+<td>마음가짐</td>
+<td>놀람·분노·근심을 줄이고 평정을 유지</td>
+<td>정서를 조절·회복할 수 있는 환경 (6장에서 자세히)</td>
+</tr>
+<tr>
+<td>환경</td>
+<td>집안의 분위기와 가족의 태도</td>
+<td>가족·사회적 지지 (7장에서 자세히)</td>
+</tr>
+</tbody></table>
+<div class="infographic infographic-timeline">
+  <div class="trimester t1">
+    <div class="t-label">1분기 · 1–13주</div>
+    <div class="t-content">신경관·기관 골격이 자리잡는 시기.<br>엄마의 영양·휴식·정서 안정이 일상의 결을 만든다.</div>
+  </div>
+  <div class="trimester t2">
+    <div class="t-label">2분기 · 14–27주</div>
+    <div class="t-content">시냅스가 폭발적으로 늘어나며 감각계가 자리잡는 시기.<br>엄마의 목소리·생활 리듬·가벼운 움직임이 닿는다.</div>
+  </div>
+  <div class="trimester t3">
+    <div class="t-label">3분기 · 28–40주</div>
+    <div class="t-content">신경 연결의 정교화와 미엘린화가 진행되는 시기.<br>엄마의 정서·반복되는 일상·가족의 분위기가 환경이 된다.</div>
+  </div>
+</div>
+<div class="infographic-caption">280일 타임라인 — 시기마다 닿는 자리가 다르다</div>
+<p>이 표가 보여 주는 한 가지가 있다.<br>
+사주당이 본 영역과 오늘 우리가 살피는 영역이<br>
+크게 다르지 않다는 사실이다.<br>
+표현이 바뀌었을 뿐,<br>
+같은 자리들이 여전히 임신 중 일상의 결을 만든다.</p>
+<h3 id="ch4-s2" class="subhead">식생활</h3>
+<p>임신 중 식생활은 흔히<br>
+"무엇을 먹어야 하는가"라는 질문으로 시작된다.</p>
+<p>주요 영양 가이드는 일반적으로<br>
+균형 잡힌 식사,<br>
+충분한 단백질·철분·엽산·칼슘 등의 섭취,<br>
+규칙적인 식사 시간을 권한다.<br>
+또한 카페인·알코올, 날것이나 충분히 익히지 않은 음식 등<br>
+주요 의학 단체들이 일반적으로 권하는 회피 항목이 있다.<sup class="fn-ref"><a href="#fn-ch4-1" id="fnref-ch4-1">1</a></sup></p>
+<p>구체적인 양과 종류는 사람마다 다를 수 있고,<br>
+임신 전후의 건강 상태와도 관련된다.<br>
+그러므로 자세한 결정은 산부인과 진료에서 함께 내려야 한다.</p>
+<p>여기서 한 가지 짚어 두고 싶은 점이 있다.<br>
+식생활이 좋은 태교가 되는 결은<br>
+"정해진 식단을 완전히 지킨다"는 사실에 있지 않다.<br>
+"오늘의 식사가 나와 아기를 함께 돌보고 있다"는 감각에 더 가깝다.</p>
+<p>지나친 검열과 죄책감은 식사 자체의 결을 굳게 만든다.<br>
+때로 먹지 못한 날도 있고,<br>
+때로 평소와 다른 음식을 먹은 날도 있을 수 있다.<br>
+그런 하루를 길게 자책하기보다,<br>
+다음 식사를 천천히 정돈하는 흐름이<br>
+실제로 더 안정된 환경을 만든다.</p>
+<p>사주당이 권한 "절제된 식사"의 결도<br>
+이 자리에 가깝다고 읽어도 좋다.<br>
+지나친 자극을 피하고<br>
+편안한 마음으로 천천히 식사하는 일이<br>
+당시의 언어로는 "절제"였고,<br>
+오늘의 언어로는 "안정"에 가깝다.</p>
+<h4 class="subhead-2">한눈에 — 임신 중 식생활의 결</h4>
+<p>다음 표는 임신 중 식생활의 일반 흐름을 세 갈래로 정리한 것이다.<sup class="fn-ref"><a href="#fn-ch4-1" id="fnref-ch4-1-2">1</a></sup><br>
+구체적 양·종류는 사람마다 다르므로<br>
+세부 결정은 산부인과 진료에서 의료진과 함께 내린다.</p>
+<table class="data">
+<thead><tr>
+<th>자리</th>
+<th>일반적 권고의 결</th>
+<th>비고</th>
+</tr></thead><tbody>
+<tr>
+<td>균형 — 매일의 토대</td>
+<td>다양한 채소·과일·전곡류·단백질·유제품, 충분한 수분</td>
+<td>끼니마다 <em>모든 군</em>을 갖출 필요는 없음. 일주일 단위의 균형이 더 실제적</td>
+</tr>
+<tr>
+<td>보강 — 임신 시기 보충</td>
+<td>엽산(임신 전~12주), 철분·칼슘 등 의료진 안내에 따른 보충</td>
+<td>보충제는 산부인과 처방 우선</td>
+</tr>
+<tr>
+<td>회피 — 의학 단체의 일반 합의</td>
+<td>알코올, 흡연, 날것·미가공 유제품, 일부 고수은어류, 미숙성 육류 등</td>
+<td>카페인은 권장 한도 안에서 조절</td>
+</tr>
+</tbody></table>
+<p>표의 핵심은 <em>모든 칸을 빠짐없이 채우는 것</em>이 아니다.<br>
+*어떤 칸이 비어 있는지 알아차리고<br>
+부드럽게 다음 식사로 옮겨 가는 결*을 만드는 데 있다.</p>
+<h3 id="ch4-s3" class="subhead">움직임과 운동</h3>
+<p>임신 중 운동은 대부분의 임신부에게 권장되는 영역이다.<br>
+주요 산부인과 학회와 의료 가이드는<br>
+합병증이 없는 임신의 경우<br>
+중간 강도의 유산소 활동과 가벼운 근력 운동이<br>
+임신 중·후의 회복에 도움이 될 수 있다고 안내한다.<sup class="fn-ref"><a href="#fn-ch4-2" id="fnref-ch4-2">2</a></sup></p>
+<p>다만 이 권장은 모든 임신에 동일하게 적용되지 않는다.<br>
+조산 위험, 자궁경부 무력증, 심혈관 문제, 다태 임신 등<br>
+의학적 사정에 따라 운동 권고가 달라질 수 있다.<br>
+그러므로 임신 중 운동의 종류와 강도는<br>
+산부인과 진료에서 의료진과 함께 결정해야 한다.</p>
+<p>실제 일상에서는<br>
+정해진 운동 프로그램을 강박적으로 따르는 일보다<br>
+"오늘의 몸 상태에 맞는 만큼"<br>
+가볍게 움직여 보는 태도가 훨씬 부드럽다.<br>
+짧은 산책,<br>
+앉아서 어깨와 목의 긴장을 푸는 가벼운 동작,<br>
+기분이 좋을 만큼의 스트레칭은<br>
+모두 운동의 결을 만든다.</p>
+<p>사주당이 강조한 "단정한 자세"의 결도<br>
+오늘의 운동·자세 관리와 닿아 있다.<br>
+긴장이 누적된 자세를 자주 풀어 주고,<br>
+자기 몸의 신호를 자주 살피며,<br>
+지나치게 무리하지 않는 태도가<br>
+임신 중의 몸을 부드럽게 지키는 길이다.</p>
+<h4 class="subhead-2">한눈에 — 임신 중 운동의 결</h4>
+<table class="data">
+<thead><tr>
+<th>자리</th>
+<th>일반적으로 권장되는 결</th>
+<th>의료진 상의가 더 권장되는 결</th>
+</tr></thead><tbody>
+<tr>
+<td>강도</td>
+<td>가볍거나 중간 강도(대화 가능한 정도)</td>
+<td>고강도 인터벌·격렬한 경쟁 운동</td>
+</tr>
+<tr>
+<td>종류</td>
+<td>걷기, 임산부 요가·필라테스, 수영</td>
+<td>격투기·극한 스포츠, 충격 강한 종목</td>
+</tr>
+<tr>
+<td>시간·빈도</td>
+<td>짧은 시간 자주 또는 의료진 안내 범위</td>
+<td>장시간 무리한 일정</td>
+</tr>
+<tr>
+<td>자세</td>
+<td>균형 잡힌 자세, 자주 휴식</td>
+<td>등을 굽히고 오래 머무는 자세</td>
+</tr>
+<tr>
+<td>환경</td>
+<td>미끄럼 없는 평탄한 곳, 시원한 환기</td>
+<td>더운 환경, 낙상 위험 높은 자리</td>
+</tr>
+</tbody></table>
+<p>이 표 역시 <em>모든 임신부에게 똑같이 적용되는 처방</em>이 아니다.<sup class="fn-ref"><a href="#fn-ch4-2" id="fnref-ch4-2-2">2</a></sup><br>
+조산 위험·자궁경부 무력증·심혈관 사정 등에 따라 권고가 달라질 수 있으므로<br>
+구체적 종류·강도는 산부인과 진료에서 함께 결정한다.</p>
+<h3 id="ch4-s4" class="subhead">잠과 쉼</h3>
+<p>임신 중 잠은 흔히 흐트러지기 쉬운 영역이다.<br>
+호르몬과 신체의 변화,<br>
+편하지 않은 자세, 잦은 화장실 출입 등이<br>
+숙면을 어렵게 만들 수 있다.</p>
+<p>사주당이 강조한 "충분한 휴식, 무리한 노동을 줄임"의 자리는<br>
+오늘의 일터·가정에서도 여전히 유효하다.<br>
+임신 중에는 깨어 있는 시간의 강도와<br>
+쉬는 시간의 결을 함께 살피는 일이 중요하다.</p>
+<p>잠은 양만으로 보지 않는 편이 좋다.<br>
+밤 시간의 수면, 짧은 낮잠,<br>
+자세를 풀어 주는 휴식의 시간이<br>
+하루의 안정감을 함께 만든다.<br>
+정해진 수면 시간을 한결같이 지키는 일보다<br>
+"오늘 내가 충분히 쉬었는가"라는 질문을<br>
+스스로에게 자주 던지는 일이 더 실제적이다.</p>
+<p>휴식이 길게 어려워지거나<br>
+일상에 지장을 줄 만큼 수면 문제가 누적될 때는<br>
+주저하지 말고 산부인과나 정신건강 전문가와 상의하는 것을 권한다.</p>
+<h3 id="ch4-s5" class="subhead">보고 듣는 것의 결</h3>
+<p>사주당이 강조한 항목 가운데<br>
+오늘 다시 읽으면 신선한 자리가 하나 있다.<br>
+"보고 듣는 것을 가린다"는 자리다.</p>
+<p>당시 그 표현은<br>
+부정한 것이나 자극적인 장면을 피하라는 뜻에 가까웠다.<br>
+오늘의 언어로 옮기면<br>
+지나치게 자극적인 영상,<br>
+끝없이 흘러오는 부정적 뉴스,<br>
+검색을 끝없이 반복하게 만드는 정보의 흐름을<br>
+의식적으로 관리하는 자리에 가깝다.</p>
+<p>정보를 끊으라는 뜻이 아니다.<br>
+필요한 정보는 받아들이되,<br>
+오늘 하루 내 마음을 흔들 만큼의 양은 아닌지를<br>
+스스로 살피는 흐름이다.</p>
+<p>자극의 양을 조절하는 일은<br>
+임신 중 정서 환경을 지키는 가장 단순한 방법 가운데 하나다.</p>
+<h3 id="ch4-s6" class="subhead">일상이 곧 환경이다</h3>
+<p>식생활도, 운동도, 잠과 쉼도, 보고 듣는 것도<br>
+결국 한 가지 질문으로 모인다.</p>
+<p>오늘 나의 일상이 어떤 결로 흐르고 있는가.</p>
+<p>사주당의 시선이 가리킨 자리는 바로 거기다.<br>
+<mark class="pen-yellow">어느 한 항목을 완전히 지키는 일이 태교가 아니라,<br>
+그 모든 항목이 함께 흐르는 하루의 결이 곧 태교라는 자리.</mark></p>
+<p>맘곁 태교가 말하는 "마음이 편안해지는 구조"도<br>
+바로 이 일상의 자리에서 출발한다.<br>
+거창한 행위 하나가 아니라,<br>
+어제와 오늘과 내일이 비슷하게 다정할 수 있는 흐름.<br>
+그 흐름이 태아가 머무는 환경의 가장 기본적인 결이 된다.</p>
+<h3 id="ch4-s7" class="subhead">이 장의 정리</h3>
+<ul class="bullets">
+<li>사주당이 책에서 가장 많은 분량을 들인 곳은 거창한 도덕이 아니라 <em>임신부의 하루</em> — 무엇을 먹고, 어떻게 움직이고, 어디서 쉬는가였다.</li>
+<li>균형 잡힌 식사 / 의료진과 상의한 가벼운 운동 / 충분한 잠 / 자극을 의식적으로 줄이기. 이 네 가지가 임신 중 환경을 만든다.</li>
+<li>한 가지를 완벽하게 지키려 애쓰기보다, 네 가지가 <em>대체로 함께 흐르는 하루</em>를 만드는 일이 더 실제적이다.</li>
+<li>이 장은 의학 처방이 아니라, 일상에서 함께 살펴볼 자리를 부드럽게 안내하는 곳이다.</li>
+<li>식·운동·잠의 구체적인 결정은 산부인과 진료에서 의료진과 함께 정한다.</li>
+</ul>
+<h3 id="ch4-s8" class="subhead">다음 장으로</h3>
+<p>다음 장에서는 이 일상의 결이<br>
+어떻게 오감의 언어로 태아에게 닿는지를 좀 더 가까이 본다.<br>
+일상이 환경의 큰 그림이라면,<br>
+오감은 그 환경의 결을 따라가는 작은 길이다.<br>
+두 자리는 결국 같은 흐름의 다른 이름이다.</p>
+<aside class="footnotes">
+<h4>각주</h4>
+<ol>
+<li id="fn-ch4-1">임신 중 영양 권고와 회피 항목 — 한국영양학회·대한영양사협회의 임신부 영양 가이드, 대한산부인과학회의 임신부 식생활 권고, WHO 임신부 영양 권고 등을 출발점으로 본 챕터의 진술 범위(균형 식사 권장과 회피 항목의 일반 합의)에 부합하는 1~2건으로 좁혀 표기. 카페인 한도 등 구체 수치를 단정하는 자료보다 권고 흐름을 정리한 가이드를 우선한다. <a class="fn-back" href="#fnref-ch4-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch4-2">임신 중 운동의 안전성과 권장 — 미국 산부인과학회(ACOG)의 <em>Physical Activity and Exercise During Pregnancy and the Postpartum Period</em> 계열 Committee Opinion, 대한산부인과학회 또는 국내 모성건강 학술지의 임신 중 운동 권고를 1~2건으로 좁혀 표기. 운동 강도·종류 단정보다 "의료진 상의 후 적정 강도" 흐름이 분명한 자료를 선택한다. <a class="fn-back" href="#fnref-ch4-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch4-3">사주당 이씨, 『태교신기』 — 임산부의 일상 규범(식·움직임·잠·보고듣기·마음가짐·환경)에 대한 본문 구절. 2장 [^2] 및 7장 [^1]과 동일한 한국어 번역본·역자·페이지를 사용한다. 이 장에서는 일상 규범 6개 영역 모두에 대해 동일 자료를 참조한다. <a class="fn-back" href="#fnref-ch4-3" aria-label="본문으로 돌아가기">↩</a></li>
+</ol>
+</aside>
+</div>
+</section>
+<section id="ch5" class="chapter">
+<header class="chapter-header"><span class="chapter-num">5장</span><h2 class="chapter-title">오감으로 만나는 태아</h2></header>
+<div class="chapter-body">
+<p>태아를 떠올릴 때 우리는 종종 작은 몸의 형태부터 상상한다.<br>
+초음파 사진 속 흐릿한 윤곽, 손가락과 발가락의 모양,<br>
+조금씩 또렷해지는 얼굴 같은 것들이다.<br>
+그러나 아이는 이미 몸의 형태만이 아니라<br>
+감각과 리듬을 통해 세상을 만나고 있다.</p>
+<p>자궁 안은 흔히 상상하는 것처럼<br>
+완전히 어둡고 조용한 공간이 아니다.<br>
+혈류의 소리, 엄마의 심장 박동, 소화 기관의 움직임,<br>
+가까이서 들리는 엄마의 목소리,<br>
+조금 멀리서 다가오는 바깥의 소리가 함께 섞여 있는 환경이다.<br>
+태아의 감각은 이 환경 안에서 조금씩 자라난다.<br>
+오감으로 태교를 본다는 것은<br>
+이 세계를 잠시 함께 상상해 보는 일에서 시작된다.</p>
+<h3 id="ch5-s1" class="subhead">임신 시기별 태아의 발달과 감각의 자리</h3>
+<p>태아는 자궁 안에서 한꺼번에 다 자라지 않는다.<br>
+시간이 흐르면서 신체의 기본 골격, 신경계, 감각이<br>
+저마다 다른 속도로 자리를 잡아 간다.</p>
+<p>다음 표는 임신 1분기·2분기·3분기에 걸쳐<br>
+태아가 어떻게 자라고 어떤 감각이 자리 잡아 가는지를 한눈에 정리한 것이다.<sup class="fn-ref"><a href="#fn-ch5-2" id="fnref-ch5-2">2</a></sup><br>
+세부 시기와 속도는 사람마다 다를 수 있고,<br>
+이 표는 일반적인 흐름을 보여 주기 위한 것이다.</p>
+<table class="data">
+<thead><tr>
+<th>시기</th>
+<th>신체·신경계 발달의 큰 흐름</th>
+<th>자리 잡아 가는 감각</th>
+<th>엄마의 환경이 닿는 결</th>
+</tr></thead><tbody>
+<tr>
+<td>1분기 (1–13주)</td>
+<td>신경관과 심장·기관의 기본 골격 형성</td>
+<td>감각계 자체가 아직 형성 중</td>
+<td>엄마의 영양·휴식·정서 안정</td>
+</tr>
+<tr>
+<td>2분기 (14–27주)</td>
+<td>시냅스가 빠르게 늘어나고 감각계가 자리를 잡음</td>
+<td>촉각·전정감각이 활성화되고 청각이 점차 반응을 시작</td>
+<td>엄마의 목소리·생활 리듬·움직임</td>
+</tr>
+<tr>
+<td>3분기 (28–40주)</td>
+<td>신경세포 연결의 정교화와 미엘린화 진행</td>
+<td>청각이 성숙하며 소리를 구별하기 시작, 양수를 통한 향·맛 노출, 빛에 미세 반응</td>
+<td>엄마의 정서·반복되는 일상·가족 분위기</td>
+</tr>
+</tbody></table>
+<p>이 표가 보여 주는 한 가지가 있다.<br>
+태교는 어느 한 시점에 갑자기 작동하는 일이 아니라,<br>
+임신의 처음부터 끝까지 결을 다르게 가지면서 이어지는 과정이라는 사실이다.</p>
+<p>1분기에는 엄마 자신의 몸과 마음을 돌보는 일 자체가 곧 태교다.<br>
+2분기와 3분기로 갈수록 감각의 결과 정서적 환경이<br>
+태아에게 더 또렷하게 닿는다.<br>
+다섯 감각이 어떻게 자리 잡고<br>
+어떤 통로로 엄마와 만나는지를 다음에서 차례로 살펴본다.</p>
+<h3 id="ch5-s2" class="subhead">소리와 리듬</h3>
+<p>가장 먼저 떠올릴 수 있는 감각은 소리다.</p>
+<p>청각계의 기본 구조는 임신 중기 무렵까지 자리 잡는 것으로 알려져 있고,<br>
+이후 점차 외부 소리에 반응할 수 있는 상태로 성숙한다.<br>
+3분기로 접어들면 태아는<br>
+친숙한 소리와 그렇지 않은 소리를 구별하기 시작하는 것으로 보고된다.<sup class="fn-ref"><a href="#fn-ch5-2" id="fnref-ch5-2-2">2</a></sup></p>
+<p>엄마의 심장 박동, 혈류, 숨 쉬는 소리는<br>
+태아에게 늘 반복되는 배경음이 된다.<br>
+그 위에 엄마의 말소리, 가족의 대화,<br>
+일상의 생활 소리가 더해진다.</p>
+<p>여기서 중요한 것은<br>
+태아가 특정한 단어의 의미를 이해한다는 점이 아니다.<br>
+태아가 느끼는 것은 소리의 리듬과 강도, 분위기에 더 가깝다.</p>
+<p>그래서 소리 태교를 떠올릴 때<br>
+첫 질문은 "어떤 음악이 좋은가"가 아니라<br>
+"오늘 우리에게 안정감을 주는 리듬은 어떤 것인가"가 된다.<br>
+특별한 클래식 음악이 아니라,<br>
+엄마가 편안함을 느끼는 곡,<br>
+마음이 조금 느긋해지는 목소리,<br>
+지나치게 자극적이지 않은 생활의 소리들이 더 도움이 될 수 있다.</p>
+<p>무엇보다 중요한 것은 반복성과 예측 가능성,<br>
+그리고 그 안에 담긴 정서다.<br>
+아이는 잘 짜인 선곡표보다<br>
+자주 반복되는 엄마의 목소리와 생활의 리듬 속에서<br>
+자신만의 안정을 만들어 간다.</p>
+<blockquote class="meta-note">임신부는 듣는 것을 삼간다.<br>
+시 읊는 소리와 책 읽는 소리가 좋다.<br>
+— 사주당 이씨, 『태교신기』 4장 4절</blockquote>
+<p>200년 전 사주당이 권한 자리도<br>
+같은 곳에 있다.<br>
+대단한 음악이 아니라,<br>
+일상의 결이 부드럽게 반복되는 소리.<br>
+오늘의 청각 발달 연구가 가리키는 자리와<br>
+표현만 다를 뿐 결은 같다.</p>
+<h3 id="ch5-s3" class="subhead">촉감과 몸의 긴장 완화</h3>
+<p>촉감은 가장 일찍 발달하는 감각 가운데 하나로 알려져 있다.<br>
+임신 초·중기에 이미 태아는<br>
+양수 안에서 자기 몸의 일부를 만지고<br>
+손가락을 빨거나 발을 움직이는 작은 행동을 반복하기 시작한다.<sup class="fn-ref"><a href="#fn-ch5-2" id="fnref-ch5-2-3">2</a></sup></p>
+<p>촉감은 눈에 잘 보이지 않지만<br>
+임신 기간 내내 중요한 역할을 한다.<br>
+엄마의 몸이 얼마나 긴장되어 있는지,<br>
+자주 굳어 있는지,<br>
+혹은 의도적으로 이완하고 쉬는 시간이 있는지는<br>
+태아가 머무는 물리적 환경에 그대로 반영된다.</p>
+<p>배에 손을 살짝 얹고 천천히 숨을 고르는 행동,<br>
+다리와 어깨의 긴장을 풀어 주는 짧은 스트레칭,<br>
+몸을 다그치지 않고 쉬어도 된다고 허락하는 태도는<br>
+모두 촉감의 결을 바꾸는 작은 행동이다.</p>
+<p>이때 중요한 것은<br>
+"특별한 동작을 정확히 수행해야 한다"는 생각이 아니다.<br>
+"오늘 내 몸이 조금 더 편해질 수 있는가"라는 작은 질문이<br>
+훨씬 실제적이다.<br>
+엄마가 스스로에게 부드러운 촉감을 허락할수록<br>
+태아가 머무는 공간도 조금 더 부드러워진다.</p>
+<h3 id="ch5-s4" class="subhead">냄새와 맛, 생활의 기억</h3>
+<p>후각과 미각은 양수를 통한 노출의 형태로 자리를 잡는다.<br>
+임신 후기로 갈수록 태아는<br>
+엄마가 먹은 음식의 향과 맛 성분 일부에 익숙해지는 것으로<br>
+관찰되어 왔다.<sup class="fn-ref"><a href="#fn-ch5-1" id="fnref-ch5-1">1</a></sup><br>
+이 노출은 출생 이후 영아의 후각·미각 경험과도<br>
+이어질 수 있다는 보고가 오랫동안 이어졌다.</p>
+<p>여기서도 핵심은<br>
+"이것을 먹으면 이런 아이가 된다"는 식의 단순한 공식이 아니다.<br>
+식사와 생활이 만들어 내는 장기적인 안정감이 더 가깝다.</p>
+<p>규칙적이고 무리 없는 식사,<br>
+자극이 너무 과하지 않은 음식,<br>
+맛을 천천히 즐기는 여유와 감사의 마음은<br>
+모두 태교의 일부가 될 수 있다.<br>
+냄새와 맛은 기억과 감정에 깊이 연결된 감각이다.<br>
+그래서 엄마가 자신에게 좋은 식사 경험을 선물하는 것만으로도<br>
+하루의 정서적 결이 달라진다.<br>
+복잡한 레시피보다<br>
+"오늘의 밥상이 나와 아기를 함께 돌보고 있다"는 감각이<br>
+더 멀리까지 닿는다.</p>
+<blockquote class="meta-note">엄마의 영양이 곧 태아의 영양이다.<br>
+흉한 모양·벌레먹은 것·찬밥·쉰 것·과한 육식·술·말고기·비늘 없는 생선은 피한다.<br>
+— 사주당 이씨, 『태교신기』 4장 12절</blockquote>
+<p>200년 전 사주당이 적은 회피 항목과<br>
+오늘 의학 단체가 권하는 회피 항목은<br>
+세부 항목은 다르지만 한 가지 자리에서 만난다.<br>
+*무엇을 안 먹는가가 아니라,<br>
+어떤 결로 식사하는가*가 환경의 핵심이라는 자리다.</p>
+<h3 id="ch5-s5" class="subhead">빛과 시각 환경</h3>
+<p>자궁 안은 대체로 어둡다.<br>
+임신 후기로 가면서 태아는<br>
+강한 빛에 미세하게 반응하기 시작하는 것으로 보고되지만,<sup class="fn-ref"><a href="#fn-ch5-2" id="fnref-ch5-2-4">2</a></sup><br>
+시각 자체가 본격적으로 발달하는 곳은 자궁이 아니라<br>
+출생 이후의 세계다.</p>
+<p>그러므로 시각 태교를 이야기할 때<br>
+"예쁜 그림을 보면 아이의 미술 감각이 좋아진다"는 식의 약속은<br>
+과학적으로 뒷받침되기 어렵다.</p>
+<p>그러나 엄마가 어떤 환경을 보고 살아가는지는<br>
+정서의 차원에서 자궁 안 환경과 연결된다.<br>
+지나치게 자극적인 영상이나 정보,<br>
+갈등과 불안이 반복되는 장면보다<br>
+편안한 색감, 자연, 조용한 풍경,<br>
+엄마에게 위로가 되는 장면은<br>
+마음의 긴장을 풀어 주는 역할을 한다.</p>
+<p>"내 눈이 편안할 때 마음도 조금 덜 긴장한다"는 것은<br>
+많은 사람이 공감하는 경험이다.<br>
+눈이 쉬어 가는 풍경은 결국 마음을 쉬게 하고,<br>
+마음이 쉬면 몸도 조금 덜 긴장한다.<br>
+그리고 이런 변화를 태아는<br>
+몸의 환경 변화로 함께 경험하게 된다.</p>
+<p>태아의 시각 자체에 관한 연구는 아직 초기 단계에 있다.<br>
+임신 후기에 강한 빛 자극이 자궁 안으로 일부 전달될 수 있다는 보고와,<br>
+태아의 심박·움직임이 그 자극에 반응하는 패턴을 보일 수 있다는 관찰이<br>
+종설 수준에서 이어져 왔다.<sup class="fn-ref"><a href="#fn-ch5-3" id="fnref-ch5-3">3</a></sup><br>
+그러나 이 연구들은 <em>시각 자극이 태아의 무엇을 결정한다</em>는 식의<br>
+강한 인과를 지지하지 않는다.<br>
+가리키는 방향은 한결같다.<br>
+태아의 시각은 자궁 바깥의 풍경을 직접 보는 일이 아니라,<br>
+<em>엄마가 어떤 시각 환경에 머무는지가 결국 환경 전체의 결을 만든다</em>는 자리다.</p>
+<blockquote class="meta-note">임신부는 보는 것을 조심해야 한다.<br>
+귀한 것과 아름다운 것을 보고,<br>
+흉한 것과 죽이는 것은 피한다.<br>
+— 사주당 이씨, 『태교신기』 4장 3절</blockquote>
+<p>200년 전의 권고와 오늘의 시선이 가리키는 자리는 같다.<br>
+*무엇을 보느냐가 아니라<br>
+어떤 결의 시각 환경에 머무느냐*의 문제다.</p>
+<h3 id="ch5-s6" class="subhead">다섯 감각, 한눈에 정리</h3>
+<p>지금까지 살펴본 다섯 감각의 자리를 한 표로 다시 모은다.<br>
+이 표는 어떤 감각을 더 강하게 자극해야 한다는 뜻이 아니다.<br>
+각 감각이 자리잡기 시작하는 시기,<br>
+자궁 안에서의 경험,<br>
+일상에서 닿는 길을 한눈에 비교해 보기 위한 것이다.</p>
+<table class="data">
+<thead><tr>
+<th>감각</th>
+<th>자리잡기 시작</th>
+<th>자궁 안에서의 경험</th>
+<th>일상에서 닿는 길</th>
+</tr></thead><tbody>
+<tr>
+<td>청각</td>
+<td>임신 중기 무렵부터 점차</td>
+<td>저주파가 우세, 엄마 목소리·심장 박동이 또렷하게 닿음</td>
+<td>일상 대화, 부드러운 노래, 안정적인 생활 리듬</td>
+</tr>
+<tr>
+<td>촉각</td>
+<td>임신 초·중기부터 활성</td>
+<td>양수 안 부드러운 자극, 엄마 몸의 긴장이 그대로 반영</td>
+<td>배에 손 얹기, 천천한 호흡, 충분한 휴식</td>
+</tr>
+<tr>
+<td>후각·미각</td>
+<td>임신 후기에 양수 향·맛 노출</td>
+<td>엄마 식습관에서 비롯된 향과 맛에 익숙해짐</td>
+<td>편안한 식사, 자극이 과하지 않은 음식</td>
+</tr>
+<tr>
+<td>시각</td>
+<td>임신 후기에 빛에 미세 반응</td>
+<td>대체로 어둠, 강한 빛에만 미세 반응</td>
+<td>엄마 시각 환경의 안정과 예측 가능성</td>
+</tr>
+</tbody></table>
+<p>이 표를 따라 보면 한 가지가 보인다.<br>
+오감 가운데 어느 하나가 다른 감각보다 더 중요하지 않다는 사실이다.<br>
+시기와 결이 다를 뿐, 모두 같은 환경 안에 흐른다.</p>
+<h3 id="ch5-s7" class="subhead">감각의 중심에 있는 감정</h3>
+<p><mark class="pen-yellow">오감 태교의 중심에는 결국 감정이 있다.</mark><br>
+소리, 촉감, 냄새, 맛, 빛은 그 자체로도 의미가 있지만,<br>
+그 안에 담긴 정서가 더 깊게 남는다.</p>
+<p>같은 음악이라도 어떤 마음으로 듣는지에 따라 경험이 다르고,<br>
+같은 식사라도 어떤 분위기에서 먹는지에 따라 의미가 달라진다.<br>
+태아에게도 마찬가지다.<br>
+중요한 것은 "얼마나 자극했는가"가 아니라<br>
+"그 감각이 어떤 정서를 불러일으키는가"이다.</p>
+<p>그래서 맘곁 태교는<br>
+오감을 자극하는 태교보다<br>
+오감을 통해 정서를 정돈하는 태교를 지향한다.<br>
+매일 조금씩 반복되는 소리와 리듬,<br>
+몸을 돌보는 작은 촉감,<br>
+생활의 맛과 냄새,<br>
+눈이 쉬어 가는 장면들은 모두<br>
+엄마와 아기에게 "여기는 괜찮은 곳이다"라는 메시지를 전한다.</p>
+<p>매일 다 갖출 필요는 없다.<br>
+<mark class="pen-peach">하루에 한 번이라도 이런 감각을 함께 누릴 수 있다면,<br>
+그 자체가 이미 충분한 태교다.</mark></p>
+<h3 id="ch5-s8" class="subhead">이 장의 정리</h3>
+<ul class="bullets">
+<li>자궁 안은 어둡고 조용한 공간이 아니다. 태아는 이미 자기 나름의 방식으로 세상을 만나고 있다.</li>
+<li>감각은 시기마다 다르게 자란다. 촉감은 일찍, 청각은 임신 중기 무렵, 빛 반응은 후기에 자리 잡는다.</li>
+<li><em>어떤 음악을 들려주는가</em>보다 <em>엄마 목소리·가족 대화·하루 동안 반복되는 일상 소리</em>가 태아에게 더 또렷이 닿는다.</li>
+<li>200년 전 사주당이 권한 일(시 읽기·낭독·편안한 식사·자극 줄이기)과 오늘 발달 연구가 가리키는 자리는 같다.</li>
+<li>오감 태교의 한가운데에는 결국 <em>감정</em>이 있다.</li>
+</ul>
+<h3 id="ch5-s9" class="subhead">다음 장으로</h3>
+<p>다음 장에서는 오감의 바탕 위에서<br>
+엄마의 감정이 어떻게 태아의 환경이 되는지를<br>
+조금 더 가까이 들여다본다.<br>
+감정은 숨겨야 하는 대상이 아니라<br>
+이해하고 돌볼 수 있는 대상이라는 점을<br>
+함께 살펴보려 한다.</p>
+<aside class="footnotes">
+<h4>각주</h4>
+<ol>
+<li id="fn-ch5-1">임신 중 모체의 식습관과 향·맛 노출이 태아 및 출생 후 영아의 미각·후각 경험에 영향을 줄 수 있다는 산모-영아 영양·발달 연구 — 양수와 모유를 통한 향 노출에 관한 국제 연구 흐름(예: J. A. Mennella 계열 연구)과 국내 모성영양·간호학 학술지의 관련 연구 1~2건으로 좁혀 표기. 본 챕터의 진술 범위(영향 가능성의 시사, 인과 단정의 회피)에 부합하는 자료를 선택할 것. <a class="fn-back" href="#fnref-ch5-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch5-2">임신 시기별 태아 발달의 일반적 흐름과 청각·촉각·시각 등 감각계의 자리 잡는 시기에 관한 학술적 합의 — 산부인과·태아 발달학 교과서 또는 국내 모성간호학 교재의 해당 단원, 또는 fetal development·fetal acoustics 분야의 종설을 1~2건 명시. 본 챕터에서는 시기별 도표(1·2·3분기), 청각계 발달 시기, 촉각의 조기 발달, 후기 빛 반응 모두에 동일 자료 계통을 사용한다. 특정 주차 단정은 피한다. <a class="fn-back" href="#fnref-ch5-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch5-3">태아의 시각 발달과 임신 후기 빛 자극에 대한 반응 — Hepper PG 등의 fetal visual response 종설 흐름을 출발점으로, 본 장의 진술 범위(<em>강한 인과 회피, 일반적 관찰 수준</em>)에 부합하는 1~2건으로 좁혀 표기. 빛 자극이 태아 행동에 단정적 영향을 준다고 주장하는 자료는 채택하지 않는다. <a class="fn-back" href="#fnref-ch5-3" aria-label="본문으로 돌아가기">↩</a></li>
+</ol>
+</aside>
+</div>
+</section>
+<section id="ch6" class="chapter">
+<header class="chapter-header"><span class="chapter-num">6장</span><h2 class="chapter-title">엄마의 감정은 태아의 환경이 된다</h2></header>
+<div class="chapter-body">
+<p>이 장은 임신 중에 흔들리는 감정을 경험해 본 독자를<br>
+비난하기 위해 쓰이지 않았다.<br>
+오히려 그런 시간을 지나고 있는 독자에게<br>
+조금 더 부드러운 시선이 닿기를 바라며 쓰인다.</p>
+<p>또한 이 장은 모든 독자가 같은 임신 경험을 하고 있다고 전제하지 않는다.<br>
+유산이나 고위험 임신처럼 더 어려운 시간을 지나 온 독자에게도<br>
+이 글이 또 다른 부담으로 닿지 않기를 바란다.</p>
+<hr class="section-break">
+<p>임신 중 감정을 이야기할 때<br>
+많은 엄마가 가장 먼저 떠올리는 질문이 있다.</p>
+<p>"내가 요즘 불안하고 힘든데, 이 감정이 아이에게 나쁜 영향을 줄까?"</p>
+<p>이 질문은 그 자체로 이미<br>
+엄마가 아이를 깊이 생각하고 있다는 증거다.<br>
+그러나 이 질문이 죄책감으로 번지기 시작하면<br>
+태교는 엄마에게 또 하나의 무거운 과제가 된다.<br>
+감정을 숨기고 억누를수록 마음은 오히려 더 힘들어진다.<br>
+그래서 이 장은 감정을 숨기라고 말하지 않는다.<br>
+대신 감정을 이해하고 돌볼 수 있는 시선을 함께 나누려 한다.</p>
+<h3 id="ch6-s1" class="subhead">연구가 가리키는 방향</h3>
+<p>현대의 모성건강 연구는<br>
+임신 중 스트레스와 우울, 모-태아 애착, 태아 건강 사이에<br>
+일정한 관련이 있을 수 있음을 시사한다.<sup class="fn-ref"><a href="#fn-ch6-1" id="fnref-ch6-1">1</a></sup><br>
+이는 임신기의 정서적 상태가 사소하지 않다는 점을 분명히 보여 준다.</p>
+<p>다만 여기서 오해하지 않아야 할 부분이 있다.<br>
+연구는 모든 부정적 감정이 곧바로 나쁜 결과를 만든다고 말하지 않는다.<br>
+오히려 정서적 어려움을 경험할 때<br>
+주변의 지지와 도움, 감정 조절과 회복의 경험이<br>
+보호 요인으로 작용할 수 있다는 방향을 강조한다.<sup class="fn-ref"><a href="#fn-ch6-2" id="fnref-ch6-2">2</a></sup></p>
+<p>다시 말해, 우리가 새겨야 할 메시지는<br>
+"엄마가 항상 행복해야 한다"가 아니다.<br>
+"엄마의 감정은 혼자 견뎌야 하는 것이 아니다"에 가깝다.</p>
+<h3 id="ch6-s2" class="subhead">감정은 어떻게 환경이 되는가 — DOHaD의 자리</h3>
+<p>이 장의 자리를 좀 더 단단하게 짚어 두면 좋다.<br>
+임신기의 정서가 <em>왜</em> 환경이 되는가에 대한 학술적 흐름은<br>
+<strong>DOHaD(Developmental Origins of Health and Disease)</strong> 라는 이름으로 정리되어 왔다.<sup class="fn-ref"><a href="#fn-ch6-3" id="fnref-ch6-3">3</a></sup><br>
+1990년대 초 영국의 Barker 등의 연구를 출발점으로,<br>
+태내·영아기의 환경이 평생의 건강·인지·정서의 결을 만드는<br>
+<em>결정적 시기</em> 가운데 하나라는 시선이다.</p>
+<p>이 흐름의 핵심은 단정이 아니라 <em>연결의 가능성</em>에 있다.<br>
+태아 환경은 출생 이후의 모든 것을 결정하지 않는다.<br>
+다만 <em>결의 한 가닥</em>을 만든다.<br>
+그 결을 만드는 통로 가운데 하나가<br>
+모체의 스트레스 반응과 호르몬 환경이라는 점이<br>
+DOHaD 흐름의 일관된 시사다.</p>
+<h4 class="subhead-2">한눈에 — 모체 스트레스가 환경이 되는 경로</h4>
+<table class="data">
+<thead><tr>
+<th>자리</th>
+<th>일어나는 일</th>
+<th>가능한 방향</th>
+</tr></thead><tbody>
+<tr>
+<td>외부 자극</td>
+<td>임신부가 지속적·강한 스트레스를 경험</td>
+<td>일상의 결이 흔들림</td>
+</tr>
+<tr>
+<td>모체 반응</td>
+<td>HPA 축 활성화, 코르티솔·노르에피네프린 분비 변화</td>
+<td>자율신경계의 결도 함께 흔들림</td>
+</tr>
+<tr>
+<td>태내 환경</td>
+<td>태반을 통한 호르몬 신호의 일부 변화 가능성</td>
+<td>태아가 만나는 환경의 결이 달라질 가능성</td>
+</tr>
+<tr>
+<td>보호 요인</td>
+<td>사회적 지지·정서 조절·회복 경험</td>
+<td>위 통로의 영향을 누그러뜨리는 자리</td>
+</tr>
+</tbody></table>
+<p>표는 <em>모든 임신부에게 동일하게 일어나는 인과</em>가 아니라<br>
+<em>가능한 통로의 모양</em>을 보여 준다.<br>
+임신부가 흔들리는 날이 있다고 해서<br>
+이 모든 통로가 곧바로 작동한다는 뜻은 아니다.<br>
+오히려 표의 마지막 칸 — 보호 요인 — 이<br>
+일상의 대부분에서 더 큰 자리를 차지한다.</p>
+<p>이 시선은 사주당의 권고(<em>"칠정(七情)을 절제하라"</em>)와도 자연스럽게 닿는다.<br>
+사주당이 가족 환경 전체를 정돈하라고 한 자리는<br>
+오늘의 언어로 옮기면 <em>보호 요인의 결을 두텁게 하라</em>는 자리에 가깝다.</p>
+<h4 class="subhead-2">한국에서 — 임신 중·산후 정서의 자리</h4>
+<p>한국의 모성건강 보고는<br>
+임신 중·산후 우울이 <em>드문 일이 아니라는 점</em>을 일관되게 시사해 왔다.<sup class="fn-ref"><a href="#fn-ch6-5" id="fnref-ch6-5">5</a></sup><br>
+세부 조사·시기에 따라 비율은 달라지지만,<br>
+공통의 흐름은 한 가지다.<br>
+<em>적지 않은 임신부와 산모가 비슷한 시기를 통과한다</em>는 사실이다.</p>
+<table class="data">
+<thead><tr>
+<th>시기</th>
+<th>일반적 인식의 결</th>
+</tr></thead><tbody>
+<tr>
+<td>임신 초기</td>
+<td>체감 변화·호르몬 변화로 정서 변동이 흔하게 보고됨</td>
+</tr>
+<tr>
+<td>임신 중기·후기</td>
+<td>출산에 대한 기대와 불안이 함께 떠오름</td>
+</tr>
+<tr>
+<td>산후 초기 (출산~6주)</td>
+<td>산후 우울 인식이 가장 또렷한 시기로 알려져 있음</td>
+</tr>
+<tr>
+<td>산후 6주 이후</td>
+<td>점진적 회복이 일반적이지만 일부는 더 길게 이어질 수 있음</td>
+</tr>
+</tbody></table>
+<p>각 시기의 정확한 비율은 출간 시점의 보건복지부 보고서로 채워진다.<br>
+중요한 것은 <em>내가 이런 마음이 드는 것이 나만의 일이 아니다</em>라는<br>
+안도의 자리이고,<br>
+도움이 필요할 때 어디에 손을 내밀어야 하는지의 길을 미리 알아 두는 일이다.</p>
+<h4 class="subhead-2">마음챙김이 만드는 자리 — MBCP와 그 가까운 자리</h4>
+<p>정서의 결을 의식적으로 다듬는 흐름 가운데<br>
+가장 잘 연구된 자리 하나가 마음챙김 기반 출산·양육 프로그램(MBCP)이다.<sup class="fn-ref"><a href="#fn-ch6-4" id="fnref-ch6-4">4</a></sup><br>
+주로 8주 정도의 구조화된 프로그램으로,<br>
+호흡·명상·인지 재구성·집단 나눔 등이 포함된다.</p>
+<table class="data">
+<thead><tr>
+<th>항목</th>
+<th>일반적 흐름</th>
+</tr></thead><tbody>
+<tr>
+<td>구성</td>
+<td>호흡·바디스캔·자기자비·집단 토의 등</td>
+</tr>
+<tr>
+<td>기간</td>
+<td>8주 정도의 회기 + 일상 실천</td>
+</tr>
+<tr>
+<td>보고된 방향</td>
+<td>산전 우울·불안 점수가 비교적 낮아지는 흐름이 보고됨</td>
+</tr>
+<tr>
+<td>한계</td>
+<td>모든 임신부에게 동일 효과를 보장하지는 않음</td>
+</tr>
+</tbody></table>
+<p>MBCP가 책에서 권하는 유일한 방법은 아니다.<br>
+다만 <em>짧고 반복되는 마음챙김 실천이 정서의 결을 도울 수 있다</em>는<br>
+일반 합의의 한 사례로 함께 살펴볼 수 있다.<br>
+사주당이 권한 <em>"마음을 가다듬어라"</em>라는 자리도<br>
+오늘의 언어로 옮기면 이런 작은 일관된 실천에 가깝다.</p>
+<h3 id="ch6-s3" class="subhead">감정은 메시지가 아니라 환경이다</h3>
+<p><mark class="pen-yellow">엄마의 감정은<br>
+태아에게 직접 전달되는 메시지라기보다<br>
+태아가 머무는 환경의 일부에 가깝다.</mark></p>
+<p>엄마가 늘 웃어야 한다는 뜻이 아니다.<br>
+슬픔과 걱정과 피곤함 속에서도<br>
+다시 안정을 찾아갈 수 있는 흐름이 곁에 있는가가 더 중요하다.<br>
+울고 싶은 날에 울 수 있고,<br>
+힘든 날에는 힘들다고 말할 수 있고,<br>
+혼자 감당하기 어려울 때 도움을 요청할 수 있는 구조 안에서<br>
+감정은 서서히 다루어질 수 있는 대상이 된다.<br>
+맘곁이 만들고자 하는 "마음이 편안해지는 구조"도<br>
+바로 이 자리를 향한다.</p>
+<h3 id="ch6-s4" class="subhead">죄책감에서 돌봄으로</h3>
+<p>감정을 다루는 첫걸음은<br>
+내 감정이 "아이에게 해를 끼치는 위험한 것"이 아니라<br>
+"내가 돌봐야 할 내 마음"이라는 사실을 인정하는 것이다.</p>
+<p>이렇게 시선이 옮겨지면 질문도 함께 바뀐다.</p>
+<p>"내가 불안하면 아이에게 안 좋을까?"라는 질문은<br>
+"내가 이렇게 불안한데, 나를 어떻게 도와줄 수 있을까?"라는<br>
+질문으로 옮겨 갈 수 있다.</p>
+<p>두 질문은 같은 감정에서 출발하지만,<br>
+한쪽은 죄책감을 향하고 다른 한쪽은 돌봄을 향한다.<br>
+태교는 후자의 자리에서 시작된다.</p>
+<h3 id="ch6-s5" class="subhead">감정을 돌보는 작은 방법</h3>
+<p>감정을 돌보는 일은 거창할 필요가 없다.</p>
+<p>하루에 한 번,<br>
+지금 내 마음이 어떤지 조용히 적어 보는 것만으로도 시작할 수 있다.<br>
+오늘 걱정되는 것은 무엇인지,<br>
+감사한 것은 무엇인지,<br>
+몸에서 가장 힘든 곳은 어디인지를<br>
+짧게라도 써 보는 습관은<br>
+마음을 밖으로 꺼내는 연습이 된다.</p>
+<p>누군가에게 솔직하게 마음을 나눌 수 있다면 더 좋지만,<br>
+그것이 어렵다면 글이나 목소리로라도 남겨 보는 것이 도움이 된다.</p>
+<p>이때 중요한 것은<br>
+"늘 긍정적으로 마무리해야 한다"는 압박이 아니다.<br>
+솔직한 감정은 있는 그대로 적되,<br>
+마지막 한 줄만큼은<br>
+자신을 조금 더 부드럽게 대하는 문장으로 끝내 보는 정도면 충분하다.</p>
+<p>"오늘도 잘 버텼다."<br>
+"이렇게 적었으니 조금은 가벼워질 것이다."</p>
+<p>이 작은 문장은 엄마의 감정뿐 아니라<br>
+태아가 머무는 정서적 환경의 결도 천천히 바꾼다.</p>
+<h3 id="ch6-s6" class="subhead">몸과 감정은 함께 움직인다</h3>
+<p>감정은 머리로만 다룰 수 있는 영역이 아니다.<br>
+몸이 너무 긴장되어 있으면 마음도 더 예민해지고,<br>
+충분한 휴식과 따뜻한 접촉이 있을 때<br>
+마음도 조금씩 풀어진다.</p>
+<p>그래서 감정을 다루려 할 때<br>
+머리로 해결하려 애쓰기보다<br>
+몸과 생활의 리듬을 함께 조절해 보는 편이 더 도움이 된다.</p>
+<p>충분한 수면, 규칙적인 식사, 가벼운 움직임,<br>
+짧은 산책, 좋아하는 음악이나 풍경.<br>
+이런 요소들이 반복되면<br>
+태아는 안정된 패턴 속에서 자라게 된다.<br>
+앞 장에서 살펴본 오감의 결이<br>
+여기서 감정의 결과 다시 만난다.</p>
+<h3 id="ch6-s7" class="subhead">숨기는 대신 이해받기</h3>
+<p>이 장에서 가장 전하고 싶은 한 문장이 있다.</p>
+<p><mark class="pen-peach">엄마의 감정은 숨겨야 할 것이 아니라 이해받아야 할 것이다.</mark></p>
+<p>엄마로서 잘하고 싶다는 마음 자체가<br>
+이미 아이를 향한 사랑이다.<br>
+태교는 한 번도 흔들리지 않는 평온함이 아니라,<br>
+흔들릴 때마다 함께 돌아올 수 있는 리듬을 만드는 일에 가깝다.</p>
+<p>엄마의 감정이 태아의 환경이 된다는 말은<br>
+엄마가 언제나 행복해야 한다는 명령이 아니다.<br>
+엄마의 마음 또한 누군가에게 돌봄받을 가치가 있다는 뜻이다.</p>
+<p>힘든 마음이 길어지거나<br>
+일상에 지장을 줄 만큼 무거워질 때는<br>
+주저하지 말고 산부인과·정신건강 전문가와 상의하는 것을 권한다.<br>
+도움을 청하는 일은 약함이 아니라<br>
+아이와 자신을 함께 돌보려는 가장 적극적인 태교의 하나다.</p>
+<h3 id="ch6-s8" class="subhead">이 장의 정리</h3>
+<ul class="bullets">
+<li>엄마의 감정은 태아에게 <em>직접 보내는 메시지</em>가 아니라, 태아가 머무는 <em>환경의 일부</em>에 가깝다.</li>
+<li>임신 중 스트레스가 호르몬을 통해 태아 환경에 닿을 <em>수 있다</em>는 연구 흐름이 있다. <em>나쁜 기분 = 나쁜 영향</em>이라고 단정하지는 않는다.</li>
+<li>한국에서도 임신 중·출산 후 우울은 드문 일이 아니다. 임신부 10명 가운데 1~2명 정도가 비슷한 시기를 통과한다는 보고가 있다.</li>
+<li>엄마의 감정은 <em>숨겨야 할 것</em>이 아니라 <em>이해받아야 할 것</em>이다.</li>
+<li>가까운 사람의 지지, 마음을 정돈하는 작은 습관, 그리고 도움을 요청하는 일. 이 셋이 임신 중 마음을 지키는 자리다.</li>
+</ul>
+<h3 id="ch6-s9" class="subhead">다음 장으로</h3>
+<p>다음 장에서는 이 감정의 환경 안에서<br>
+가족이 함께 참여하는 태교의 의미를 살펴본다.<br>
+태교를 엄마 혼자만의 책임이 아니라<br>
+함께 만들어 가는 관계의 일로 볼 때,<br>
+임신의 시간은 훨씬 덜 외롭고 조금 더 따뜻해진다.</p>
+<aside class="footnotes">
+<h4>각주</h4>
+<ol>
+<li id="fn-ch6-1">임신 중 스트레스·우울이 모-태아 애착 및 태아 건강과 관련될 수 있다는 국내·외 모성건강 연구 — 한국보건사회연구원 보고서, 한국간호과학회지(JKAN) 및 모성간호학 학술지의 관련 논문에서 본 챕터의 진술 범위(상관성의 시사, 인과 단정 회피)에 부합하는 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch6-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch6-2">임신기 정서적 어려움에서 사회적 지지·감정 조절·회복 경험이 보호 요인으로 작용할 수 있다는 연구 — DBpia 등 국내 학술 데이터베이스에서 임신·산전 우울에 대한 사회적 지지 효과를 다룬 연구를 의학 검수자와 협의해 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch6-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch6-3">DOHaD(Developmental Origins of Health and Disease) 흐름 — Barker DJP. <em>Fetal origins of coronary heart disease</em>, <em>BMJ</em>, 1995; Gluckman PD, Hanson MA. <em>Effect of in utero and early-life conditions on adult health and disease</em>, <em>NEJM</em>, 2008; Hanson MA, Gluckman PD. <em>Early developmental conditioning of later health and disease</em>, <em>Physiological Reviews</em>, 2014; 모성 스트레스–태아 신경발달 흐름은 Glover V. <em>Maternal depression, anxiety and stress during pregnancy and child outcome</em>, <em>J Child Psychol Psychiatry</em>, 2014. 본 장에서는 가설 흐름의 일반 합의로만 인용한다. 부록 C-3·C-4의 자료 계통과 동일. <a class="fn-back" href="#fnref-ch6-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch6-4">마음챙김 기반 출산·양육 프로그램(MBCP) — Duncan LG, Bardacke N. <em>Mindfulness-Based Childbirth and Parenting Education</em>, <em>J Child Fam Stud</em>, 2010; 후속 메타분석은 Dhillon A et al. <em>Mindfulness-Based Interventions During Pregnancy: A Systematic Review and Meta-analysis</em>, <em>Mindfulness</em>, 2017. 본 장에서는 효과 크기 단정 없이 일반 합의 방향으로만 인용. 부록 C-4 항목과 동일 자료 계통. <a class="fn-back" href="#fnref-ch6-4" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch6-5">한국의 임신 중·산후 우울 인식 및 유병률 — 보건복지부·한국보건사회연구원의 산후우울 실태조사 등 공공 보고서. 1장 [^3]과 동일 자료 계통이며, 본 장에서는 비율 단정 대신 "드문 일이 아니다"·"적지 않은 임신부와 산모"라는 톤으로 인용한다. 출간 전 검수자가 가장 최신 보고서의 비율과 발간 연도로 보강. <a class="fn-back" href="#fnref-ch6-5" aria-label="본문으로 돌아가기">↩</a></li>
+</ol>
+</aside>
+</div>
+</section>
+<section id="ch7" class="chapter">
+<header class="chapter-header"><span class="chapter-num">7장</span><h2 class="chapter-title">가족의 태교</h2></header>
+<div class="chapter-body">
+<p>가족의 형태는 사람마다 다르다.<br>
+부부와 아이로 구성된 가정도 있고,<br>
+한부모 가정, 조손 가정, 새로운 형태의 가족도 있다.<br>
+이 장이 말하는 "가족"은<br>
+특정한 구성원 수나 모양을 전제하지 않는다.<br>
+지금 이 임신을 함께 지나가고 있는 사람들,<br>
+혹은 함께 지나가도록 기꺼이 곁을 내어 주는 사람들이라는<br>
+넓은 뜻으로 읽어 주면 좋겠다.</p>
+<p>태교를 엄마 혼자만의 과제로 보면<br>
+임신 기간은 쉽게 외로운 시간이 된다.<br>
+몸과 마음이 크게 변하는 시기지만<br>
+그 변화를 가장 가까이서 겪는 사람은 누구보다 엄마이기 때문이다.<br>
+그래서 전통 태교에서도, 그리고 현대의 관점에서도<br>
+태교를 가족과 함께하는 일로 보는 것은 매우 중요하다.</p>
+<p>아이는 처음부터 관계 속에서 자란다.<br>
+그 관계의 첫 번째 환경이 바로 가족이다.</p>
+<h3 id="ch7-s1" class="subhead">사주당이 본 자리 — "어미 혼자 하는 것이 아니다"</h3>
+<p>『태교신기』의 첫 장은 짧은 한 문장에서 시작된다.</p>
+<blockquote class="meta-note"><strong>태지교, 비모독위야 (胎之敎, 非母獨爲也).</strong><br>
+<mark class="pen-yellow">태교는 어머니 혼자 하는 것이 아니다.</mark><sup class="fn-ref"><a href="#fn-ch7-1" id="fnref-ch7-1">1</a></sup></blockquote>
+<p>200년 전에 쓰인 이 한 문장은<br>
+오늘 다시 읽어도 여전히 남는다.<br>
+사주당 이씨는 곧이어<br>
+한 집안 사람 모두가 자신의 행동을 삼가야 한다고 적었다.<br>
+임신부에게 들리는 말,<br>
+임신부가 머무는 자리의 분위기,<br>
+가족이 서로를 대하는 태도까지가<br>
+모두 태아가 자라는 환경의 일부라는 자리다.</p>
+<p>이 시선이 특별한 이유는<br>
+태교를 한 사람의 의무로 두지 않은 데 있다.<br>
+임신부 혼자 잘해야 하는 일이 아니라,<br>
+가족 전체가 함께 결을 정돈해야 하는 일로 본 것이다.<br>
+오늘의 표현으로 옮기면<br>
+가족의 정서적 지지,<br>
+함께 나누는 대화,<br>
+서로의 부담을 나누는 구조가 곧 태교라는 의미가 된다.</p>
+<p>『태교신기』는 또한<br>
+임신부 곁의 사람들이 화를 내거나 다투지 않도록 권한다.<br>
+오늘의 시선에서 보면 그것은<br>
+정서적 환경의 안정이라는 자리에 가깝다.<br>
+임신부가 머무는 공간 전체가 흔들리지 않도록,<br>
+가족 모두가 자기 결을 함께 살피는 일.<br>
+사주당이 가리킨 자리는 그곳이었다.</p>
+<h3 id="ch7-s2" class="subhead">왕실의 임신은 한 사람의 일이 아니었다 — 산실청과 호산청</h3>
+<p>사주당의 시선은 그녀 한 사람의 통찰만은 아니었다.<br>
+조선은 이미 왕실 차원에서<br>
+임신과 출산을 한 사람의 일이 아닌<br>
+공동의 일로 다루는 제도를 갖추고 있었다.</p>
+<p>왕비나 세자빈이 임신을 하면 산실청(産室廳)이라는 임시 기구가 꾸려졌고,<br>
+후궁의 경우에는 호산청(護産廳)이 같은 역할을 맡았다.<sup class="fn-ref"><a href="#fn-ch7-3" id="fnref-ch7-3">3</a></sup><br>
+이 기구들은 단지 출산을 돕는 의료 조직만은 아니었다.<br>
+임신부의 거처를 정돈하고, 식이를 살피고,<br>
+들리는 소리와 만나는 사람을 함께 조절하는 일까지 함께 맡았다.</p>
+<table class="data">
+<thead><tr>
+<th>기구</th>
+<th>대상</th>
+<th>운영 시기</th>
+<th>주요 역할</th>
+</tr></thead><tbody>
+<tr>
+<td>산실청 (産室廳)</td>
+<td>왕비·세자빈</td>
+<td>출산 몇 달 전부터 산후 일정 기간</td>
+<td>의료 진료, 거처 정돈, 식이 관리, 환경의 결 조절</td>
+</tr>
+<tr>
+<td>호산청 (護産廳)</td>
+<td>후궁</td>
+<td>산실청에 준함</td>
+<td>산실청과 유사한 의례·돌봄 운영</td>
+</tr>
+</tbody></table>
+<p>가장 인상적인 것은<br>
+사회 전체가 그 환경의 일부가 된다는 점이다.<br>
+임신부가 머무는 동안에는 형벌 집행이 멈추고,<br>
+큰 소리가 나는 일도 줄였다고 전해진다.<br>
+한 사람의 임신을 한 사람만의 일로 두지 않으려는<br>
+오래된 마음이 거기에 담겨 있었다.</p>
+<p>오늘 우리는 더 이상 산실청을 두지 않는다.<br>
+그러나 그 자리에 담겼던 마음 —<br>
+임신을 가족과 사회가 함께 통과하는 시간으로 보는 시선 —<br>
+은 여전히 우리에게 의미를 남긴다.</p>
+<h4 class="subhead-2">칼럼 — 왕실의 임신 의례, 그리고 그 이후</h4>
+<p>조선 왕실에는 임신·출산·산후를 둘러싼 일련의 의례가 있었다.<br>
+산실청·호산청 외에도<br>
+태(胎)를 정성스레 모시는 안태(安胎) 의례,<br>
+태항아리에 담아 좋은 자리에 묻는 태실(胎室)의 풍속,<br>
+그리고 출산 직전부터 산후 백일 무렵까지 무엇을 살필지를 정리한<br>
+순한글 첩 『임산예지법』이 함께 흘러왔다.<sup class="fn-ref"><a href="#fn-ch7-6" id="fnref-ch7-6">6</a></sup><br>
+이 의례들은 한 가지 자리에서 만난다.<br>
+*임신은 사적인 일이 아니라<br>
+가족·조정·사회가 함께 통과하는 시간*이라는 자리다.</p>
+<p>오늘의 우리는 의례 자체를 그대로 옮기지 않는다.<br>
+그러나 한국에서 산후를 둘러싼 풍속은<br>
+이름과 형태를 바꾸며 여전히 이어지고 있다.<br>
+산모의 친정 산후 돌봄,<br>
+산후조리원의 비교적 높은 이용률,<br>
+삼칠일·백일·돌의 작은 의례들 —<br>
+이 모두가 <em>임신과 출산을 함께 통과하는 자리를 다시 만들려는</em><br>
+한국 사회의 한 결이다.<sup class="fn-ref"><a href="#fn-ch7-7" id="fnref-ch7-7">7</a></sup></p>
+<p>다만 한 가지 자리를 함께 짚어 두면 좋다.<br>
+산후조리원·돌봄 도우미가 가까이 있는 가정도 있고,<br>
+그 자리가 비어 있는 가정도 있다.<br>
+어떤 가정이든<br>
+<em>임신과 출산을 한 사람만의 일로 두지 않는 길</em>은<br>
+저마다 다른 모양으로 다시 만들 수 있다.<br>
+이 책이 가리키는 자리도 같은 곳에 있다.</p>
+<h3 id="ch7-s3" class="subhead">거창하지 않아도 된다 — 일상의 다섯 장면</h3>
+<p>가족 태교는 거창할 필요가 없다.<br>
+오히려 거창함이 부담을 만든다.</p>
+<p>다섯 장면을 떠올려 보면 충분하다.</p>
+<p>첫째, <strong>아침의 한 마디</strong>.<br>
+"오늘은 좀 쉬어도 괜찮아."<br>
+이 한 마디만으로도<br>
+임신부의 몸과 마음의 시작이 한 칸 부드러워진다.</p>
+<p>둘째, <strong>저녁의 한 끼니</strong>.<br>
+누군가가 식사를 챙겨 주거나,<br>
+힘든 날 함께 단순한 메뉴로 둘러앉는 시간.<br>
+음식의 양보다 함께 먹는 사람의 자리가 더 닿는다.</p>
+<p>셋째, <strong>짧은 산책 한 번</strong>.<br>
+아빠가, 또는 가까운 사람이<br>
+짧은 거리라도 함께 걸어 주는 시간.<br>
+이때 오가는 대화의 깊이는 중요하지 않다.<br>
+함께 걷고 있다는 사실 자체가 환경이 된다.</p>
+<p>넷째, <strong>귀 기울여 듣는 한순간</strong>.<br>
+임신부가 말할 때 끼어들지 않고<br>
+조용히 들어 주는 시간.<br>
+조언보다 들어 주는 자리가 훨씬 더 깊은 지지가 된다.</p>
+<p>다섯째, <strong>잠들기 전 한 문장</strong>.<br>
+누군가가 "오늘 하루 수고했어"라고 말해 주거나,<br>
+그 말이 어렵다면 곁에 조용히 있어 주는 것.</p>
+<p>이 다섯 장면 가운데<br>
+오늘 하루 한 가지만 자리잡고 있어도<br>
+그 가정의 환경은 이미 가족 태교의 결을 갖는다.</p>
+<h3 id="ch7-s4" class="subhead">조부모·형제·돌봄 공동체의 자리</h3>
+<p>한국에는 오래된 산후 풍속이 있다.<br>
+임신부가 친정에서 몸을 풀고,<br>
+삼칠일·백일·돌까지 가까운 사람들이 함께 음식을 나누며<br>
+새 생명을 환영하는 흐름이다.<br>
+이 풍속의 핵심은 의례 그 자체가 아니다.<br>
+한 가정의 임신과 출산을<br>
+이웃과 친척이 함께 통과한다는 자리에 있다.</p>
+<p>오늘은 이 풍속을 그대로 옮길 수 없다.<br>
+가족 구조가 크게 달라졌고,<br>
+지리적 거리와 세대 간 거리도 멀어졌다.<br>
+국내 통계는 1인·2인 가구의 비중이<br>
+지속적으로 늘어 왔음을 보여 준다.<sup class="fn-ref"><a href="#fn-ch7-4" id="fnref-ch7-4">4</a></sup><br>
+이전 세대처럼 친정·시댁이 가까이 있는 가정은<br>
+점점 줄어들고 있다.</p>
+<p>이 변화 자체를 한탄할 일은 아니다.<br>
+오히려 묻는 자리가 달라진다.<br>
+<em>어떤 형태의 가족이라도, 어떻게 임신을 함께 통과하는 자리를 다시 만들 수 있을까.</em></p>
+<p>조부모가 가까이 있다면 작은 도움을 주고받는 자리가 될 수 있고,<br>
+멀리 있다면 영상통화로 연결되는 자리가 될 수 있다.<br>
+형제자매가 있다면 짐을 나누는 자리가 되고,<br>
+가까운 친구나 이웃이 있다면 그 사람이 곧 가족의 자리에 함께 선다.<br>
+한부모 가정이라면 산부인과 의료진,<br>
+산후 돌봄 도우미, 모성 지원 단체,<br>
+온라인 커뮤니티가 그 자리의 일부가 될 수 있다.</p>
+<p><mark class="pen-yellow">가족이라는 말은<br>
+구성원 수보다 함께 통과하는 자리에 가깝다.</mark><br>
+사주당이 본 자리도 그러했다.</p>
+<h3 id="ch7-s5" class="subhead">가족이 만드는 환경 — 정서적 안전기지라는 자리</h3>
+<p>현대 발달심리학은 임신 이후의 양육 관계를 이야기할 때<br>
+<em>정서적 안전기지(secure base)</em>라는 개념을 자주 쓴다.<br>
+양육자가 곁에 있다는 사실이<br>
+아이에게 세상을 탐색할 수 있는 토대를 만든다는 시선이다.<sup class="fn-ref"><a href="#fn-ch7-5" id="fnref-ch7-5">5</a></sup></p>
+<p>이 개념은 임신기로도 자연스럽게 이어진다.<br>
+태아가 자라는 자궁이 첫 번째 환경이라면,<br>
+그 자궁을 품은 엄마의 몸과 마음은 두 번째 환경이고,<br>
+그 엄마를 품은 가족과 가까운 관계의 분위기는<br>
+세 번째 환경이 된다.<br>
+세 환경의 결이 서로 맞물려 흐를 때<br>
+임신기의 안정이 만들어진다.</p>
+<p>가족이 만드는 안전기지는<br>
+완전한 평온을 뜻하지 않는다.<br>
+오히려 흔들림이 있을 때<br>
+다시 안정으로 돌아올 수 있는 흐름에 가깝다.<br>
+누군가가 화를 낸 날에도<br>
+다시 마주 앉아 풀어내는 자리,<br>
+서로의 한계를 인정하고<br>
+함께 회복할 수 있는 결.<br>
+이런 흐름이 곧 임신기 가족의 정서적 안전기지가 된다.</p>
+<p>이 시선은 사주당이 본 자리와도 닿는다.<br>
+그녀가 권한 것은 한 번도 흔들리지 않는 가정이 아니라,<br>
+임신부 곁의 사람들이 자기 결을 함께 살피며<br>
+다시 부드러운 자리로 돌아올 수 있는 가정이었다.</p>
+<div class="infographic infographic-circle">
+  <div class="ring ring-society">사회</div>
+  <div class="ring ring-family">가족</div>
+  <div class="ring ring-mother">엄마</div>
+  <div class="ring ring-uterus">자궁</div>
+  <div class="ring ring-fetus">태아</div>
+</div>
+<div class="infographic-caption">태교는 한 사람의 일이 아니라 다섯 겹 환경의 결이다</div>
+<p>이 다섯 겹 환경 가운데<br>
+태아에게 직접 닿는 것은 자궁의 결이지만,<br>
+그 자궁의 결을 만드는 것은 엄마의 결이고,<br>
+엄마의 결을 만드는 것은 가족의 결이며,<br>
+가족의 결을 만드는 것은 사회의 결이다.<br>
+다섯 겹은 따로 떨어져 있지 않다.</p>
+<h3 id="ch7-s6" class="subhead">함께 만드는 안정감</h3>
+<p>맘곁이 제안하는 가족 태교의 중요한 원칙은<br>
+"함께 만드는 안정감"이다.</p>
+<p>가족이 태교에 참여한다는 것은<br>
+엄마를 대신해 무언가를 다 해 주겠다는 뜻이 아니다.<br>
+엄마가 혼자가 아니라는 사실을 몸으로 보여 주는 일이다.</p>
+<p>오늘은 엄마가 더 힘들 수 있고,<br>
+내일은 조금 여유가 있을 수 있다.<br>
+그 변화를 가족이 함께 바라보고<br>
+필요한 도움을 나누는 과정 자체가 태교다.</p>
+<p>이론편의 시선에서 보면,<br>
+가족의 정서적 지지가<br>
+모-태아 애착이나 임신기 정서적 안정과 관련될 수 있다는 흐름은<br>
+국내 모성건강 분야에서도 일관되게 보고되어 왔다.<sup class="fn-ref"><a href="#fn-ch7-2" id="fnref-ch7-2">2</a></sup><br>
+다만 이 책은 수치를 강조하기보다<br>
+그 연구들이 가리키는 방향을 맘곁의 언어로 옮기고자 한다.<br>
+한 사람의 힘으로 아이를 키우지 않아도 된다는 메시지다.</p>
+<p>이 자리에서 한 가지를 더 짚어 두고 싶다.<br>
+가족의 지지가 어렵거나 부족하게 느껴질 때라도<br>
+그 자체가 임신부의 잘못이 아니다.<br>
+가족 형태와 상황은 사람마다 다르고,<br>
+도움을 청할 수 있는 자리도 다르다.<br>
+산부인과 의료진, 산후 돌봄 도우미,<br>
+지역 보건소의 모성·영유아 지원 사업,<br>
+정신건강 전문가의 상담은<br>
+모두 가족의 자리를 보완할 수 있는 통로다.<br>
+혼자 견디기 어려운 순간이 있다면<br>
+주저 없이 그 자리에 손을 내밀어 보길 권한다.</p>
+<h3 id="ch7-s7" class="subhead">이 장의 정리</h3>
+<ul class="bullets">
+<li>사주당이 200년 전 남긴 한 문장 — <em>"태교는 어머니 혼자 하는 게 아니다"</em> — 은 오늘도 가족 전체를 가리킨다.</li>
+<li>조선 왕실은 임신·출산 때 산실청·호산청이라는 임시 기구를 두어 <em>온 가족·온 사회가 함께 통과하는 시간</em>으로 다루었다. 그 마음은 오늘에도 살아 있다.</li>
+<li>가족 태교는 거창할 필요가 없다. 아침의 한 마디, 저녁의 한 끼니, 짧은 산책, 귀 기울이는 한순간, 잠들기 전 한 문장. 다섯 가지 작은 장면이면 충분하다.</li>
+<li><em>가족</em>은 사람 수의 문제가 아니라 <em>함께 시간을 보내는 자리</em>다. 한부모, 조손, 다른 형태의 가족도 모두 그 자리에 함께 선다.</li>
+<li>가족이 만드는 <em>안전한 자리</em>는 양육에서 말하는 안전기지와 같은 결을 가진다.</li>
+</ul>
+<h3 id="ch7-s8" class="subhead">다음 장으로</h3>
+<p>태교를 엄마 혼자 감당해야 하는 숙제가 아니라<br>
+가족이 함께 만들어 가는 관계의 장으로 다시 볼 때,<br>
+임신의 시간은 훨씬 덜 외롭고<br>
+훨씬 더 따뜻해진다.</p>
+<p>다음 장에서는 그 가족의 자리 안에서<br>
+가장 자주 막연하게 남겨지는 한 자리,<br>
+즉 아빠의 태교를 따로 들여다본다.<br>
+그 자리는 보조의 자리가 아니라<br>
+또 다른 부모로서의 자리다.</p>
+<aside class="footnotes">
+<h4>각주</h4>
+<ol>
+<li id="fn-ch7-1">사주당 이씨, 『태교신기』 1장 — <em>"胎之敎, 非母獨爲也"</em>(태교는 어머니 혼자 하는 것이 아니다) 및 그 뒤를 잇는 가족 공동 돌봄 구절. 2장 [^2]·4장 [^3]과 동일한 한국어 번역본·역자·페이지로 통일. 본 챕터에서 처음으로 박스 인용으로 노출되므로, 출간 전 검수자가 정확한 원문·언해·번역 판본을 명시할 것. <a class="fn-back" href="#fnref-ch7-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch7-2">가족의 정서적 지지·사회적 지지가 임신기 정서·모-태아 애착과 관련될 수 있다는 국내 모성건강 연구 — 한국간호과학회지(JKAN) 및 모성간호학·가족학 학술지의 관련 논문에서 본 챕터의 진술 범위(상관성의 시사, 인과 단정 회피)에 부합하는 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch7-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch7-3">산실청(産室廳)·호산청(護産廳) 운영 — 한국학중앙연구원 sillokwiki 「산실청」·「호산청」 항목 및 『조선왕조실록』 관련 일자 기록(1603년 인목왕후 출산 관련 기록을 비롯해 17세기 이후 제도화 관련). 본 챕터에서는 표·도식 수준에서 운영 대상·시기·역할만 정리. 출간 전 한국학 검수자가 sillokwiki URL과 1차 사료 일자를 채워 표기. <a class="fn-back" href="#fnref-ch7-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch7-4">한국의 가구 구성 변화 — 통계청(KOSIS) 인구주택총조사 가구 형태별 구성, 1인·2인 가구 비중 추이. 본 챕터에서는 비율 단정 없이 "지속적으로 늘어 왔다" 수준의 일반 합의로만 인용. 출간 전 검수자가 가장 최근 발표 자료의 연도·수치를 채울 것. 문장은 불안 자극이 아닌 변화의 사실 진술 톤을 유지한다. <a class="fn-back" href="#fnref-ch7-4" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch7-5">정서적 안전기지(secure base) — John Bowlby의 부착이론(<em>A Secure Base</em>, 1988 외) 계열의 발달심리·간호학 문헌. 본 챕터에서는 임신기 환경의 결로 확장 적용한 해석에 머무르므로, 부착이론 원전과 임신기 적용을 다룬 국내 모성건강·발달심리 학술지의 관련 종설 1건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch7-5" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch7-6">조선 왕실의 임신·출산·산후 의례 — 안태(安胎)·태실(胎室)·『임산예지법』 등. 한국학중앙연구원 sillokwiki 「산실청」·「호산청」·「안태사」·「태실도감」 항목 및 장서각 소장 자료. 부록 C-2 항목과 동일 자료 계통. 한국학 검수자가 sillokwiki URL과 1차 사료 일자를 채워 표기. <a class="fn-back" href="#fnref-ch7-6" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch7-7">한국의 산후 돌봄 풍속과 산후조리원 이용 현황 — 통계청(KOSIS) 산후조리 실태조사, 보건복지부 산후조리원 관련 보고서. 본 장에서는 비율 단정 없이 "비교적 높은 이용률"·"여전히 이어지고 있다" 수준의 일반 추세 진술로만 인용. 출간 전 검수자가 가장 최근 발표 자료의 연도·수치로 보강. <a class="fn-back" href="#fnref-ch7-7" aria-label="본문으로 돌아가기">↩</a></li>
+</ol>
+</aside>
+</div>
+</section>
+<section id="ch8" class="chapter">
+<header class="chapter-header"><span class="chapter-num">8장</span><h2 class="chapter-title">아빠의 태교</h2></header>
+<div class="chapter-body">
+<p>아빠 태교는 흔히 "엄마 태교를 도와주는 일"처럼 다루어져 왔다.<br>
+그러나 이 장은 그 시선을 한 칸 옮겨 놓고 시작한다.<br>
+아빠 태교는 보조가 아니라<br>
+또 한 사람의 부모가 자기 자리에서 만드는 태교다.</p>
+<p>이 장은 모든 임신 가정에 아빠가 함께 있을 것을 전제하지 않는다.<br>
+한부모 가정, 다른 가까운 보호자가 그 자리를 채우는 가정,<br>
+이미 곁을 잃은 채 임신을 지나가는 가정도 있다.<br>
+여기서 "아빠"라고 부르는 자리는<br>
+아이를 함께 맞이하는 또 한 사람의 가까운 보호자라는 뜻으로<br>
+읽어 주면 좋겠다.<br>
+지금 그 자리가 비어 있다면,<br>
+이 장이 또 다른 부담으로 닿지 않기를 바란다.</p>
+<hr class="section-break">
+<h3 id="ch8-s1" class="subhead">임신 전부터 시작되는 자리</h3>
+<p>아빠의 태교는 임신이 확인된 뒤에 시작되는 일이 아니다.<br>
+부모가 되기 전의 생활 습관도<br>
+이미 임신과 무관하지 않다는 점이<br>
+관련 의학 연구에서 꾸준히 보고되어 왔다.<sup class="fn-ref"><a href="#fn-ch8-1" id="fnref-ch8-1">1</a></sup><br>
+음주, 흡연, 만성적인 수면 부족, 과도한 스트레스 같은 요소가<br>
+정자 건강과 임신 초기의 환경에 영향을 줄 수 있다는 흐름이다.</p>
+<p>이 사실을 죄책감의 자료로 읽을 필요는 없다.<br>
+이미 지나온 시간을 되돌릴 수도 없다.<br>
+오히려 한 가지 시사점만 새기면 된다.<br>
+태교의 시간은 엄마의 몸에서 시작되지 않는다.<br>
+아빠가 자신의 몸과 생활을 돌보는 일은<br>
+이미 그 시간의 일부다.</p>
+<h3 id="ch8-s2" class="subhead">정자의 후성유전 — 임신 전부터 시작되는 자리</h3>
+<p>좀 더 구체적인 자리에서 살펴보면,<br>
+2010년대 이후 의학 연구는<br>
+부계의 임신 전 환경이 <em>정자의 후성유전적 결</em>에 영향을 줄 수 있다는<br>
+가능성을 일관되게 시사해 왔다.<sup class="fn-ref"><a href="#fn-ch8-3" id="fnref-ch8-3-2">3</a></sup><br>
+음주·흡연·비만·만성 스트레스·환경 노출 같은 요소가<br>
+정자의 DNA 메틸화 같은 후성유전적 표지에<br>
+미세한 변화를 만들 수 있다는 흐름이다.</p>
+<p>이 흐름은 단정이 아니라 <em>가능성의 자리</em>에 머문다.<br>
+아직 모든 통로가 명확하게 밝혀진 것은 아니고,<br>
+효과 크기 또한 사람과 환경에 따라 달라진다.<br>
+다만 한 가지는 분명히 닿는다.<br>
+<em>아버지의 임신 전 자리도 환경의 일부</em>라는 사실이다.</p>
+<p>흥미로운 점은 사주당 이씨가 200년 전에 이미 같은 자리를 가리켰다는 것이다.<br>
+『태교신기』 1장 1-3절은<br>
+<em>"태교의 책임은 오로지 아버지에게 있다"</em>고 말하며,<br>
+잉태 시 아비의 정(精)과 마음가짐이<br>
+자식의 골격을 결정한다고 적었다.<br>
+오늘의 후성유전 연구가 도달한 결론과<br>
+같은 곳을 가리킨다.</p>
+<h3 id="ch8-s3" class="subhead">한국 아빠가 놓인 자리</h3>
+<p>부의 임신기 참여를 이야기할 때<br>
+한국의 사회적 자리도 함께 봐야 한다.</p>
+<p>한국의 남성 육아휴직 사용률은<br>
+지속적으로 늘어 왔지만 여전히 OECD 평균보다 낮은 편이고,<br>
+근로시간은 OECD 회원국 가운데 비교적 긴 편으로 보고된다.<sup class="fn-ref"><a href="#fn-ch8-4" id="fnref-ch8-4">4</a></sup><br>
+이 두 가지가 의미하는 바는 분명하다.<br>
+임신과 육아에 함께하고 싶은 마음이 있어도<br>
+실제로 그 자리에 손을 보탤 수 있는 시간이 부족한 환경이라는 점이다.</p>
+<p>이 자리를 <em>개인의 의지 부족</em>으로 환원하는 것은 정확하지 않다.<br>
+오히려 한 단계 거슬러 올라가야 한다.<br>
+직장 문화·근무 시간·휴가 제도·가족 친화 정책 — 이 큰 환경이<br>
+아빠가 임신과 출산에 함께할 수 있는 자리를 결정짓는다.</p>
+<p>다만 이 환경의 한계 안에서도<br>
+<em>하루 한 마디·일주일 한 산책·매일 한 통화</em> 정도의<br>
+작은 자리는 만들 수 있다.<br>
+환경의 큰 그림을 한꺼번에 바꿀 수는 없어도,<br>
+오늘 한 칸의 자리는 누구든 만들 수 있다.</p>
+<h3 id="ch8-s4" class="subhead">임신 중 아빠가 만드는 환경</h3>
+<p>임신이 시작된 이후 아빠의 가장 큰 기여는<br>
+화려한 행동이 아니라<br>
+엄마가 안정될 수 있는 환경을 곁에서 만드는 일이다.</p>
+<p>엄마가 충분히 쉴 수 있도록 일상의 무게를 나눠 드는 것,<br>
+무리한 부탁과 불필요한 걱정을 줄여 주는 것,<br>
+함께 식사하고 함께 산책하는 시간이<br>
+의무가 아니라 즐거움이 되도록 만드는 것.<br>
+이런 일들은 그 자체로 정서적 지지의 한 형태다.</p>
+<p>엄마가 안정될 때 태아도 안정된다는 말은<br>
+"엄마를 잘 챙기면 아이가 잘 자란다"는<br>
+단순한 인과의 표현이 아니다.<br>
+가족 안에서 누군가가<br>
+엄마의 흔들림을 함께 안아 줄 때<br>
+임신이라는 시간 전체의 결이 부드러워진다는 뜻이다.</p>
+<p>부의 임신기 참여가<br>
+산모의 정서적 안정이나 모-태아 애착과 관련될 수 있다는 흐름은<br>
+국내·외 부성·산전 참여 연구에서도 보고되어 왔다.<sup class="fn-ref"><a href="#fn-ch8-2" id="fnref-ch8-2-2">2</a></sup></p>
+<h4 class="subhead-2">한눈에 — 아빠가 미치는 자리</h4>
+<p>다음 표는 부성의 영향에 관한 학술 흐름을<br>
+세 갈래로 나누어 한눈에 보기 위한 것이다.</p>
+<table class="data">
+<thead><tr>
+<th>영역</th>
+<th>학술이 보고해 온 자리</th>
+<th>의미</th>
+</tr></thead><tbody>
+<tr>
+<td>임신 전 — 정자의 결</td>
+<td>음주·흡연·비만·만성 스트레스 등이 정자 후성유전에 미세 변화를 만들 가능성<sup class="fn-ref"><a href="#fn-ch8-3" id="fnref-ch8-3">3</a></sup></td>
+<td>임신 전 생활 습관도 환경의 일부</td>
+</tr>
+<tr>
+<td>임신 중 — 부의 참여</td>
+<td>부의 산전 참여와 산모의 정서적 안정·모-태아 애착의 양적 관련성<sup class="fn-ref"><a href="#fn-ch8-2" id="fnref-ch8-2">2</a></sup></td>
+<td>곁에 있는 사람이 곧 환경</td>
+</tr>
+<tr>
+<td>임신 후 — 부의 정서</td>
+<td>산전·산후 부성 우울이 <em>드물지 않은 일</em>로 보고됨 (대략 10명 가운데 1명 정도의 흐름)<sup class="fn-ref"><a href="#fn-ch8-5" id="fnref-ch8-5">5</a></sup></td>
+<td>아빠 자신의 마음도 환경의 일부</td>
+</tr>
+</tbody></table>
+<p>표가 가리키는 자리는 한 가지로 모인다.<br>
+*아빠는 보조가 아니다.<br>
+임신 전·중·후 전 기간에 걸쳐 환경의 한 축으로 함께 자리 잡는 사람*이다.</p>
+<h3 id="ch8-s5" class="subhead">목소리, 접촉, 태담</h3>
+<p>태아의 청각이 점차 발달하는 시기가 되면<br>
+아빠의 목소리도 자궁 안에 닿는다.<br>
+저음에 더 가까운 목소리는 자궁 안 환경에서 잘 전달되는 편이며,<br>
+태아는 반복되는 아빠의 목소리에<br>
+점차 익숙해지는 것으로 알려져 있다.</p>
+<p>여기서 핵심은 효과의 크기가 아니라 의미다.<br>
+아빠가 짧게라도 매일 배를 향해 말을 건네고,<br>
+가끔 손을 얹어 함께 호흡하는 시간을 가지는 일은<br>
+아이에게 "이 집은 함께 나를 맞이하는 집이다"라는<br>
+정서적 메시지가 된다.</p>
+<p>아빠 태담은 길 필요도, 잘할 필요도 없다.<br>
+"오늘 하루 어땠어?"<br>
+"오늘은 아빠가 좀 피곤했어. 그래도 너 생각하니 힘이 나."<br>
+이런 짧은 한두 마디면 충분하다.<br>
+중요한 것은 말의 분량이 아니라<br>
+그 자리에 자기 목소리가 있다는 사실이다.</p>
+<h3 id="ch8-s6" class="subhead">아빠도 흔들린다</h3>
+<p>여기서 한 가지 자주 잊히는 사실이 있다.<br>
+아빠 역시 임신과 출산을 앞두고 흔들린다.</p>
+<p>처음 부모가 된다는 무게,<br>
+경제적 책임에 대한 부담,<br>
+관계의 변화에 대한 두려움,<br>
+잘하지 못하면 어떻게 하나 하는 불안.<br>
+이런 감정들은 자연스럽게 떠오를 수 있다.</p>
+<p>이 감정을 모른 척 누르고 "강한 아빠"가 되려 할 필요는 없다.<br>
+오히려 그 감정을 인정하고<br>
+배우자나 가까운 사람과 나누는 일이<br>
+아빠 자신의 정서적 환경을 정돈하는 데 도움이 된다.</p>
+<p>엄마의 감정이 태아의 환경이 되는 것처럼,<br>
+아빠의 감정도 가족 전체의 환경의 한 부분이다.<br>
+아빠가 자신의 마음을 돌볼 줄 아는 것은<br>
+태교에서 결코 작은 일이 아니다.</p>
+<p>특히 한 가지를 짚어 두고 싶다.<br>
+산전·산후 부성 우울에 대한 연구 흐름은<br>
+<em>아빠 또한 비슷한 시기를 통과하는 일이 드물지 않다</em>는 점을 일관되게 시사해 왔다.<sup class="fn-ref"><a href="#fn-ch8-5" id="fnref-ch8-5-2">5</a></sup><br>
+연구마다 비율은 달라지지만,<br>
+대략 10명 가운데 1명 정도의 흐름이 자주 보고된다.<br>
+부성 우울은 자녀 발달에도 결을 남길 수 있는 자리로 다뤄지므로,<br>
+아빠가 자기 정서를 돌보는 일은<br>
+가족 전체의 환경을 두텁게 하는 실제적 기여가 된다.</p>
+<p>힘든 마음이 길어지거나<br>
+일상에 지장을 줄 만큼 무거워질 때는<br>
+정신건강 전문가와 상의하는 것을 권한다.<br>
+도움을 청하는 일은 약함이 아니라<br>
+가족과 자신을 함께 돌보려는 적극적인 태도다.</p>
+<h3 id="ch8-s7" class="subhead">보조가 아니라 또 다른 부모</h3>
+<p>이 장에서 가장 전하고 싶은 한 문장이 있다.</p>
+<p><mark class="pen-yellow">아빠 태교는 엄마를 돕는 일이 아니라<br>
+또 다른 한 사람이 자기 자리에서 만드는 태교다.</mark></p>
+<p>엄마와 똑같은 일을 해야 한다는 뜻이 아니다.<br>
+임신과 출산을 직접 겪는 사람의 자리와<br>
+곁에서 함께 그 시간을 지나가는 사람의 자리는 분명히 다르다.<br>
+그러나 다르다는 사실이<br>
+한쪽이 본주이고 다른 한쪽이 보조라는 뜻은 아니다.</p>
+<p>각자의 자리에서, 각자의 방식으로,<br>
+함께 아이를 맞이할 준비를 하는 일.<br>
+그것이 맘곁이 말하는 아빠 태교다.</p>
+<h3 id="ch8-s8" class="subhead">이 장의 정리</h3>
+<ul class="bullets">
+<li>아빠 태교는 <em>엄마를 도와주는 일</em>이 아니라 <em>또 다른 부모로서 자기 자리에서 만드는 태교</em>다.</li>
+<li>임신 전 아빠의 생활 습관도 — 술·담배·수면·스트레스 같은 것들이 — 정자를 통해 태아의 첫 환경에 닿을 수 있다는 연구가 이어지고 있다.</li>
+<li>임신 중 아빠의 가장 큰 기여는 <em>엄마가 안정될 수 있는 환경</em>을 곁에서 만드는 일이다.</li>
+<li>임신 중·출산 후 아빠의 우울도 드물지 않다(아빠 10명 중 1명 정도). 아빠가 자기 마음을 돌보는 일도 가족 환경의 한 부분이다.</li>
+<li>한국 아빠가 놓인 <em>바깥 환경</em>(육아휴직·긴 근로시간)도 함께 봐야 한다. 개인의 의지만으로 풀리지 않는 자리다.</li>
+</ul>
+<h3 id="ch8-s9" class="subhead">다음 장으로</h3>
+<p>다음 장에서는<br>
+지금까지 살펴본 엄마와 가족, 그리고 아빠의 자리를 거친 다음에<br>
+"좋은 태교와 부담스러운 태교의 차이"를 정리해 본다.<br>
+태교가 사랑이 아니라 부담이 되는 순간을 함께 보고,<br>
+그 경계를 어떻게 넘지 않을 수 있는지를<br>
+맘곁의 시선으로 다시 묶어 보려 한다.</p>
+<aside class="footnotes">
+<h4>각주</h4>
+<ol>
+<li id="fn-ch8-1">부계의 임신 전 생활 습관(음주·흡연·수면·체중·만성 스트레스 등)과 정자 건강·임신 초기 환경의 관련성에 관한 의학 연구 — preconception paternal health 관련 국제 학술지(예: <em>Human Reproduction</em>, <em>Andrology</em>) 및 국내 비뇨의학·산부인과 학술지의 메타리뷰를 출발점으로, 본 챕터의 진술 범위(상관성의 시사, 인과 단정 회피)에 부합하는 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch8-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch8-2">부의 임신기 참여(prenatal paternal involvement)가 산모의 정서적 안정·모-태아 애착·임신 결과와 관련될 수 있다는 국내·외 연구 — 국내 가족학·간호학·발달심리 학술지의 부성 참여 관련 논문에서 본 챕터의 진술 범위에 부합하는 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch8-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch8-3">부성 후성유전(paternal epigenetics) — Soubry A. <em>POHaD: Why we should study future fathers</em>, <em>Environmental Epigenetics</em>, 2018; Soubry A et al. <em>Newborns of obese parents have altered DNA methylation patterns</em>, <em>International Journal of Obesity</em>, 2015; Vassoler FM et al. <em>Epigenetic inheritance of a cocaine-resistance phenotype</em>, <em>Nature Neuroscience</em>, 2013. 본 장에서는 가능성·통로 수준의 시사로만 인용한다. 부록 C-6 항목과 동일 자료 계통. <a class="fn-back" href="#fnref-ch8-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch8-4">한국 남성 육아휴직 사용률·평균 근로시간 — 통계청(KOSIS), 고용노동부 통계, OECD Family Database. 본 장에서는 비율 단정 없이 "지속적으로 늘어 왔다", "OECD 평균보다 낮은 편", "비교적 긴 편으로 보고된다" 수준의 일반 추세 진술로만 인용. 출간 전 검수자가 가장 최근 발표 자료의 연도·수치로 보강. <a class="fn-back" href="#fnref-ch8-4" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch8-5">산전·산후 부성 우울 — Paulson JF, Bazemore SD. <em>Prenatal and postpartum depression in fathers and its association with maternal depression: a meta-analysis</em>, <em>JAMA</em>, 2010. 부의 호르몬 변화 관련 자료는 Saxbe DE et al. <em>Fathers' decline in testosterone and synchrony with partner</em>, <em>Hormones and Behavior</em>, 2017. 본 장에서는 "10명 가운데 1명 정도의 흐름이 자주 보고된다" 수준의 부드러운 표현으로 인용. 부록 C-6 항목과 동일. <a class="fn-back" href="#fnref-ch8-5" aria-label="본문으로 돌아가기">↩</a></li>
+</ol>
+</aside>
+</div>
+</section>
+<section id="ch9" class="chapter">
+<header class="chapter-header"><span class="chapter-num">9장</span><h2 class="chapter-title">좋은 태교와 부담스러운 태교의 차이</h2></header>
+<div class="chapter-body">
+<p>이 장은 어떤 태교 방식을 선택해 온 독자도 비난하지 않는다.<br>
+태교 음악을 열심히 들려주었던 시간,<br>
+태교 책을 펼쳤던 밤,<br>
+SNS에 인증을 남겼던 하루,<br>
+그 모든 시간은 아이를 향한 사랑에서 나온 것이었다.<br>
+이 장이 하려는 일은<br>
+어떤 행동이 옳고 어떤 행동이 그르다고 가르치는 일이 아니라,<br>
+태교가 사랑이 아니라 부담이 되어 가는 순간을<br>
+함께 알아차리는 일에 가깝다.</p>
+<hr class="section-break">
+<p>태교에 대해 가장 자주 듣는 조언 중 하나는<br>
+"좋은 것을 많이 보여 주고, 많이 들려주라"는 말이다.<br>
+이 말 자체는 틀리지 않을 수 있다.<br>
+다만 문제가 되는 것은<br>
+이 조언이 점점 "더 많이, 더 열심히 해야 하는 경쟁"으로<br>
+흘러가기 쉽다는 점이다.</p>
+<p>하루에 몇 시간씩 책을 읽어야 할 것 같고,<br>
+음악을 틀고, 운동을 하고, 강의를 듣고,<br>
+프로그램을 따라가야만 좋은 엄마가 되는 것처럼 느껴지기도 한다.<br>
+그러다 보면 태교는 엄마의 마음을 편하게 하는 시간이 아니라<br>
+끝나지 않는 수행과 체크리스트가 되어 버린다.</p>
+<h3 id="ch9-s1" class="subhead">차이는 "얼마나"가 아니라 "무엇을 중심에 두었는가"</h3>
+<p><mark class="pen-yellow">좋은 태교와 부담스러운 태교의 차이는<br>
+"얼마나 많이 했는가"가 아니라<br>
+"무엇을 중심에 두었는가"에서 갈린다.</mark></p>
+<p>부담스러운 태교는 결과를 중심에 둔다.<br>
+"이렇게 하면 아이가 더 똑똑해질 것이다",<br>
+"이렇게 하지 않으면 아이에게 안 좋을 것이다"<br>
+같은 문장들이 엄마의 마음을 계속 조이고,<br>
+작은 실패에도 죄책감을 느끼게 만든다.</p>
+<p>반대로 좋은 태교는 관계를 중심에 둔다.<br>
+"오늘 이 아이와 내가 조금 더 편안하게 연결될 수 있을까?"<br>
+"오늘 내 마음을 조금 더 다정하게 돌볼 수 있을까?"를<br>
+질문의 출발점으로 삼는다.</p>
+<h4 class="subhead-2">한눈에 — 부담스러운 태교 vs 맘곁이 권하는 태교</h4>
+<p>같은 행동도 어떤 마음에서 나오느냐에 따라 결이 달라진다.<br>
+다음 표는 흔히 마주치는 12가지 자리에서<br>
+부담의 결과 돌봄의 결이 어떻게 다르게 흐르는지를<br>
+한눈에 비교해 보기 위한 것이다.</p>
+<table class="data">
+<thead><tr>
+<th>자리</th>
+<th>부담스러운 태교의 결</th>
+<th>맘곁이 권하는 결</th>
+</tr></thead><tbody>
+<tr>
+<td>식사</td>
+<td>정해진 식단을 어긴 자기 자신을 자책</td>
+<td>다음 식사를 천천히 정돈</td>
+</tr>
+<tr>
+<td>운동</td>
+<td>정해진 횟수·강도를 강박적으로 채움</td>
+<td>오늘의 몸 상태에 맞는 만큼 가볍게</td>
+</tr>
+<tr>
+<td>태담</td>
+<td>"충분히 자주 했는가"를 점검</td>
+<td>한 번이라도 마음이 닿은 순간을 기억</td>
+</tr>
+<tr>
+<td>음악</td>
+<td>"어떤 음악이 좋은지"를 끝없이 검색</td>
+<td>엄마가 편안한 곡을 그대로</td>
+</tr>
+<tr>
+<td>정보 검색</td>
+<td>검색을 끝없이 반복, 불안 증가</td>
+<td>필요한 정보 한 번 확인하고 닫기</td>
+</tr>
+<tr>
+<td>비교</td>
+<td>다른 임산부 SNS와 자기 비교</td>
+<td>우리에게 맞는 리듬을 찾기</td>
+</tr>
+<tr>
+<td>감정</td>
+<td>부정적 감정 자체를 실패로 봄</td>
+<td>감정을 신호로 보고 돌봄</td>
+</tr>
+<tr>
+<td>가족</td>
+<td>가족이 잘하지 못함을 답답해함</td>
+<td>함께 만드는 결을 천천히 조정</td>
+</tr>
+<tr>
+<td>잠</td>
+<td>정해진 수면 시간 못 지켰다고 자책</td>
+<td>"오늘 충분히 쉬었는가"를 묻기</td>
+</tr>
+<tr>
+<td>기록</td>
+<td>매일 빠짐없이 기록해야 한다는 의무</td>
+<td>한 줄이라도 남으면 충분</td>
+</tr>
+<tr>
+<td>실천</td>
+<td>다섯 원칙을 모두 지켜야 한다는 압박</td>
+<td>오늘 한 가지부터</td>
+</tr>
+<tr>
+<td>마무리</td>
+<td>잘 해냈는지 평가</td>
+<td>"괜찮았다"는 감각이 남기를</td>
+</tr>
+</tbody></table>
+<p>표의 핵심은 <em>어느 쪽이 옳다</em>가 아니다.<br>
+같은 시간을 어떤 결로 통과하는가의 차이다.<br>
+부담의 결로 자주 흐르는 자기 자신을 발견했다면,<br>
+그 발견 자체가 이미 돌봄으로 옮겨 가는 출발선이다.</p>
+<div class="infographic infographic-flow">
+  <div class="flow-side flow-from"><span class="flow-label">From</span>부담의 결<small>결과 중심 · 비교 · 검열 · 강박</small></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-side flow-to"><span class="flow-label">To</span>돌봄의 결<small>관계 중심 · 우리 리듬 · 신호로 듣기</small></div>
+</div>
+<div class="infographic-caption">부담 → 돌봄으로 옮겨 가는 자리</div>
+<h4 class="subhead-2">왜 부담스러운 태교는 역효과인가 — 모성 스트레스의 자리</h4>
+<p>이 표가 단지 <em>기분의 문제</em>가 아닌 이유가 있다.<br>
+6장에서 살펴본 DOHaD 흐름과 모성 스트레스 반응은<br>
+지속되는 부담이 임신부의 호르몬 환경에도<br>
+미세한 결을 남길 수 있다는 가능성을 시사한다.<sup class="fn-ref"><a href="#fn-ch9-1" id="fnref-ch9-1">1</a></sup><br>
+즉 부담의 결로 흐르는 일상은<br>
+<em>마음만 힘든 일</em>이 아니라<br>
+태아가 머무는 환경의 결에도 닿을 수 있는 자리다.</p>
+<p>이 사실을 다시 죄책감의 근거로 쓰는 것은 정확하지 않다.<br>
+오히려 한 가지를 분명히 한다.<br>
+<em>부담을 줄이는 일은 태교의 외부가 아니라 태교의 내부</em>라는 사실이다.<br>
+잘하지 못한 하루를 자책하는 시간보다<br>
+다음 자리로 부드럽게 옮겨 가는 시간이<br>
+실제로 더 안정된 환경을 만든다.</p>
+<h4 class="subhead-2">비교의 함정 — 정보 환경의 자리</h4>
+<p>비교가 자주 일어나는 자리 가운데 하나는<br>
+오늘날 임신부가 가장 많이 머무는 정보 환경,<br>
+즉 SNS와 인터넷 커뮤니티다.<br>
+임신부의 SNS·맘카페 사용 시간이<br>
+산전 정서에 영향을 줄 수 있다는 보고들은 꾸준히 이어져 왔다.<sup class="fn-ref"><a href="#fn-ch9-2" id="fnref-ch9-2">2</a></sup><br>
+정보의 양 자체보다,<br>
+<em>정보를 받아들이는 자리에서 비교가 자라기 시작하는가</em>가<br>
+더 중요한 변수로 다뤄진다.</p>
+<p>이 자리에서 사주당의 한 절(7-1)이 다시 들린다.<br>
+<em>"사술(邪術)에 미혹됨을 경계하라."</em><br>
+검증되지 않은 정보,<br>
+근거 없이 불안을 자극하는 흐름,<br>
+끝없이 비교를 부르는 자리를<br>
+의식적으로 거리 두는 일.<br>
+오늘의 표현으로 옮기면 <em>정보 환경의 위생</em>에 가깝다.</p>
+<p>정보를 끊으라는 뜻이 아니다.<br>
+필요한 정보는 받아들이되,<br>
+오늘 하루 내 마음을 흔들 만큼의 양은 아닌지를<br>
+스스로 살피는 흐름이다.</p>
+<h3 id="ch9-s2" class="subhead">비교라는 함정</h3>
+<p>부담스러운 태교의 또 다른 특징은 비교다.<br>
+다른 사람의 SNS를 보며<br>
+"저 엄마는 저렇게 열심히 하는데 나는 너무 부족한 것 같다"고<br>
+느끼게 되기 쉽다.</p>
+<p>태교 사진, 공부 인증, 프로그램 수료증, 다양한 활동 기록은<br>
+때로는 자극이 되지만,<br>
+때로는 스스로를 작게 만들기도 한다.</p>
+<p>좋은 태교는 비교를 기준으로 삼지 않는다.<br>
+아이마다, 가족마다, 상황마다 다르기 때문에<br>
+"우리에게 맞는 리듬"을 찾는 일이 더 중요하다.</p>
+<p>이 장이 SNS 자체를 부정하는 것은 아니다.<br>
+같은 시기를 지나는 사람들의 흔적을 보며<br>
+위안을 얻는 독자도 분명히 있다.<br>
+다만 위안 대신 비교가 자라기 시작했다면,<br>
+잠시 화면을 닫고 자기 하루로 돌아오는 일도<br>
+태교의 한 형태라고 말해 두고 싶다.</p>
+<h3 id="ch9-s3" class="subhead">감정을 실패로 보지 않기</h3>
+<p>또 하나 중요한 차이는<br>
+엄마의 마음 상태를 어떻게 대하는지이다.</p>
+<p>부담스러운 태교는 불안, 피곤, 슬픔, 짜증 같은 감정을<br>
+"태교에 나쁜 것"으로 규정하고,<br>
+그 감정을 느낀 것 자체를 실패처럼 느끼게 한다.<br>
+그래서 엄마는 자신의 힘듦을 숨기고<br>
+웃는 얼굴만 보여 주려 하거나,<br>
+감정을 억누르려 할 수 있다.</p>
+<p>하지만 이런 방식은 오래가기 어렵고,<br>
+결국 더 깊은 지침으로 이어질 수 있다.</p>
+<p>좋은 태교는 감정을 실패가 아니라 신호로 본다.<br>
+오늘 내가 예민한 것은<br>
+몸이 많이 지쳐 있다는 뜻일 수 있고,<br>
+요즘 자꾸 불안한 것은<br>
+아직 말로 꺼내지 못한 걱정이 있다는 뜻일 수 있다.<br>
+이 신호를 알아차리고,<br>
+누군가와 나누고,<br>
+조금씩 돌볼 수 있다면<br>
+그 자체가 이미 태교다.</p>
+<p>아이가 자랄 공간은 단지 조용한 방이 아니다.<br>
+엄마의 마음이 어느 정도 숨 쉴 수 있는 자리가 되어야 한다.</p>
+<h3 id="ch9-s4" class="subhead">맘곁이 생각하는 좋은 태교의 기준</h3>
+<p>맘곁이 생각하는 좋은 태교의 기준은 복잡하지 않다.</p>
+<ul class="bullets">
+<li>엄마의 마음이 조금 덜 불안해지는가</li>
+<li>아이와의 관계를 조금 더 선명하게 느끼게 해 주는가</li>
+<li>생활 속에서 무리 없이 반복할 수 있는가</li>
+<li>엄마와 가족이 서로를 더 이해하게 해 주는가</li>
+<li>끝난 뒤에 "잘 해냈다"보다 "괜찮았다"는 감정이 남는가</li>
+</ul>
+<p>이 기준을 떠올려 보면<br>
+태교는 더 이상 특별한 사람만 할 수 있는 일이 아니다.<br>
+오늘 하루 아이를 떠올리며 천천히 숨을 쉬어 본 것,<br>
+짧은 메모로 지금의 마음을 남겨 본 것,<br>
+가족과 웃으며 식사한 것,<br>
+힘든 마음을 솔직히 나눠 본 것이 모두<br>
+좋은 태교가 된다.</p>
+<h3 id="ch9-s5" class="subhead">이 장의 정리</h3>
+<ul class="bullets">
+<li>좋은 태교와 부담스러운 태교는 <em>얼마나 많이 했는가</em>가 아니라 <em>무엇을 중심에 두는가</em>에서 갈린다.</li>
+<li>부담스러운 태교는 <em>결과</em>에 매달리고, <em>남과 비교</em>하고, <em>부정적인 감정을 실패로</em> 본다.</li>
+<li>좋은 태교는 <em>관계</em>를 먼저 보고, <em>우리에게 맞는 속도</em>를 찾고, <em>감정을 신호</em>로 받아들인다.</li>
+<li>부담이 길어지면 단지 기분만 흔들리는 게 아니다. 엄마의 호르몬 환경에도 결이 닿을 수 있다.</li>
+<li>SNS에서 비교가 시작되고 있다면 잠시 화면을 덮고 자기 하루로 돌아오는 것도 태교의 한 형태다.</li>
+</ul>
+<h3 id="ch9-s6" class="subhead">다음 장으로</h3>
+<p>좋은 태교는 결국<br>
+<mark class="pen-peach">엄마에게 "당신은 이미 충분히 노력하고 있다"고<br>
+말해 주는 태교다.</mark></p>
+<p>아이에게 최선을 다하고 싶다는 마음은<br>
+이미 좋은 출발점이다.<br>
+이 책은 그 마음을 조금 덜 무겁게,<br>
+조금 더 편안하게 만들어 주는 이론적 바탕을 나누고자 한다.</p>
+<p>다음 장에서는 지금까지 살펴본 모든 이야기를<br>
+맘곁이 제안하는 다섯 가지 원칙으로 정리하고,<br>
+이 이론편이 어떻게 실천편으로 이어지는지를<br>
+함께 살펴본다.</p>
+<aside class="footnotes">
+<h4>각주</h4>
+<ol>
+<li id="fn-ch9-1">모성 스트레스의 생화학과 태아 환경 — 6장 [^3]과 동일 자료 계통(DOHaD: Barker 1995 <em>BMJ</em>; Gluckman &amp; Hanson 2008 <em>NEJM</em>; Hanson &amp; Gluckman 2014 <em>Physiological Reviews</em>; 모성 스트레스–태아 신경발달: Glover 2014 <em>J Child Psychol Psychiatry</em>). 본 장에서는 <em>지속되는 부담이 호르몬 환경에 미세한 결을 남길 수 있다</em>는 가능성 수준의 인용에 머문다. 부록 C-3·C-4 항목과 동일. <a class="fn-back" href="#fnref-ch9-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch9-2">임신부 SNS·인터넷 정보 환경과 산전 정서의 관련성 — 국내·외 모성건강·디지털건강 분야의 임신부 미디어 사용 연구를 출발점으로, 본 장의 진술 범위(정보 환경의 결과 정서 흐름의 양적 관련 가능성)에 부합하는 1~2건으로 좁혀 표기. 본 장에서는 비율·시간 단정 없이 일반 흐름 진술에 머문다. <a class="fn-back" href="#fnref-ch9-2" aria-label="본문으로 돌아가기">↩</a></li>
+</ol>
+</aside>
+</div>
+</section>
+<section id="ch10" class="chapter">
+<header class="chapter-header"><span class="chapter-num">10장</span><h2 class="chapter-title">맘곁 태교의 다섯 원칙</h2></header>
+<div class="chapter-body">
+<p>이 책은 이제 마지막 장에 닿았다.</p>
+<p>지금까지 우리는 태교를 새로 이해해 보려 했다.<br>
+사주당 이씨의 시선을 빌려<br>
+환경과 관계로서의 태교를 이야기했고,<br>
+현대 의학의 언어로 태아의 발달과 정서 환경을 살펴보았으며,<br>
+임신 중의 식·운동·생활,<br>
+오감과 감정, 가족과 아빠의 자리,<br>
+그리고 좋은 태교와 부담스러운 태교의 차이를<br>
+차례로 짚어 왔다.</p>
+<p>이 모든 이야기를 한 번에 기억하기는 어렵다.<br>
+그러나 이 책이 끝난 뒤에도 곁에 둘 만한<br>
+작은 표지판은 남길 수 있다.<br>
+맘곁이 제안하는 다섯 원칙은 그 표지판이다.<br>
+복잡한 규칙집이 아니라<br>
+엄마와 아기가 편안하게 연결될 수 있도록 돕는<br>
+몇 가지 방향이다.</p>
+<p>각 원칙은 같은 구조로 정리한다.<br>
+<em>핵심 — 사주당과 현대 의학이 가리킨 자리 — 오늘 해 볼 수 있는 작은 실천 셋</em>.</p>
+<h3 id="ch10-s1" class="subhead">1. 연결</h3>
+<p>첫 번째 원칙은 연결이다.</p>
+<p>태교는 무엇을 얼마나 했는가보다<br>
+그 시간 동안 엄마와 아이가 서로를 얼마나 더 의식하게 되었는가가<br>
+중요하다.<br>
+오늘 하루 몇 번이나 아이를 떠올렸는지,<br>
+그 순간 내 마음이 어떤지 잠시 살펴본 것만으로도<br>
+연결은 시작된다.</p>
+<p>『태교신기』의 첫 장(1-4)은 자궁을<br>
+"원초적인 교육 환경"으로 보았다.<br>
+태아는 그 안에서 이미 듣고 느끼고 배우는 존재라는 시선이다.<br>
+같은 자리는 현대 연구에서도 보고된다.<br>
+태아는 임신 중기 무렵부터 모성 음성에 익숙해지고,<br>
+출생 직후에도 어머니의 목소리를 다른 목소리와 다르게 받아들이는 것으로<br>
+보고되어 왔다.<sup class="fn-ref"><a href="#fn-ch10-1" id="fnref-ch10-1">1</a></sup></p>
+<p>연결은 거창한 행위가 아니라 짧은 의식의 순간이다.</p>
+<ul class="bullets">
+<li><strong>작은 실천 (1분)</strong> — 배에 손을 얹고 한 번 깊은 숨을 쉬며 <em>"나 여기 있어"</em>라고 마음으로 말하기</li>
+<li><strong>중간 실천 (5분)</strong> — 잠들기 전 오늘 하루를 한 문장으로 아이에게 들려주기</li>
+<li><strong>깊은 실천 (15분)</strong> — 산책하면서 보이는 것·느끼는 것을 가벼운 태담으로 옮기기</li>
+</ul>
+<h3 id="ch10-s2" class="subhead">2. 반복</h3>
+<p>두 번째 원칙은 반복이다.</p>
+<p>좋은 태교는 한 번의 특별한 이벤트가 아니라<br>
+작고 부드러운 행동이 반복되는 습관에 가깝다.<br>
+매일 같은 시간에 잠시 숨을 고르는 루틴,<br>
+잠들기 전 아이에게 하루를 들려주는 짧은 이야기,<br>
+일주일에 한 번 마음을 정리해 적어 보는 습관 같은 것들은<br>
+모두 반복을 통해 힘을 갖는다.</p>
+<p>사주당은 5장(5-1)에서 태교의 요점을<br>
+<em>"삼가 함(愼)"</em>에 두었다.<br>
+한 번의 큰 결심이 아니라<br>
+일관된 결을 천천히 지켜 가는 자리다.<br>
+오늘의 행동과학도 같은 곳을 가리킨다.<br>
+임신기의 변화는<br>
+한 번의 큰 사건보다 작은 행동의 누적된 일관성에서<br>
+의미 있는 결을 만든다.<sup class="fn-ref"><a href="#fn-ch10-2" id="fnref-ch10-2">2</a></sup></p>
+<ul class="bullets">
+<li><strong>작은 실천 (1분)</strong> — 매일 같은 시간에 한 번, 같은 자리에서 호흡 정리</li>
+<li><strong>중간 실천 (5분)</strong> — 일주일 단위 같은 요일·시간의 짧은 정리(태담·메모·산책 중 하나)</li>
+<li><strong>깊은 실천 (변동)</strong> — "어떤 한 가지를 한 달간 같은 결로 이어 갈까?" 한 가지 정해 보기</li>
+</ul>
+<h3 id="ch10-s3" class="subhead">3. 기록</h3>
+<p>세 번째 원칙은 기록이다.</p>
+<p>기록은 기억을 붙잡고 감정을 정리해 준다.<br>
+오늘 느꼈던 몸의 변화,<br>
+떠오른 걱정,<br>
+아이에게 하고 싶은 말,<br>
+감사했던 순간을 짧게라도 남기면<br>
+임신 기간은 나중에 돌아볼 수 있는 하나의 이야기로 남는다.</p>
+<p>사주당은 9장(9-1)에서<br>
+옛 사람들이 태교의 기록을 <em>"옥판에 새겨 보관했다"</em>고 적었다.<br>
+좋은 자리는 글로 남길 만큼 귀하다는 시선이다.<br>
+오늘의 심리학도 짧은 글쓰기가<br>
+정서를 정돈하고 회복을 돕는 통로 가운데 하나라고 본다.<sup class="fn-ref"><a href="#fn-ch10-3" id="fnref-ch10-3">3</a></sup></p>
+<p>맘곁은 앱과 노트, 태담 기록 같은 도구로<br>
+이 기록을 돕고자 한다.<br>
+중요한 것은 잘 다듬어진 문장이 아니라<br>
+그날의 나를 인정하는 한 줄이면 충분하다는 사실이다.</p>
+<ul class="bullets">
+<li><strong>작은 실천 (30초)</strong> — 하루 한 줄, <em>"오늘 내 마음의 색은 ___"</em> 형식으로 기록</li>
+<li><strong>중간 실천 (3분)</strong> — 일주일에 한 번 <em>몸의 변화·마음의 색·아기에게 하고 싶은 말</em> 세 줄 일기</li>
+<li><strong>깊은 실천 (10분)</strong> — 분기 전환 시점(13주·27주·37주)에 그동안의 기록을 펼쳐 한 단락으로 회고</li>
+</ul>
+<h3 id="ch10-s4" class="subhead">4. 다정한 생활</h3>
+<p>네 번째 원칙은 다정한 생활이다.</p>
+<p>태교는 특별한 시간 속에서만 이루어지는 일이 아니라<br>
+하루 전체를 흐르는 생활의 태도와 연결된다.<br>
+너무 빡빡하게 계획된 하루보다<br>
+적당한 여유와 휴식이 섞인 하루가<br>
+몸과 마음에 더 좋다.</p>
+<p>사주당이 4장에서 가장 많은 분량을 들인 자리는<br>
+도덕적 권고가 아니라 <em>일상의 결</em>이었다(4-7~4-12).<br>
+거처·노동·자세·운동·수면·식이 — 그가 본 태교는<br>
+한 마디로 환경의 디자인이었다.<br>
+오늘의 의학 가이드 역시<br>
+임신 중 일상의 균형을 핵심으로 둔다.<sup class="fn-ref"><a href="#fn-ch10-4" id="fnref-ch10-4">4</a></sup><br>
+무엇을 더 해야 하는가가 아니라,<br>
+<em>어떤 결로 하루를 흐르게 할 것인가</em>의 문제다.</p>
+<p>집안의 말투가 조금 더 부드러워지고,<br>
+엄마에게 <em>"오늘은 좀 쉬어도 괜찮다"</em>고 말해 줄 수 있는 사람이 있다는 것,<br>
+그리고 스스로에게도 그렇게 말해 줄 수 있다는 것이<br>
+다정한 생활이다.</p>
+<ul class="bullets">
+<li><strong>작은 실천 (1분)</strong> — 하루 한 번 자신에게 <em>"잘하고 있어"</em> 한마디 건네기</li>
+<li><strong>중간 실천 (10분)</strong> — 매일 한 끼는 <em>천천히, 다른 화면 없이</em> 식사</li>
+<li><strong>깊은 실천 (30분)</strong> — 일주일에 한 번, 일정 없이 비워 둔 시간 한 칸을 만들기</li>
+</ul>
+<h3 id="ch10-s5" class="subhead">5. 실천으로 이어지는 이해</h3>
+<p>마지막 원칙은 실천으로 이어지는 이해다.</p>
+<p>이론편의 목적은 실천을 대신하는 것이 아니라<br>
+실천을 덜 부담스럽게 만드는 것이다.<br>
+왜 목소리가 중요한지,<br>
+왜 감정이 환경인지,<br>
+왜 가족의 지지가 필요한지를 이해하면<br>
+태담을 하고, 기록을 남기고, 몸을 돌보는 실천이<br>
+훨씬 자연스럽게 시작된다.</p>
+<p>사주당은 5장의 마지막 절(5-2)에서 한 문장을 남겼다.<br>
+<em>"스스로 구하면 얻을 수 있다"</em>는 자리다.<br>
+태교는 누군가에게 받아 드는 정답이 아니라<br>
+스스로 살피며 결을 만들어 가는 일이라는 시선이다.<br>
+현대 심리학도 비슷한 자리를 가리킨다.<br>
+자기효능감 — <em>"나는 이 시간을 통과할 수 있다"</em>는 작은 믿음 — 이<br>
+임신·출산·산후 적응에서 의미 있는 보호 요인으로 다뤄져 왔다.<sup class="fn-ref"><a href="#fn-ch10-5" id="fnref-ch10-5">5</a></sup></p>
+<ul class="bullets">
+<li><strong>작은 실천 (1분)</strong> — 본 책에서 가장 마음이 머문 한 문장을 떠올리기</li>
+<li><strong>중간 실천 (5분)</strong> — 그 문장이 오늘 어떤 작은 행동으로 옮겨질 수 있을지 한 줄 적기</li>
+<li><strong>깊은 실천 (변동)</strong> — 다음 분기에 <em>한 가지만</em> 더 의식해 보기로 정하기</li>
+</ul>
+<h3 id="ch10-s6" class="subhead">다섯 원칙 한눈에 — 강도별 실천 매트릭스</h3>
+<div class="infographic infographic-mandala">
+  <div class="mandala-center">맘곁<br>태교</div>
+  <div class="mandala-petal p1">연결</div>
+  <div class="mandala-petal p2">반복</div>
+  <div class="mandala-petal p3">기록</div>
+  <div class="mandala-petal p4">다정한<br>생활</div>
+  <div class="mandala-petal p5">실천으로<br>이어지는<br>이해</div>
+</div>
+<div class="infographic-caption">다섯 원칙은 위계가 아니라 같은 자리를 도는 다섯 결이다</div>
+<p>다섯 원칙을 매일 다 채우려 하지 않아도 된다.<br>
+오늘의 시간과 기분에 맞춰 한 칸만 골라 보는 정도로 충분하다.</p>
+<table class="data">
+<thead><tr>
+<th>원칙</th>
+<th>작은 실천 (1분)</th>
+<th>중간 실천 (5–10분)</th>
+<th>깊은 실천 (15분~)</th>
+</tr></thead><tbody>
+<tr>
+<td>1. 연결</td>
+<td>배에 손 얹고 한 번 깊은 숨</td>
+<td>잠들기 전 하루를 한 문장으로 들려주기</td>
+<td>산책하며 가벼운 태담</td>
+</tr>
+<tr>
+<td>2. 반복</td>
+<td>같은 시간 한 번 호흡 정리</td>
+<td>일주일 같은 요일·시간 짧은 정리</td>
+<td>"한 가지를 한 달" 정해 보기</td>
+</tr>
+<tr>
+<td>3. 기록</td>
+<td>오늘 마음의 색 한 줄</td>
+<td>일주일 세 줄 일기</td>
+<td>분기 전환 시점 한 단락 회고</td>
+</tr>
+<tr>
+<td>4. 다정한 생활</td>
+<td>자신에게 <em>"잘하고 있어"</em> 한마디</td>
+<td>한 끼는 천천히 식사</td>
+<td>일주일에 한 칸 비워 두기</td>
+</tr>
+<tr>
+<td>5. 실천으로 이어지는 이해</td>
+<td>마음에 머문 한 문장 떠올리기</td>
+<td>그 문장을 한 줄 행동으로 옮기기</td>
+<td>다음 분기 한 가지만 정하기</td>
+</tr>
+</tbody></table>
+<p>이 매트릭스의 핵심은 자유다.<br>
+오늘 시간이 짧으면 왼쪽을,<br>
+오늘 마음이 깊으면 오른쪽을 고르면 된다.<br>
+어제 빠뜨린 칸을 오늘 메우려고 애쓰지 않아도 된다.</p>
+<h3 id="ch10-s7" class="subhead">한 가지부터 해도 충분하다</h3>
+<p>이 다섯 원칙은<br>
+어느 날 갑자기 모두 지켜야 하는 기준이 아니다.<br>
+<mark class="pen-sage">지금 나에게 가장 와 닿는 한 가지를 고르고,<br>
+그 한 가지를 오늘 조금 더 의식해 보는 것으로 충분하다.</mark></p>
+<p>어떤 사람에게는 연결이,<br>
+어떤 사람에게는 기록이,<br>
+또 어떤 사람에게는 다정한 생활이 우선이 될 수 있다.<br>
+맘곁은 그 선택을 존중한다.</p>
+<p>사주당도 8장 마지막 절(8-2)에서<br>
+<em>"태교를 다 실행하지 못함을 탄식한다"</em>고 적었다.<br>
+그 탄식은 자신을 향한 비난이라기보다<br>
+한계를 인정하는 자리에 가깝다.<br>
+오늘의 심리학에서 자기자비라고 부르는 자세,<br>
+<em>"나는 이만큼은 했다"</em>는 인정 위에서<br>
+다음의 한 걸음이 다시 가능해진다.</p>
+<p>이 책의 여러 장에서 우리는<br>
+"매일 다 갖출 필요는 없다",<br>
+"다시 안정의 결로 돌아갈 수 있다면 충분하다"고<br>
+거듭 말해 왔다.<br>
+그 말은 다섯 원칙에도 그대로 닿는다.<br>
+완전을 채우는 것이 아니라<br>
+한 가지부터 시작하는 자리.<br>
+그 자리가 곧 맘곁 태교가 권하는 출발선이다.</p>
+<h3 id="ch10-s8" class="subhead">이 장의 정리</h3>
+<ul class="bullets">
+<li>다섯 원칙은 <em>순서가 정해진 단계</em>가 아니다. <em>같은 자리를 다른 결로 도는 다섯 길</em>에 가깝다 — 연결·반복·기록·다정한 생활·실천으로 이어지는 이해.</li>
+<li>각 원칙은 사주당이 200년 전 남긴 한 문장과, 오늘 의학·심리학이 도달한 자리에서 만난다.</li>
+<li>매일 다섯 원칙을 다 채우려 하지 않아도 된다. 오늘 마음이 가는 한 가지부터면 충분하다.</li>
+<li>사주당도 <em>"태교를 다 실행하지 못함을 탄식한다"</em>고 적었다. 한계를 인정하는 자리에서 다음의 한 걸음이 가능해진다.</li>
+<li>이론편이 <em>마음의 지도</em>라면, 실천편은 <em>그 지도 위를 하루씩 걸어 보는 책</em>이다.</li>
+</ul>
+<h3 id="ch10-s9" class="subhead">실천편으로 이어지는 길</h3>
+<p>이론편은 여기에서 한 번 숨을 고른다.</p>
+<p>이해가 자리 잡으면 실천은 훨씬 부드러워진다.<br>
+왜 작은 일들이 의미 있는지를 알게 되면<br>
+오늘 한 줄을 적는 일,<br>
+배에 손을 얹는 일,<br>
+가족과 잠깐 함께 식사하는 일이<br>
+모두 하나의 태교로 자리 잡는다.</p>
+<p>그 일을 하루씩 함께 해 보는 책이<br>
+맘곁 태교 실천편이다.<br>
+이 이론편이 마음의 지도를 그려 주었다면,<br>
+실천편은 그 길을 천천히 걸어 보게 해 주는 책이 될 것이다.</p>
+<p>부록도 곁에 두기를 권한다.<br>
+부록 A에는 『태교신기』 35절 전문과 현대 의학의 대화가,<br>
+부록 B에는 임신 280일을 함께 살펴볼 수 있는 점검 거울이,<br>
+부록 C에는 본 권이 어디 위에 서 있는지를 밝히는 자료가 담겨 있다.<br>
+시험지가 아니라 자료편이다.<br>
+필요할 때 펼치고,<br>
+한 줄을 만나고,<br>
+다시 일상으로 돌아오는 도구다.</p>
+<hr class="section-break">
+<h3 id="ch10-s10" class="subhead">사주당 이씨에게</h3>
+<p>이 자리에서 한 번,<br>
+당신에게 짧은 인사를 남기고 싶다.</p>
+<p>200년 전, 1800년이라는 해에 당신은<br>
+태교를 임신부 한 사람만의 일이 아니라<br>
+집안 전체의 마음과 환경의 일로 보았다.<br>
+이듬해 당신의 아들 유희는<br>
+어머니의 글에 한글 음을 달아<br>
+더 많은 사람이 그 자리에 닿을 수 있게 했다.</p>
+<p>오늘 우리는 당신을 권위로 따르지 않았다.<br>
+당신이 원했을 자리도 그 자리는 아니었다고 생각한다.<br>
+대신 당신을 대화 상대로 마주 두고,<br>
+관계와 환경과 마음가짐이라는 세 단어를<br>
+오늘의 부모가 알아들을 수 있는 언어로 다시 옮겨 보았다.</p>
+<p>다 옮겨졌다고 말할 수는 없다.<br>
+당신이 살았던 시대와 지금의 시대 사이에는<br>
+여전히 옮겨지지 않은 자리들이 있다.<br>
+다만 한 가지는 분명히 닿았다고 생각한다.<br>
+태교는 한 사람이 혼자 짊어지는 짐이 아니라<br>
+함께 지나가는 시간이라는 자리.<br>
+그 자리는 200년 전에도, 오늘에도 같다.</p>
+<p>이제 우리는 당신의 자리에서 한 걸음 옮겨,<br>
+오늘 하루를 살아가는 부모의 자리로 돌아가려 한다.<br>
+당신이 처음 펜을 들었을 때 마음에 두었을<br>
+그 작은 생명들에게로,<br>
+그리고 그 생명을 기다리는 어른들에게로.</p>
+<p><mark class="pen-peach">긴 시간을 건너와 주어 고맙다.<br>
+이 인사가 너무 늦지 않게 닿기를 바란다.</mark></p>
+<aside class="footnotes">
+<h4>각주</h4>
+<ol>
+<li id="fn-ch10-1">자궁 내 청각 학습과 신생아의 모성 음성 인식 — DeCasper &amp; Spence(<em>Infant Behavior and Development</em>, 1986), Partanen et al.(<em>PNAS</em>, 2013) 계열의 연구. 본 장에서는 사주당 절 1-4·4-4와 짝지어 인용하므로 본 챕터의 진술 범위(임신 중기 이후 점차 익숙해진다, 출생 직후 어머니 목소리에 다른 결로 반응한다)에 부합하는 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch10-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch10-2">임신기의 작은 행동 누적 효과와 일관성 — 행동변화·습관 형성 분야의 종설(예: Lally et al. <em>European Journal of Social Psychology</em>, 2010 등)을 출발점으로, 본 장의 진술 범위(거대한 결심보다 작은 일관성)에 부합하는 1건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch10-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch10-3">표현적 글쓰기와 정서 회복 — Pennebaker JW, <em>Writing about emotional experiences as a therapeutic process</em>, <em>Psychological Science</em>, 1997 및 후속 메타분석. 본 장에서는 임신기로 확장 적용한 해석에 머무르므로, 임신부 일기·정서 표현 관련 국내 모성건강·간호학 학술지의 종설 1건을 함께 표기 가능. <a class="fn-back" href="#fnref-ch10-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch10-4">임신 중 일상의 결 — WHO <em>Recommendations on antenatal care for a positive pregnancy experience</em>(2016) 및 ACOG <em>Physical Activity and Exercise During Pregnancy and the Postpartum Period</em> (Committee Opinion No. 804, 2020). 본 장에서는 일반 합의 흐름의 인용에 머문다. 4장(임신 중의 식·운동·생활) [^1]·[^2]와 동일 자료 계통을 사용한다. <a class="fn-back" href="#fnref-ch10-4" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch10-5">자기효능감과 산모 적응 — Bandura A, <em>Social Foundations of Thought and Action</em>(1986) 자기효능감 이론 및 산모 자기효능감 관련 국내 간호학·발달심리 학술지의 연구. 본 장의 진술 범위(자기효능감이 임신·출산·산후 적응의 보호 요인 가운데 하나)에 부합하는 1건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch10-5" aria-label="본문으로 돌아가기">↩</a></li>
+</ol>
+</aside>
+</div>
+</section>
+<section id="epilogue" class="chapter">
+<header class="chapter-header"><h2 class="chapter-title">닫으며</h2></header>
+<div class="chapter-body">
+<p>이 책은 여기에서 끝난다.</p>
+<p>당신이 이 자리까지 함께 와 주어 고맙다.<br>
+한 번에 다 읽었어도,<br>
+필요한 부분만 골라 읽었어도,<br>
+어느 쪽이든 이미 충분히 좋은 독서였다.</p>
+<p>당신이 이 페이지를 덮은 뒤에도<br>
+배 안의 작은 생명은 자기 속도로 자라고 있을 것이고,<br>
+당신의 하루도 자기 결대로 흘러갈 것이다.<br>
+<mark class="pen-peach">그 모든 시간 안에 이미 태교는 있다.</mark></p>
+<p>10장 마지막에서 우리는 사주당 이씨에게 짧은 인사를 남겨 두었다.<br>
+이 페이지에서는 당신에게도 같은 인사를 남기고 싶다.</p>
+<p>지금까지의 모든 흔들림,<br>
+지금까지의 모든 다정함,<br>
+모두 이 시간 안에서 이미 충분히 의미가 있었다.<br>
+그 사실이<br>
+이 책을 덮는 지금에도 변하지 않는다.</p>
+<p>곧 또 한 권의 책이 이어진다.<br>
+맘곁 태교 실천편이다.<br>
+오늘 하루 해 볼 수 있는 작은 일들을 함께 적어 둔 책이다.</p>
+<p>언제든, 다시 만나도 좋다.</p>
+</div>
+</section>
+<section id="appendix-a" class="chapter is-appendix">
+<header class="chapter-header"><span class="chapter-num">부록 A</span><h2 class="chapter-title">『태교신기』 35절 전문 — 사주당 이씨와 현대 의학의 대화</h2></header>
+<div class="chapter-body">
+<h3 id="appendix-a-s1" class="subhead">A-1. 부록의 자리</h3>
+<p>『태교신기』는 1800년(정조 24년) 사주당 이씨(師朱堂 李氏, 1739~1821)가 한문으로 짓고, 아들 유희(柳僖)가 1801년 한글로 풀어 음의를 단 책이다 (<a href="https://encykorea.aks.ac.kr/Article/E0058957" target="_blank" rel="noopener">한국민족문화대백과사전</a>).<br>
+본문 10장 35절의 짧은 문장들은 200년 전의 권고이지만,<br>
+오늘의 발달 신경과학·DOHaD(태아기 환경의 평생 영향) 가설·후성유전학과<br>
+놀라울 정도로 같은 자리를 가리킨다.</p>
+<p>이 부록은 그 35절을 <strong>원문 핵심 메시지 / 현대어 해석 / 실천 키워드 / 현대 의학 근거 / 임신 주차 매칭</strong> 다섯 칸으로 정리한다.<br>
+박물관 유물이 아니라 <em>오늘 임신부의 책상 위에서 펼쳐 읽을 수 있는 형태</em>로 옮긴 것이다.</p>
+<p>본문에서 사주당을 "대화 상대"라고 부른 까닭이 여기에 있다.<br>
+35절은 명령문이 아니라 — 현대의 산모와 마주 앉아<br>
+<em>"이 자리에서 보면 이렇게 보인다"</em> 라고 건네는 권고에 가깝다.</p>
+<blockquote class="meta-note">인용 표기: 본 부록의 원문 메시지·해석은 사주당 『태교신기』 본문(柳僖 한글 음의본 1801)을 기준으로 하며, 현대 의학 근거는 부록 C 참고문헌에 수록된 1차 연구를 출처로 한다.</blockquote>
+<h3 id="appendix-a-s2" class="subhead">A-2. 35절 전문 매핑</h3>
+<h4 class="subhead-2">1장 「只言敎字」 — 교(敎)를 말함 (6절)</h4>
+<table class="data">
+<thead><tr>
+<th>절</th>
+<th>원문 핵심 메시지</th>
+<th>현대어 해석</th>
+<th>실천 키워드</th>
+<th>현대 의학 근거</th>
+<th>주차</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>1-1</strong></td>
+<td>사람의 성품은 하늘을 본받고, 기질은 부모에게서 받는다</td>
+<td>보편 인간성은 공통이지만, 기질(temperament)은 부모로부터 유전·후성유전으로 전달된다</td>
+<td>부모 유전, 기질, 후성유전</td>
+<td>후성유전학 — 부모의 환경·습관이 DNA 메틸화로 자녀에게 전달. 기질 약 40~60% 유전</td>
+<td>수태 전 ~ 12주</td>
+</tr>
+<tr>
+<td><strong>1-2</strong></td>
+<td>태교는 본(本)이고 스승의 가르침은 말(末)이다 / 부부는 서로 예로써 대함이 마땅하다</td>
+<td>출생 후 교육보다 임신 전·중의 환경이 더 근본적이다. 부부 관계 자체가 태아의 일차 환경</td>
+<td>부부 관계, 환경 우선</td>
+<td>DOHaD — 태아기 환경이 평생 건강과 인지 형성의 결정적 시기</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>1-3</strong></td>
+<td>태교의 책임은 오로지 아버지에게 있다 / 잉태 시 아비의 정(精)과 마음가짐이 자식의 골격을 결정</td>
+<td>아버지의 임신 전 건강·정자 상태가 태아 발달의 토대</td>
+<td>부성 후성유전, 정자 건강</td>
+<td>부성 식이·스트레스·흡연이 정자 메틸화 변화로 자녀에게 전달</td>
+<td>수태 전</td>
+</tr>
+<tr>
+<td><strong>1-4</strong></td>
+<td>태교의 책임은 오로지 어머니에게도 있다 / 자궁은 원초적 교육기관</td>
+<td>자궁은 단순한 보호막이 아닌 첫 학습 환경</td>
+<td>자궁 환경, 모성 자기돌봄</td>
+<td>태아 청각·미각·정서 학습이 자궁 내에서 시작</td>
+<td>16주~</td>
+</tr>
+<tr>
+<td><strong>1-5</strong></td>
+<td>성장한 후의 책임은 스승에게 있다 / 몸소 행동으로 가르쳐야</td>
+<td>출생 후 교육은 모범에 의한 학습</td>
+<td>모델링, 실천 교육</td>
+<td>사회학습이론(Bandura)</td>
+<td>출생 후</td>
+</tr>
+<tr>
+<td><strong>1-6</strong></td>
+<td>태교를 한 후에 스승의 책임을 논해야 한다 / 부모의 자질이 중요</td>
+<td>부모 자질이 교육의 출발점</td>
+<td>부모 준비도</td>
+<td>부모 정서·인지 자원이 자녀 발달의 핵심 변수</td>
+<td>전 기간</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">2장 「只言胎字」 — 태(胎)를 말함 (1절)</h4>
+<table class="data">
+<thead><tr>
+<th>절</th>
+<th>원문 핵심 메시지</th>
+<th>현대어 해석</th>
+<th>실천 키워드</th>
+<th>현대 의학 근거</th>
+<th>주차</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>2-1</strong></td>
+<td>사물의 성질은 배태 시에 길러진다 / 사람의 성품은 임신 전부터 이루어진다</td>
+<td>임신 진단 전부터 태교는 시작된다</td>
+<td>우생, 품부, 임신 전 케어</td>
+<td>임신 전 영양·체중·정신건강이 임신 결과의 강력한 예측 요인</td>
+<td>수태 전</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">3장 「備論胎敎」 — 태교를 두루 논함 (3절)</h4>
+<table class="data">
+<thead><tr>
+<th>절</th>
+<th>원문 핵심 메시지</th>
+<th>현대어 해석</th>
+<th>실천 키워드</th>
+<th>현대 의학 근거</th>
+<th>주차</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>3-1</strong></td>
+<td>태교를 해야 현명한 자식을 낳는다 / 안정된 환경과 유쾌한 정서</td>
+<td>환경과 정서가 태아 인지·정서 발달의 토대</td>
+<td>안정, 정서</td>
+<td>모성 정서가 태아 HPA축·해마 발달에 영향 (Glover 2014)</td>
+<td>12주~</td>
+</tr>
+<tr>
+<td><strong>3-2</strong></td>
+<td>태교를 하지 않으면 자식이 불초(不肖)하다</td>
+<td>태내 환경 결핍은 발달 영향</td>
+<td>환경 결핍 위험</td>
+<td>DOHaD — 태내 영양·스트레스 결핍과 성인기 만성질환 연관</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>3-3</strong></td>
+<td>반드시 태교를 해야 한다 / 임신부는 성생활을 조심</td>
+<td>태내 안정과 신체적 자기돌봄</td>
+<td>신체 안정</td>
+<td>임신 후기 신체 부담 관리</td>
+<td>28주~</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">4장 「胎敎之法」 — 태교의 방법 (14절, 본권의 핵심)</h4>
+<table class="data">
+<thead><tr>
+<th>절</th>
+<th>원문 핵심 메시지</th>
+<th>현대어 해석</th>
+<th>실천 키워드</th>
+<th>현대 의학 근거</th>
+<th>주차</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>4-1</strong></td>
+<td>태교는 온 가족이 함께 / 칠정(七情)은 장부에 직접 영향</td>
+<td>가족 환경이 임신부 정서를 통해 태아에게 전달</td>
+<td>가족, 칠정</td>
+<td>가족 지지·배우자 관계가 산전 우울의 가장 큰 보호요인 (Paulson 2010)</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>4-2</strong></td>
+<td>온 가족이 임신부를 보호 / 사랑을 듬뿍</td>
+<td>사회적 지지의 중요성</td>
+<td>사회적 지지</td>
+<td>산모 옥시토신·코르티솔 균형에 가족 지지 영향</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>4-3</strong></td>
+<td>임신부는 보는 것을 조심 / 귀한 것·아름다운 것을 보고 흉한 것·죽이는 것은 피하라</td>
+<td>시각 자극 환경 관리</td>
+<td>시각 환경</td>
+<td>모성 스트레스 영상물 노출의 코르티솔 반응 연구</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>4-4</strong></td>
+<td>임신부는 듣는 것을 삼가야 / 시 읊는 소리·책 읽는 소리가 좋다</td>
+<td>청각 자극 환경 관리</td>
+<td>청각, 음악, 낭독</td>
+<td>태아 청각 학습 — 모성 음성·언어 리듬 구별 (DeCasper &amp; Spence 1986; Partanen 2013)</td>
+<td>18주~</td>
+</tr>
+<tr>
+<td><strong>4-5</strong></td>
+<td>임신부의 마음가짐 / 7가지 삼갈 마음: 해코지·살의·간교·기만·탐욕·시기·험담</td>
+<td>부정 정서 7가지 자기관찰</td>
+<td>정서 자기관찰</td>
+<td>마음챙김 기반 산전 프로그램(MBCP) RCT — 산전우울 30~40% 감소 (Duncan &amp; Bardacke 2010)</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>4-6</strong></td>
+<td>마음이 바르면 말도 바르다 / 언제나 예(禮)가 아닌 것이 없어야</td>
+<td>정서-언어-행동 일치</td>
+<td>일관성</td>
+<td>모성 정서 일관성과 태아 안정</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>4-7</strong></td>
+<td>임신부의 거처와 양생법 / 안태 보존 11개 금기 (과식·과수면·차거나 더운 데·악취·높은 곳·밤 출입)</td>
+<td>환경적 위험 11개 회피</td>
+<td>환경 위험, 일상 안전</td>
+<td>ACOG 임신 중 환경 노출 가이드라인</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>4-8</strong></td>
+<td>임신부의 일하는 법 / 양잠·방적·바느질·칼 다루기 등 위험·과로 회피</td>
+<td>노동 강도 조절</td>
+<td>노동, 휴식</td>
+<td>임신 중 신체 부담 관리 권고 (WHO ANC 2016)</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>4-9</strong></td>
+<td>임신부의 앉아 있을 때의 행동 / 기울지 말고, 비틀지 말고, 어깨로 돌아보지 말기</td>
+<td>자세 관리</td>
+<td>자세, 골반</td>
+<td>임신 중 척추·골반 부담 관리</td>
+<td>20주~</td>
+</tr>
+<tr>
+<td><strong>4-10</strong></td>
+<td>임신부의 보행 / 적당한 운동과 휴식 / 도인(導引) 체조</td>
+<td>가벼운 운동 권장</td>
+<td>운동, 도인</td>
+<td>임신 중 적정 강도 운동 — 합병증 30~40% 감소 (ACOG Committee Opinion 804, 2020)</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>4-11</strong></td>
+<td>임신부의 잠자는 법 / 모체의 기혈이 원활해야 태아가 충실 / 만삭 시 좌우 교대</td>
+<td>수면 자세 — 만삭 좌측위 권장</td>
+<td>수면, 좌측위</td>
+<td>후기 좌측위 수면이 태반 혈류 개선·사산 위험 감소 (Heazell 2018)</td>
+<td>28주~</td>
+</tr>
+<tr>
+<td><strong>4-12</strong></td>
+<td>임신부의 섭생법 / 엄마의 영양이 태아의 영양 / 회피 음식: 흉한 모양·벌레먹은·찬밥·쉰 것·과한 육식·술·말고기·비늘 없는 생선</td>
+<td>영양 — 안전 음식 가이드</td>
+<td>식이, 안전</td>
+<td>알코올·날생선·고수은어·미가공 유제품 회피 권고 (CDC 임신 중 영양 가이드)</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>4-13</strong></td>
+<td>해산달에 임해 주의 / 자연분만이 최선 / 태연한 마음</td>
+<td>분만 시 정서 안정</td>
+<td>분만 정서</td>
+<td>분만 중 모성 코르티솔과 진통 인지</td>
+<td>36주~</td>
+</tr>
+<tr>
+<td><strong>4-14</strong></td>
+<td>태교법의 총결 / 자식은 부모를 닮는다</td>
+<td>부모 환경의 누적 효과</td>
+<td>누적 영향</td>
+<td>DOHaD 종합</td>
+<td>전 기간</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">5장 「雜論胎敎」 — 태교 잡론 (2절)</h4>
+<table class="data">
+<thead><tr>
+<th>절</th>
+<th>원문 핵심 메시지</th>
+<th>현대어 해석</th>
+<th>실천 키워드</th>
+<th>현대 의학 근거</th>
+<th>주차</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>5-1</strong></td>
+<td>태교의 요점은 삼가 함(愼)에 있다</td>
+<td>핵심은 절제와 일관성</td>
+<td>절제, 일관성</td>
+<td>행동 변화 — 작은 일관된 행동의 누적 효과</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>5-2</strong></td>
+<td>스스로 구해야 한다 / 구하면 얻을 수 있다</td>
+<td>자기효능감</td>
+<td>자기효능감</td>
+<td>산모 자기효능감과 산후 적응 (Bandura 자기효능감 이론)</td>
+<td>전 기간</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">6장 「極言不行胎敎之害」 — 태교를 행하지 않은 해 (1절)</h4>
+<table class="data">
+<thead><tr>
+<th>절</th>
+<th>원문 핵심 메시지</th>
+<th>현대어 해석</th>
+<th>실천 키워드</th>
+<th>현대 의학 근거</th>
+<th>주차</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>6-1</strong></td>
+<td>태교를 행하지 않으면 해가 있다 / 재주 없는 자식·기형·태루·난산·요절 / 타고나는 능력보다 큰 재산은 없다</td>
+<td>태내 환경 결핍의 누적 영향</td>
+<td>환경 결핍</td>
+<td>DOHaD 메타분석 — 태내 환경과 성인기 심혈관·대사·정신건강 연관 (Barker 가설 종합)</td>
+<td>전 기간</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">7장 「戒迷信邪術」 — 미신·사술 경계 (2절)</h4>
+<table class="data">
+<thead><tr>
+<th>절</th>
+<th>원문 핵심 메시지</th>
+<th>현대어 해석</th>
+<th>실천 키워드</th>
+<th>현대 의학 근거</th>
+<th>주차</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>7-1</strong></td>
+<td>사술(邪術)에 미혹됨을 경계</td>
+<td>검증되지 않은 정보 회피</td>
+<td>정보 비판</td>
+<td>정보 환경 위생 — 임신부 인터넷 정보 검색 스트레스 연구</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>7-2</strong></td>
+<td>사심(邪心)을 경계해야 한다</td>
+<td>자기 동기 점검</td>
+<td>동기 점검</td>
+<td>부모 동기와 양육 자기효능감</td>
+<td>전 기간</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">8장 「雜引以證胎敎之理」 — 태교 이치 증명 (2절)</h4>
+<table class="data">
+<thead><tr>
+<th>절</th>
+<th>원문 핵심 메시지</th>
+<th>현대어 해석</th>
+<th>실천 키워드</th>
+<th>현대 의학 근거</th>
+<th>주차</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>8-1</strong></td>
+<td>양태(養胎)를 잘 해야 하는 이유</td>
+<td>태아 양육의 일상성</td>
+<td>일상 양육</td>
+<td>일상 행동의 누적 영향</td>
+<td>전 기간</td>
+</tr>
+<tr>
+<td><strong>8-2</strong></td>
+<td>태교를 실행하지 못함을 탄식</td>
+<td>실천의 한계 인정</td>
+<td>자기수용</td>
+<td>모성 자기수용과 산후 정신건강 (Neff 2003 자기자비 이론)</td>
+<td>전 기간</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">9장 「引古人已行之事」 — 옛사람의 사례 (1절)</h4>
+<table class="data">
+<thead><tr>
+<th>절</th>
+<th>원문 핵심 메시지</th>
+<th>현대어 해석</th>
+<th>실천 키워드</th>
+<th>현대 의학 근거</th>
+<th>주차</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>9-1</strong></td>
+<td>고인들이 행한 태교 실례 / 주나라 태임 등 / 옥판에 새겨 보관</td>
+<td>역사적 모범과 기록 문화</td>
+<td>기록, 모델</td>
+<td>임신 일기와 산전 정신건강의 양적 관계 (Pennebaker 표현적 글쓰기)</td>
+<td>전 기간</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">10장 「推言胎敎之本」 — 태교의 근본 (1절)</h4>
+<table class="data">
+<thead><tr>
+<th>절</th>
+<th>원문 핵심 메시지</th>
+<th>현대어 해석</th>
+<th>실천 키워드</th>
+<th>현대 의학 근거</th>
+<th>주차</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>10-1</strong></td>
+<td>태교의 책임은 장부(丈夫)에게 있다 / 어진 배우자 선택 / 태아 발육단계</td>
+<td>책의 결론 — 아버지의 자리, 배우자 선택, 발육 단계별 접근</td>
+<td>아버지, 배우자, 단계별 접근</td>
+<td>부성 산전·산후 우울 ≈10% — 자녀 발달에 직접 영향 (Paulson &amp; Bazemore 2010, JAMA)</td>
+<td>전 기간</td>
+</tr>
+</tbody></table>
+<h3 id="appendix-a-s3" class="subhead">A-3. 35절을 한눈에 — 핵심 메시지 분포</h3>
+<table class="data">
+<thead><tr>
+<th>주제군</th>
+<th>절</th>
+<th>핵심 메시지</th>
+</tr></thead><tbody>
+<tr>
+<td>부모 유전·후성유전</td>
+<td>1-1, 1-3, 2-1</td>
+<td>임신 전부터 시작</td>
+</tr>
+<tr>
+<td>환경 · 자궁 = 학습장</td>
+<td>1-4, 1-2</td>
+<td>자궁은 첫 교육 환경</td>
+</tr>
+<tr>
+<td>가족·사회 지지</td>
+<td>4-1, 4-2</td>
+<td>칠정과 가족 환경</td>
+</tr>
+<tr>
+<td>감각 환경 (시·청·식)</td>
+<td>4-3, 4-4, 4-12</td>
+<td>보고 듣고 먹는 것</td>
+</tr>
+<tr>
+<td>정서 자기관찰</td>
+<td>4-5, 4-6, 5-1</td>
+<td>칠정 절제</td>
+</tr>
+<tr>
+<td>신체 자기돌봄</td>
+<td>4-7~4-11</td>
+<td>거처·노동·자세·운동·수면</td>
+</tr>
+<tr>
+<td>분만·출산</td>
+<td>4-13</td>
+<td>자연분만과 정서 안정</td>
+</tr>
+<tr>
+<td>자기효능감·자기수용</td>
+<td>5-2, 8-2</td>
+<td>스스로 구하기, 한계 수용</td>
+</tr>
+<tr>
+<td>정보 비판·동기</td>
+<td>7-1, 7-2</td>
+<td>미신·사심 경계</td>
+</tr>
+<tr>
+<td>아버지의 자리 (총결)</td>
+<td>1-3, 10-1</td>
+<td>책임은 장부에게</td>
+</tr>
+</tbody></table>
+<p>이 분포는 의미심장하다.<br>
+35절 중 <strong>14절(40%)이 4장 「태교의 방법」에 집중</strong>되어 있고,<br>
+그 안의 절반이 <em>감각 환경과 신체 자기돌봄</em>을 다룬다.<br>
+사주당이 가장 많은 분량을 들인 자리가<br>
+<em>추상적 도덕</em>이 아니라 <em>일상 환경</em>이라는 점은,<br>
+그가 태교를 관념이 아닌 <em>환경 설계</em>로 보았음을 보여준다.</p>
+<p>또 하나 — 책의 첫 절(1-3)과 마지막 절(10-1)이 모두 <em>아버지의 책임</em>을 가리킨다는 사실이다.<br>
+35절 전체가 어머니를 향해 쓰인 것 같지만,<br>
+책의 양 끝은 단호하게 아버지를 호명한다.<br>
+200년 뒤 부성 후성유전·부성 우울 연구가 도달한 결론과 같은 자리다.</p>
+</div>
+</section>
+<section id="appendix-b" class="chapter is-appendix">
+<header class="chapter-header"><span class="chapter-num">부록 B</span><h2 class="chapter-title">임신 280일 환경 점검 체크리스트</h2></header>
+<div class="chapter-body">
+<h3 id="appendix-b-s1" class="subhead">B-1. 체크리스트의 자리</h3>
+<p>이 체크리스트는 <em>해야 할 것의 목록</em>이 아니다.<br>
+<strong>지금 임신부가 놓인 환경을 함께 살펴보는 거울</strong>에 가깝다.<br>
+사주당이 4장에서 환경·노동·자세·수면·식이를 <em>11개 금기</em>로 정리한 자리에,<br>
+오늘의 산모가 자신의 일상을 비춰볼 수 있도록 다섯 칸으로 옮긴 것이다.</p>
+<p>체크 항목을 다 충족할 필요는 없다.<br>
+<em>어느 칸이 비어 있는지 알아차리는 것</em>만으로 이미 태교의 출발선에 선다.<br>
+이는 본문 10장 다섯 원칙 중 "기록"과 "한 가지부터" 원칙의 실천 도구이기도 하다.</p>
+<blockquote class="meta-note">사용 안내: 임신 진단 직후 1회 → 분기별(13주, 27주, 37주) 점검 → 출산 후 회고 1회. 체크 결과는 부담의 근거가 아니라 <em>대화의 자료</em>가 되도록.</blockquote>
+<h3 id="appendix-b-s2" class="subhead">B-2. 시기별 환경 점검표</h3>
+<h4 class="subhead-2">0단계. 임신 전·진단 직후 (수태 ~ 12주)</h4>
+<table class="data">
+<thead><tr>
+<th>영역</th>
+<th>점검 항목</th>
+<th>사주당 근거 절</th>
+</tr></thead><tbody>
+<tr>
+<td>부부 환경</td>
+<td>□ 배우자와 임신·출산에 대해 30분 이상 대화한 적 있다</td>
+<td>1-2, 1-3</td>
+</tr>
+<tr>
+<td>부부 환경</td>
+<td>□ 배우자도 음주·흡연·고강도 야근 조절을 시작했다</td>
+<td>1-3, 10-1</td>
+</tr>
+<tr>
+<td>부부 환경</td>
+<td>□ 배우자가 첫 산전 진료에 동행할 의사가 있다</td>
+<td>4-1, 10-1</td>
+</tr>
+<tr>
+<td>신체</td>
+<td>□ 엽산 보충(임신 전~12주)을 시작했다</td>
+<td>4-12</td>
+</tr>
+<tr>
+<td>신체</td>
+<td>□ 알코올·흡연을 중단했다</td>
+<td>4-12</td>
+</tr>
+<tr>
+<td>신체</td>
+<td>□ 카페인을 권장 한도 안에서 조절하고 있다</td>
+<td>4-12</td>
+</tr>
+<tr>
+<td>정보 환경</td>
+<td>□ 정보 출처를 3개 이내로 정해 두었다 (산부인과·공식 가이드·신뢰 도서)</td>
+<td>7-1</td>
+</tr>
+<tr>
+<td>정보 환경</td>
+<td>□ SNS·맘카페 정보 노출 시간을 의식하고 있다</td>
+<td>7-1</td>
+</tr>
+<tr>
+<td>정서</td>
+<td>□ 임신 전부터 진료받던 정신건강 이슈가 있다면 의료진에게 알렸다</td>
+<td>4-5, 8-2</td>
+</tr>
+<tr>
+<td>가족</td>
+<td>□ 직계가족·시가족·친정에 임신 사실을 알릴 시점·범위를 정했다</td>
+<td>4-1, 4-2</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">1단계. 1분기 (13~26주) — 환경의 기초를 만드는 시기</h4>
+<table class="data">
+<thead><tr>
+<th>영역</th>
+<th>점검 항목</th>
+<th>사주당 근거 절</th>
+</tr></thead><tbody>
+<tr>
+<td>거처</td>
+<td>□ 잠자리 매트리스·베개의 지지가 충분하다</td>
+<td>4-7, 4-11</td>
+</tr>
+<tr>
+<td>거처</td>
+<td>□ 침실 온도(18~22℃)·습도(40~60%)가 안정적이다</td>
+<td>4-7</td>
+</tr>
+<tr>
+<td>거처</td>
+<td>□ 욕실·계단 미끄럼 방지를 점검했다</td>
+<td>4-7</td>
+</tr>
+<tr>
+<td>노동</td>
+<td>□ 1시간 이상 연속해서 서 있거나 앉아 있지 않는다</td>
+<td>4-8, 4-9, 4-10</td>
+</tr>
+<tr>
+<td>노동</td>
+<td>□ 무거운 물건을 자주 들지 않는다</td>
+<td>4-8</td>
+</tr>
+<tr>
+<td>노동</td>
+<td>□ 야근·교대근무 빈도를 줄이는 방향으로 조정 중이다</td>
+<td>4-8</td>
+</tr>
+<tr>
+<td>식이</td>
+<td>□ 매일 1끼 이상 따뜻하고 균형 잡힌 식사를 한다</td>
+<td>4-12</td>
+</tr>
+<tr>
+<td>식이</td>
+<td>□ 회피 식품(날생선·미가공 유제품·고수은어·미숙성 육류·생계란)을 알고 있다</td>
+<td>4-12</td>
+</tr>
+<tr>
+<td>식이</td>
+<td>□ 수분(권장량 안에서)을 의식적으로 섭취한다</td>
+<td>4-12</td>
+</tr>
+<tr>
+<td>청각</td>
+<td>□ 하루 한 번 이상 <em>조용한</em> 시간(15분 이상)을 가진다</td>
+<td>4-4</td>
+</tr>
+<tr>
+<td>청각</td>
+<td>□ 좋아하는 음악·낭독·자연음을 정해 두었다</td>
+<td>4-4</td>
+</tr>
+<tr>
+<td>시각</td>
+<td>□ 자극적·폭력적 영상 노출을 의식적으로 줄이고 있다</td>
+<td>4-3</td>
+</tr>
+<tr>
+<td>정서</td>
+<td>□ 일주일에 한 번은 자기 감정을 글이나 말로 표현한다</td>
+<td>4-5, 9-1</td>
+</tr>
+<tr>
+<td>정서</td>
+<td>□ 불안·우울이 2주 이상 지속될 때 도움 요청 경로를 알고 있다</td>
+<td>4-5, 8-2</td>
+</tr>
+<tr>
+<td>가족</td>
+<td>□ 배우자가 태동·진료·일상 변화에 정기적으로 관심을 보인다</td>
+<td>4-1, 4-2</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">2단계. 2분기 (27~36주) — 감각의 시기</h4>
+<table class="data">
+<thead><tr>
+<th>영역</th>
+<th>점검 항목</th>
+<th>사주당 근거 절</th>
+</tr></thead><tbody>
+<tr>
+<td>청각 환경</td>
+<td>□ 태아에게 들려주는 <em>소리 루틴</em> (음악·낭독·태담)이 일정하게 자리잡혔다</td>
+<td>4-4</td>
+</tr>
+<tr>
+<td>촉각 환경</td>
+<td>□ 매일 5~10분 배 쓰다듬기·태담 시간을 가진다</td>
+<td>4-4</td>
+</tr>
+<tr>
+<td>촉각 환경</td>
+<td>□ 배우자도 주 3회 이상 태담·접촉에 참여한다</td>
+<td>4-1, 10-1</td>
+</tr>
+<tr>
+<td>신체</td>
+<td>□ 좌측위 수면 자세에 적응하고 있다 (만삭 권장)</td>
+<td>4-11</td>
+</tr>
+<tr>
+<td>신체</td>
+<td>□ 가벼운 산책·임산부 요가·수영 중 1가지를 의료진과 상의한 강도로 한다</td>
+<td>4-10</td>
+</tr>
+<tr>
+<td>신체</td>
+<td>□ 골반저근·자세 운동을 알고 있다</td>
+<td>4-9, 4-10</td>
+</tr>
+<tr>
+<td>정서</td>
+<td>□ 출산에 대한 공포·불안을 의료진과 이야기한 적이 있다</td>
+<td>4-5, 4-13</td>
+</tr>
+<tr>
+<td>정서</td>
+<td>□ 부담스러운 태교 정보가 들어올 때 <em>밀어내는 방식</em>을 정해 두었다</td>
+<td>7-1, 7-2</td>
+</tr>
+<tr>
+<td>가족</td>
+<td>□ 산후 한 달 동안 누가 어떤 도움을 줄지 <em>이름과 역할</em>이 정해져 있다</td>
+<td>4-2</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">3단계. 3분기 (37주~출산) — 분만 준비기</h4>
+<table class="data">
+<thead><tr>
+<th>영역</th>
+<th>점검 항목</th>
+<th>사주당 근거 절</th>
+</tr></thead><tbody>
+<tr>
+<td>분만</td>
+<td>□ 분만 병원·이동 경로·도착 신호를 정해 두었다</td>
+<td>4-13</td>
+</tr>
+<tr>
+<td>분만</td>
+<td>□ 진통 시작 신호와 응급 호출 기준을 알고 있다</td>
+<td>4-13</td>
+</tr>
+<tr>
+<td>분만</td>
+<td>□ 출산 동반자(배우자/가족)가 분만 전 과정에 함께할 준비가 되었다</td>
+<td>4-13, 10-1</td>
+</tr>
+<tr>
+<td>가족</td>
+<td>□ 산후 도우미·산후조리원·친정 등 산후 환경이 결정되어 있다</td>
+<td>4-2</td>
+</tr>
+<tr>
+<td>신체</td>
+<td>□ 출산 가방을 챙겼다</td>
+<td>4-13</td>
+</tr>
+<tr>
+<td>정서</td>
+<td>□ 분만이 예측대로 되지 않을 가능성을 의료진과 이야기했다</td>
+<td>4-13, 8-2</td>
+</tr>
+<tr>
+<td>정서</td>
+<td>□ 산후우울증의 신호와 도움 요청 경로를 알고 있다</td>
+<td>4-5, 8-2</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">4단계. 산후 회고 (출산 후 6주)</h4>
+<table class="data">
+<thead><tr>
+<th>영역</th>
+<th>점검 항목</th>
+<th>사주당 근거 절</th>
+</tr></thead><tbody>
+<tr>
+<td>회고</td>
+<td>□ 임신 기간 중 <em>나에게 가장 큰 환경</em>은 무엇이었는지 한 줄 적어 보았다</td>
+<td>9-1</td>
+</tr>
+<tr>
+<td>회고</td>
+<td>□ 다음 자녀 또는 주변 임신부에게 전해주고 싶은 한 가지가 있다</td>
+<td>9-1</td>
+</tr>
+<tr>
+<td>회고</td>
+<td>□ 배우자와 함께 280일을 한 번 되짚는 시간을 가졌다</td>
+<td>1-2, 10-1</td>
+</tr>
+</tbody></table>
+<h3 id="appendix-b-s3" class="subhead">B-3. 체크리스트 사용 원칙</h3>
+<p>체크리스트는 다음 다섯 원칙 위에서 작동한다.<br>
+본문 10장의 <em>맘곁 다섯 원칙</em>과 같은 자리다.</p>
+<p>1. <strong>빠진 칸은 부담이 아니라 신호다</strong> — 못 한 항목은 죄책감의 근거가 아니라 <em>지금 어디에 손을 보탤 수 있는지</em>를 알려주는 표지다.<br>
+2. <strong>혼자 채우지 않는다</strong> — 배우자·가족과 함께 보면서 채운다. 한쪽만 알고 있는 정보는 환경이 되지 못한다.<br>
+3. <strong>분기별 1회로 충분하다</strong> — 매일 점검은 부담을 만든다. 분기 전환 시점이 적정 빈도다.<br>
+4. <strong>기록은 짧게</strong> — 체크 후 <em>한 줄 메모</em>만 남긴다. 길게 쓸수록 지속이 어렵다.<br>
+5. <strong>의료적 판단을 대체하지 않는다</strong> — 모든 신체·정서 신호는 산부인과 또는 정신건강 전문가의 진료가 우선이다.</p>
+</div>
+</section>
+<section id="appendix-c" class="chapter is-appendix">
+<header class="chapter-header"><span class="chapter-num">부록 C</span><h2 class="chapter-title">참고문헌</h2></header>
+<div class="chapter-body">
+<p>본 권에서 인용한 1차 사료·현대 학술·공공 가이드라인을 일괄 정리한다. 본문에서 부드럽게 흘려둔 인용도 여기에서는 출처를 명시한다.</p>
+<h3 id="appendix-c-s1" class="subhead">C-1. 1차 사료 — 조선 태교 의서 계보 (1434~1800)</h3>
+<table class="data">
+<thead><tr>
+<th>문헌</th>
+<th>시기</th>
+<th>저자/편찬</th>
+<th>형식</th>
+<th>주요 인용처</th>
+</tr></thead><tbody>
+<tr>
+<td>『태산요록(胎産要錄)』</td>
+<td>1434(세종 16)</td>
+<td>노중례(盧重禮)</td>
+<td>2권 1책, 한문, 보물 1179호</td>
+<td>본문 2장 의서 계보, 부록 A 4-12 (<a href="https://gachonmuseum.or.kr/user/relics1Detail?seq=16" target="_blank" rel="noopener">가천박물관 소장</a>)</td>
+</tr>
+<tr>
+<td>『언해태산집요(諺解胎産集要)』</td>
+<td>1608(선조 41)</td>
+<td>허준(許浚)</td>
+<td>한글본, 보물 1088호</td>
+<td>본문 2·5장 (<a href="https://namu.wiki/w/%EC%96%B8%ED%95%B4%ED%83%9C%EC%82%B0%EC%A7%91%EC%9A%94" target="_blank" rel="noopener">나무위키</a>)</td>
+</tr>
+<tr>
+<td>『동의보감(東醫寶鑑)』 잡병편 부인문</td>
+<td>1610(광해군 2)</td>
+<td>허준</td>
+<td>25권, 한문</td>
+<td>본문 3·5장 (<a href="https://www.mjmedi.com/news/articleView.html?idxno=37460" target="_blank" rel="noopener">민족의학신문</a>)</td>
+</tr>
+<tr>
+<td>『임산예지법(臨産豫知法)』</td>
+<td>조선 후기</td>
+<td>미상(상궁 추정)</td>
+<td>한글 첩(帖), 장서각 소장</td>
+<td>본문 7장 (<a href="https://dh.aks.ac.kr/Encyves/wiki/index.php/%EC%9E%84%EC%82%B0%EC%98%88%EC%A7%80%EB%B2%95" target="_blank" rel="noopener">한국학중앙연구원</a>)</td>
+</tr>
+<tr>
+<td>『태교신기(胎敎新記)』</td>
+<td>1800(정조 24)</td>
+<td>사주당 이씨(師朱堂 李氏) / 유희(柳僖) 한글 음의 1801</td>
+<td>1권 1책</td>
+<td>본문 2장 + 부록 A 전문 (<a href="https://encykorea.aks.ac.kr/Article/E0058957" target="_blank" rel="noopener">한국민족문화대백과</a>)</td>
+</tr>
+<tr>
+<td>『성학집요(聖學輯要)』</td>
+<td>1575(선조 8)</td>
+<td>율곡 이이</td>
+<td>8권 5책</td>
+<td>본문 1장 — <em>제왕학 출발점으로서의 태교</em> (<a href="https://www.khan.co.kr/article/201510061525571" target="_blank" rel="noopener">경향신문</a>)</td>
+</tr>
+<tr>
+<td>『영조실록』 1766년(영조 42) 5월 27일</td>
+<td>1766</td>
+<td>사관</td>
+<td>실록</td>
+<td>본문 1장 영조-정조 태교 대화 (<a href="https://dh.aks.ac.kr/sillokwiki/" target="_blank" rel="noopener">한국학중앙연구원 sillokwiki</a>)</td>
+</tr>
+</tbody></table>
+<h3 id="appendix-c-s2" class="subhead">C-2. 1차 사료 — 관제·의례</h3>
+<ul class="bullets">
+<li>한국학중앙연구원, 『조선왕조실록』 sillokwiki 데이터베이스 — 산실청·호산청·안태사·태실도감 항목 (<a href="https://dh.aks.ac.kr/sillokwiki/" target="_blank" rel="noopener">dh.aks.ac.kr/sillokwiki</a>)</li>
+<li>한국학중앙연구원 장서각 소장 자료 — 산실청등록(産室廳謄錄), 호산청일기(護産廳日記)</li>
+<li>가천박물관, 『태산요록』 보물 1179호 해제 (<a href="https://gachonmuseum.or.kr/user/relics1Detail?seq=16" target="_blank" rel="noopener">gachonmuseum.or.kr</a>)</li>
+<li>한국한의약진흥원 NIKOM 블로그, 「조선 왕실의 출산과 산후 — 임산예지법」 (<a href="https://blog.naver.com/nikom2019/222447306139" target="_blank" rel="noopener">blog.naver.com</a>)</li>
+<li>경향신문, 「조선 왕실의 태교 — 합궁부터 출산까지」 (2015. 10. 6) (<a href="https://www.khan.co.kr/article/201510061525571" target="_blank" rel="noopener">khan.co.kr</a>)</li>
+</ul>
+<h3 id="appendix-c-s3" class="subhead">C-3. 현대 학술 — DOHaD · 태내 환경</h3>
+<table class="data">
+<thead><tr>
+<th>분야</th>
+<th>인용 문헌</th>
+</tr></thead><tbody>
+<tr>
+<td>DOHaD 종합</td>
+<td>Gluckman PD, Hanson MA et al. <em>Effect of in utero and early-life conditions on adult health and disease.</em> New England Journal of Medicine, 2008</td>
+</tr>
+<tr>
+<td>Barker 가설</td>
+<td>Barker DJP. <em>Fetal origins of coronary heart disease.</em> BMJ, 1995</td>
+</tr>
+<tr>
+<td>임신 전 케어</td>
+<td>Stephenson J et al. <em>Before the beginning: nutrition and lifestyle in the preconception period.</em> Lancet, 2018</td>
+</tr>
+<tr>
+<td>태내 영양·평생 건강</td>
+<td>Hanson MA, Gluckman PD. <em>Early developmental conditioning of later health and disease.</em> Physiological Reviews, 2014</td>
+</tr>
+</tbody></table>
+<h3 id="appendix-c-s4" class="subhead">C-4. 현대 학술 — 모성 정서·산전우울·MBCP</h3>
+<table class="data">
+<thead><tr>
+<th>분야</th>
+<th>인용 문헌</th>
+</tr></thead><tbody>
+<tr>
+<td>모성 스트레스–태아 신경발달</td>
+<td>Glover V. <em>Maternal depression, anxiety and stress during pregnancy and child outcome.</em> J Child Psychol Psychiatry, 2014</td>
+</tr>
+<tr>
+<td>코르티솔–태반 통과</td>
+<td>Sandman CA et al. <em>Exposure to prenatal psychobiological stress exerts programming influences on the mother and her fetus.</em> Neuroendocrinology, 2012</td>
+</tr>
+<tr>
+<td>MBCP RCT</td>
+<td>Duncan LG, Bardacke N. <em>Mindfulness-Based Childbirth and Parenting Education.</em> J Child Fam Stud, 2010</td>
+</tr>
+<tr>
+<td>산전 마음챙김 메타분석</td>
+<td>Dhillon A et al. <em>Mindfulness-Based Interventions During Pregnancy: A Systematic Review and Meta-analysis.</em> Mindfulness, 2017</td>
+</tr>
+<tr>
+<td>한국 산전·산후 우울</td>
+<td>보건복지부·한국보건사회연구원, 『산후우울 실태조사』</td>
+</tr>
+<tr>
+<td>자기자비 이론</td>
+<td>Neff K. <em>Self-Compassion: An Alternative Conceptualization of a Healthy Attitude Toward Oneself.</em> Self and Identity, 2003</td>
+</tr>
+</tbody></table>
+<h3 id="appendix-c-s5" class="subhead">C-5. 현대 학술 — 태아 청각·감각 학습</h3>
+<table class="data">
+<thead><tr>
+<th>분야</th>
+<th>인용 문헌</th>
+</tr></thead><tbody>
+<tr>
+<td>모성 음성 인식</td>
+<td>DeCasper AJ, Spence MJ. <em>Prenatal maternal speech influences newborns' perception of speech sounds.</em> Infant Behavior and Development, 1986</td>
+</tr>
+<tr>
+<td>태아 언어 학습</td>
+<td>Partanen E et al. <em>Learning-induced neural plasticity of speech processing before birth.</em> PNAS, 2013</td>
+</tr>
+<tr>
+<td>태아 청각 발달 종합</td>
+<td>Hepper PG, Shahidullah BS. <em>Development of fetal hearing.</em> Archives of Disease in Childhood, 1994</td>
+</tr>
+<tr>
+<td>자궁 내 청각 환경</td>
+<td>Querleu D et al. <em>Hearing by the human fetus?</em> Seminars in Perinatology, 1989</td>
+</tr>
+</tbody></table>
+<h3 id="appendix-c-s6" class="subhead">C-6. 현대 학술 — 부성 영향 (아빠의 태교 근거)</h3>
+<table class="data">
+<thead><tr>
+<th>분야</th>
+<th>인용 문헌</th>
+</tr></thead><tbody>
+<tr>
+<td>부성 후성유전</td>
+<td>Soubry A. <em>POHaD: Why we should study future fathers.</em> Environmental Epigenetics, 2018</td>
+</tr>
+<tr>
+<td>부성 후성유전 리뷰</td>
+<td>Soubry A et al. <em>Newborns of obese parents have altered DNA methylation patterns.</em> International Journal of Obesity, 2015</td>
+</tr>
+<tr>
+<td>부성 스트레스 → 자녀 행동</td>
+<td>Vassoler FM et al. <em>Epigenetic inheritance of a cocaine-resistance phenotype.</em> Nature Neuroscience, 2013</td>
+</tr>
+<tr>
+<td>산전·산후 부성 우울</td>
+<td>Paulson JF, Bazemore SD. <em>Prenatal and postpartum depression in fathers and its association with maternal depression: a meta-analysis.</em> JAMA, 2010</td>
+</tr>
+<tr>
+<td>부성 호르몬 변화</td>
+<td>Saxbe DE et al. <em>Fathers' decline in testosterone and synchrony with partner.</em> Hormones and Behavior, 2017</td>
+</tr>
+</tbody></table>
+<h3 id="appendix-c-s7" class="subhead">C-7. 공공 가이드라인 · 통계</h3>
+<table class="data">
+<thead><tr>
+<th>출처</th>
+<th>문헌</th>
+</tr></thead><tbody>
+<tr>
+<td>WHO</td>
+<td><em>WHO recommendations on antenatal care for a positive pregnancy experience.</em> 2016</td>
+</tr>
+<tr>
+<td>ACOG</td>
+<td><em>Physical Activity and Exercise During Pregnancy and the Postpartum Period.</em> Committee Opinion No. 804, 2020</td>
+</tr>
+<tr>
+<td>CDC</td>
+<td><em>Pregnancy — Healthy Pregnancy</em></td>
+</tr>
+<tr>
+<td>KOSIS</td>
+<td>통계청 KOSIS — 출생·산모연령·합계출산율 통계 (<a href="https://kosis.kr/" target="_blank" rel="noopener">kosis.kr</a>)</td>
+</tr>
+<tr>
+<td>OECD</td>
+<td>OECD Family Database — Maternal age, fertility</td>
+</tr>
+<tr>
+<td>보건복지부</td>
+<td>산후우울 실태조사·국가건강검진 임신부 항목</td>
+</tr>
+</tbody></table>
+<h3 id="appendix-c-s8" class="subhead">C-8. 학습 이론 · 기타</h3>
+<ul class="bullets">
+<li>Bandura A. <em>Social Foundations of Thought and Action.</em> Prentice-Hall, 1986 — 사회학습이론·자기효능감</li>
+<li>Pennebaker JW. <em>Writing about emotional experiences as a therapeutic process.</em> Psychological Science, 1997 — 표현적 글쓰기</li>
+<li>Bowlby J. <em>Attachment and Loss, Vol. 1: Attachment.</em> Basic Books, 1969 — 애착이론(본문 7장 가족 환경)</li>
+<li>Bowlby J. <em>A Secure Base.</em> Basic Books, 1988 — 정서적 안전기지(본문 7장)</li>
+</ul>
+<h3 id="appendix-c-s9" class="subhead">C-9. 본 권의 자체 자산</h3>
+<p>본문에서 인용하거나 본 권의 작업 과정에서 산출된 맘곁·마더스베이비 헤리티지 자산 (바비즈코리아).</p>
+<ul class="bullets">
+<li>맘곁, 「사주당 태교신기 심층분석」 (내부 자료, 2026)</li>
+<li>맘곁, 「사주당 35절 매핑 데이터베이스 v1.0」 — 부록 A의 원천 데이터</li>
+<li>맘곁, 「조선 궁중 태교 심층 리서치」 — 본문 1·2·7장 1차 사료 출처</li>
+<li>마더스베이비, 「사주당 by 마더스베이비 헤리티지 브랜드 매뉴얼 v1.0」</li>
+</ul>
+<hr class="section-break">
+<h3 id="appendix-c-s10" class="subhead">부록 일러두기</h3>
+<p>세 부록은 각각의 자리를 가진다.<br>
+<strong>부록 A</strong>는 사주당과 오늘의 의학이 같은 자리에서 만나는 <em>대화의 기록</em>이고,<br>
+<strong>부록 B</strong>는 그 대화를 임신부의 일상으로 옮기는 <em>작은 거울</em>이며,<br>
+<strong>부록 C</strong>는 본 권이 어떤 자료 위에 서 있는지를 밝히는 <em>발판</em>이다.</p>
+<p>본 권을 읽는 임신부와 가족이 부록을 어떻게 활용해도 좋다.<br>
+다만 한 가지 — <em>부록은 시험지가 아니라 자료편</em>이라는 점을 기억해 주시기 바란다.<br>
+다 외우거나 다 채울 필요가 없다.<br>
+필요할 때 펼쳐서, 한 줄을 만나고, 다시 일상으로 돌아가는 것 —<br>
+그것이 사주당 이씨가 200년 전 짧은 35절을 남긴 자리이기도 하다.</p>
+</div>
+</section>
+<section id="appendix-d" class="chapter is-appendix">
+<header class="chapter-header"><span class="chapter-num">부록 D</span><h2 class="chapter-title">도움 요청 가이드 · 용어집 · 빠른 찾아보기</h2></header>
+<div class="chapter-body">
+<h3 id="appendix-d-s1" class="subhead">D-1. 도움 요청 가이드</h3>
+<p>이 페이지는 책을 덮고도 곁에 둘 수 있도록 짧게 정리한 안내다.<br>
+<em>혼자 견디지 않아도 된다</em>는 자리를 한눈에 보기 위한 페이지다.</p>
+<table class="data">
+<thead><tr>
+<th>자리</th>
+<th>도움이 닿는 곳</th>
+<th>비고</th>
+</tr></thead><tbody>
+<tr>
+<td>일상 진료</td>
+<td>산부인과 정기 진료</td>
+<td>임신 초기부터 분만 직전까지 가장 먼저 닿는 자리</td>
+</tr>
+<tr>
+<td>정서적 어려움</td>
+<td>정신건강 전문가 상담</td>
+<td>산전·산후 우울, 불안, 길어지는 무거움</td>
+</tr>
+<tr>
+<td>산후 위기</td>
+<td>산후우울 관련 상담·의료 자원</td>
+<td>출산 후 6주를 전후한 시기에 특히</td>
+</tr>
+<tr>
+<td>사회적 위기</td>
+<td>가정 폭력·위기 임신 관련 공공 상담</td>
+<td>안전이 위협받는 자리</td>
+</tr>
+<tr>
+<td>가족·관계 어려움</td>
+<td>가족 상담·부부 상담</td>
+<td>가족 안에서 결이 자주 부딪힐 때</td>
+</tr>
+<tr>
+<td>경제·돌봄 자원</td>
+<td>지역 보건소 모자보건사업, 산모·신생아 건강관리 지원</td>
+<td>출산 전후 도움이 필요할 때</td>
+</tr>
+</tbody></table>
+<blockquote class="meta-note">출간 시점에 검수자가 한국 공공 자원의 정확한 명칭·전화·링크를 채운다.<br>
+위 표는 <em>어디에 손을 내밀 수 있는지</em>의 결을 보여 주기 위한 골격이며,<br>
+책의 어떤 페이지보다 먼저 외워 두어도 좋은 자리다.</blockquote>
+<p>도움을 청하는 일은 약함이 아니라<br>
+<em>나와 아이를 함께 돌보려는 가장 적극적인 태도</em>다.<br>
+이 사실은 이 책의 5·7·8장에서 거듭 짚었다.<br>
+부록 D에 다시 한 번 모아 두는 까닭은,<br>
+필요한 순간에 가장 빨리 펼쳐 볼 수 있는 자리에 두기 위함이다.</p>
+<h3 id="appendix-d-s2" class="subhead">D-2. 용어집</h3>
+<p>본문에서 사용한 학술·한자 용어를 짧게 정리한다.</p>
+<h4 class="subhead-2">의학·발달 용어</h4>
+<table class="data">
+<thead><tr>
+<th>용어</th>
+<th>풀이</th>
+<th>본문 위치</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>DOHaD</strong></td>
+<td>Developmental Origins of Health and Disease. 태아기·영아기 환경이 평생의 건강·인지·정서의 결을 만드는 결정적 시기 가운데 하나라는 가설 흐름.</td>
+<td>6장</td>
+</tr>
+<tr>
+<td><strong>HPA 축</strong></td>
+<td>시상하부-뇌하수체-부신 축(Hypothalamic-Pituitary-Adrenal axis). 스트레스 반응에서 코르티솔 분비를 조절하는 신경내분비 경로.</td>
+<td>3·6장</td>
+</tr>
+<tr>
+<td><strong>모-태아 애착</strong></td>
+<td>임신부가 태아를 한 사람의 존재로 인식하고 정서적 유대를 형성하는 과정.</td>
+<td>3·6·7장</td>
+</tr>
+<tr>
+<td><strong>부착이론 / 정서적 안전기지</strong></td>
+<td>John Bowlby의 이론. 양육자(또는 가까운 보호자)의 곁이 아이가 세상을 탐색할 수 있는 토대가 된다는 시선.</td>
+<td>7장</td>
+</tr>
+<tr>
+<td><strong>부성 후성유전</strong></td>
+<td>아버지의 임신 전 환경이 정자의 후성유전적 표지(예: DNA 메틸화)에 미세 변화를 만들 수 있다는 연구 흐름.</td>
+<td>8장</td>
+</tr>
+<tr>
+<td><strong>MBCP</strong></td>
+<td>Mindfulness-Based Childbirth and Parenting. 마음챙김 기반 출산·양육 프로그램.</td>
+<td>6·10장</td>
+</tr>
+<tr>
+<td><strong>자기효능감</strong></td>
+<td>"나는 이 시간을 통과할 수 있다"는 작은 믿음. Bandura의 이론에서 출발.</td>
+<td>10장</td>
+</tr>
+<tr>
+<td><strong>자기자비</strong></td>
+<td>자신을 또 다른 한 사람을 대하듯 부드럽게 대하는 자세. Neff 2003.</td>
+<td>10장</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">한자·전통 용어</h4>
+<table class="data">
+<thead><tr>
+<th>용어</th>
+<th>풀이</th>
+<th>본문 위치</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>태교신기 (胎敎新記)</strong></td>
+<td>1800년 사주당 이씨가 짓고 1801년 아들 유희가 한글 음을 단 조선의 대표 태교서. 10장 35절 구성.</td>
+<td>2장 + 부록 A</td>
+</tr>
+<tr>
+<td><strong>태산요록 (胎産要錄)</strong></td>
+<td>1434년 노중례가 세종의 명으로 지은 조선의 본격적 첫 임신·출산·영유아 의서. 보물 제1179호.</td>
+<td>2장</td>
+</tr>
+<tr>
+<td><strong>언해태산집요 (諺解胎産集要)</strong></td>
+<td>1608년 허준이 펴낸 임신·출산 한글 산서. 보물 제1088호.</td>
+<td>2장</td>
+</tr>
+<tr>
+<td><strong>임산예지법 (臨産豫知法)</strong></td>
+<td>조선 후기 왕실 여성에게 손에서 손으로 전해진 순한글 첩. 산실청 매뉴얼 성격. 장서각 소장.</td>
+<td>2·7장</td>
+</tr>
+<tr>
+<td><strong>산실청 (産室廳) / 호산청 (護産廳)</strong></td>
+<td>왕비·세자빈(산실청)·후궁(호산청)의 임신·출산을 돌본 조선 왕실의 임시 기구.</td>
+<td>2·7장</td>
+</tr>
+<tr>
+<td><strong>칠정 (七情)</strong></td>
+<td>일곱 가지 감정 — 기쁨·노여움·근심·생각·슬픔·놀람·두려움. 사주당이 임신부 정서 자기관찰에서 강조한 자리.</td>
+<td>6장 + 부록 A 4-5</td>
+</tr>
+<tr>
+<td><strong>양태근신법 (養胎謹愼法)</strong></td>
+<td>태아를 기르며 삼가는 법. 『태산요록』 상권의 항목명.</td>
+<td>부록 A</td>
+</tr>
+</tbody></table>
+<h4 class="subhead-2">기타 용어</h4>
+<table class="data">
+<thead><tr>
+<th>용어</th>
+<th>풀이</th>
+<th>본문 위치</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>표현적 글쓰기</strong></td>
+<td>정서를 짧은 글로 옮겨 정돈하는 실천. Pennebaker 1997.</td>
+<td>10장</td>
+</tr>
+<tr>
+<td><strong>사회학습이론</strong></td>
+<td>모범과 관찰을 통한 학습. Bandura.</td>
+<td>부록 A 1-5</td>
+</tr>
+<tr>
+<td><strong>위기 임신</strong></td>
+<td>의학적·사회적 사정으로 더 세심한 돌봄이 필요한 임신.</td>
+<td>5·6장</td>
+</tr>
+</tbody></table>
+<h3 id="appendix-d-s3" class="subhead">D-3. 빠른 찾아보기</h3>
+<p>본문에서 자주 다시 펼치게 되는 자리를 한눈에 모았다.</p>
+<table class="data">
+<thead><tr>
+<th>주제</th>
+<th>자리</th>
+</tr></thead><tbody>
+<tr>
+<td>사주당 이씨와 『태교신기』</td>
+<td>2장 + 부록 A</td>
+</tr>
+<tr>
+<td>사주당 35절 풀스펙 매핑</td>
+<td>부록 A</td>
+</tr>
+<tr>
+<td>임신 시기별 태아 발달</td>
+<td>3장 + 5장</td>
+</tr>
+<tr>
+<td>자궁 안의 청각 환경</td>
+<td>3·5장</td>
+</tr>
+<tr>
+<td>임신 중 식·운동·잠</td>
+<td>4장 + 부록 B</td>
+</tr>
+<tr>
+<td>임산부 280일 환경 점검</td>
+<td>부록 B</td>
+</tr>
+<tr>
+<td>모성 스트레스와 정서 환경 (DOHaD)</td>
+<td>6장</td>
+</tr>
+<tr>
+<td>가족의 자리 / 산실청·호산청</td>
+<td>7장</td>
+</tr>
+<tr>
+<td>아빠의 자리 / 부성 후성유전</td>
+<td>8장</td>
+</tr>
+<tr>
+<td>좋은 태교와 부담스러운 태교</td>
+<td>9장</td>
+</tr>
+<tr>
+<td>맘곁 다섯 원칙과 실천 매트릭스</td>
+<td>10장</td>
+</tr>
+<tr>
+<td>사주당 이씨에게 보내는 인사</td>
+<td>10장 끝</td>
+</tr>
+<tr>
+<td>도움이 필요할 때</td>
+<td>부록 D-1</td>
+</tr>
+<tr>
+<td>학술 용어 풀이</td>
+<td>부록 D-2</td>
+</tr>
+<tr>
+<td>참고문헌 (1차 사료 + 학술 + 가이드라인)</td>
+<td>부록 C</td>
+</tr>
+</tbody></table>
+<p>이 표는 책을 <em>처음부터 끝까지 한 번 통독한 뒤</em> 다시 펼치는 독자를 위한 자리다.<br>
+어느 페이지를 다시 읽고 싶은지 한 줄로 찾을 수 있도록 정리했다.</p>
+</div>
+</section>
+<section id="appendix-e" class="chapter is-appendix">
+<header class="chapter-header"><span class="chapter-num">부록 E</span><h2 class="chapter-title">맘곁 태교 시리즈 안내</h2></header>
+<div class="chapter-body">
+<h3 id="appendix-e-s1" class="subhead">E-1. 시리즈의 자리</h3>
+<p>『맘곁 태교』는 두 권으로 구성된 시리즈다.</p>
+<table class="data">
+<thead><tr>
+<th>책</th>
+<th>다루는 자리</th>
+<th>톤</th>
+</tr></thead><tbody>
+<tr>
+<td>맘곁 태교 — <strong>이론편</strong> (이 책)</td>
+<td>사주당 이씨와 『태교신기』의 헤리티지, 현대 의학이 본 태아 발달과 정서 환경, 다섯 원칙</td>
+<td>깊이 · 이해 · 헤리티지</td>
+</tr>
+<tr>
+<td>맘곁 태교 — <strong>실천편</strong></td>
+<td>임신 시기별 태담과 일상 실천, 시기마다 해 볼 수 있는 작은 행동</td>
+<td>일상 · 실천 · 동반</td>
+</tr>
+</tbody></table>
+<p>이론편이 <em>마음의 지도</em>를 그려 준다면,<br>
+실천편은 <em>그 길을 하루씩 걸어 보는 책</em>이다.<br>
+두 권은 각자 따로 읽어도 좋지만,<br>
+함께 두면 더 또렷한 결을 갖는다.</p>
+<h3 id="appendix-e-s2" class="subhead">E-2. 함께 읽는 길</h3>
+<p>읽는 순서는 자유다.<br>
+오늘의 자리에 따라 세 가지 길이 가능하다.</p>
+<p><strong>이론을 먼저</strong> — 시간이 충분한 임신 초기에 적합하다.<br>
+이 책으로 <em>왜·어떻게</em>를 먼저 이해한 뒤,<br>
+실천편으로 옮겨 가서 매주의 태담을 하루씩 해 본다.</p>
+<p><strong>실천을 먼저</strong> — 임신 진단 직후 오늘부터 시작하고 싶을 때 적합하다.<br>
+실천편의 임신 주차에 맞춰 오늘부터 시작하고,<br>
+주말이나 짬 나는 시간에 이 책의 한 장씩 함께 읽는다.</p>
+<p><strong>동시에 — 부부가 한 권씩</strong>.<br>
+엄마는 실천편을 곁에 두고 매일,<br>
+아빠는 이론편을 천천히 읽으며<br>
+<em>왜 자신의 자리도 환경의 일부인지</em>를 익힌다.<br>
+두 사람이 같은 시기에 다른 결로 같은 시간을 통과하는 길.</p>
+<h3 id="appendix-e-s3" class="subhead">E-3. 매체별 만남</h3>
+<p>실천편은 두 가지 매체로 만날 수 있다.</p>
+<table class="data">
+<thead><tr>
+<th>매체</th>
+<th>자리</th>
+</tr></thead><tbody>
+<tr>
+<td>종이책</td>
+<td>손에 쥐고 곁에 두는 자리. 임신 기간 내내 책상이나 침실에 두고 자주 펼친다.</td>
+</tr>
+<tr>
+<td>웹 전자책</td>
+<td>화면에서 같은 내용을 만나는 자리. 출퇴근 길·진료 대기 시간·잠들기 전 짧게 펼치기에 적합하다.</td>
+</tr>
+</tbody></table>
+<p>자세한 채널·접속 안내는<br>
+출간 시점의 맘곁 공식 안내를 참고하면 된다.<br>
+시기에 따라 채널이 바뀌거나 새로운 매체가 추가될 수 있다.</p>
+<blockquote class="meta-note">두 매체는 같은 한 권의 책이다.<br>
+어떤 매체를 펼쳐도 <em>같은 자리</em>에서 만난다.</blockquote>
+<h3 id="appendix-e-s4" class="subhead">E-4. 그 너머의 자리</h3>
+<p>바비즈코리아는 두 개의 브랜드로<br>
+임신·출산·양육의 시간을 함께한다.</p>
+<p><strong>맘곁</strong>은 태교와 임신 시기의 자리에,<br>
+<strong>마더스베이비</strong>는 모유수유와 산후·영유아기의 자리에<br>
+각자의 결로 곁에 머문다.<br>
+두 브랜드는 결이 다르지만 같은 자리에서 흘러나온다.</p>
+<p>이 책 다음에 만나게 될 자료들도<br>
+바로 그 두 결 가운데 어딘가에서 만날 수 있다.</p>
+<p><mark class="pen-peach">이 책이 가리킨 자리에서 한 걸음 더 옮겨 가실 때,<br>
+그 자리에 맘곁과 마더스베이비가 함께 있을 것이다.</mark></p>
+</div>
+</section>
+</div>
+
+<script>
+(function() {
+  'use strict';
+  var STORAGE_KEY = 'mamgyeot-taegyo-section';
+  var menuToggle = document.getElementById('menu-toggle');
+  var drawer = document.getElementById('drawer');
+  var drawerClose = document.getElementById('drawer-close');
+  var drawerBackdrop = document.getElementById('drawer-backdrop');
+  var backToTop = document.getElementById('back-to-top');
+  var resumeToast = document.getElementById('resume-toast');
+
+  // ---- Drawer open/close ----
+  function openDrawer() {
+    drawer.setAttribute('aria-hidden', 'false');
+    drawerBackdrop.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    drawer.setAttribute('aria-hidden', 'true');
+    drawerBackdrop.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+  if (menuToggle) menuToggle.addEventListener('click', openDrawer);
+  if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+  if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') {
+      closeDrawer();
+    }
+  });
+
+  // ---- Accordion expand/collapse ----
+  var expandButtons = document.querySelectorAll('.toc-expand');
+  expandButtons.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var target = document.getElementById(btn.getAttribute('data-target'));
+      if (!target) return;
+      var isHidden = target.hasAttribute('hidden');
+      if (isHidden) {
+        target.removeAttribute('hidden');
+        btn.classList.add('expanded');
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        target.setAttribute('hidden', '');
+        btn.classList.remove('expanded');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  // ---- Close drawer on TOC link click ----
+  document.querySelectorAll('.drawer-nav a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      setTimeout(closeDrawer, 120);
+    });
+  });
+
+  // ---- Back to top ----
+  if (backToTop) {
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          if (window.scrollY > 400) backToTop.removeAttribute('hidden');
+          else backToTop.setAttribute('hidden', '');
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  // ---- Resume reading: track current section ----
+  var sections = document.querySelectorAll('section.chapter');
+  var currentSection = null;
+  if ('IntersectionObserver' in window && sections.length) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          currentSection = entry.target.id;
+        }
+      });
+      if (currentSection) {
+        try { localStorage.setItem(STORAGE_KEY, currentSection); } catch (e) {}
+      }
+    }, { threshold: [0.2], rootMargin: '-80px 0px -55% 0px' });
+    sections.forEach(function(s) { observer.observe(s); });
+  }
+
+  // ---- Show resume prompt on load (if applicable) ----
+  function showResumePrompt() {
+    if (!resumeToast) return;
+    var saved;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) { return; }
+    if (!saved) return;
+    if (saved === 'prologue') return;  // start of book; no need to resume
+    var target = document.getElementById(saved);
+    if (!target) return;
+    // Only show if user is currently near the top of the book
+    if (window.scrollY > 200) return;
+
+    var titleEl = target.querySelector('.chapter-title');
+    var numEl = target.querySelector('.chapter-num');
+    var label = '';
+    if (numEl) label += numEl.textContent.trim();
+    if (titleEl) {
+      if (label) label += ' ';
+      label += titleEl.textContent.trim();
+    }
+    var msgEl = resumeToast.querySelector('.resume-msg');
+    if (msgEl && label) {
+      msgEl.textContent = '이전에 보시던 「' + label + '」에서 이어 볼까요?';
+    }
+    resumeToast.removeAttribute('hidden');
+
+    var yesBtn = resumeToast.querySelector('.resume-yes');
+    var noBtn = resumeToast.querySelector('.resume-no');
+    function dismiss() { resumeToast.setAttribute('hidden', ''); }
+    if (yesBtn) yesBtn.addEventListener('click', function() {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      dismiss();
+    }, { once: true });
+    if (noBtn) noBtn.addEventListener('click', function() {
+      try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+      dismiss();
+    }, { once: true });
+    setTimeout(dismiss, 12000);
+  }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(showResumePrompt, 600);
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(showResumePrompt, 600);
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

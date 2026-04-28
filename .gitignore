@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# 외부에서 가져온 참조 자료(저작권·용량)
+_refs/
+맘곁태교(실천편)/
+전체원고.docx
+
+# 에디터 임시
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# 로그·임시 출력
+*.log
+.tmp/
