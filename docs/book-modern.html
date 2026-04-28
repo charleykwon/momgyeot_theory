@@ -95,17 +95,19 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.85;
   font-weight: 400;
   word-break: keep-all;
   overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .book {
   max-width: 720px;
   margin: 0 auto;
-  padding: 64px 22px 96px;
+  padding: 64px 28px 96px;
 }
 
 /* 풀-블리드 아트 표지 — 이미지 한 장만 */
@@ -272,57 +274,55 @@ body {
 .toc li:nth-child(5n+4) a { border-left-color: var(--accent-mustard); }
 .toc li:nth-child(5n+5) a { border-left-color: var(--accent-lavender); }
 
-/* =========== Chapter (카드) =========== */
+/* =========== Chapter (LongBlack 스타일 — 타이포 중심) =========== */
 .chapter {
-  margin: 32px 0;
-  padding: 36px 30px 32px;
+  margin: 36px 0;
+  padding: 48px 36px 40px;
   background: var(--bg-soft);
   border: 1px solid var(--line);
-  border-radius: 16px;
-  box-shadow: var(--card-shadow);
+  border-radius: 14px;
   scroll-margin-top: 32px;
 }
-.chapter:hover { box-shadow: var(--card-shadow-hover); }
 .chapter-header {
-  margin-bottom: 28px;
-  padding-bottom: 18px;
-  border-bottom: 1px dashed var(--line);
-  text-align: center;
+  margin-bottom: 36px;
+  padding-bottom: 0;
+  border-bottom: none;
+  text-align: left;
 }
 .chapter-num {
   display: inline-block;
   font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: 0.32em;
+  font-size: 12px;
+  letter-spacing: 0.28em;
   color: var(--accent);
-  background: rgba(184, 111, 92, 0.08);
-  padding: 4px 12px;
-  border-radius: 999px;
   margin-bottom: 14px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
+  padding: 0;
+  background: transparent;
 }
-.chapter:nth-of-type(5n+2) .chapter-num { color: var(--accent-sage); background: rgba(143, 169, 133, 0.1); }
-.chapter:nth-of-type(5n+3) .chapter-num { color: var(--accent-rose); background: rgba(196, 157, 176, 0.12); }
-.chapter:nth-of-type(5n+4) .chapter-num { color: var(--accent-mustard); background: rgba(200, 163, 90, 0.12); }
-.chapter:nth-of-type(5n+5) .chapter-num { color: var(--accent-lavender); background: rgba(156, 143, 176, 0.12); }
+.chapter:nth-of-type(5n+2) .chapter-num { color: var(--accent-sage); background: transparent; }
+.chapter:nth-of-type(5n+3) .chapter-num { color: var(--accent-rose); background: transparent; }
+.chapter:nth-of-type(5n+4) .chapter-num { color: var(--accent-mustard); background: transparent; }
+.chapter:nth-of-type(5n+5) .chapter-num { color: var(--accent-lavender); background: transparent; }
 .chapter-title {
-  font-family: var(--serif);
-  font-size: 26px;
-  font-weight: 600;
+  font-family: var(--sans);
+  font-size: 34px;
+  font-weight: 800;
   margin: 0;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
+  line-height: 1.32;
+  letter-spacing: -0.02em;
+  color: var(--text);
 }
 
 .chapter-illust {
-  width: 120px;
-  height: 150px;
-  margin: 0 auto 16px;
-  border-radius: 14px;
+  width: 110px;
+  height: 140px;
+  margin: 0 0 18px;
+  border-radius: 12px;
   overflow: hidden;
   background: var(--bg);
-  padding: 8px;
+  padding: 6px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -335,119 +335,75 @@ body {
   display: block;
 }
 @media (max-width: 600px) {
-  .chapter-illust { width: 104px; height: 130px; padding: 6px; border-radius: 12px; }
+  .chapter-illust { width: 96px; height: 120px; padding: 4px; border-radius: 10px; }
 }
 
-/* =========== Body — 가독성 강화 =========== */
-.chapter-body { font-size: 16.5px; line-height: 1.95; }
-.chapter-body p {
-  margin: 0 0 1.5em;
-  letter-spacing: 0.005em;
-}
-
-/* 리드 문단 — 각 장 첫 문단 강조 */
-.chapter-body > p:first-of-type {
-  font-size: 17.5px;
+/* =========== Body — LongBlack 스타일 가독성 =========== */
+.chapter-body {
+  font-size: 18px;
   line-height: 1.85;
   color: var(--text);
-  font-weight: 500;
-  margin-bottom: 1.7em;
-  padding-bottom: 1.3em;
-  border-bottom: 1px solid var(--line);
+}
+.chapter-body p {
+  margin: 0 0 1.55em;
+  letter-spacing: -0.005em;
 }
 
-/* 드롭캡 — 첫 글자만 장식 */
-.chapter-body > p:first-of-type::first-letter {
-  font-family: var(--serif);
-  font-size: 2.6em;
-  font-weight: 700;
-  color: var(--accent);
-  float: left;
-  line-height: 0.95;
-  margin: 0.08em 0.12em 0 0;
-  padding: 0;
-}
-.chapter.is-appendix .chapter-body > p:first-of-type {
-  font-size: 16.5px; font-weight: 400;
-  border-bottom: none; padding-bottom: 0;
-}
-.chapter.is-appendix .chapter-body > p:first-of-type::first-letter {
-  font-size: inherit; float: none; color: inherit;
-  font-weight: inherit; margin: 0;
-}
-
+/* 소제목 — 두꺼운 가중치, 좌측 컬러 바만 */
 .chapter-body .subhead {
   font-family: var(--sans);
-  font-size: 19px;
-  font-weight: 700;
-  margin: 2.6em 0 1em;
+  font-size: 22px;
+  font-weight: 800;
+  margin: 2.4em 0 0.9em;
   color: var(--text);
-  letter-spacing: -0.005em;
+  letter-spacing: -0.015em;
+  line-height: 1.4;
   position: relative;
-  padding: 6px 12px 6px 18px;
-  background: linear-gradient(90deg, rgba(184,111,92,0.06), transparent 65%);
-  border-radius: 6px;
+  padding-left: 16px;
 }
 .chapter-body .subhead::before {
   content: "";
   position: absolute;
-  left: 0; top: 25%; bottom: 25%;
+  left: 0; top: 0.18em; bottom: 0.18em;
   width: 4px;
   border-radius: 2px;
   background: var(--accent);
 }
 .chapter-body .subhead-2 {
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
-  margin: 2em 0 0.7em;
+  margin: 1.9em 0 0.6em;
   color: var(--accent);
-  letter-spacing: 0;
-}
-.chapter-body .subhead-2::before {
-  content: "✦";
-  margin-right: 8px;
-  opacity: 0.7;
-  font-size: 0.85em;
-  vertical-align: 0.05em;
+  letter-spacing: -0.005em;
 }
 
-/* 섹션 구분선 — 세 점 장식 */
+/* 섹션 구분선 — 큰 여백만으로 (장식 없음) */
 .chapter-body hr.section-break {
   border: 0; background: transparent;
-  margin: 2.4em auto;
-  width: 100%;
-  height: 14px;
-  text-align: center;
-  position: relative;
-}
-.chapter-body hr.section-break::after {
-  content: "✦ ✦ ✦";
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  letter-spacing: 0.6em;
-  color: var(--accent);
-  opacity: 0.4;
-  font-size: 11px;
+  margin: 2.4em 0;
+  height: 1px;
+  width: 48px;
+  background: var(--line-strong);
+  opacity: 0.6;
 }
 
-/* 불릿 — 컬러 도트, 간격 확대 */
+/* 불릿 — 컬러 도트, 본문 사이즈와 같은 크기 */
 .chapter-body ul.bullets {
   margin: 1.3em 0 1.6em;
   padding-left: 0;
   list-style: none;
 }
 .chapter-body ul.bullets li {
-  margin: 0.65em 0;
+  margin: 0.6em 0;
   position: relative;
-  padding-left: 22px;
-  line-height: 1.7;
+  padding-left: 24px;
+  line-height: 1.75;
 }
 .chapter-body ul.bullets li::before {
   content: "";
   position: absolute;
-  left: 4px; top: 0.7em;
+  left: 6px; top: 0.78em;
   width: 7px; height: 7px;
   border-radius: 50%;
   background: var(--accent);
@@ -457,33 +413,21 @@ body {
 .chapter-body ul.bullets li:nth-child(5n+4)::before { background: var(--accent-mustard); }
 .chapter-body ul.bullets li:nth-child(5n+5)::before { background: var(--accent-lavender); }
 
-/* 인용/메모 → 카드형 콜아웃 (틴트 강화) */
+/* 인용/메모 → 매거진 풀-쿼트 (LongBlack 스타일) */
 .chapter-body blockquote.meta-note {
-  margin: 1.8em 0;
-  padding: 18px 22px 18px 26px;
-  background: rgba(143, 169, 133, 0.07);
-  border: 1px solid rgba(143, 169, 133, 0.2);
-  border-left: 5px solid var(--accent-sage);
-  border-radius: 12px;
-  font-size: 14.5px;
+  margin: 2em 0;
+  padding: 6px 0 6px 20px;
+  background: transparent;
+  border: none;
+  border-left: 3px solid var(--accent);
+  border-radius: 0;
+  font-size: 18.5px;
   color: var(--text);
-  line-height: 1.8;
-  position: relative;
+  line-height: 1.7;
+  font-weight: 500;
+  letter-spacing: -0.005em;
 }
-.chapter-body blockquote.meta-note::before {
-  content: "💬";
-  position: absolute;
-  top: -12px; left: 18px;
-  background: var(--bg-soft);
-  padding: 2px 8px;
-  font-size: 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(143, 169, 133, 0.25);
-}
-:root.dark .chapter-body blockquote.meta-note {
-  background: rgba(163, 188, 153, 0.08);
-  border-color: rgba(163, 188, 153, 0.22);
-}
+.chapter-body blockquote.meta-note::before { content: none; }
 
 /* 강조 마커 */
 .chapter-body strong { font-weight: 700; color: var(--text); }
@@ -737,15 +681,14 @@ table.data tr:last-child td { border-bottom: none; }
 .resume-btn.resume-yes { background: var(--accent); border-color: var(--accent); }
 
 @media (max-width: 600px) {
-  body { font-size: 16.5px; line-height: 1.9; }
-  .book { padding: 28px 14px 64px; }
-  .chapter { padding: 28px 20px 24px; margin: 22px 0; border-radius: 14px; }
-  .chapter-title { font-size: 22px; }
-  .chapter-body { font-size: 16.5px; line-height: 1.95; }
-  .chapter-body > p:first-of-type { font-size: 17px; }
-  .chapter-body > p:first-of-type::first-letter { font-size: 2.4em; }
-  .chapter-body .subhead { font-size: 17.5px; }
-  .chapter-body .subhead-2 { font-size: 15.5px; }
+  body { font-size: 18px; line-height: 1.85; }
+  .book { padding: 28px 18px 64px; }
+  .chapter { padding: 32px 22px 28px; margin: 22px 0; border-radius: 12px; }
+  .chapter-title { font-size: 28px; line-height: 1.3; }
+  .chapter-body { font-size: 18px; line-height: 1.85; }
+  .chapter-body .subhead { font-size: 20px; }
+  .chapter-body .subhead-2 { font-size: 16px; }
+  .chapter-body blockquote.meta-note { font-size: 17.5px; }
   .toc ol { grid-template-columns: 1fr; }
   #menu-toggle { top: 12px; left: 12px; width: 40px; height: 40px; }
   #dark-toggle { top: 12px; right: 12px; width: 40px; height: 40px; font-size: 16px; }

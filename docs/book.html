@@ -645,19 +645,20 @@ table.data td { color: var(--text); }
 }
 .cover .cover-hero img { width: 100%; height: auto; }
 
-/* 챕터 헤더 일러스트 — 챕터 번호·제목 옆 캐릭터 (세로 비율 유지) */
+/* 챕터 헤더 일러스트 — 좌측 정렬, 세로 비율 유지 */
 .chapter-illust {
-  width: 120px;
-  height: 150px;
-  margin: 0 auto 16px;
+  width: 110px;
+  height: 140px;
+  margin: 0 0 18px;
 }
 .chapter-illust img {
   width: 100%; height: 100%;
   object-fit: contain;
+  object-position: left bottom;
   display: block;
 }
 @media (max-width: 600px) {
-  .chapter-illust { width: 104px; height: 130px; }
+  .chapter-illust { width: 96px; height: 120px; }
 }
 
 /* 시기별 태아 진행 — 3장 발달표 위 */
