@@ -1124,20 +1124,25 @@ table.data td { color: var(--text); }
 }
 .cover .cover-hero img { width: 100%; height: auto; }
 
-/* 챕터 헤더 일러스트 — 좌측 정렬, 세로 비율 유지 */
+/* 챕터 헤더 일러스트 — 가운데 정렬, 컴팩트 사이즈 */
 .chapter-illust {
-  width: 110px;
-  height: 140px;
-  margin: 0 0 18px;
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 96px;
 }
 .chapter-illust img {
-  width: 100%; height: 100%;
+  max-width: 80px;
+  max-height: 96px;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  object-position: left bottom;
   display: block;
 }
 @media (max-width: 600px) {
-  .chapter-illust { width: 96px; height: 120px; }
+  .chapter-illust { height: 80px; }
+  .chapter-illust img { max-width: 68px; max-height: 80px; }
 }
 
 /* 시기별 태아 진행 — 3장 발달표 위 */
@@ -1988,26 +1993,23 @@ body {
 }
 
 .chapter-illust {
-  width: 110px;
-  height: 140px;
-  margin: 0 0 18px;
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--bg);
-  padding: 6px;
+  margin: 0 0 14px;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-start;
+  height: 96px;
 }
 .chapter-illust img {
-  width: 100%;
-  height: 100%;
+  max-width: 80px;
+  max-height: 96px;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  object-position: center bottom;
   display: block;
 }
 @media (max-width: 600px) {
-  .chapter-illust { width: 96px; height: 120px; padding: 4px; border-radius: 10px; }
+  .chapter-illust { height: 80px; }
+  .chapter-illust img { max-width: 68px; max-height: 80px; }
 }
 
 /* =========== Body — LongBlack 스타일 가독성 =========== */
