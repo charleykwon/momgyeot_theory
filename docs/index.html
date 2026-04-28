@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+(function(){try{var s=localStorage.getItem('mamgyeot-theme');var d=s?(s==='dark'):(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark');}catch(e){}})();
+</script>
 <meta http-equiv="refresh" content="0; url=./book.html">
 <title>맘곁 태교 — 이론편</title>
 <meta name="description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 책. 『맘곁 태교 — 이론편』. 권의철·최소라 공저, 바비즈코리아.">
@@ -13,10 +16,14 @@
 <meta property="og:locale" content="ko_KR">
 <link rel="canonical" href="./book.html">
 <style>
+  :root { --bg: #faf6f0; --text: #2c2826; --accent: #8c6e4e; }
+  :root.dark { --bg: #1a1a1a; --text: #eaeaea; --accent: #8a9a5b; }
   body { font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
          display: flex; align-items: center; justify-content: center;
-         min-height: 100vh; margin: 0; background: #faf6f0; color: #2c2826; }
-  a { color: #8c6e4e; text-decoration: none; border-bottom: 1px dotted #8c6e4e; }
+         min-height: 100vh; margin: 0;
+         background: var(--bg); color: var(--text);
+         transition: background-color 0.3s ease, color 0.3s ease; }
+  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
 </style>
 </head>
 <body>

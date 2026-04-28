@@ -3,6 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+// 다크모드 — FOUC 방지를 위해 stylesheet 로드 전에 dark class 적용
+(function(){
+  try {
+    var saved = localStorage.getItem('mamgyeot-theme');
+    var dark = saved
+      ? (saved === 'dark')
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (dark) document.documentElement.classList.add('dark');
+  } catch(e) {}
+})();
+</script>
 <title>맘곁 태교 — 이론편 · 사주당 이씨와 오늘의 의학이 같은 자리에서 만난다</title>
 <meta name="description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 책. 『맘곁 태교 — 이론편』. 권의철·최소라 공저, 바비즈코리아. 1800년 사주당 이씨의 『태교신기』를 오늘의 부모를 위한 언어로 다시 읽다.">
 <meta name="author" content="권의철, 최소라">
@@ -28,6 +40,57 @@
   --line: #e3dccf;
   --serif: 'Noto Serif KR', 'Apple SD Gothic Neo', 'Nanum Myeongjo', serif;
   --sans: 'Noto Sans KR', 'Apple SD Gothic Neo', system-ui, -apple-system, sans-serif;
+
+  /* 다크모드 친화 변수 (라이트 기본값) */
+  --bg-flow-from: #f3ece2;
+  --card-modern-bg: #ffffff;
+  --ring-bg: rgba(255, 252, 246, 0.4);
+  --pen-yellow: rgba(245, 211, 100, 0.5);
+  --pen-peach: rgba(244, 178, 154, 0.45);
+  --pen-sage: rgba(167, 198, 169, 0.45);
+  --shadow-soft: rgba(0, 0, 0, 0.06);
+  --shadow-medium: rgba(0, 0, 0, 0.12);
+  --shadow-strong: rgba(0, 0, 0, 0.18);
+  --toast-bg: #2c2826;
+  --toast-text: #ffffff;
+  --backdrop: rgba(20, 18, 16, 0.32);
+  --bg-flow-to-text: #ffffff;
+  --mandala-center-text: #ffffff;
+  --back-to-top-text: #ffffff;
+}
+
+/* 다크모드 — 야간 사용 환경. 완전 검정 회피, 올리브 액센트, 충분한 대비. */
+:root.dark {
+  --bg: #1a1a1a;
+  --bg-soft: #1e1e1e;
+  --text: #eaeaea;
+  --text-soft: #b0b0b0;
+  --accent: #8a9a5b;
+  --line: #2c2c2c;
+
+  --bg-flow-from: #2a2a2a;
+  --card-modern-bg: #232323;
+  --ring-bg: rgba(40, 40, 40, 0.6);
+  --pen-yellow: rgba(245, 211, 100, 0.28);
+  --pen-peach: rgba(244, 178, 154, 0.24);
+  --pen-sage: rgba(167, 198, 169, 0.24);
+  --shadow-soft: rgba(0, 0, 0, 0.3);
+  --shadow-medium: rgba(0, 0, 0, 0.4);
+  --shadow-strong: rgba(0, 0, 0, 0.55);
+  --toast-bg: #2a2826;
+  --toast-text: #eaeaea;
+  --backdrop: rgba(0, 0, 0, 0.55);
+  --bg-flow-to-text: #f5f5f0;
+  --mandala-center-text: #f5f5f0;
+  --back-to-top-text: #1a1a1a;
+}
+
+/* 모드 전환 부드럽게 */
+body, .chapter, .drawer-nav, table.data, blockquote.meta-note,
+.infographic-cards .card, .infographic-flow .flow-side,
+.infographic-circle .ring, .infographic-mandala .mandala-petal,
+.infographic-mandala .mandala-center, #drawer, #menu-toggle, #dark-toggle {
+  transition: background-color 0.28s ease, color 0.28s ease, border-color 0.28s ease;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -345,19 +408,19 @@ table.data td { color: var(--text); }
 .chapter-body mark.pen-yellow {
   background: linear-gradient(180deg,
     transparent 0%, transparent 55%,
-    rgba(245, 211, 100, 0.5) 55%, rgba(245, 211, 100, 0.5) 92%,
+    var(--pen-yellow) 55%, var(--pen-yellow) 92%,
     transparent 92%);
 }
 .chapter-body mark.pen-peach {
   background: linear-gradient(180deg,
     transparent 0%, transparent 55%,
-    rgba(244, 178, 154, 0.45) 55%, rgba(244, 178, 154, 0.45) 92%,
+    var(--pen-peach) 55%, var(--pen-peach) 92%,
     transparent 92%);
 }
 .chapter-body mark.pen-sage {
   background: linear-gradient(180deg,
     transparent 0%, transparent 55%,
-    rgba(167, 198, 169, 0.45) 55%, rgba(167, 198, 169, 0.45) 92%,
+    var(--pen-sage) 55%, var(--pen-sage) 92%,
     transparent 92%);
 }
 @media print {
@@ -373,19 +436,39 @@ table.data td { color: var(--text); }
   background: var(--bg-soft); border: 1px solid var(--line);
   border-radius: 50%; cursor: pointer;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 8px var(--shadow-soft);
   transition: background 0.18s, transform 0.18s;
 }
-#menu-toggle:hover { background: #fff; }
+#menu-toggle:hover { background: var(--bg); }
 #menu-toggle:active { transform: scale(0.95); }
 #menu-toggle span {
   display: block; width: 18px; height: 1.5px;
   background: var(--accent); border-radius: 1px;
 }
 
+#dark-toggle {
+  position: fixed; top: 18px; right: 18px; z-index: 50;
+  width: 44px; height: 44px; padding: 0;
+  background: var(--bg-soft); border: 1px solid var(--line);
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; line-height: 1;
+  box-shadow: 0 2px 8px var(--shadow-soft);
+  transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+}
+#dark-toggle:hover {
+  background: var(--bg);
+  box-shadow: 0 3px 12px var(--shadow-medium);
+}
+#dark-toggle:active { transform: scale(0.95); }
+#dark-toggle .dark-icon-dark { display: inline-block; }
+#dark-toggle .dark-icon-light { display: none; }
+:root.dark #dark-toggle .dark-icon-dark { display: none; }
+:root.dark #dark-toggle .dark-icon-light { display: inline-block; }
+
 #drawer-backdrop {
   position: fixed; inset: 0; z-index: 55;
-  background: rgba(20, 18, 16, 0.32);
+  background: var(--backdrop);
   opacity: 0; pointer-events: none;
   transition: opacity 0.28s ease;
 }
@@ -398,7 +481,7 @@ table.data td { color: var(--text); }
   transform: translateX(-100%);
   transition: transform 0.28s ease;
   display: flex; flex-direction: column; overflow: hidden;
-  box-shadow: 4px 0 24px rgba(0,0,0,0.06);
+  box-shadow: 4px 0 24px var(--shadow-medium);
 }
 #drawer[aria-hidden="false"] { transform: translateX(0); }
 
@@ -418,7 +501,7 @@ table.data td { color: var(--text); }
 
 .drawer-nav { flex: 1; overflow-y: auto; padding: 8px 0 24px; }
 .drawer-toc-list { list-style: none; padding: 0; margin: 0; }
-.toc-item { border-bottom: 1px solid #f0eadd; }
+.toc-item { border-bottom: 1px solid var(--line); }
 .toc-row { display: flex; align-items: stretch; }
 .toc-link {
   flex: 1; padding: 12px 16px; text-decoration: none; color: var(--text);
@@ -431,7 +514,7 @@ table.data td { color: var(--text); }
 }
 .toc-link .toc-title { font-family: var(--serif); line-height: 1.4; }
 .toc-expand {
-  background: none; border: none; border-left: 1px solid #f0eadd;
+  background: none; border: none; border-left: 1px solid var(--line);
   width: 40px; cursor: pointer; color: var(--text-soft);
   font-size: 13px; transition: transform 0.2s, background 0.2s;
 }
@@ -455,10 +538,10 @@ table.data td { color: var(--text); }
 #back-to-top {
   position: fixed; bottom: 24px; right: 24px; z-index: 40;
   width: 46px; height: 46px; border-radius: 50%; padding: 0;
-  background: var(--accent); color: #fff; border: none;
+  background: var(--accent); color: var(--back-to-top-text); border: none;
   font-size: 20px; cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-  transition: transform 0.2s, opacity 0.25s;
+  box-shadow: 0 4px 14px var(--shadow-strong);
+  transition: transform 0.2s, opacity 0.25s, background 0.28s ease;
 }
 #back-to-top:hover { transform: translateY(-2px); }
 #back-to-top[hidden] { display: none; }
@@ -466,11 +549,11 @@ table.data td { color: var(--text); }
 #resume-toast {
   position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
   z-index: 70; max-width: 92vw;
-  background: var(--text); color: #fff;
+  background: var(--toast-bg); color: var(--toast-text);
   padding: 13px 18px; border-radius: 8px;
   display: flex; align-items: center; gap: 10px;
   font-size: 14px;
-  box-shadow: 0 6px 22px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 22px var(--shadow-strong);
 }
 #resume-toast[hidden] { display: none; }
 .resume-msg { flex: 1; line-height: 1.5; }
@@ -492,12 +575,18 @@ table.data td { color: var(--text); }
 
 @media (max-width: 600px) {
   #menu-toggle { top: 12px; left: 12px; width: 40px; height: 40px; }
+  #dark-toggle { top: 12px; right: 12px; width: 40px; height: 40px; font-size: 16px; }
   #back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 17px; }
   #resume-toast { bottom: 16px; padding: 11px 14px; gap: 8px; font-size: 13px; }
 }
 
 @media print {
-  #menu-toggle, #drawer, #drawer-backdrop, #back-to-top, #resume-toast { display: none !important; }
+  /* 인쇄 시 다크 변수 무시하고 라이트 팔레트 강제 */
+  :root.dark {
+    --bg: #ffffff; --bg-soft: #ffffff; --text: #000000; --text-soft: #555555;
+    --accent: #555555; --line: #cccccc;
+  }
+  #menu-toggle, #dark-toggle, #drawer, #drawer-backdrop, #back-to-top, #resume-toast { display: none !important; }
 }
 .chapter.is-appendix .chapter-num {
   color: #6b6358;
@@ -543,7 +632,7 @@ table.data td { color: var(--text); }
   font-size: 12.5px;
   color: var(--text-soft);
   padding-top: 7px;
-  background: rgba(255, 252, 246, 0.4);
+  background: var(--ring-bg);
 }
 .infographic-circle .ring-society { width: 100%; height: 100%; left: 0; top: 0; }
 .infographic-circle .ring-family  { width: 78%;  height: 78%;  left: 11%; top: 11%; }
@@ -552,7 +641,7 @@ table.data td { color: var(--text); }
 .infographic-circle .ring-fetus   {
   width: 18%; height: 18%; left: 41%; top: 41%;
   background: var(--accent);
-  color: #fff;
+  color: var(--bg-flow-to-text);
   align-items: center;
   padding-top: 0;
   font-size: 13px;
@@ -604,7 +693,7 @@ table.data td { color: var(--text); }
   line-height: 1.55;
 }
 .infographic-cards .card.sajudang { background: var(--bg-soft); }
-.infographic-cards .card.modern { background: #fff; }
+.infographic-cards .card.modern { background: var(--card-modern-bg); }
 .infographic-cards .card-label {
   display: block;
   font-size: 10.5px;
@@ -636,13 +725,13 @@ table.data td { color: var(--text); }
   line-height: 1.55;
 }
 .infographic-flow .flow-from {
-  background: #f3ece2;
+  background: var(--bg-flow-from);
   border: 1px solid var(--line);
   color: var(--text-soft);
 }
 .infographic-flow .flow-to {
   background: var(--accent);
-  color: #fff;
+  color: var(--bg-flow-to-text);
 }
 .infographic-flow .flow-arrow {
   text-align: center;
@@ -680,7 +769,7 @@ table.data td { color: var(--text); }
   top: 31%;
   border-radius: 50%;
   background: var(--accent);
-  color: #fff;
+  color: var(--mandala-center-text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -755,6 +844,11 @@ table.data td { color: var(--text); }
 
 <button id="menu-toggle" type="button" aria-label="차례 열기">
   <span></span><span></span><span></span>
+</button>
+
+<button id="dark-toggle" type="button" aria-label="다크모드 전환" title="다크모드 전환">
+  <span class="dark-icon-dark" aria-hidden="true">🌙</span>
+  <span class="dark-icon-light" aria-hidden="true">☀️</span>
 </button>
 
 <div id="drawer-backdrop"></div>
@@ -4926,12 +5020,45 @@ SNS에 인증을 남겼던 하루,<br>
 (function() {
   'use strict';
   var STORAGE_KEY = 'mamgyeot-taegyo-section';
+  var THEME_KEY = 'mamgyeot-theme';
   var menuToggle = document.getElementById('menu-toggle');
+  var darkToggle = document.getElementById('dark-toggle');
   var drawer = document.getElementById('drawer');
   var drawerClose = document.getElementById('drawer-close');
   var drawerBackdrop = document.getElementById('drawer-backdrop');
   var backToTop = document.getElementById('back-to-top');
   var resumeToast = document.getElementById('resume-toast');
+
+  // ---- Dark mode toggle ----
+  function setTheme(isDark) {
+    document.documentElement.classList.toggle('dark', isDark);
+    try { localStorage.setItem(THEME_KEY, isDark ? 'dark' : 'light'); } catch (e) {}
+    if (darkToggle) {
+      darkToggle.setAttribute('aria-label',
+        isDark ? '라이트 모드로 전환' : '다크 모드로 전환');
+    }
+  }
+  if (darkToggle) {
+    // 초기 aria-label은 현재 상태에 따라
+    var startsDark = document.documentElement.classList.contains('dark');
+    darkToggle.setAttribute('aria-label',
+      startsDark ? '라이트 모드로 전환' : '다크 모드로 전환');
+    darkToggle.addEventListener('click', function() {
+      var isDark = !document.documentElement.classList.contains('dark');
+      setTheme(isDark);
+    });
+  }
+  // 시스템 선호가 바뀌면 따라간다(사용자가 명시적으로 저장한 적 없을 때만)
+  if (window.matchMedia) {
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    var followSystem = function(e) {
+      var saved;
+      try { saved = localStorage.getItem(THEME_KEY); } catch (err) {}
+      if (!saved) setTheme(e.matches);
+    };
+    if (mq.addEventListener) mq.addEventListener('change', followSystem);
+    else if (mq.addListener) mq.addListener(followSystem);
+  }
 
   // ---- Drawer open/close ----
   function openDrawer() {
