@@ -1762,6 +1762,87 @@ table.data td { color: var(--text); }
 @media print {
   .fetus-progress { background: white; }
 }
+/* =========== 감정 색상표 (실천편 PART 1) =========== */
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 1.6em 0 2em;
+}
+.color-card {
+  --card-bg: #f5f0e6;
+  --card-accent: #b89d72;
+  --card-text: #2c2826;
+  position: relative;
+  padding: 24px 22px 22px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  font-family: var(--sans);
+  overflow: hidden;
+}
+.color-card::before {
+  content: ""; position: absolute;
+  top: 0; left: 0; right: 0; height: 8px;
+  background: var(--card-accent);
+}
+.color-swatch {
+  display: inline-block;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--card-accent);
+  border: 2px solid rgba(255,255,255,0.7);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  margin-bottom: 10px;
+}
+.color-name {
+  margin: 0 0 6px;
+  font-size: 17px; font-weight: 700;
+  color: var(--card-text);
+  letter-spacing: -0.005em;
+}
+.color-keywords {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  color: var(--card-text);
+  opacity: 0.78;
+  line-height: 1.55;
+}
+.color-quote {
+  margin: 0;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.55);
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: var(--card-text);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.color-card--beige  { --card-bg: #f0e3cb; --card-accent: #c8a874; --card-text: #4a3a23; }
+.color-card--yellow { --card-bg: #fbeec1; --card-accent: #e8c553; --card-text: #5a4815; }
+.color-card--olive  { --card-bg: #d8e0bd; --card-accent: #8fa766; --card-text: #38461c; }
+.color-card--pink   { --card-bg: #f6d9de; --card-accent: #e08aa1; --card-text: #6e2e3e; }
+.color-card--blue   { --card-bg: #d2e1ec; --card-accent: #6aa1c2; --card-text: #234862; }
+.color-card--gray   { --card-bg: #d6d4cf; --card-accent: #5a5853; --card-text: #2a2925; color: var(--card-text); }
+.color-card--violet { --card-bg: #ddd0ea; --card-accent: #7e5ea7; --card-text: #382356; }
+
+/* 다크모드 — 카드 배경은 그대로 두되 인쇄 가능성 고려 */
+:root.dark .color-card {
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+}
+:root.dark .color-quote {
+  background: rgba(0,0,0,0.18);
+}
+@media (max-width: 600px) {
+  .color-palette { grid-template-columns: 1fr; }
+}
+@media print {
+  .color-card { page-break-inside: avoid; box-shadow: none; }
+}
+
 /* =========== 부록 D 안전 박스 =========== */
 .safety-board { margin: 1.6em 0 2em; }
 .safety-emergency {
@@ -3232,6 +3313,95 @@ table.data tr:last-child td { border-bottom: none; }
 @media (max-width: 600px) {
   table.data { font-size: 12.5px; }
   table.data th, table.data td { padding: 9px 10px; }
+}
+
+/* =========== 감정 색상표 (실천편 PART 1, 모던) =========== */
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 1.8em 0 2.2em;
+}
+.color-card {
+  --card-bg: #f5f0e6;
+  --card-accent: #b89d72;
+  --card-text: #2c2826;
+  position: relative;
+  padding: 28px 24px 24px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  font-family: var(--sans);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.color-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.1);
+}
+.color-card::before {
+  content: ""; position: absolute;
+  top: 0; left: 0; right: 0; height: 10px;
+  background: var(--card-accent);
+}
+.color-swatch {
+  display: inline-block;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--card-accent);
+  border: 3px solid rgba(255,255,255,0.85);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+  margin-bottom: 12px;
+}
+.color-name {
+  margin: 0 0 8px;
+  font-size: 19px; font-weight: 800;
+  color: var(--card-text);
+  letter-spacing: -0.01em;
+  font-family: var(--sans);
+}
+.color-keywords {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: var(--card-text);
+  opacity: 0.78;
+  line-height: 1.6;
+  font-weight: 500;
+}
+.color-quote {
+  margin: 0;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.55);
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--card-text);
+  line-height: 1.65;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.color-card--beige  { --card-bg: #f0e3cb; --card-accent: #c8a874; --card-text: #4a3a23; }
+.color-card--yellow { --card-bg: #fbeec1; --card-accent: #e8c553; --card-text: #5a4815; }
+.color-card--olive  { --card-bg: #d8e0bd; --card-accent: #8fa766; --card-text: #38461c; }
+.color-card--pink   { --card-bg: #f6d9de; --card-accent: #e08aa1; --card-text: #6e2e3e; }
+.color-card--blue   { --card-bg: #d2e1ec; --card-accent: #6aa1c2; --card-text: #234862; }
+.color-card--gray   { --card-bg: #d6d4cf; --card-accent: #5a5853; --card-text: #2a2925; }
+.color-card--violet { --card-bg: #ddd0ea; --card-accent: #7e5ea7; --card-text: #382356; }
+
+:root.dark .color-card {
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+:root.dark .color-quote {
+  background: rgba(0,0,0,0.2);
+}
+@media (max-width: 600px) {
+  .color-palette { grid-template-columns: 1fr; gap: 12px; }
+  .color-card { padding: 22px 20px 20px; }
+}
+@media print {
+  .color-card { page-break-inside: avoid; box-shadow: none; }
 }
 
 /* =========== 부록 D 안전 박스 (모던) =========== */

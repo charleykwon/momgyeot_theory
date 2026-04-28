@@ -737,6 +737,87 @@ table.data td { color: var(--text); }
 @media print {
   .fetus-progress { background: white; }
 }
+/* =========== 감정 색상표 (실천편 PART 1) =========== */
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 1.6em 0 2em;
+}
+.color-card {
+  --card-bg: #f5f0e6;
+  --card-accent: #b89d72;
+  --card-text: #2c2826;
+  position: relative;
+  padding: 24px 22px 22px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  font-family: var(--sans);
+  overflow: hidden;
+}
+.color-card::before {
+  content: ""; position: absolute;
+  top: 0; left: 0; right: 0; height: 8px;
+  background: var(--card-accent);
+}
+.color-swatch {
+  display: inline-block;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--card-accent);
+  border: 2px solid rgba(255,255,255,0.7);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+  margin-bottom: 10px;
+}
+.color-name {
+  margin: 0 0 6px;
+  font-size: 17px; font-weight: 700;
+  color: var(--card-text);
+  letter-spacing: -0.005em;
+}
+.color-keywords {
+  margin: 0 0 10px;
+  font-size: 13.5px;
+  color: var(--card-text);
+  opacity: 0.78;
+  line-height: 1.55;
+}
+.color-quote {
+  margin: 0;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.55);
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: var(--card-text);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.color-card--beige  { --card-bg: #f0e3cb; --card-accent: #c8a874; --card-text: #4a3a23; }
+.color-card--yellow { --card-bg: #fbeec1; --card-accent: #e8c553; --card-text: #5a4815; }
+.color-card--olive  { --card-bg: #d8e0bd; --card-accent: #8fa766; --card-text: #38461c; }
+.color-card--pink   { --card-bg: #f6d9de; --card-accent: #e08aa1; --card-text: #6e2e3e; }
+.color-card--blue   { --card-bg: #d2e1ec; --card-accent: #6aa1c2; --card-text: #234862; }
+.color-card--gray   { --card-bg: #d6d4cf; --card-accent: #5a5853; --card-text: #2a2925; color: var(--card-text); }
+.color-card--violet { --card-bg: #ddd0ea; --card-accent: #7e5ea7; --card-text: #382356; }
+
+/* 다크모드 — 카드 배경은 그대로 두되 인쇄 가능성 고려 */
+:root.dark .color-card {
+  border-color: rgba(255,255,255,0.08);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+}
+:root.dark .color-quote {
+  background: rgba(0,0,0,0.18);
+}
+@media (max-width: 600px) {
+  .color-palette { grid-template-columns: 1fr; }
+}
+@media print {
+  .color-card { page-break-inside: avoid; box-shadow: none; }
+}
+
 /* =========== 부록 D 안전 박스 =========== */
 .safety-board { margin: 1.6em 0 2em; }
 .safety-emergency {
@@ -1610,27 +1691,50 @@ table.data td { color: var(--text); }
 </ul>
 <h4 class="subhead-2">2. 태교 Emotion Palette</h4>
 <p>이 책에서는 7가지 감정 색상표를 제공해요. 매일 잠깐이라도 색으로 정리하면, 마음의 구조가 자연스럽게 보이기 시작해요.</p>
-<h5 class="subhead-3">Soft Beige</h5>
-<p>고요함, 차분함, 평온한 흐름<br>
-"오늘 엄마 마음은 따뜻한 베이지야."</p>
-<h5 class="subhead-3">Light Yellow</h5>
-<p>작은 기쁨, 잔잔한 희망, 밝음<br>
-"옅은 노랑처럼 가벼운 기쁨이 있었어."</p>
-<h5 class="subhead-3">Olive Green</h5>
-<p>안정, 균형, 무리 없는 하루<br>
-"오늘 마음은 편안한 올리브 그린이야."</p>
-<h5 class="subhead-3">Pale Pink</h5>
-<p>따뜻함, 애정, 부드러운 관계<br>
-"마음이 핑크처럼 따뜻했어."</p>
-<h5 class="subhead-3">Light Blue</h5>
-<p>시원한 슬픔, 회복 중인 감정<br>
-"조금 힘들었지만 괜찮아지고 있어."</p>
-<h5 class="subhead-3">Charcoal Gray</h5>
-<p>피로, 무거움, 정서적 압박<br>
-"오늘 마음은 조금 무거운 그레이였어."</p>
-<h5 class="subhead-3">Deep Violet</h5>
-<p>복잡함, 요동, 높은 스트레스<br>
-"보라빛처럼 복잡한 감정이 있었어."</p>
+<div class="color-palette" aria-label="감정 색상표 — 7가지 색">
+  <article class="color-card color-card--beige">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Soft Beige</h4>
+    <p class="color-keywords">고요함 · 차분함 · 평온한 흐름</p>
+    <p class="color-quote">"오늘 엄마 마음은 따뜻한 베이지야."</p>
+  </article>
+  <article class="color-card color-card--yellow">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Light Yellow</h4>
+    <p class="color-keywords">작은 기쁨 · 잔잔한 희망 · 밝음</p>
+    <p class="color-quote">"옅은 노랑처럼 가벼운 기쁨이 있었어."</p>
+  </article>
+  <article class="color-card color-card--olive">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Olive Green</h4>
+    <p class="color-keywords">안정 · 균형 · 무리 없는 하루</p>
+    <p class="color-quote">"오늘 마음은 편안한 올리브 그린이야."</p>
+  </article>
+  <article class="color-card color-card--pink">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Pale Pink</h4>
+    <p class="color-keywords">따뜻함 · 애정 · 부드러운 관계</p>
+    <p class="color-quote">"마음이 핑크처럼 따뜻했어."</p>
+  </article>
+  <article class="color-card color-card--blue">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Light Blue</h4>
+    <p class="color-keywords">시원한 슬픔 · 회복 중인 감정</p>
+    <p class="color-quote">"조금 힘들었지만 괜찮아지고 있어."</p>
+  </article>
+  <article class="color-card color-card--gray">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Charcoal Gray</h4>
+    <p class="color-keywords">피로 · 무거움 · 정서적 압박</p>
+    <p class="color-quote">"오늘 마음은 조금 무거운 그레이였어."</p>
+  </article>
+  <article class="color-card color-card--violet">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Deep Violet</h4>
+    <p class="color-keywords">복잡함 · 요동 · 높은 스트레스</p>
+    <p class="color-quote">"보라빛처럼 복잡한 감정이 있었어."</p>
+  </article>
+</div>
 <h4 class="subhead-2">3. 색상표 활용법</h4>
 <ul class="bullets">
 <li><strong>하루에 색 하나만 고르세요</strong> — 그 색이 오늘의 정서 톤이에요. 길게 설명할 필요 없어요.</li>

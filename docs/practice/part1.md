@@ -109,27 +109,53 @@
 - 부부가 서로의 감정을 쉽게 공유할 수 있어요
 ### 2. 태교 Emotion Palette
 이 책에서는 7가지 감정 색상표를 제공해요. 매일 잠깐이라도 색으로 정리하면, 마음의 구조가 자연스럽게 보이기 시작해요.
-#### Soft Beige
-고요함, 차분함, 평온한 흐름
-"오늘 엄마 마음은 따뜻한 베이지야."
-#### Light Yellow
-작은 기쁨, 잔잔한 희망, 밝음
-"옅은 노랑처럼 가벼운 기쁨이 있었어."
-#### Olive Green
-안정, 균형, 무리 없는 하루
-"오늘 마음은 편안한 올리브 그린이야."
-#### Pale Pink
-따뜻함, 애정, 부드러운 관계
-"마음이 핑크처럼 따뜻했어."
-#### Light Blue
-시원한 슬픔, 회복 중인 감정
-"조금 힘들었지만 괜찮아지고 있어."
-#### Charcoal Gray
-피로, 무거움, 정서적 압박
-"오늘 마음은 조금 무거운 그레이였어."
-#### Deep Violet
-복잡함, 요동, 높은 스트레스
-"보라빛처럼 복잡한 감정이 있었어."
+
+:::raw
+<div class="color-palette" aria-label="감정 색상표 — 7가지 색">
+  <article class="color-card color-card--beige">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Soft Beige</h4>
+    <p class="color-keywords">고요함 · 차분함 · 평온한 흐름</p>
+    <p class="color-quote">"오늘 엄마 마음은 따뜻한 베이지야."</p>
+  </article>
+  <article class="color-card color-card--yellow">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Light Yellow</h4>
+    <p class="color-keywords">작은 기쁨 · 잔잔한 희망 · 밝음</p>
+    <p class="color-quote">"옅은 노랑처럼 가벼운 기쁨이 있었어."</p>
+  </article>
+  <article class="color-card color-card--olive">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Olive Green</h4>
+    <p class="color-keywords">안정 · 균형 · 무리 없는 하루</p>
+    <p class="color-quote">"오늘 마음은 편안한 올리브 그린이야."</p>
+  </article>
+  <article class="color-card color-card--pink">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Pale Pink</h4>
+    <p class="color-keywords">따뜻함 · 애정 · 부드러운 관계</p>
+    <p class="color-quote">"마음이 핑크처럼 따뜻했어."</p>
+  </article>
+  <article class="color-card color-card--blue">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Light Blue</h4>
+    <p class="color-keywords">시원한 슬픔 · 회복 중인 감정</p>
+    <p class="color-quote">"조금 힘들었지만 괜찮아지고 있어."</p>
+  </article>
+  <article class="color-card color-card--gray">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Charcoal Gray</h4>
+    <p class="color-keywords">피로 · 무거움 · 정서적 압박</p>
+    <p class="color-quote">"오늘 마음은 조금 무거운 그레이였어."</p>
+  </article>
+  <article class="color-card color-card--violet">
+    <span class="color-swatch" aria-hidden="true"></span>
+    <h4 class="color-name">Deep Violet</h4>
+    <p class="color-keywords">복잡함 · 요동 · 높은 스트레스</p>
+    <p class="color-quote">"보라빛처럼 복잡한 감정이 있었어."</p>
+  </article>
+</div>
+:::
 ### 3. 색상표 활용법
 - **하루에 색 하나만 고르세요** — 그 색이 오늘의 정서 톤이에요. 길게 설명할 필요 없어요.
 - **색과 함께 짧은 태담을 연결하세요** — "아가야, 오늘 엄마 마음은 올리브 그린이야. 차분하게 하루를 보냈어."
