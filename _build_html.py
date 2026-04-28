@@ -591,22 +591,20 @@ body {
 }
 /* 풀-블리드 아트 표지 — 이미지 한 장만, 텍스트 없음 */
 .book-cover {
-  margin: -64px -24px 48px;  /* book.padding 만큼 외부로 끌어내 풀폭 표지 */
+  margin: -64px -24px 48px;  /* 데스크탑: book.padding(64,24) 만큼 외부로 풀폭 */
   padding: 0;
   background: transparent;
 }
-.book-cover-art {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.book-cover-art { margin: 0; display: block; }
 .book-cover-art img {
   display: block;
   width: 100%;
-  max-width: 720px;
   height: auto;
-  margin: 0 auto;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  /* 모바일에서는 .book padding이 32px 20px로 줄어드므로 음의 margin도 맞춰준다 */
+  .book-cover { margin: -32px -20px 32px; }
 }
 @media print {
   .book-cover { page-break-after: always; margin: 0; }
@@ -1780,16 +1778,19 @@ body {
 }
 .book-cover-art {
   margin: 0;
-  display: flex; align-items: center; justify-content: center;
+  display: block;
   border-radius: 0 0 18px 18px;
   overflow: hidden;
 }
 .book-cover-art img {
   display: block;
   width: 100%;
-  max-width: 760px;
   height: auto;
-  margin: 0 auto;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  /* 모바일 .book padding(28px 14px)에 맞춰 음의 margin 보정 */
+  .book-cover { margin: -28px -14px 24px; }
 }
 @media print {
   .book-cover { page-break-after: always; margin: 0; }

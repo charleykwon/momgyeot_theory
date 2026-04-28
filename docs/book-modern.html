@@ -115,16 +115,19 @@ body {
 }
 .book-cover-art {
   margin: 0;
-  display: flex; align-items: center; justify-content: center;
+  display: block;
   border-radius: 0 0 18px 18px;
   overflow: hidden;
 }
 .book-cover-art img {
   display: block;
   width: 100%;
-  max-width: 760px;
   height: auto;
-  margin: 0 auto;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  /* 모바일 .book padding(28px 14px)에 맞춰 음의 margin 보정 */
+  .book-cover { margin: -28px -14px 24px; }
 }
 @media print {
   .book-cover { page-break-after: always; margin: 0; }
