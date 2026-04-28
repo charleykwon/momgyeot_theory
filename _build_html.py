@@ -329,6 +329,18 @@ def md_to_html(text: str, chapter_id: str):
 
 
 def build():
+    # 챕터별 캐릭터 이미지 매핑 (graceful degradation — 파일 없으면 자동 비표시)
+    chapter_illust = {
+        "ch1":  ("mom-pregnant.png",   "임산부 일러스트"),
+        "ch3":  ("fetus-3-sleep.png",  "잠든 태아 일러스트"),
+        "ch5":  ("fetus-2-smile.png",  "웃는 태아 일러스트"),
+        "ch6":  ("mom-pregnant.png",   "임산부 일러스트"),
+        "ch7":  ("family-faces.jpg",   "가족이 함께 둘러앉은 일러스트"),
+        "ch8":  ("couple-heart.png",   "부부와 하트 일러스트"),
+        "ch10": ("fetus-4-active.png", "팔을 든 태아 일러스트"),
+        "epilogue":  ("child-face.png", "아이 얼굴 일러스트"),
+    }
+
     toc_items = []
     sections = []
     drawer_items = []
@@ -337,9 +349,22 @@ def build():
         body, subs = md_to_html(text, cid)
         label = f"{num} — {title}" if num else title
         toc_items.append(f'<li><a href="#{cid}">{escape_html(label)}</a></li>')
+
+        # 챕터 헤더 일러스트 (파일 있으면 표시, 없으면 onerror로 자동 숨김)
+        illust_html = ""
+        if cid in chapter_illust:
+            img_file, img_alt = chapter_illust[cid]
+            illust_html = (
+                f'<figure class="chapter-illust illust">'
+                f'<img src="./images/{img_file}" alt="{escape_html(img_alt)}" '
+                f"onerror=\"this.closest('.chapter-illust').style.display='none'\">"
+                f"</figure>"
+            )
+
         if num:
             header = (
                 '<header class="chapter-header">'
+                f'{illust_html}'
                 f'<span class="chapter-num">{escape_html(num)}</span>'
                 f'<h2 class="chapter-title">{escape_html(title)}</h2>'
                 "</header>"
@@ -347,6 +372,7 @@ def build():
         else:
             header = (
                 '<header class="chapter-header">'
+                f'{illust_html}'
                 f'<h2 class="chapter-title">{escape_html(title)}</h2>'
                 "</header>"
             )
@@ -1031,6 +1057,68 @@ table.data td { color: var(--text); }
   }
   #menu-toggle, #dark-toggle, #drawer, #drawer-backdrop, #back-to-top, #resume-toast { display: none !important; }
 }
+
+/* =========== 맘곁 캐릭터 일러스트 =========== */
+/* 이미지 파일이 없으면 자동으로 영역이 사라진다 (onerror = display:none on parent figure). */
+.illust { margin: 0; text-align: center; }
+.illust img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+
+/* 표지 — 로고 + 메인 일러스트 */
+.cover .cover-logo {
+  width: 64px; height: 64px;
+  margin: 0 auto 18px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cover .cover-logo img { width: 100%; height: 100%; object-fit: contain; }
+.cover .cover-hero {
+  margin: 28px auto 8px;
+  max-width: 480px;
+}
+.cover .cover-hero img { width: 100%; height: auto; }
+
+/* 챕터 헤더 일러스트 — 챕터 번호·제목 옆 작은 캐릭터 */
+.chapter-illust {
+  width: 92px; height: 92px;
+  margin: 0 auto 14px;
+}
+.chapter-illust img { width: 100%; height: 100%; object-fit: contain; }
+
+/* 시기별 태아 진행 — 3장 발달표 위 */
+.fetus-progress {
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 1.6em 0 1.2em;
+  padding: 14px 10px 10px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.fetus-progress .stage {
+  flex: 1;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  color: var(--text-soft);
+  letter-spacing: 0.02em;
+}
+.fetus-progress .stage img {
+  width: 100%; max-width: 70px;
+  height: auto;
+  margin: 0 auto 6px;
+  display: block;
+}
+.fetus-progress .stage-label { display: block; }
+@media (max-width: 600px) {
+  .fetus-progress { gap: 3px; padding: 10px 6px 8px; }
+  .fetus-progress .stage { font-size: 10.5px; }
+  .fetus-progress .stage img { max-width: 52px; }
+}
+@media print {
+  .fetus-progress { background: white; }
+}
 .chapter.is-appendix .chapter-num {
   color: #6b6358;
 }
@@ -1316,9 +1404,11 @@ table.data td { color: var(--text); }
 
 <div class="book">
 <header class="cover">
+  <figure class="cover-logo illust"><img src="./images/logo.png" alt="맘곁 로고" onerror="this.closest('.cover-logo').style.display='none'"></figure>
   <div class="brand">맘곁</div>
   <h1>맘곁 태교</h1>
   <div class="sub">이론편</div>
+  <figure class="cover-hero illust"><img src="./images/cover-illustration.png" alt="맘곁 태교 표지 일러스트 — 가족이 손을 잡고 함께 걷는 모습" onerror="this.closest('.cover-hero').style.display='none'"></figure>
   <div class="cover-tagline">사주당 이씨와 오늘의 의학이 같은 자리에서 만난다</div>
   <div class="cover-authors">권의철 · 최소라 공저</div>
   <div class="cover-publisher">펴낸곳 : 바비즈코리아</div>

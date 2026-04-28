@@ -34,6 +34,18 @@
 표 안의 시기는 평균적인 흐름이며,
 실제 태아의 발달 속도는 사람마다 다르다.
 
+:::raw
+<div class="fetus-progress" aria-label="임신 시기별 태아 발달 단계 일러스트">
+  <div class="stage"><img src="./images/fetus-1-early.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">1분기 초</span></div>
+  <div class="stage"><img src="./images/fetus-2-smile.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">2분기 초</span></div>
+  <div class="stage"><img src="./images/fetus-3-sleep.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">2분기 후반</span></div>
+  <div class="stage"><img src="./images/fetus-4-active.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">3분기 초</span></div>
+  <div class="stage"><img src="./images/fetus-5-round.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">3분기 중반</span></div>
+  <div class="stage"><img src="./images/fetus-6-late.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">3분기 후반</span></div>
+  <div class="stage"><img src="./images/baby-newborn.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">출생 직후</span></div>
+</div>
+:::
+
 | 시기 | 신경계 | 청각 | 시각 | 촉각·운동 | 미각·후각 |
 |---|---|---|---|---|---|
 | 1분기 (1–13주) | 신경관 형성, 뇌·척수 기본 골격 | 와우관 형성 시작 | 안구 기본 구조 형성 | 초기 자발적 움직임 시작 | 미각·후각 수용체 형성 시작 |

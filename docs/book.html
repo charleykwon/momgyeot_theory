@@ -588,6 +588,68 @@ table.data td { color: var(--text); }
   }
   #menu-toggle, #dark-toggle, #drawer, #drawer-backdrop, #back-to-top, #resume-toast { display: none !important; }
 }
+
+/* =========== 맘곁 캐릭터 일러스트 =========== */
+/* 이미지 파일이 없으면 자동으로 영역이 사라진다 (onerror = display:none on parent figure). */
+.illust { margin: 0; text-align: center; }
+.illust img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+
+/* 표지 — 로고 + 메인 일러스트 */
+.cover .cover-logo {
+  width: 64px; height: 64px;
+  margin: 0 auto 18px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cover .cover-logo img { width: 100%; height: 100%; object-fit: contain; }
+.cover .cover-hero {
+  margin: 28px auto 8px;
+  max-width: 480px;
+}
+.cover .cover-hero img { width: 100%; height: auto; }
+
+/* 챕터 헤더 일러스트 — 챕터 번호·제목 옆 작은 캐릭터 */
+.chapter-illust {
+  width: 92px; height: 92px;
+  margin: 0 auto 14px;
+}
+.chapter-illust img { width: 100%; height: 100%; object-fit: contain; }
+
+/* 시기별 태아 진행 — 3장 발달표 위 */
+.fetus-progress {
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 1.6em 0 1.2em;
+  padding: 14px 10px 10px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.fetus-progress .stage {
+  flex: 1;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 11.5px;
+  color: var(--text-soft);
+  letter-spacing: 0.02em;
+}
+.fetus-progress .stage img {
+  width: 100%; max-width: 70px;
+  height: auto;
+  margin: 0 auto 6px;
+  display: block;
+}
+.fetus-progress .stage-label { display: block; }
+@media (max-width: 600px) {
+  .fetus-progress { gap: 3px; padding: 10px 6px 8px; }
+  .fetus-progress .stage { font-size: 10.5px; }
+  .fetus-progress .stage img { max-width: 52px; }
+}
+@media print {
+  .fetus-progress { background: white; }
+}
 .chapter.is-appendix .chapter-num {
   color: #6b6358;
 }
@@ -891,9 +953,11 @@ table.data td { color: var(--text); }
 
 <div class="book">
 <header class="cover">
+  <figure class="cover-logo illust"><img src="./images/logo.png" alt="맘곁 로고" onerror="this.closest('.cover-logo').style.display='none'"></figure>
   <div class="brand">맘곁</div>
   <h1>맘곁 태교</h1>
   <div class="sub">이론편</div>
+  <figure class="cover-hero illust"><img src="./images/cover-illustration.png" alt="맘곁 태교 표지 일러스트 — 가족이 손을 잡고 함께 걷는 모습" onerror="this.closest('.cover-hero').style.display='none'"></figure>
   <div class="cover-tagline">사주당 이씨와 오늘의 의학이 같은 자리에서 만난다</div>
   <div class="cover-authors">권의철 · 최소라 공저</div>
   <div class="cover-publisher">펴낸곳 : 바비즈코리아</div>
@@ -952,7 +1016,7 @@ table.data td { color: var(--text); }
 </div>
 </section>
 <section id="ch1" class="chapter">
-<header class="chapter-header"><span class="chapter-num">1장</span><h2 class="chapter-title">태교는 왜 지금 다시 필요할까</h2></header>
+<header class="chapter-header"><figure class="chapter-illust illust"><img src="./images/mom-pregnant.png" alt="임산부 일러스트" onerror="this.closest('.chapter-illust').style.display='none'"></figure><span class="chapter-num">1장</span><h2 class="chapter-title">태교는 왜 지금 다시 필요할까</h2></header>
 <div class="chapter-body">
 <p>태교라는 말을 들으면 많은 사람이 먼저 떠올리는 장면이 있다.<br>
 잔잔한 음악을 틀어 놓고,<br>
@@ -1673,7 +1737,7 @@ DOHaD(태아기 환경의 평생 영향) 가설이 도달한 자리와 그리 �
 </div>
 </section>
 <section id="ch3" class="chapter">
-<header class="chapter-header"><span class="chapter-num">3장</span><h2 class="chapter-title">현대 의학이 보는 태아의 발달</h2></header>
+<header class="chapter-header"><figure class="chapter-illust illust"><img src="./images/fetus-3-sleep.png" alt="잠든 태아 일러스트" onerror="this.closest('.chapter-illust').style.display='none'"></figure><span class="chapter-num">3장</span><h2 class="chapter-title">현대 의학이 보는 태아의 발달</h2></header>
 <div class="chapter-body">
 <p>태교를 이야기할 때 가장 먼저 떠오르는 오해가 있다.<br>
 무엇을 많이 보여 주고 많이 들려주면<br>
@@ -1701,6 +1765,15 @@ DOHaD(태아기 환경의 평생 영향) 가설이 도달한 자리와 그리 �
 일반적 흐름을 한눈에 보기 위한 것이다.<sup class="fn-ref"><a href="#fn-ch3-6" id="fnref-ch3-6">6</a></sup><br>
 표 안의 시기는 평균적인 흐름이며,<br>
 실제 태아의 발달 속도는 사람마다 다르다.</p>
+<div class="fetus-progress" aria-label="임신 시기별 태아 발달 단계 일러스트">
+  <div class="stage"><img src="./images/fetus-1-early.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">1분기 초</span></div>
+  <div class="stage"><img src="./images/fetus-2-smile.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">2분기 초</span></div>
+  <div class="stage"><img src="./images/fetus-3-sleep.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">2분기 후반</span></div>
+  <div class="stage"><img src="./images/fetus-4-active.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">3분기 초</span></div>
+  <div class="stage"><img src="./images/fetus-5-round.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">3분기 중반</span></div>
+  <div class="stage"><img src="./images/fetus-6-late.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">3분기 후반</span></div>
+  <div class="stage"><img src="./images/baby-newborn.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">출생 직후</span></div>
+</div>
 <table class="data">
 <thead><tr>
 <th>시기</th>
@@ -2211,7 +2284,7 @@ DOHaD(태아기 환경의 평생 영향) 가설이 도달한 자리와 그리 �
 </div>
 </section>
 <section id="ch5" class="chapter">
-<header class="chapter-header"><span class="chapter-num">5장</span><h2 class="chapter-title">오감으로 만나는 태아</h2></header>
+<header class="chapter-header"><figure class="chapter-illust illust"><img src="./images/fetus-2-smile.png" alt="웃는 태아 일러스트" onerror="this.closest('.chapter-illust').style.display='none'"></figure><span class="chapter-num">5장</span><h2 class="chapter-title">오감으로 만나는 태아</h2></header>
 <div class="chapter-body">
 <p>태아를 떠올릴 때 우리는 종종 작은 몸의 형태부터 상상한다.<br>
 초음파 사진 속 흐릿한 윤곽, 손가락과 발가락의 모양,<br>
@@ -2476,7 +2549,7 @@ DOHaD(태아기 환경의 평생 영향) 가설이 도달한 자리와 그리 �
 </div>
 </section>
 <section id="ch6" class="chapter">
-<header class="chapter-header"><span class="chapter-num">6장</span><h2 class="chapter-title">엄마의 감정은 태아의 환경이 된다</h2></header>
+<header class="chapter-header"><figure class="chapter-illust illust"><img src="./images/mom-pregnant.png" alt="임산부 일러스트" onerror="this.closest('.chapter-illust').style.display='none'"></figure><span class="chapter-num">6장</span><h2 class="chapter-title">엄마의 감정은 태아의 환경이 된다</h2></header>
 <div class="chapter-body">
 <p>이 장은 임신 중에 흔들리는 감정을 경험해 본 독자를<br>
 비난하기 위해 쓰이지 않았다.<br>
@@ -2723,7 +2796,7 @@ DOHaD 흐름의 일관된 시사다.</p>
 </div>
 </section>
 <section id="ch7" class="chapter">
-<header class="chapter-header"><span class="chapter-num">7장</span><h2 class="chapter-title">가족의 태교</h2></header>
+<header class="chapter-header"><figure class="chapter-illust illust"><img src="./images/family-faces.jpg" alt="가족이 함께 둘러앉은 일러스트" onerror="this.closest('.chapter-illust').style.display='none'"></figure><span class="chapter-num">7장</span><h2 class="chapter-title">가족의 태교</h2></header>
 <div class="chapter-body">
 <p>가족의 형태는 사람마다 다르다.<br>
 부부와 아이로 구성된 가정도 있고,<br>
@@ -2989,7 +3062,7 @@ DOHaD 흐름의 일관된 시사다.</p>
 </div>
 </section>
 <section id="ch8" class="chapter">
-<header class="chapter-header"><span class="chapter-num">8장</span><h2 class="chapter-title">아빠의 태교</h2></header>
+<header class="chapter-header"><figure class="chapter-illust illust"><img src="./images/couple-heart.png" alt="부부와 하트 일러스트" onerror="this.closest('.chapter-illust').style.display='none'"></figure><span class="chapter-num">8장</span><h2 class="chapter-title">아빠의 태교</h2></header>
 <div class="chapter-body">
 <p>아빠 태교는 흔히 "엄마 태교를 도와주는 일"처럼 다루어져 왔다.<br>
 그러나 이 장은 그 시선을 한 칸 옮겨 놓고 시작한다.<br>
@@ -3424,7 +3497,7 @@ SNS에 인증을 남겼던 하루,<br>
 </div>
 </section>
 <section id="ch10" class="chapter">
-<header class="chapter-header"><span class="chapter-num">10장</span><h2 class="chapter-title">맘곁 태교의 다섯 원칙</h2></header>
+<header class="chapter-header"><figure class="chapter-illust illust"><img src="./images/fetus-4-active.png" alt="팔을 든 태아 일러스트" onerror="this.closest('.chapter-illust').style.display='none'"></figure><span class="chapter-num">10장</span><h2 class="chapter-title">맘곁 태교의 다섯 원칙</h2></header>
 <div class="chapter-body">
 <p>이 책은 이제 마지막 장에 닿았다.</p>
 <p>지금까지 우리는 태교를 새로 이해해 보려 했다.<br>
@@ -3701,7 +3774,7 @@ SNS에 인증을 남겼던 하루,<br>
 </div>
 </section>
 <section id="epilogue" class="chapter">
-<header class="chapter-header"><h2 class="chapter-title">닫으며</h2></header>
+<header class="chapter-header"><figure class="chapter-illust illust"><img src="./images/child-face.png" alt="아이 얼굴 일러스트" onerror="this.closest('.chapter-illust').style.display='none'"></figure><h2 class="chapter-title">닫으며</h2></header>
 <div class="chapter-body">
 <p>이 책은 여기에서 끝난다.</p>
 <p>당신이 이 자리까지 함께 와 주어 고맙다.<br>
