@@ -272,6 +272,14 @@ def md_to_html(text: str, chapter_id: str):
             flush_blockquote()
             out.append('<hr class="section-break">')
             continue
+        if stripped.startswith("#### "):
+            flush_para()
+            flush_list()
+            flush_blockquote()
+            heading = escape_html(stripped[5:])
+            heading = apply_inline_markdown(heading)
+            out.append(f'<h5 class="subhead-3">{heading}</h5>')
+            continue
         if stripped.startswith("### "):
             flush_para()
             flush_list()
@@ -1331,6 +1339,14 @@ body {
   margin: 1.8em 0 0.7em;
   color: var(--text);
   letter-spacing: -0.003em;
+  font-family: var(--sans);
+}
+.chapter-body .subhead-3 {
+  font-size: 14.5px;
+  font-weight: 600;
+  margin: 1.4em 0 0.6em;
+  color: var(--accent);
+  letter-spacing: 0;
   font-family: var(--sans);
 }
 .chapter-body hr.section-break {
@@ -3031,6 +3047,23 @@ body {
   margin: 1.9em 0 0.6em;
   color: var(--accent);
   letter-spacing: -0.005em;
+}
+.chapter-body .subhead-3 {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 700;
+  margin: 1.5em 0 0.5em;
+  color: var(--accent-sage);
+  letter-spacing: -0.003em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(143, 169, 133, 0.08);
+  border-radius: 999px;
+}
+:root.dark .chapter-body .subhead-3 {
+  background: rgba(163, 188, 153, 0.1);
 }
 
 /* 섹션 구분선 — 큰 여백만으로 (장식 없음) */
