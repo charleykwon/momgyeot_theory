@@ -272,6 +272,14 @@ def md_to_html(text: str, chapter_id: str):
             flush_blockquote()
             out.append('<hr class="section-break">')
             continue
+        if stripped.startswith("##### "):
+            flush_para()
+            flush_list()
+            flush_blockquote()
+            heading = escape_html(stripped[6:])
+            heading = apply_inline_markdown(heading)
+            out.append(f'<h6 class="subhead-4">{heading}</h6>')
+            continue
         if stripped.startswith("#### "):
             flush_para()
             flush_list()
@@ -1349,6 +1357,14 @@ body {
   letter-spacing: 0;
   font-family: var(--sans);
 }
+.chapter-body .subhead-4 {
+  font-size: 13.5px;
+  font-weight: 600;
+  margin: 1.2em 0 0.5em;
+  color: var(--text);
+  letter-spacing: 0.01em;
+  font-family: var(--sans);
+}
 .chapter-body hr.section-break {
   border: 0;
   border-top: 1px solid var(--line);
@@ -1762,6 +1778,105 @@ table.data td { color: var(--text); }
 @media print {
   .fetus-progress { background: white; }
 }
+/* =========== 시기별 변화 타임라인 (실천편) =========== */
+.period-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  margin: 1.6em 0 2em;
+}
+.period-card {
+  padding: 18px 20px 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--accent);
+  border-radius: 12px;
+  font-family: var(--sans);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.period-tag {
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+}
+.period-month {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 4px;
+}
+.period-body {
+  margin: 6px 0 0;
+  font-size: 14px; line-height: 1.65;
+  color: var(--text);
+}
+.period-card:nth-child(5n+2) { border-top-color: #6aa1c2; }
+.period-card:nth-child(5n+2) .period-tag { color: #4d85a8; }
+.period-card:nth-child(5n+3) { border-top-color: #8fa766; }
+.period-card:nth-child(5n+3) .period-tag { color: #5e7459; }
+.period-card:nth-child(5n+4) { border-top-color: #e08aa1; }
+.period-card:nth-child(5n+4) .period-tag { color: #b86276; }
+.period-card:nth-child(5n+5) { border-top-color: #c8a35a; }
+.period-card:nth-child(5n+5) .period-tag { color: #a48345; }
+.period-card--imminent {
+  border-top-color: #d97757 !important;
+  background: rgba(217, 119, 87, 0.06);
+}
+.period-card--imminent .period-tag { color: #b04830 !important; }
+@media (max-width: 600px) {
+  .period-timeline { grid-template-columns: 1fr; }
+}
+
+/* D-DAY 카운트다운 */
+.dday-row {
+  margin: 1.4em 0 1.8em;
+  padding: 18px 20px 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-family: var(--sans);
+}
+.dday-head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.dday-icon { font-size: 18px; }
+.dday-label {
+  font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent);
+}
+.dday-cards {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+}
+.dday-card {
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  text-align: center;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.dday-week {
+  font-size: 18px; font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.005em;
+  font-variant-numeric: tabular-nums;
+}
+.dday-month {
+  font-size: 11px; color: var(--text-soft);
+  letter-spacing: 0.06em;
+}
+.dday-remain {
+  margin-top: 4px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--line);
+  font-size: 12.5px; color: var(--text);
+  font-weight: 600;
+}
+
 /* =========== 태담 기본 공식 (실천편 PART 1) =========== */
 .talk-formula {
   margin: 1.6em 0 2em;
@@ -3257,6 +3372,16 @@ body {
 :root.dark .chapter-body .subhead-3 {
   background: rgba(163, 188, 153, 0.1);
 }
+.chapter-body .subhead-4 {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 700;
+  margin: 1.3em 0 0.5em;
+  color: var(--text);
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
 
 /* 섹션 구분선 — 큰 여백만으로 (장식 없음) */
 .chapter-body hr.section-break {
@@ -3424,6 +3549,112 @@ table.data tr:last-child td { border-bottom: none; }
 @media (max-width: 600px) {
   table.data { font-size: 12.5px; }
   table.data th, table.data td { padding: 9px 10px; }
+}
+
+/* =========== 시기별 변화 타임라인 (실천편, 모던) =========== */
+.period-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  margin: 1.8em 0 2.2em;
+}
+.period-card {
+  padding: 22px 24px 20px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--accent);
+  border-radius: 14px;
+  font-family: var(--sans);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.period-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+.period-tag {
+  font-size: 16px; font-weight: 800;
+  letter-spacing: -0.005em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.period-month {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+}
+.period-body {
+  margin: 8px 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  font-size: 14.5px; line-height: 1.7;
+  color: var(--text);
+  font-weight: 500;
+}
+.period-card:nth-child(5n+2) { border-top-color: var(--accent-sage); }
+.period-card:nth-child(5n+2) .period-tag { color: var(--accent-sage); }
+.period-card:nth-child(5n+3) { border-top-color: var(--accent-rose); }
+.period-card:nth-child(5n+3) .period-tag { color: var(--accent-rose); }
+.period-card:nth-child(5n+4) { border-top-color: var(--accent-mustard); }
+.period-card:nth-child(5n+4) .period-tag { color: var(--accent-mustard); }
+.period-card:nth-child(5n+5) { border-top-color: var(--accent-lavender); }
+.period-card:nth-child(5n+5) .period-tag { color: var(--accent-lavender); }
+.period-card--imminent {
+  border-top-color: #d97757 !important;
+  background: linear-gradient(180deg, rgba(217, 119, 87, 0.08) 0%, transparent 100%);
+}
+.period-card--imminent .period-tag { color: #b04830 !important; }
+@media (max-width: 600px) {
+  .period-timeline { grid-template-columns: 1fr; }
+}
+
+/* D-DAY 카운트다운 (모던) */
+.dday-row {
+  margin: 1.6em 0 2em;
+  padding: 22px 24px 20px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 14px;
+  font-family: var(--sans);
+}
+.dday-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.dday-icon { font-size: 22px; }
+.dday-label {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--accent);
+}
+.dday-cards {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+.dday-card {
+  padding: 14px 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  text-align: center;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.dday-week {
+  font-size: 22px; font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.dday-month {
+  font-size: 11.5px; color: var(--text-soft);
+  letter-spacing: 0.06em; font-weight: 600;
+}
+.dday-remain {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  font-size: 13px; color: var(--text);
+  font-weight: 700;
 }
 
 /* =========== 태담 기본 공식 (실천편, 모던) =========== */

@@ -15,13 +15,28 @@
 — 태교신기
 『태교신기』는 이미 250년 전에 태동을 통한 모자간 소통의 중요성을 강조했어. 태동을 느끼는 순간, 비로소 **쌍방향 대화**가 시작되는 거야.
 ### 3. 임신 중기의 변화
+
 임신 중기(4-6개월)는 흔히 **'안정기'**라고 불려. 입덧이 가라앉고, 유산 위험도 줄어들어 상대적으로 편안한 시기야.
-##### 13-16주 (4개월)
-입덧 완화, 에너지 회복, 배가 조금씩 나오기 시작
-##### 17-20주 (5개월)
-첫 태동 느낌, 성별 확인 가능, 배가 눈에 띄게 커짐
-##### 21-24주 (6개월)
-태동이 더 강해짐, 태아의 청각 발달 완성, 외부 소리에 반응
+
+:::raw
+<div class="period-timeline" aria-label="임신 중기 시기별 변화">
+  <article class="period-card">
+    <span class="period-tag">13–16주</span>
+    <span class="period-month">4개월</span>
+    <p class="period-body">입덧 완화, 에너지 회복, 배가 조금씩 나오기 시작</p>
+  </article>
+  <article class="period-card">
+    <span class="period-tag">17–20주</span>
+    <span class="period-month">5개월</span>
+    <p class="period-body">첫 태동 느낌, 성별 확인 가능, 배가 눈에 띄게 커짐</p>
+  </article>
+  <article class="period-card">
+    <span class="period-tag">21–24주</span>
+    <span class="period-month">6개월</span>
+    <p class="period-body">태동이 더 강해짐, 태아의 청각 발달 완성, 외부 소리에 반응</p>
+  </article>
+</div>
+:::
 ### 4. 태동에 반응하는 법
 태동을 느꼈을 때, 그냥 지나치지 말고 **반응해주자**. 이것이 태담의 가장 자연스러운 시작이야.
 #### (1) 배를 부드럽게 쓰다듬기

@@ -412,6 +412,16 @@ body {
 :root.dark .chapter-body .subhead-3 {
   background: rgba(163, 188, 153, 0.1);
 }
+.chapter-body .subhead-4 {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 700;
+  margin: 1.3em 0 0.5em;
+  color: var(--text);
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
 
 /* 섹션 구분선 — 큰 여백만으로 (장식 없음) */
 .chapter-body hr.section-break {
@@ -579,6 +589,112 @@ table.data tr:last-child td { border-bottom: none; }
 @media (max-width: 600px) {
   table.data { font-size: 12.5px; }
   table.data th, table.data td { padding: 9px 10px; }
+}
+
+/* =========== 시기별 변화 타임라인 (실천편, 모던) =========== */
+.period-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  margin: 1.8em 0 2.2em;
+}
+.period-card {
+  padding: 22px 24px 20px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--accent);
+  border-radius: 14px;
+  font-family: var(--sans);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.period-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+.period-tag {
+  font-size: 16px; font-weight: 800;
+  letter-spacing: -0.005em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.period-month {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+}
+.period-body {
+  margin: 8px 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  font-size: 14.5px; line-height: 1.7;
+  color: var(--text);
+  font-weight: 500;
+}
+.period-card:nth-child(5n+2) { border-top-color: var(--accent-sage); }
+.period-card:nth-child(5n+2) .period-tag { color: var(--accent-sage); }
+.period-card:nth-child(5n+3) { border-top-color: var(--accent-rose); }
+.period-card:nth-child(5n+3) .period-tag { color: var(--accent-rose); }
+.period-card:nth-child(5n+4) { border-top-color: var(--accent-mustard); }
+.period-card:nth-child(5n+4) .period-tag { color: var(--accent-mustard); }
+.period-card:nth-child(5n+5) { border-top-color: var(--accent-lavender); }
+.period-card:nth-child(5n+5) .period-tag { color: var(--accent-lavender); }
+.period-card--imminent {
+  border-top-color: #d97757 !important;
+  background: linear-gradient(180deg, rgba(217, 119, 87, 0.08) 0%, transparent 100%);
+}
+.period-card--imminent .period-tag { color: #b04830 !important; }
+@media (max-width: 600px) {
+  .period-timeline { grid-template-columns: 1fr; }
+}
+
+/* D-DAY 카운트다운 (모던) */
+.dday-row {
+  margin: 1.6em 0 2em;
+  padding: 22px 24px 20px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 14px;
+  font-family: var(--sans);
+}
+.dday-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.dday-icon { font-size: 22px; }
+.dday-label {
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--accent);
+}
+.dday-cards {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+.dday-card {
+  padding: 14px 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  text-align: center;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.dday-week {
+  font-size: 22px; font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.dday-month {
+  font-size: 11.5px; color: var(--text-soft);
+  letter-spacing: 0.06em; font-weight: 600;
+}
+.dday-remain {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  font-size: 13px; color: var(--text);
+  font-weight: 700;
 }
 
 /* =========== 태담 기본 공식 (실천편, 모던) =========== */
@@ -2092,13 +2208,21 @@ table.data tr:last-child td { border-bottom: none; }
 "기가 모이면 형체가 생기고, 형체가 생기기 전에 이미 마음이 깃든다."<br>
 이 말은 눈에 보이는 형태가 만들어지기 전에 이미 정서적 연결이 시작된다는 의미야. 현대 발달심리학에서도 태아의 신경계는 임신 3주차부터 형성되기 시작한다고 말해.</p>
 <h4 class="subhead-2">3. 임신 초기의 몸과 마음 변화</h4>
-<p>착상 이후 엄마의 몸에는 급격한 변화가 일어나. 이 변화를 이해하면 마음을 다스리기가 훨씬 쉬워져.<br>
-1-4주<br>
-착상 완료, hCG 호르몬 분비 시작. 피로감이 심해지고 기분 변화가 잦아질 수 있어.<br>
-5-8주<br>
-입덧 시작, 유방 변화, 잦은 소변. 감정 기복이 심해지는 시기야.<br>
-9-12주<br>
-태아의 주요 기관 형성 완료. 입덧이 점차 완화되기 시작해.</p>
+<p>착상 이후 엄마의 몸에는 급격한 변화가 일어나. 이 변화를 이해하면 마음을 다스리기가 훨씬 쉬워져.</p>
+<div class="period-timeline" aria-label="임신 초기 시기별 변화">
+  <article class="period-card">
+    <span class="period-tag">1–4주</span>
+    <p class="period-body">착상 완료, hCG 호르몬 분비 시작. 피로감이 심해지고 기분 변화가 잦아질 수 있어.</p>
+  </article>
+  <article class="period-card">
+    <span class="period-tag">5–8주</span>
+    <p class="period-body">입덧 시작, 유방 변화, 잦은 소변. 감정 기복이 심해지는 시기야.</p>
+  </article>
+  <article class="period-card">
+    <span class="period-tag">9–12주</span>
+    <p class="period-body">태아의 주요 기관 형성 완료. 입덧이 점차 완화되기 시작해.</p>
+  </article>
+</div>
 <h4 class="subhead-2">4. 초기 정서 관리의 핵심 3가지</h4>
 <p>임신 초기는 불안과 기대가 공존하는 시기야. 이 시기의 정서 관리는 태아의 정서적 기반을 만드는 첫 단추가 돼.</p>
 <h5 class="subhead-3">(1) 불확실함을 받아들이기</h5>
@@ -2377,13 +2501,24 @@ PART 2 마무리 태담<br>
 — 태교신기<br>
 『태교신기』는 이미 250년 전에 태동을 통한 모자간 소통의 중요성을 강조했어. 태동을 느끼는 순간, 비로소 <strong>쌍방향 대화</strong>가 시작되는 거야.</p>
 <h4 class="subhead-2">3. 임신 중기의 변화</h4>
-<p>임신 중기(4-6개월)는 흔히 <strong>'안정기'</strong>라고 불려. 입덧이 가라앉고, 유산 위험도 줄어들어 상대적으로 편안한 시기야.<br>
-##### 13-16주 (4개월)<br>
-입덧 완화, 에너지 회복, 배가 조금씩 나오기 시작<br>
-##### 17-20주 (5개월)<br>
-첫 태동 느낌, 성별 확인 가능, 배가 눈에 띄게 커짐<br>
-##### 21-24주 (6개월)<br>
-태동이 더 강해짐, 태아의 청각 발달 완성, 외부 소리에 반응</p>
+<p>임신 중기(4-6개월)는 흔히 <strong>'안정기'</strong>라고 불려. 입덧이 가라앉고, 유산 위험도 줄어들어 상대적으로 편안한 시기야.</p>
+<div class="period-timeline" aria-label="임신 중기 시기별 변화">
+  <article class="period-card">
+    <span class="period-tag">13–16주</span>
+    <span class="period-month">4개월</span>
+    <p class="period-body">입덧 완화, 에너지 회복, 배가 조금씩 나오기 시작</p>
+  </article>
+  <article class="period-card">
+    <span class="period-tag">17–20주</span>
+    <span class="period-month">5개월</span>
+    <p class="period-body">첫 태동 느낌, 성별 확인 가능, 배가 눈에 띄게 커짐</p>
+  </article>
+  <article class="period-card">
+    <span class="period-tag">21–24주</span>
+    <span class="period-month">6개월</span>
+    <p class="period-body">태동이 더 강해짐, 태아의 청각 발달 완성, 외부 소리에 반응</p>
+  </article>
+</div>
 <h4 class="subhead-2">4. 태동에 반응하는 법</h4>
 <p>태동을 느꼈을 때, 그냥 지나치지 말고 <strong>반응해주자</strong>. 이것이 태담의 가장 자연스러운 시작이야.</p>
 <h5 class="subhead-3">(1) 배를 부드럽게 쓰다듬기</h5>
@@ -2630,9 +2765,9 @@ CHAPTER 4 ⭐</p>
 우리 대화가 점점 더 깊어지고 있어.<br>
 앞으로 더 많은 이야기 나누자.<br>
 네가 태어날 그날까지, 그리고 그 이후로도.<br>
-엄마가 늘 함께할게. 사랑해.<br>
-##### 💼 안정기, 일하는 엄마의 황금기<br>
-입덧이 줄어들고 에너지가 돌아오는 중기! 이 시기는 일과 태교를 함께하기 가장 좋은 때야.<br>
+엄마가 늘 함께할게. 사랑해.</p>
+<h6 class="subhead-4">💼 안정기, 일하는 엄마의 황금기</h6>
+<p>입덧이 줄어들고 에너지가 돌아오는 중기! 이 시기는 일과 태교를 함께하기 가장 좋은 때야.<br>
 📅<br>
 검진 일정 관리<br>
 정기검진은 미리 연차나 반차로 일정 잡아두기<br>
@@ -2668,21 +2803,42 @@ CHAPTER 4 ⭐</p>
 <p>후기의 신체적, 정서적 변화</p>
 <h4 class="subhead-2">1. 임신 후기, 만남을 향한 여정</h4>
 <p>임신 후기(7-9개월)는 <strong>아기와의 만남을 준비하는 설렘의 시간</strong>이야. 배는 점점 더 커지고, 아기의 움직임은 더욱 뚜렷해지며, 출산이 눈앞에 다가왔다는 실감이 나기 시작해.<br>
-이 시기는 기대와 설렘, 그리고 두려움과 불안이 공존하는 시간이야. 그 모든 감정이 자연스러운 거야.<br>
-##### 🗓️ D-DAY를 향해<br>
-28주 (7개월) → 약 12주 남음<br>
-32주 (8개월) → 약 8주 남음<br>
-36주 (9개월) → 약 4주 남음</p>
+이 시기는 기대와 설렘, 그리고 두려움과 불안이 공존하는 시간이야. 그 모든 감정이 자연스러운 거야.</p>
+<div class="dday-row" aria-label="D-DAY 카운트다운">
+  <div class="dday-head">
+    <span class="dday-icon" aria-hidden="true">🗓️</span>
+    <span class="dday-label">D-DAY를 향해</span>
+  </div>
+  <ol class="dday-cards">
+    <li class="dday-card"><span class="dday-week">28주</span><span class="dday-month">7개월</span><span class="dday-remain">약 12주 남음</span></li>
+    <li class="dday-card"><span class="dday-week">32주</span><span class="dday-month">8개월</span><span class="dday-remain">약 8주 남음</span></li>
+    <li class="dday-card"><span class="dday-week">36주</span><span class="dday-month">9개월</span><span class="dday-remain">약 4주 남음</span></li>
+  </ol>
+</div>
 <h4 class="subhead-2">2. 후기의 신체 변화</h4>
-<p>임신 후기에는 몸이 출산을 준비하면서 다양한 변화가 일어나. 이 변화들을 이해하면 마음이 좀 더 편해질 거야.<br>
-##### 25-28주 (7개월)<br>
-배가 급격히 커짐, 숨이 차기 시작, 허리 통증 증가, 다리 부종<br>
-##### 29-32주 (8개월)<br>
-태동이 매우 강해짐, 브랙스턴 힉스 수축(가진통) 시작, 소변이 더 자주<br>
-##### 33-36주 (9개월)<br>
-아기가 골반으로 내려옴, 숨쉬기 조금 편해짐, 골반 압박감 증가<br>
-##### 37-40주 (임박)<br>
-이슬 비침, 불규칙한 진통, 양수 파수 가능성, 출산 신호 시작</p>
+<p>임신 후기에는 몸이 출산을 준비하면서 다양한 변화가 일어나. 이 변화들을 이해하면 마음이 좀 더 편해질 거야.</p>
+<div class="period-timeline" aria-label="임신 후기 시기별 변화">
+  <article class="period-card">
+    <span class="period-tag">25–28주</span>
+    <span class="period-month">7개월</span>
+    <p class="period-body">배가 급격히 커짐, 숨이 차기 시작, 허리 통증 증가, 다리 부종</p>
+  </article>
+  <article class="period-card">
+    <span class="period-tag">29–32주</span>
+    <span class="period-month">8개월</span>
+    <p class="period-body">태동이 매우 강해짐, 브랙스턴 힉스 수축(가진통) 시작, 소변이 더 자주</p>
+  </article>
+  <article class="period-card">
+    <span class="period-tag">33–36주</span>
+    <span class="period-month">9개월</span>
+    <p class="period-body">아기가 골반으로 내려옴, 숨쉬기 조금 편해짐, 골반 압박감 증가</p>
+  </article>
+  <article class="period-card period-card--imminent">
+    <span class="period-tag">37–40주</span>
+    <span class="period-month">임박</span>
+    <p class="period-body">이슬 비침, 불규칙한 진통, 양수 파수 가능성, 출산 신호 시작</p>
+  </article>
+</div>
 <h5 class="subhead-3">🔬 브랙스턴 힉스 수축</h5>
 <p>임신 후기에 배가 불규칙하게 단단해졌다 풀리는 것을 느낄 수 있어. 이것은 '가진통' 또는 '연습 진통'이라고 불러. 자궁이 출산을 연습하는 거야. 진짜 진통과 달리, 불규칙하고 시간이 지나면 사라져. 걱정하지 않아도 돼.</p>
 <h4 class="subhead-2">3. 후기의 정서적 변화</h4>
@@ -2964,9 +3120,9 @@ CHAPTER 4 ⭐</p>
 지금까지 고마웠어.<br>
 앞으로도 잘 부탁해.<br>
 사랑해, 나의 아가.<br>
-세상에서 만나자.<br>
-##### 💼 막달까지 근무하는 엄마들에게<br>
-요즘은 많은 엄마들이 출산 직전까지 일해. 힘들지만, 동시에 보람차기도 하지. 무리하지 않는 선에서 건강하게 마무리하자.</p>
+세상에서 만나자.</p>
+<h6 class="subhead-4">💼 막달까지 근무하는 엄마들에게</h6>
+<p>요즘은 많은 엄마들이 출산 직전까지 일해. 힘들지만, 동시에 보람차기도 하지. 무리하지 않는 선에서 건강하게 마무리하자.</p>
 <h5 class="subhead-3">📋 실천 가이드</h5>
 <p>인수인계 마무리<br>
 출산휴가 전 업무 인수인계를 꼼꼼히 정리해두기<br>
@@ -3025,13 +3181,13 @@ CHAPTER 4 ⭐</p>
 • 태동이 현저히 줄었을 때<br>
 • 직감적으로 "지금이다" 싶을 때</p>
 <h4 class="subhead-2">3. 진통의 과정</h4>
-<p>진통은 크게 세 단계로 나뉘어. 각 단계를 이해하면 과정을 받아들이기 쉬워져.<br>
-##### 1단계: 개구기 (가장 긴 단계)<br>
-자궁경부가 0cm에서 10cm까지 열리는 시간. 초산모 기준 평균 12-14시간. 진통 간격이 점점 짧아지고 강해져.<br>
-##### 2단계: 만출기 (아기가 나오는 단계)<br>
-자궁경부가 완전히 열린 후 아기가 나올 때까지. 초산모 기준 평균 1-2시간. 힘주기가 시작돼.<br>
-##### 3단계: 후산기<br>
-아기가 나온 후 태반이 나오는 시간. 약 5-30분 소요.</p>
+<p>진통은 크게 세 단계로 나뉘어. 각 단계를 이해하면 과정을 받아들이기 쉬워져.</p>
+<h6 class="subhead-4">1단계: 개구기 (가장 긴 단계)</h6>
+<p>자궁경부가 0cm에서 10cm까지 열리는 시간. 초산모 기준 평균 12-14시간. 진통 간격이 점점 짧아지고 강해져.</p>
+<h6 class="subhead-4">2단계: 만출기 (아기가 나오는 단계)</h6>
+<p>자궁경부가 완전히 열린 후 아기가 나올 때까지. 초산모 기준 평균 1-2시간. 힘주기가 시작돼.</p>
+<h6 class="subhead-4">3단계: 후산기</h6>
+<p>아기가 나온 후 태반이 나오는 시간. 약 5-30분 소요.</p>
 <h5 class="subhead-3">🔬 진통의 의미</h5>
 <p>진통은 단순한 고통이 아니야. 자궁이 수축하면서 아기를 밀어내고, 동시에 자궁경부를 열어주는 <strong>목적 있는 힘</strong>이야. 한 번의 진통마다 아기는 세상에 한 걸음씩 가까워지고 있어.</p>
 <h4 class="subhead-2">4. 진통 중 마음 다스리기</h4>
@@ -3292,9 +3448,9 @@ CHAPTER 4 ⭐</p>
 울 때도, 웃을 때도, 잘 때도<br>
 엄마는 항상 네 옆에 있을 거야.<br>
 사랑해, 나의 아가.<br>
-세상에 와줘서 고마워.<br>
-##### 💼 워킹맘으로 돌아갈 준비<br>
-출산 후 휴가가 끝나면 다시 일터로 돌아가야 해. 아기를 두고 출근하는 게 마음 아프겠지만, 당신은 할 수 있어.<br>
+세상에 와줘서 고마워.</p>
+<h6 class="subhead-4">💼 워킹맘으로 돌아갈 준비</h6>
+<p>출산 후 휴가가 끝나면 다시 일터로 돌아가야 해. 아기를 두고 출근하는 게 마음 아프겠지만, 당신은 할 수 있어.<br>
 👶<br>
 양육 환경 준비<br>
 어린이집, 베이비시터, 조부모님 등 돌봄 계획 세우기<br>

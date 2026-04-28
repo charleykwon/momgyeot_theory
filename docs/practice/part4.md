@@ -7,20 +7,47 @@
 ### 1. 임신 후기, 만남을 향한 여정
 임신 후기(7-9개월)는 **아기와의 만남을 준비하는 설렘의 시간**이야. 배는 점점 더 커지고, 아기의 움직임은 더욱 뚜렷해지며, 출산이 눈앞에 다가왔다는 실감이 나기 시작해.
 이 시기는 기대와 설렘, 그리고 두려움과 불안이 공존하는 시간이야. 그 모든 감정이 자연스러운 거야.
-##### 🗓️ D-DAY를 향해
-28주 (7개월) → 약 12주 남음
-32주 (8개월) → 약 8주 남음
-36주 (9개월) → 약 4주 남음
+:::raw
+<div class="dday-row" aria-label="D-DAY 카운트다운">
+  <div class="dday-head">
+    <span class="dday-icon" aria-hidden="true">🗓️</span>
+    <span class="dday-label">D-DAY를 향해</span>
+  </div>
+  <ol class="dday-cards">
+    <li class="dday-card"><span class="dday-week">28주</span><span class="dday-month">7개월</span><span class="dday-remain">약 12주 남음</span></li>
+    <li class="dday-card"><span class="dday-week">32주</span><span class="dday-month">8개월</span><span class="dday-remain">약 8주 남음</span></li>
+    <li class="dday-card"><span class="dday-week">36주</span><span class="dday-month">9개월</span><span class="dday-remain">약 4주 남음</span></li>
+  </ol>
+</div>
+:::
 ### 2. 후기의 신체 변화
+
 임신 후기에는 몸이 출산을 준비하면서 다양한 변화가 일어나. 이 변화들을 이해하면 마음이 좀 더 편해질 거야.
-##### 25-28주 (7개월)
-배가 급격히 커짐, 숨이 차기 시작, 허리 통증 증가, 다리 부종
-##### 29-32주 (8개월)
-태동이 매우 강해짐, 브랙스턴 힉스 수축(가진통) 시작, 소변이 더 자주
-##### 33-36주 (9개월)
-아기가 골반으로 내려옴, 숨쉬기 조금 편해짐, 골반 압박감 증가
-##### 37-40주 (임박)
-이슬 비침, 불규칙한 진통, 양수 파수 가능성, 출산 신호 시작
+
+:::raw
+<div class="period-timeline" aria-label="임신 후기 시기별 변화">
+  <article class="period-card">
+    <span class="period-tag">25–28주</span>
+    <span class="period-month">7개월</span>
+    <p class="period-body">배가 급격히 커짐, 숨이 차기 시작, 허리 통증 증가, 다리 부종</p>
+  </article>
+  <article class="period-card">
+    <span class="period-tag">29–32주</span>
+    <span class="period-month">8개월</span>
+    <p class="period-body">태동이 매우 강해짐, 브랙스턴 힉스 수축(가진통) 시작, 소변이 더 자주</p>
+  </article>
+  <article class="period-card">
+    <span class="period-tag">33–36주</span>
+    <span class="period-month">9개월</span>
+    <p class="period-body">아기가 골반으로 내려옴, 숨쉬기 조금 편해짐, 골반 압박감 증가</p>
+  </article>
+  <article class="period-card period-card--imminent">
+    <span class="period-tag">37–40주</span>
+    <span class="period-month">임박</span>
+    <p class="period-body">이슬 비침, 불규칙한 진통, 양수 파수 가능성, 출산 신호 시작</p>
+  </article>
+</div>
+:::
 #### 🔬 브랙스턴 힉스 수축
 임신 후기에 배가 불규칙하게 단단해졌다 풀리는 것을 느낄 수 있어. 이것은 '가진통' 또는 '연습 진통'이라고 불러. 자궁이 출산을 연습하는 거야. 진짜 진통과 달리, 불규칙하고 시간이 지나면 사라져. 걱정하지 않아도 돼.
 ### 3. 후기의 정서적 변화
