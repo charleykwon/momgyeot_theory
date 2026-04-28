@@ -36,13 +36,13 @@
 
 :::raw
 <div class="fetus-progress" aria-label="임신 시기별 태아 발달 단계 일러스트">
-  <div class="stage"><img src="./images/fetus-1-early.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">1분기 초</span></div>
-  <div class="stage"><img src="./images/fetus-2-smile.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">2분기 초</span></div>
-  <div class="stage"><img src="./images/fetus-3-sleep.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">2분기 후반</span></div>
-  <div class="stage"><img src="./images/fetus-4-active.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">3분기 초</span></div>
-  <div class="stage"><img src="./images/fetus-5-round.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">3분기 중반</span></div>
-  <div class="stage"><img src="./images/fetus-6-late.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">3분기 후반</span></div>
-  <div class="stage"><img src="./images/baby-newborn.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">출생 직후</span></div>
+  <div class="stage"><img src="./images/fetus-1.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">1분기 초</span></div>
+  <div class="stage"><img src="./images/fetus-2.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">1분기 말</span></div>
+  <div class="stage"><img src="./images/fetus-3.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">2분기 초</span></div>
+  <div class="stage"><img src="./images/fetus-4.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">2분기 중반</span></div>
+  <div class="stage"><img src="./images/fetus-5.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">2분기 후반</span></div>
+  <div class="stage"><img src="./images/fetus-6.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">3분기 초</span></div>
+  <div class="stage"><img src="./images/fetus-7.png" alt="" onerror="this.closest('.stage').style.display='none'"><span class="stage-label">3분기 후반</span></div>
 </div>
 :::
 

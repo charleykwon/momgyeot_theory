@@ -331,14 +331,14 @@ def md_to_html(text: str, chapter_id: str):
 def build():
     # 챕터별 캐릭터 이미지 매핑 (graceful degradation — 파일 없으면 자동 비표시)
     chapter_illust = {
-        "ch1":  ("mom-pregnant.png",   "임산부 일러스트"),
-        "ch3":  ("fetus-3-sleep.png",  "잠든 태아 일러스트"),
-        "ch5":  ("fetus-2-smile.png",  "웃는 태아 일러스트"),
-        "ch6":  ("mom-pregnant.png",   "임산부 일러스트"),
-        "ch7":  ("family-faces.jpg",   "가족이 함께 둘러앉은 일러스트"),
-        "ch8":  ("couple-heart.png",   "부부와 하트 일러스트"),
-        "ch10": ("fetus-4-active.png", "팔을 든 태아 일러스트"),
-        "epilogue":  ("child-face.png", "아이 얼굴 일러스트"),
+        "ch1":  ("mom-pregnant.png",  "임산부 일러스트"),
+        "ch3":  ("fetus-3.png",       "태아 일러스트"),
+        "ch5":  ("fetus-2.png",       "태아 일러스트"),
+        "ch6":  ("mom-pregnant.png",  "임산부 일러스트"),
+        "ch7":  ("family-faces.jpg",  "가족이 함께 둘러앉은 일러스트"),
+        "ch8":  ("couple-heart.png",  "부부와 하트 일러스트"),
+        "ch10": ("fetus-4.png",       "태아 일러스트"),
+        "epilogue":  ("father-face.png", "아빠 얼굴 일러스트"),
     }
 
     toc_items = []
