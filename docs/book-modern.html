@@ -579,7 +579,7 @@ table.data tr:last-child td { border-bottom: none; }
 :root.dark #dark-toggle .dark-icon-light { display: inline-block; }
 
 #theme-switcher {
-  position: fixed; top: 22px; right: 74px; z-index: 50;
+  position: fixed; top: 22px; right: 134px; z-index: 50;
   padding: 6px 14px;
   background: var(--accent); color: #ffffff;
   border-radius: 999px;
@@ -590,6 +590,55 @@ table.data tr:last-child td { border-bottom: none; }
   transition: transform 0.18s, box-shadow 0.18s;
 }
 #theme-switcher:hover { transform: translateY(-1px); box-shadow: 0 4px 14px var(--shadow-strong); }
+
+/* 다운로드 버튼 + 메뉴 */
+#download-btn {
+  position: fixed; top: 18px; right: 74px; z-index: 50;
+  width: 44px; height: 44px; padding: 0;
+  background: var(--bg-soft); border: 1px solid var(--line);
+  border-radius: 50%; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; line-height: 1;
+  box-shadow: 0 2px 8px var(--shadow-soft);
+  transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  color: var(--accent);
+}
+#download-btn:hover {
+  background: var(--bg);
+  box-shadow: 0 3px 12px var(--shadow-medium);
+}
+#download-btn:active { transform: scale(0.95); }
+#download-menu {
+  position: fixed; top: 70px; right: 18px; z-index: 65;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 6px 24px var(--shadow-strong);
+  padding: 6px;
+  display: none;
+  min-width: 200px;
+  font-family: var(--sans);
+}
+#download-menu[data-open="true"] { display: block; }
+#download-menu button, #download-menu a {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%;
+  padding: 11px 14px;
+  background: none; border: none;
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--sans); font-size: 14px;
+  text-align: left; cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+#download-menu button:hover, #download-menu a:hover {
+  background: var(--bg);
+  color: var(--accent);
+}
+#download-menu .dl-icon { font-size: 17px; line-height: 1; width: 22px; text-align: center; }
+#download-menu .dl-label { flex: 1; font-weight: 600; }
+#download-menu .dl-sub { display: block; font-size: 11.5px; color: var(--text-soft); font-weight: 400; margin-top: 2px; }
 
 #drawer-backdrop {
   position: fixed; inset: 0; z-index: 55;
@@ -689,7 +738,9 @@ table.data tr:last-child td { border-bottom: none; }
   .toc ol { grid-template-columns: 1fr; }
   #menu-toggle { top: 12px; left: 12px; width: 40px; height: 40px; }
   #dark-toggle { top: 12px; right: 12px; width: 40px; height: 40px; font-size: 16px; }
-  #theme-switcher { top: 16px; right: 62px; padding: 5px 11px; font-size: 11px; }
+  #download-btn { top: 12px; right: 60px; width: 40px; height: 40px; font-size: 16px; }
+  #theme-switcher { top: 16px; right: 108px; padding: 5px 11px; font-size: 11px; }
+  #download-menu { top: 60px; right: 12px; min-width: 180px; }
   #back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 17px; }
 }
 
@@ -825,9 +876,43 @@ table.data tr:last-child td { border-bottom: none; }
 }
 
 @media print {
-  body { background: white; }
-  .chapter, .cover, .front-page { box-shadow: none; border: 1px solid #ccc; }
-  #menu-toggle, #dark-toggle, #theme-switcher, #drawer, #drawer-backdrop, #back-to-top, #resume-toast { display: none !important; }
+  /* 인쇄/PDF: 다크모드 강제 라이트 — 다크 사용자도 깔끔한 PDF */
+  :root.dark {
+    --bg: #ffffff; --bg-soft: #ffffff;
+    --text: #1a1612; --text-soft: #4a443f;
+    --accent: #7a5e40; --accent-rose: #a87a8c;
+    --accent-sage: #6e8669; --accent-mustard: #a48345;
+    --accent-lavender: #7a6f8c;
+    --line: #d9d0bf; --line-strong: #b8ad9a;
+    --card-shadow: none; --card-shadow-hover: none;
+    --bg-flow-from: #efeae0; --card-modern-bg: #ffffff;
+    --ring-bg: rgba(255, 255, 255, 0.55);
+  }
+
+  body { background: white; font-size: 11pt; line-height: 1.75; }
+  .book { max-width: 100%; padding: 0 16pt; }
+  .book-cover { margin: 0 0 24pt; page-break-after: always; }
+  .chapter, .cover, .front-page {
+    box-shadow: none !important;
+    border: none !important;
+    page-break-inside: avoid;
+    page-break-before: auto;
+  }
+  .chapter { page-break-before: always; padding: 12pt 0; margin: 0; }
+  .toc { page-break-after: always; }
+
+  /* 다운로드/메뉴/네비 chrome 모두 숨김 */
+  #menu-toggle, #dark-toggle, #theme-switcher, #download-btn, #download-menu,
+  #drawer, #drawer-backdrop, #back-to-top, #resume-toast {
+    display: none !important;
+  }
+
+  .chapter-title { font-size: 22pt; }
+  .chapter-body { font-size: 11pt; line-height: 1.75; }
+  .chapter-body .subhead { font-size: 14pt; page-break-after: avoid; }
+  table.data { font-size: 9pt; page-break-inside: avoid; }
+  aside.footnotes { font-size: 9pt; page-break-inside: avoid; }
+  a { color: inherit !important; text-decoration: none !important; border: none !important; background: transparent !important; }
 }
 </style>
 </head>
@@ -840,6 +925,19 @@ table.data tr:last-child td { border-bottom: none; }
   <span class="dark-icon-dark" aria-hidden="true">🌙</span>
   <span class="dark-icon-light" aria-hidden="true">☀️</span>
 </button>
+<button id="download-btn" type="button" aria-label="다운로드" title="다운로드 (PDF/HTML)" aria-haspopup="true" aria-expanded="false">
+  <span aria-hidden="true">📥</span>
+</button>
+<div id="download-menu" role="menu" aria-label="다운로드 옵션">
+  <button type="button" id="dl-pdf" role="menuitem">
+    <span class="dl-icon" aria-hidden="true">📄</span>
+    <span class="dl-label">PDF로 저장<span class="dl-sub">브라우저 인쇄 → PDF로 저장</span></span>
+  </button>
+  <a id="dl-html" href="./book-modern.html" download="맘곁태교-이론편-모던.html" role="menuitem">
+    <span class="dl-icon" aria-hidden="true">💾</span>
+    <span class="dl-label">HTML 파일 받기<span class="dl-sub">오프라인 보관용 단일 파일</span></span>
+  </a>
+</div>
 <a id="theme-switcher" href="./book.html" title="클래식 디자인으로 보기">클래식</a>
 
 <div id="drawer-backdrop"></div>
@@ -5028,6 +5126,9 @@ SNS에 인증을 남겼던 하루,<br>
   var THEME_KEY = 'mamgyeot-theme';
   var menuToggle = document.getElementById('menu-toggle');
   var darkToggle = document.getElementById('dark-toggle');
+  var downloadBtn = document.getElementById('download-btn');
+  var downloadMenu = document.getElementById('download-menu');
+  var dlPdfBtn = document.getElementById('dl-pdf');
   var drawer = document.getElementById('drawer');
   var drawerClose = document.getElementById('drawer-close');
   var drawerBackdrop = document.getElementById('drawer-backdrop');
@@ -5043,6 +5144,49 @@ SNS에 인증을 남겼던 하루,<br>
       setTheme(!document.documentElement.classList.contains('dark'));
     });
   }
+
+  // ---- Download menu ----
+  function closeDlMenu() {
+    if (!downloadMenu) return;
+    downloadMenu.setAttribute('data-open', 'false');
+    if (downloadBtn) downloadBtn.setAttribute('aria-expanded', 'false');
+  }
+  function openDlMenu() {
+    if (!downloadMenu) return;
+    downloadMenu.setAttribute('data-open', 'true');
+    if (downloadBtn) downloadBtn.setAttribute('aria-expanded', 'true');
+  }
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var open = downloadMenu && downloadMenu.getAttribute('data-open') === 'true';
+      if (open) closeDlMenu(); else openDlMenu();
+    });
+  }
+  if (dlPdfBtn) {
+    dlPdfBtn.addEventListener('click', function() {
+      closeDlMenu();
+      // 인쇄 다이얼로그 → 사용자가 "PDF로 저장" 선택
+      setTimeout(function() { window.print(); }, 120);
+    });
+  }
+  if (downloadMenu) {
+    downloadMenu.addEventListener('click', function(e) {
+      // 항목 클릭 시 메뉴는 닫고 기본 동작은 유지
+      if (e.target.closest('a, button')) closeDlMenu();
+    });
+  }
+  document.addEventListener('click', function(e) {
+    if (!downloadMenu) return;
+    if (downloadMenu.getAttribute('data-open') !== 'true') return;
+    if (e.target.closest('#download-btn, #download-menu')) return;
+    closeDlMenu();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && downloadMenu && downloadMenu.getAttribute('data-open') === 'true') {
+      closeDlMenu();
+    }
+  });
   if (window.matchMedia) {
     var mq = window.matchMedia('(prefers-color-scheme: dark)');
     var followSystem = function(e) {
