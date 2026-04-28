@@ -1762,6 +1762,117 @@ table.data td { color: var(--text); }
 @media print {
   .fetus-progress { background: white; }
 }
+/* =========== 태담 기본 공식 (실천편 PART 1) =========== */
+.talk-formula {
+  margin: 1.6em 0 2em;
+  padding: 22px 22px 18px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  font-family: var(--sans);
+}
+.talk-formula-row {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--line);
+}
+.talk-chip {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13.5px; font-weight: 600;
+  letter-spacing: -0.005em;
+  color: #fff;
+}
+.talk-chip--1 { background: #c8a874; }
+.talk-chip--2 { background: #6aa1c2; }
+.talk-chip--3 { background: #e08aa1; }
+.talk-chip--4 { background: #8fa766; }
+.talk-plus {
+  font-size: 18px; font-weight: 600;
+  color: var(--text-soft);
+  user-select: none;
+}
+.talk-formula-example { position: relative; }
+.talk-example-tag {
+  display: inline-block;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.talk-example-line {
+  margin: 0 0 6px;
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 10px;
+  font-size: 14.5px; line-height: 1.65;
+  color: var(--text);
+}
+.talk-example-line span { flex: 1; min-width: 0; }
+.talk-example-label {
+  font-size: 11.5px; font-weight: 700;
+  letter-spacing: -0.005em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  color: #fff;
+  font-style: normal;
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .talk-formula-row { gap: 6px; }
+  .talk-chip { padding: 6px 11px; font-size: 12.5px; }
+  .talk-plus { font-size: 14px; }
+  .talk-example-line { gap: 6px; }
+}
+
+/* =========== 첫 태담 스크립트 카드 (실천편) =========== */
+.script-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  margin: 1.6em 0 2em;
+}
+.script-grid--single { grid-template-columns: minmax(0, 480px); justify-content: start; }
+.script-card {
+  padding: 18px 20px 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  font-family: var(--sans);
+}
+.script-card-head {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 10px;
+}
+.script-pin { font-size: 18px; line-height: 1; }
+.script-card-title {
+  margin: 0; font-size: 15px; font-weight: 700;
+  color: var(--text); letter-spacing: -0.005em;
+}
+.script-card-body {
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--bg);
+  border-left: none;
+  border-radius: 8px;
+  font-size: 14px; line-height: 1.7;
+  color: var(--text);
+  font-style: italic;
+}
+.script-card-body::before { content: none; }
+.script-card:nth-child(5n+2) { border-left-color: #6aa1c2; }
+.script-card:nth-child(5n+3) { border-left-color: #e08aa1; }
+.script-card:nth-child(5n+4) { border-left-color: #e8c553; }
+.script-card:nth-child(5n+5) { border-left-color: #8fa766; }
+.script-card--dad { border-left-color: #7e5ea7; }
+@media (max-width: 600px) {
+  .script-grid { grid-template-columns: 1fr; }
+}
+
 /* =========== 감정 색상표 (실천편 PART 1) =========== */
 .color-palette {
   display: grid;
@@ -3313,6 +3424,121 @@ table.data tr:last-child td { border-bottom: none; }
 @media (max-width: 600px) {
   table.data { font-size: 12.5px; }
   table.data th, table.data td { padding: 9px 10px; }
+}
+
+/* =========== 태담 기본 공식 (실천편, 모던) =========== */
+.talk-formula {
+  margin: 1.8em 0 2.2em;
+  padding: 26px 26px 22px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  font-family: var(--sans);
+}
+.talk-formula-row {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--line);
+}
+.talk-chip {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 14px; font-weight: 700;
+  letter-spacing: -0.005em;
+  color: #fff;
+}
+.talk-chip--1 { background: #c8a874; }
+.talk-chip--2 { background: #6aa1c2; }
+.talk-chip--3 { background: #e08aa1; }
+.talk-chip--4 { background: #8fa766; }
+.talk-plus {
+  font-size: 20px; font-weight: 700;
+  color: var(--text-soft);
+  user-select: none;
+}
+.talk-formula-example { position: relative; }
+.talk-example-tag {
+  display: inline-block;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.talk-example-line {
+  margin: 0 0 8px;
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 12px;
+  font-size: 15px; line-height: 1.7;
+  color: var(--text);
+}
+.talk-example-line span { flex: 1; min-width: 0; }
+.talk-example-label {
+  font-size: 11.5px; font-weight: 700;
+  letter-spacing: -0.005em;
+  padding: 4px 12px;
+  border-radius: 999px;
+  color: #fff;
+  font-style: normal;
+  white-space: nowrap;
+}
+@media (max-width: 600px) {
+  .talk-formula-row { gap: 7px; }
+  .talk-chip { padding: 7px 13px; font-size: 13px; }
+  .talk-plus { font-size: 16px; }
+  .talk-example-line { gap: 8px; font-size: 14.5px; }
+}
+
+/* =========== 첫 태담 스크립트 카드 (실천편, 모던) =========== */
+.script-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 1.8em 0 2.2em;
+}
+.script-grid--single { grid-template-columns: minmax(0, 520px); justify-content: start; }
+.script-card {
+  padding: 22px 24px 20px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 14px;
+  font-family: var(--sans);
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.script-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
+.script-card-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px;
+}
+.script-pin { font-size: 22px; line-height: 1; }
+.script-card-title {
+  margin: 0; font-size: 16px; font-weight: 800;
+  color: var(--text); letter-spacing: -0.01em;
+}
+.script-card-body {
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: none;
+  border-radius: 10px;
+  font-size: 15px; line-height: 1.75;
+  color: var(--text);
+  font-style: normal;
+  font-weight: 500;
+}
+.script-card-body::before { content: none; }
+.script-card:nth-child(5n+2) { border-left-color: #6aa1c2; }
+.script-card:nth-child(5n+3) { border-left-color: #e08aa1; }
+.script-card:nth-child(5n+4) { border-left-color: #e8c553; }
+.script-card:nth-child(5n+5) { border-left-color: #8fa766; }
+.script-card--dad { border-left-color: #7e5ea7; }
+@media (max-width: 600px) {
+  .script-grid { grid-template-columns: 1fr; }
+  .script-card { padding: 20px 20px 18px; }
 }
 
 /* =========== 감정 색상표 (실천편 PART 1, 모던) =========== */

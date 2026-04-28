@@ -205,28 +205,85 @@
 - **엄마의 정서 안정 효과**는 즉시 발생해요
 - 태담은 아기를 위한 것이기도 하지만, 엄마 자신을 위한 것이기도 해요
 ### 3. 태담 기본 공식
-✅ 태담 기본 공식
-[인사] + [오늘의 이야기] + [감정 표현] + [사랑 표현]
-**예시:**
-"안녕, 우리 아가야. *(인사)*
-오늘 엄마는 산책을 했어. 날씨가 좋았어. *(오늘의 이야기)*
-기분이 상쾌했어. *(감정 표현)*
-네가 건강하게 자라고 있을 거라고 믿어. 사랑해. *(사랑 표현)*"
+
+:::raw
+<div class="talk-formula" aria-label="태담 기본 공식">
+  <div class="talk-formula-row">
+    <span class="talk-chip talk-chip--1">인사</span>
+    <span class="talk-plus">＋</span>
+    <span class="talk-chip talk-chip--2">오늘의 이야기</span>
+    <span class="talk-plus">＋</span>
+    <span class="talk-chip talk-chip--3">감정 표현</span>
+    <span class="talk-plus">＋</span>
+    <span class="talk-chip talk-chip--4">사랑 표현</span>
+  </div>
+  <div class="talk-formula-example">
+    <span class="talk-example-tag">예시</span>
+    <p class="talk-example-line"><span>안녕, 우리 아가야.</span> <em class="talk-example-label talk-chip--1">인사</em></p>
+    <p class="talk-example-line"><span>오늘 엄마는 산책을 했어. 날씨가 좋았어.</span> <em class="talk-example-label talk-chip--2">오늘의 이야기</em></p>
+    <p class="talk-example-line"><span>기분이 상쾌했어.</span> <em class="talk-example-label talk-chip--3">감정 표현</em></p>
+    <p class="talk-example-line"><span>네가 건강하게 자라고 있을 거라고 믿어. 사랑해.</span> <em class="talk-example-label talk-chip--4">사랑 표현</em></p>
+  </div>
+</div>
+:::
+
 ### 4. 첫 태담 스크립트 5선
-📍 임신 확인 직후
-"아가야, 오늘 네가 우리한테 왔다는 걸 알았어. 정말 기뻐. 앞으로 잘 부탁해. 건강하게 자라줘."
-📍 첫 초음파 후
-"오늘 네 심장 소리 들었어. 콩닥콩닥 뛰고 있더라. 작지만 힘찬 소리였어. 건강하게 자라줘서 고마워."
-📍 힘든 날
-"아가야, 오늘 엄마가 좀 지쳤어. 그래도 네 생각하니까 힘이 나. 같이 쉬자. 내일은 더 나을 거야."
-📍 좋은 날
-"오늘 기분 좋은 일이 있었어! 이 기쁨이 너한테도 전해졌으면 좋겠다. 엄마가 행복하면 너도 행복하다 믿어."
-📍 잠들기 전
-"아가야, 오늘 하루도 수고했어. 엄마도 이제 잘게. 좋은 꿈 꿔. 내일도 함께하자. 사랑해."
+
+:::raw
+<div class="script-grid" aria-label="첫 태담 스크립트 5선">
+  <article class="script-card">
+    <header class="script-card-head">
+      <span class="script-pin" aria-hidden="true">📍</span>
+      <h5 class="script-card-title">임신 확인 직후</h5>
+    </header>
+    <blockquote class="script-card-body">아가야, 오늘 네가 우리한테 왔다는 걸 알았어. 정말 기뻐. 앞으로 잘 부탁해. 건강하게 자라줘.</blockquote>
+  </article>
+  <article class="script-card">
+    <header class="script-card-head">
+      <span class="script-pin" aria-hidden="true">📍</span>
+      <h5 class="script-card-title">첫 초음파 후</h5>
+    </header>
+    <blockquote class="script-card-body">오늘 네 심장 소리 들었어. 콩닥콩닥 뛰고 있더라. 작지만 힘찬 소리였어. 건강하게 자라줘서 고마워.</blockquote>
+  </article>
+  <article class="script-card">
+    <header class="script-card-head">
+      <span class="script-pin" aria-hidden="true">📍</span>
+      <h5 class="script-card-title">힘든 날</h5>
+    </header>
+    <blockquote class="script-card-body">아가야, 오늘 엄마가 좀 지쳤어. 그래도 네 생각하니까 힘이 나. 같이 쉬자. 내일은 더 나을 거야.</blockquote>
+  </article>
+  <article class="script-card">
+    <header class="script-card-head">
+      <span class="script-pin" aria-hidden="true">📍</span>
+      <h5 class="script-card-title">좋은 날</h5>
+    </header>
+    <blockquote class="script-card-body">오늘 기분 좋은 일이 있었어! 이 기쁨이 너한테도 전해졌으면 좋겠다. 엄마가 행복하면 너도 행복하다 믿어.</blockquote>
+  </article>
+  <article class="script-card">
+    <header class="script-card-head">
+      <span class="script-pin" aria-hidden="true">📍</span>
+      <h5 class="script-card-title">잠들기 전</h5>
+    </header>
+    <blockquote class="script-card-body">아가야, 오늘 하루도 수고했어. 엄마도 이제 잘게. 좋은 꿈 꿔. 내일도 함께하자. 사랑해.</blockquote>
+  </article>
+</div>
+:::
+
 ### 5. 아빠 태담
+
 아빠의 저음 목소리는 태아에게 특별한 안정감을 줘요. 아빠도 태담에 참여하는 것이 중요해요.
-👨 아빠 태담 예시
-"아가야, 아빠야. 오늘 엄마가 네 이야기 많이 해줬어. 빨리 만나고 싶다. 건강하게 자라줘. 아빠가 지켜줄게."
+
+:::raw
+<div class="script-grid script-grid--single" aria-label="아빠 태담 예시">
+  <article class="script-card script-card--dad">
+    <header class="script-card-head">
+      <span class="script-pin" aria-hidden="true">👨</span>
+      <h5 class="script-card-title">아빠 태담 예시</h5>
+    </header>
+    <blockquote class="script-card-body">아가야, 아빠야. 오늘 엄마가 네 이야기 많이 해줬어. 빨리 만나고 싶다. 건강하게 자라줘. 아빠가 지켜줄게.</blockquote>
+  </article>
+</div>
+:::
 #### 💡 태담 팁
 - **완벽한 문장이 아니어도** 괜찮아요
 - "사랑해", "오늘 어땠어?" 한마디로 충분해요
