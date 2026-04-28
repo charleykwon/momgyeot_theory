@@ -1987,80 +1987,151 @@ body {
 }
 .chapter-illust img { width: 100%; height: 100%; object-fit: contain; }
 
-/* =========== Body =========== */
-.chapter-body p { margin: 0 0 1.4em; }
+/* =========== Body — 가독성 강화 =========== */
+.chapter-body { font-size: 16.5px; line-height: 1.95; }
+.chapter-body p {
+  margin: 0 0 1.5em;
+  letter-spacing: 0.005em;
+}
+
+/* 리드 문단 — 각 장 첫 문단 강조 */
+.chapter-body > p:first-of-type {
+  font-size: 17.5px;
+  line-height: 1.85;
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: 1.7em;
+  padding-bottom: 1.3em;
+  border-bottom: 1px solid var(--line);
+}
+
+/* 드롭캡 — 첫 글자만 장식 */
+.chapter-body > p:first-of-type::first-letter {
+  font-family: var(--serif);
+  font-size: 2.6em;
+  font-weight: 700;
+  color: var(--accent);
+  float: left;
+  line-height: 0.95;
+  margin: 0.08em 0.12em 0 0;
+  padding: 0;
+}
+.chapter.is-appendix .chapter-body > p:first-of-type {
+  font-size: 16.5px; font-weight: 400;
+  border-bottom: none; padding-bottom: 0;
+}
+.chapter.is-appendix .chapter-body > p:first-of-type::first-letter {
+  font-size: inherit; float: none; color: inherit;
+  font-weight: inherit; margin: 0;
+}
+
 .chapter-body .subhead {
   font-family: var(--sans);
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
-  margin: 2.2em 0 0.9em;
+  margin: 2.6em 0 1em;
   color: var(--text);
   letter-spacing: -0.005em;
   position: relative;
-  padding-left: 14px;
+  padding: 6px 12px 6px 18px;
+  background: linear-gradient(90deg, rgba(184,111,92,0.06), transparent 65%);
+  border-radius: 6px;
 }
 .chapter-body .subhead::before {
   content: "";
   position: absolute;
-  left: 0; top: 0.45em; bottom: 0.4em;
+  left: 0; top: 25%; bottom: 25%;
   width: 4px;
   border-radius: 2px;
   background: var(--accent);
 }
 .chapter-body .subhead-2 {
   font-family: var(--sans);
-  font-size: 15.5px;
-  font-weight: 600;
-  margin: 1.6em 0 0.6em;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 2em 0 0.7em;
   color: var(--accent);
+  letter-spacing: 0;
 }
 .chapter-body .subhead-2::before {
-  content: "✦ ";
-  margin-right: 4px;
+  content: "✦";
+  margin-right: 8px;
   opacity: 0.7;
+  font-size: 0.85em;
+  vertical-align: 0.05em;
 }
+
+/* 섹션 구분선 — 세 점 장식 */
 .chapter-body hr.section-break {
-  border: 0; border-top: 1px dashed var(--line);
-  margin: 2em auto; width: 80px;
+  border: 0; background: transparent;
+  margin: 2.4em auto;
+  width: 100%;
+  height: 14px;
+  text-align: center;
+  position: relative;
 }
+.chapter-body hr.section-break::after {
+  content: "✦ ✦ ✦";
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 0.6em;
+  color: var(--accent);
+  opacity: 0.4;
+  font-size: 11px;
+}
+
+/* 불릿 — 컬러 도트, 간격 확대 */
 .chapter-body ul.bullets {
-  margin: 1.1em 0 1.4em;
-  padding-left: 1.2em;
+  margin: 1.3em 0 1.6em;
+  padding-left: 0;
   list-style: none;
 }
 .chapter-body ul.bullets li {
-  margin: 0.45em 0;
+  margin: 0.65em 0;
   position: relative;
-  padding-left: 14px;
+  padding-left: 22px;
+  line-height: 1.7;
 }
 .chapter-body ul.bullets li::before {
-  content: "•";
+  content: "";
   position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-weight: 700;
+  left: 4px; top: 0.7em;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
 }
+.chapter-body ul.bullets li:nth-child(5n+2)::before { background: var(--accent-sage); }
+.chapter-body ul.bullets li:nth-child(5n+3)::before { background: var(--accent-rose); }
+.chapter-body ul.bullets li:nth-child(5n+4)::before { background: var(--accent-mustard); }
+.chapter-body ul.bullets li:nth-child(5n+5)::before { background: var(--accent-lavender); }
 
-/* 인용/메모 → 카드형 콜아웃 */
+/* 인용/메모 → 카드형 콜아웃 (틴트 강화) */
 .chapter-body blockquote.meta-note {
-  margin: 1.6em 0;
-  padding: 16px 20px 16px 22px;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-left: 4px solid var(--accent-sage);
-  border-radius: 10px;
+  margin: 1.8em 0;
+  padding: 18px 22px 18px 26px;
+  background: rgba(143, 169, 133, 0.07);
+  border: 1px solid rgba(143, 169, 133, 0.2);
+  border-left: 5px solid var(--accent-sage);
+  border-radius: 12px;
   font-size: 14.5px;
   color: var(--text);
-  line-height: 1.75;
+  line-height: 1.8;
   position: relative;
 }
 .chapter-body blockquote.meta-note::before {
   content: "💬";
   position: absolute;
-  top: -10px; left: 16px;
+  top: -12px; left: 18px;
   background: var(--bg-soft);
-  padding: 0 6px;
+  padding: 2px 8px;
   font-size: 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(143, 169, 133, 0.25);
+}
+:root.dark .chapter-body blockquote.meta-note {
+  background: rgba(163, 188, 153, 0.08);
+  border-color: rgba(163, 188, 153, 0.22);
 }
 
 /* 강조 마커 */
@@ -2090,6 +2161,12 @@ body {
   color: var(--accent);
   text-decoration: none;
   border-bottom: 1px solid var(--accent);
+  transition: background 0.18s, color 0.18s;
+  padding: 0 1px;
+  border-radius: 2px;
+}
+.chapter-body a:hover {
+  background: rgba(184, 111, 92, 0.1);
 }
 
 /* 각주 */
@@ -2138,23 +2215,24 @@ aside.footnotes code {
   font-size: 12px;
 }
 
-/* 표 */
+/* 표 — 줄무늬 행으로 스캔 용이 */
 table.data {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  margin: 1.6em 0 2em;
-  font-size: 13.5px;
-  line-height: 1.6;
+  margin: 1.8em 0 2.2em;
+  font-size: 14px;
+  line-height: 1.65;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: var(--card-shadow);
 }
 table.data thead { background: var(--bg); }
 table.data th, table.data td {
   text-align: left;
   vertical-align: top;
-  padding: 11px 13px;
+  padding: 13px 15px;
   border-bottom: 1px solid var(--line);
   word-break: keep-all;
 }
@@ -2162,8 +2240,11 @@ table.data th {
   font-weight: 700;
   color: var(--accent);
   font-size: 12px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
+table.data tbody tr:nth-child(even) td { background: rgba(0,0,0,0.015); }
+:root.dark table.data tbody tr:nth-child(even) td { background: rgba(255,255,255,0.025); }
 table.data tr:last-child td { border-bottom: none; }
 @media (max-width: 600px) {
   table.data { font-size: 12.5px; }
@@ -2305,10 +2386,15 @@ table.data tr:last-child td { border-bottom: none; }
 .resume-btn.resume-yes { background: var(--accent); border-color: var(--accent); }
 
 @media (max-width: 600px) {
-  body { font-size: 15.5px; line-height: 1.8; }
+  body { font-size: 16.5px; line-height: 1.9; }
   .book { padding: 28px 14px 64px; }
   .chapter { padding: 28px 20px 24px; margin: 22px 0; border-radius: 14px; }
   .chapter-title { font-size: 22px; }
+  .chapter-body { font-size: 16.5px; line-height: 1.95; }
+  .chapter-body > p:first-of-type { font-size: 17px; }
+  .chapter-body > p:first-of-type::first-letter { font-size: 2.4em; }
+  .chapter-body .subhead { font-size: 17.5px; }
+  .chapter-body .subhead-2 { font-size: 15.5px; }
   .toc ol { grid-template-columns: 1fr; }
   #menu-toggle { top: 12px; left: 12px; width: 40px; height: 40px; }
   #dark-toggle { top: 12px; right: 12px; width: 40px; height: 40px; font-size: 16px; }
@@ -2320,15 +2406,31 @@ table.data tr:last-child td { border-bottom: none; }
 .illust { margin: 0; text-align: center; }
 .illust img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
 .fetus-progress {
-  display: flex; gap: 6px; align-items: flex-end; justify-content: space-between;
-  margin: 1.6em 0 1.2em; padding: 14px 10px 10px;
-  background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+  display: flex; gap: 8px; align-items: stretch; justify-content: space-between;
+  margin: 1.8em 0 1.4em; padding: 16px 10px 12px;
+  background: var(--bg); border: 1px solid var(--line); border-radius: 14px;
 }
-.fetus-progress .stage { flex: 1; text-align: center; font-size: 11.5px; color: var(--text-soft); }
-.fetus-progress .stage img { width: 100%; max-width: 70px; height: auto; margin: 0 auto 6px; display: block; }
+.fetus-progress .stage {
+  flex: 1; text-align: center;
+  font-size: 11.5px; color: var(--text-soft);
+  padding: 10px 4px 8px;
+  border-radius: 10px;
+  background: var(--bg-soft);
+  display: flex; flex-direction: column; align-items: center;
+  font-weight: 600;
+}
+.fetus-progress .stage:nth-child(7n+1) { background: rgba(184, 111, 92, 0.1); }
+.fetus-progress .stage:nth-child(7n+2) { background: rgba(196, 157, 176, 0.13); }
+.fetus-progress .stage:nth-child(7n+3) { background: rgba(143, 169, 133, 0.13); }
+.fetus-progress .stage:nth-child(7n+4) { background: rgba(200, 163, 90, 0.13); }
+.fetus-progress .stage:nth-child(7n+5) { background: rgba(156, 143, 176, 0.13); }
+.fetus-progress .stage:nth-child(7n+6) { background: rgba(184, 111, 92, 0.1); }
+.fetus-progress .stage:nth-child(7n+7) { background: rgba(143, 169, 133, 0.13); }
+.fetus-progress .stage img { width: 100%; max-width: 64px; height: auto; margin: 0 auto 6px; display: block; }
 @media (max-width: 600px) {
-  .fetus-progress { gap: 3px; padding: 10px 6px 8px; }
-  .fetus-progress .stage img { max-width: 52px; }
+  .fetus-progress { gap: 4px; padding: 10px 6px 8px; }
+  .fetus-progress .stage { padding: 7px 2px 6px; font-size: 10.5px; }
+  .fetus-progress .stage img { max-width: 48px; }
 }
 
 .infographic { margin: 2em auto; color: var(--text); }
