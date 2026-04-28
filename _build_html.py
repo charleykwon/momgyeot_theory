@@ -30,6 +30,17 @@ CHAPTERS = [
     ("appendix-e", "appendix-e-series.md", "맘곁 태교 시리즈 안내", "부록 E"),
 ]
 
+# 실천편 — 같은 빌더로 sibling 사이트 구성
+PRACTICE_CHAPTERS = [
+    ("prologue",  "practice/prologue.md",   "들어가며",                 None),
+    ("part1",     "practice/part1.md",      "태아 이전의 마음 준비",    "PART 1"),
+    ("part2",     "practice/part2.md",      "임신 초기 태교",           "PART 2"),
+    ("part3",     "practice/part3.md",      "임신 중기 태교",           "PART 3"),
+    ("part4",     "practice/part4.md",      "임신 후기 태교",           "PART 4"),
+    ("part5",     "practice/part5.md",      "출산과 첫 만남",           "PART 5"),
+    ("epilogue",  "practice/epilogue.md",   "닫으며",                   None),
+]
+
 
 def strip_revision_note(text: str) -> str:
     """Drop the author-only revision note block from a chapter."""
@@ -328,53 +339,76 @@ def md_to_html(text: str, chapter_id: str):
     return body, sub_headings
 
 
-def build():
-    # 챕터별 캐릭터 이미지 매핑 (graceful degradation — 파일 없으면 자동 비표시)
-    chapter_illust = {
-        "ch1":  ("mom-pregnant.png",  "임산부 일러스트"),
-        "ch3":  ("fetus-3.png",       "태아 일러스트"),
-        "ch5":  ("fetus-2.png",       "태아 일러스트"),
-        "ch6":  ("mom-pregnant.png",  "임산부 일러스트"),
-        "ch7":  ("family-faces.jpg",  "가족이 함께 둘러앉은 일러스트"),
-        "ch8":  ("couple-heart.png",  "부부와 하트 일러스트"),
-        "ch10": ("fetus-4.png",       "태아 일러스트"),
-        "epilogue":  ("father-face.png", "아빠 얼굴 일러스트"),
-    }
+# 이론편 챕터별 캐릭터 일러스트
+THEORY_ILLUST = {
+    "ch1":  ("mom-pregnant.png",  "임산부 일러스트"),
+    "ch3":  ("fetus-3.png",       "태아 일러스트"),
+    "ch5":  ("fetus-2.png",       "태아 일러스트"),
+    "ch6":  ("mom-pregnant.png",  "임산부 일러스트"),
+    "ch7":  ("family-faces.jpg",  "가족이 함께 둘러앉은 일러스트"),
+    "ch8":  ("couple-heart.png",  "부부와 하트 일러스트"),
+    "ch10": ("fetus-4.png",       "태아 일러스트"),
+    "epilogue":  ("father-face.png", "아빠 얼굴 일러스트"),
+}
 
-    # 챕터별 "다음 행동" CTA — 한 장당 1개 (icon, headline, sub, action, target)
-    # action="link"는 a href, action="button"은 버튼(자바스크립트 동작 없이 시각적 CTA)
-    chapter_cta = {
-        "prologue": ("📖", "1장부터 천천히 읽어 보기",
-                    "오늘 한 장만 펴 봐도 충분합니다.", "#ch1"),
-        "ch1": ("💬", "오늘 한 문장 태담하기",
-                "배에 손을 얹고 \"나 여기 있어\" 한 마디로 시작해 보세요.", None),
-        "ch2": ("📜", "사주당의 한 문장 적어 두기",
-                "본문에서 마음에 닿은 한 줄을 메모장에 옮겨 적어 보세요.", None),
-        "ch3": ("🩺", "다음 산전 진료에서 물어볼 한 가지 정하기",
-                "이 장에서 궁금해진 점 하나를 검진 메모로 옮겨 두세요.", None),
-        "ch4": ("🍽️", "내일 한 끼만 다르게 차려 보기",
-                "거창한 식단보다 한 끼의 결이 부드러워지는 시도를 해 보세요.", None),
-        "ch5": ("👂", "조용한 1분 — 아이의 청각에 닿기",
-                "하루 한 번 1분, 배에 손을 얹고 같은 노래를 작게 들려주세요.", None),
-        "ch6": ("🌿", "오늘의 감정에 한 줄 이름 붙이기",
-                "\"오늘 내 마음의 색은 ___\" — 하루의 결을 짧게 메모해 보세요.", None),
-        "ch7": ("🏠", "배우자·가족과 함께 이 장 읽기",
-                "가족 한 사람에게 이 장의 한 문단을 보여 주세요.", None),
-        "ch8": ("👨", "오늘 아빠의 한 행동 정하기",
-                "배에 손 얹기, 함께 산책 한 번, 잠들기 전 한 마디 — 한 가지를 골라 보세요.", None),
-        "ch9": ("⚖️", "지난 한 주의 태교를 한 줄로 정리하기",
-                "잘한 것과 부담된 것을 같은 무게로 적어 보세요.", None),
-        "ch10": ("✨", "다섯 원칙 중 한 가지 골라 한 주 살아 보기",
-                 "연결·반복·기록·다정한 생활·이해 가운데 가장 마음이 가는 하나로.", None),
-        "epilogue": ("📓", "임신 280일 환경 점검 체크리스트 열기",
-                    "부록 B에서 오늘 해당하는 시기 카드를 한 번 살펴보세요.", "#appendix-b"),
-    }
+THEORY_CTA = {
+    "prologue": ("📖", "1장부터 천천히 읽어 보기",
+                "오늘 한 장만 펴 봐도 충분합니다.", "#ch1"),
+    "ch1": ("💬", "오늘 한 문장 태담하기",
+            "배에 손을 얹고 \"나 여기 있어\" 한 마디로 시작해 보세요.", None),
+    "ch2": ("📜", "사주당의 한 문장 적어 두기",
+            "본문에서 마음에 닿은 한 줄을 메모장에 옮겨 적어 보세요.", None),
+    "ch3": ("🩺", "다음 산전 진료에서 물어볼 한 가지 정하기",
+            "이 장에서 궁금해진 점 하나를 검진 메모로 옮겨 두세요.", None),
+    "ch4": ("🍽️", "내일 한 끼만 다르게 차려 보기",
+            "거창한 식단보다 한 끼의 결이 부드러워지는 시도를 해 보세요.", None),
+    "ch5": ("👂", "조용한 1분 — 아이의 청각에 닿기",
+            "하루 한 번 1분, 배에 손을 얹고 같은 노래를 작게 들려주세요.", None),
+    "ch6": ("🌿", "오늘의 감정에 한 줄 이름 붙이기",
+            "\"오늘 내 마음의 색은 ___\" — 하루의 결을 짧게 메모해 보세요.", None),
+    "ch7": ("🏠", "배우자·가족과 함께 이 장 읽기",
+            "가족 한 사람에게 이 장의 한 문단을 보여 주세요.", None),
+    "ch8": ("👨", "오늘 아빠의 한 행동 정하기",
+            "배에 손 얹기, 함께 산책 한 번, 잠들기 전 한 마디 — 한 가지를 골라 보세요.", None),
+    "ch9": ("⚖️", "지난 한 주의 태교를 한 줄로 정리하기",
+            "잘한 것과 부담된 것을 같은 무게로 적어 보세요.", None),
+    "ch10": ("✨", "다섯 원칙 중 한 가지 골라 한 주 살아 보기",
+             "연결·반복·기록·다정한 생활·이해 가운데 가장 마음이 가는 하나로.", None),
+    "epilogue": ("📓", "임신 280일 환경 점검 체크리스트 열기",
+                "부록 B에서 오늘 해당하는 시기 카드를 한 번 살펴보세요.", "#appendix-b"),
+}
 
+# 실천편 PART별 "다음 행동" CTA — 실천 중심 책의 결에 맞춰 행동 카드
+PRACTICE_CTA = {
+    "prologue": ("✨", "오늘 한 마디 — 첫 인사",
+                "\"안녕, 아가야. 엄마(아빠)야.\" 한 마디만 건네 봐도 시작입니다.", "#part1"),
+    "part1": ("🌱", "임신을 준비하는 마음 정리하기",
+              "오늘 배우자와 한 가지 — 식·운동·정서 중 — 함께 점검해 보세요.", None),
+    "part2": ("📝", "초기 태담 한 줄 적어 두기",
+              "보이지 않는 시기, 손편지처럼 한 문장만 남겨 보세요.", None),
+    "part3": ("🤲", "태동 느낀 시간을 메모하기",
+              "오늘 처음/가장 강하게 느낀 태동의 시간과 결을 기록해 보세요.", None),
+    "part4": ("🌙", "출산 가방·출산 계획서 한 가지 정하기",
+              "거창한 준비 대신 오늘 한 가지만 — 동선·신호·연락처 중 하나.", None),
+    "part5": ("👶", "산후 회고 한 줄 — 이론편 부록 B로",
+              "출산 직후의 결을 한 줄로 적어 두는 자리가 부록 B 4단계입니다.", "./book-modern.html#appendix-b"),
+    "epilogue": ("📖", "이론편으로 한 번 더 깊이 읽기",
+                "사주당 이씨와 오늘의 의학이 만나는 자리 — 맘곁 태교 이론편.", "./book-modern.html"),
+}
+
+
+def build_book(*, chapters, classic_filename, modern_filename,
+               chapter_illust, chapter_cta,
+               book_title, book_subtitle, book_tagline,
+               cover_image, cover_image_alt,
+               other_book_label, other_book_classic, other_book_modern,
+               has_appendix=True):
+    """한 책을 두 디자인으로 빌드한다 (classic + modern)."""
     toc_body_items = []
     toc_appendix_items = []
     sections = []
     drawer_items = []
-    for cid, fname, title, num in CHAPTERS:
+    for cid, fname, title, num in chapters:
         text = (DOCS / fname).read_text(encoding="utf-8")
         body, subs = md_to_html(text, cid)
         label = f"{num} — {title}" if num else title
@@ -434,64 +468,134 @@ def build():
         # Build drawer accordion item (본문/부록 분리)
         drawer_items.append((cid, _build_drawer_item(cid, num, title, subs)))
 
-    toc_html = (
-        '<nav class="toc">\n'
-        '  <h2>차례</h2>\n'
-        '  <div class="toc-group">\n'
-        '    <h3 class="toc-group-label">본문</h3>\n'
-        '    <ol class="toc-body">\n'
-        + "\n".join(toc_body_items)
-        + '\n    </ol>\n'
-        '  </div>\n'
-        '  <div class="toc-group">\n'
-        '    <h3 class="toc-group-label">부록</h3>\n'
-        '    <ol class="toc-appendix">\n'
-        + "\n".join(toc_appendix_items)
-        + '\n    </ol>\n'
-        '  </div>\n'
-        '</nav>'
-    )
+    if has_appendix and toc_appendix_items:
+        toc_html = (
+            '<nav class="toc">\n'
+            '  <h2>차례</h2>\n'
+            '  <div class="toc-group">\n'
+            '    <h3 class="toc-group-label">본문</h3>\n'
+            '    <ol class="toc-body">\n'
+            + "\n".join(toc_body_items)
+            + '\n    </ol>\n'
+            '  </div>\n'
+            '  <div class="toc-group">\n'
+            '    <h3 class="toc-group-label">부록</h3>\n'
+            '    <ol class="toc-appendix">\n'
+            + "\n".join(toc_appendix_items)
+            + '\n    </ol>\n'
+            '  </div>\n'
+            '</nav>'
+        )
+    else:
+        toc_html = (
+            '<nav class="toc">\n'
+            '  <h2>차례</h2>\n'
+            '  <div class="toc-group">\n'
+            '    <ol class="toc-body">\n'
+            + "\n".join(toc_body_items)
+            + '\n    </ol>\n'
+            '  </div>\n'
+            '</nav>'
+        )
     chapters_html = "\n".join(sections)
-    drawer_body = [html for cid, html in drawer_items if not cid.startswith("appendix-")]
-    drawer_appendix = [html for cid, html in drawer_items if cid.startswith("appendix-")]
-    drawer_toc_html = (
-        '<div class="drawer-group">\n'
-        '<h4 class="drawer-group-label">본문</h4>\n'
-        '<ol class="drawer-toc-list">\n'
-        + "\n".join(drawer_body)
-        + "\n</ol>\n"
-        '</div>\n'
-        '<div class="drawer-group">\n'
-        '<h4 class="drawer-group-label">부록</h4>\n'
-        '<ol class="drawer-toc-list">\n'
-        + "\n".join(drawer_appendix)
-        + "\n</ol>\n"
-        '</div>'
+    drawer_body_list = [html for cid, html in drawer_items if not cid.startswith("appendix-")]
+    drawer_appendix_list = [html for cid, html in drawer_items if cid.startswith("appendix-")]
+    if has_appendix and drawer_appendix_list:
+        drawer_toc_html = (
+            '<div class="drawer-group">\n'
+            '<h4 class="drawer-group-label">본문</h4>\n'
+            '<ol class="drawer-toc-list">\n'
+            + "\n".join(drawer_body_list)
+            + "\n</ol>\n"
+            '</div>\n'
+            '<div class="drawer-group">\n'
+            '<h4 class="drawer-group-label">부록</h4>\n'
+            '<ol class="drawer-toc-list">\n'
+            + "\n".join(drawer_appendix_list)
+            + "\n</ol>\n"
+            '</div>'
+        )
+    else:
+        drawer_toc_html = (
+            '<ol class="drawer-toc-list">\n'
+            + "\n".join(drawer_body_list)
+            + "\n</ol>"
+        )
+
+    def fill(template_str: str, modern_target: bool) -> str:
+        # 이 템플릿이 모던인지 클래식인지에 따라 theme-switcher 타겟이 달라진다
+        theme_target = classic_filename if modern_target else modern_filename
+        theme_label = "클래식" if modern_target else "모던"
+        out = (template_str
+               .replace("{{TOC}}", toc_html)
+               .replace("{{CHAPTERS}}", chapters_html)
+               .replace("{{DRAWER_TOC}}", drawer_toc_html)
+               .replace("{{BOOK_TITLE}}", escape_html(book_title))
+               .replace("{{BOOK_SUBTITLE}}", escape_html(book_subtitle))
+               .replace("{{BOOK_TAGLINE}}", escape_html(book_tagline))
+               .replace("{{COVER_IMAGE}}", escape_html(cover_image))
+               .replace("{{COVER_IMAGE_ALT}}", escape_html(cover_image_alt))
+               .replace("{{THEME_TARGET}}", escape_html(theme_target))
+               .replace("{{THEME_LABEL}}", escape_html(theme_label))
+               .replace("{{OTHER_BOOK_LABEL}}", escape_html(other_book_label))
+               .replace("{{OTHER_BOOK_TARGET}}",
+                        escape_html(other_book_modern if modern_target else other_book_classic)))
+        return out
+
+    classic_html = fill(TEMPLATE, modern_target=False)
+    classic_path = DOCS / classic_filename
+    classic_path.write_text(classic_html, encoding="utf-8")
+    print(f"wrote {classic_path} ({len(classic_html):,} bytes)")
+
+    modern_html = fill(TEMPLATE_MODERN, modern_target=True)
+    modern_path = DOCS / modern_filename
+    modern_path.write_text(modern_html, encoding="utf-8")
+    print(f"wrote {modern_path} ({len(modern_html):,} bytes)")
+
+
+def build():
+    """이론편 + 실천편 두 책을 모두 빌드한다."""
+    # 이론편
+    build_book(
+        chapters=CHAPTERS,
+        classic_filename="book.html",
+        modern_filename="book-modern.html",
+        chapter_illust=THEORY_ILLUST,
+        chapter_cta=THEORY_CTA,
+        book_title="맘곁 태교 — 이론편",
+        book_subtitle="이론편",
+        book_tagline="사주당 이씨와 오늘의 의학이 같은 자리에서 만난다",
+        cover_image="book-cover.png",
+        cover_image_alt="맘곁 태교 표지 — 권의철·최소라 공저, 가족 일러스트 표지",
+        other_book_label="실천편",
+        other_book_classic="practice.html",
+        other_book_modern="practice-modern.html",
+        has_appendix=True,
+    )
+    # 실천편
+    build_book(
+        chapters=PRACTICE_CHAPTERS,
+        classic_filename="practice.html",
+        modern_filename="practice-modern.html",
+        chapter_illust={},  # 실천편은 캐릭터 매핑 없음 (필요 시 추가)
+        chapter_cta=PRACTICE_CTA,
+        book_title="맘곁 태교 — 실천편",
+        book_subtitle="실천편",
+        book_tagline="말을 거는 순간, 사랑이 시작됩니다",
+        cover_image="book-cover-practice.png",
+        cover_image_alt="맘곁 태교 — 실천편 표지",
+        other_book_label="이론편",
+        other_book_classic="book.html",
+        other_book_modern="book-modern.html",
+        has_appendix=False,
     )
 
-    template = (
-        TEMPLATE.replace("{{TOC}}", toc_html)
-        .replace("{{CHAPTERS}}", chapters_html)
-        .replace("{{DRAWER_TOC}}", drawer_toc_html)
-    )
-    OUT.write_text(template, encoding="utf-8")
-    print(f"wrote {OUT} ({len(template):,} bytes)")
-
-    # 모던 테마 (book-modern.html) — 같은 본문, 산세리프·파스텔·카드형 디자인.
-    modern = (
-        TEMPLATE_MODERN.replace("{{TOC}}", toc_html)
-        .replace("{{CHAPTERS}}", chapters_html)
-        .replace("{{DRAWER_TOC}}", drawer_toc_html)
-    )
-    modern_path = OUT.parent / "book-modern.html"
-    modern_path.write_text(modern, encoding="utf-8")
-    print(f"wrote {modern_path} ({len(modern):,} bytes)")
-
-    # Index redirect for GitHub Pages root URL.
-    index_path = OUT.parent / "index.html"
+    # Landing page
+    index_path = DOCS / "index.html"
     index_path.write_text(INDEX_REDIRECT, encoding="utf-8")
+    print(f"wrote {index_path} ({len(INDEX_REDIRECT):,} bytes)")
     # .nojekyll prevents GitHub Pages from running Jekyll on the output.
-    (OUT.parent / ".nojekyll").write_text("", encoding="utf-8")
+    (DOCS / ".nojekyll").write_text("", encoding="utf-8")
 
 
 def _build_drawer_item(cid: str, num, title: str, subs: list) -> str:
@@ -524,15 +628,15 @@ INDEX_REDIRECT = """<!DOCTYPE html>
 <script>
 (function(){try{var s=localStorage.getItem('mamgyeot-theme');var d=s?(s==='dark'):(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark');}catch(e){}})();
 </script>
-<title>맘곁 태교 — 이론편 · 사주당 이씨와 오늘의 의학이 같은 자리에서 만난다</title>
-<meta name="description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 책. 『맘곁 태교 — 이론편』. 권의철·최소라 공저, 바비즈코리아 (2026년 4월 28일).">
+<title>{{BOOK_TITLE}} · {{BOOK_TAGLINE}}</title>
+<meta name="description" content="『{{BOOK_TITLE}}』 · {{BOOK_TAGLINE}}. 권의철·최소라 공저, 바비즈코리아.">
 <meta name="author" content="권의철, 최소라">
 <meta name="keywords" content="태교, 사주당, 태교신기, 임신, 모성건강, 맘곁, 바비즈코리아">
-<meta property="og:title" content="맘곁 태교 — 이론편">
-<meta property="og:description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만난다.">
+<meta property="og:title" content="{{BOOK_TITLE}}">
+<meta property="og:description" content="{{BOOK_TAGLINE}}">
 <meta property="og:type" content="book">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:image" content="./images/book-cover.png">
+<meta property="og:image" content="./images/{{COVER_IMAGE}}">
 <link rel="canonical" href="./index.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -625,17 +729,18 @@ INDEX_REDIRECT = """<!DOCTYPE html>
     letter-spacing: 0.06em;
   }
 
-  /* 읽기 옵션 */
-  .lp-cta-row {
+  /* 두 책 카드 */
+  .lp-books {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-    margin: 0 auto 56px;
-    max-width: 580px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 18px 0 22px;
   }
-  .lp-cta {
-    display: flex; flex-direction: column; align-items: center;
-    padding: 22px 18px;
+  .lp-book {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px; align-items: stretch;
+    padding: 18px;
     background: var(--bg-soft);
     border: 1px solid var(--line);
     border-radius: 14px;
@@ -643,22 +748,68 @@ INDEX_REDIRECT = """<!DOCTYPE html>
     color: var(--text);
     transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
   }
-  .lp-cta:hover {
+  .lp-book:hover {
     transform: translateY(-2px);
     border-color: var(--accent);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   }
-  .lp-cta-primary {
-    background: var(--accent); color: #fff;
-    border-color: var(--accent);
+  .lp-book-cover {
+    margin: 0;
+    border-radius: 8px; overflow: hidden;
+    background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    aspect-ratio: 5/7;
   }
-  .lp-cta-primary:hover { background: var(--accent); border-color: var(--accent); }
-  .lp-cta-icon { font-size: 28px; line-height: 1; margin-bottom: 8px; }
-  .lp-cta-label { font-size: 15px; font-weight: 700; letter-spacing: -0.005em; }
-  .lp-cta-sub {
-    font-size: 12px; margin-top: 2px;
-    color: inherit; opacity: 0.75;
+  .lp-book-cover img { width: 100%; height: 100%; object-fit: cover; }
+  .lp-book-meta { display: flex; flex-direction: column; gap: 4px; }
+  .lp-book-tag {
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent);
   }
+  .lp-book-title {
+    margin: 2px 0 4px;
+    font-family: var(--serif);
+    font-size: 17px; font-weight: 700;
+    line-height: 1.35;
+    color: var(--text);
+    letter-spacing: -0.005em;
+  }
+  .lp-book-desc {
+    margin: 0; font-size: 13px;
+    color: var(--text-soft); line-height: 1.6;
+    flex: 1;
+  }
+  .lp-book-cta {
+    margin-top: 8px;
+    font-size: 13px; font-weight: 700;
+    color: var(--accent);
+  }
+
+  /* 디자인 4링크 줄 */
+  .lp-design-row {
+    margin-top: 8px;
+    padding: 14px 16px;
+    background: var(--bg-soft);
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    font-family: var(--sans);
+    font-size: 12.5px;
+  }
+  .lp-design-label {
+    font-weight: 700; letter-spacing: 0.18em;
+    color: var(--text-soft); text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .lp-design-link {
+    color: var(--text);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .lp-design-link:hover { background: var(--bg); color: var(--accent); }
 
   /* 섹션 */
   .lp-section { margin: 0 0 56px; }
@@ -756,27 +907,47 @@ INDEX_REDIRECT = """<!DOCTYPE html>
 </header>
 
 <section class="lp-hero">
-  <figure class="lp-hero-cover" style="margin: 0 auto 24px;">
-    <img src="./images/book-cover.png" alt="맘곁 태교 표지 — 가족 일러스트" onerror="this.parentElement.style.display='none'">
-  </figure>
   <h1>맘곁 태교</h1>
-  <div class="lp-hero-sub">이론편</div>
-  <p class="lp-hero-tagline">사주당 이씨와 오늘의 의학이 같은 자리에서 만난다.<br>1800년의 한 권을 오늘의 부모를 위한 언어로 다시 읽는 책.</p>
-  <div class="lp-hero-meta">권의철 · 최소라 공저 · 펴낸곳 바비즈코리아 · 2026년 4월 28일</div>
+  <div class="lp-hero-sub">이론편 · 실천편</div>
+  <p class="lp-hero-tagline">1800년 사주당 이씨의 시선과 오늘의 의학·실천을 같은 자리에서 만나는 두 권의 책.</p>
+  <div class="lp-hero-meta">권의철 · 최소라 공저 · 펴낸곳 바비즈코리아</div>
 </section>
 
-<div class="lp-cta-row">
-  <a class="lp-cta lp-cta-primary" href="./book-modern.html">
-    <div class="lp-cta-icon">📖</div>
-    <span class="lp-cta-label">모던 디자인으로 읽기</span>
-    <span class="lp-cta-sub">산세리프 · 카드 · 다운로드 지원</span>
-  </a>
-  <a class="lp-cta" href="./book.html">
-    <div class="lp-cta-icon">📜</div>
-    <span class="lp-cta-label">클래식 디자인으로 읽기</span>
-    <span class="lp-cta-sub">세리프 · 책 본연의 호흡</span>
-  </a>
-</div>
+<section class="lp-section lp-series">
+  <h2>두 권의 책</h2>
+  <p class="lp-section-lede">한 권은 왜 그러한지를, 한 권은 오늘 무엇을 할지를 이야기합니다.</p>
+  <div class="lp-books">
+    <a class="lp-book" href="./book-modern.html">
+      <figure class="lp-book-cover">
+        <img src="./images/book-cover.png" alt="이론편 표지" onerror="this.parentElement.style.display='none'">
+      </figure>
+      <div class="lp-book-meta">
+        <span class="lp-book-tag">이론편</span>
+        <h3 class="lp-book-title">사주당 이씨와 오늘의 의학</h3>
+        <p class="lp-book-desc">10장 본문 + 부록 A–E. 임신·태교를 둘러싼 이해의 결을 정리한 책.</p>
+        <span class="lp-book-cta">읽기 →</span>
+      </div>
+    </a>
+    <a class="lp-book" href="./practice-modern.html">
+      <figure class="lp-book-cover">
+        <img src="./images/book-cover-practice.png" alt="실천편 표지" onerror="this.parentElement.style.display='none'">
+      </figure>
+      <div class="lp-book-meta">
+        <span class="lp-book-tag">실천편</span>
+        <h3 class="lp-book-title">말을 거는 순간, 사랑이 시작됩니다</h3>
+        <p class="lp-book-desc">PART 1–5. 임신 준비부터 첫 만남까지, 오늘 해 볼 수 있는 작은 일들.</p>
+        <span class="lp-book-cta">읽기 →</span>
+      </div>
+    </a>
+  </div>
+  <div class="lp-design-row">
+    <span class="lp-design-label">디자인</span>
+    <a class="lp-design-link" href="./book-modern.html">📖 이론편 모던</a>
+    <a class="lp-design-link" href="./book.html">📜 이론편 클래식</a>
+    <a class="lp-design-link" href="./practice-modern.html">📖 실천편 모던</a>
+    <a class="lp-design-link" href="./practice.html">📜 실천편 클래식</a>
+  </div>
+</section>
 
 <section class="lp-section lp-about">
   <h2>이 책에 대하여</h2>
@@ -787,7 +958,7 @@ INDEX_REDIRECT = """<!DOCTYPE html>
 </section>
 
 <section class="lp-section">
-  <h2>차례 한눈에</h2>
+  <h2>이론편 차례</h2>
   <ol class="lp-toc-grid">
     <li><a href="./book-modern.html#prologue"><span class="lp-toc-num">prologue</span>들어가며</a></li>
     <li><a href="./book-modern.html#ch1"><span class="lp-toc-num">1장</span>태교는 왜 지금 다시 필요할까</a></li>
@@ -806,6 +977,19 @@ INDEX_REDIRECT = """<!DOCTYPE html>
     <li><a href="./book-modern.html#appendix-c"><span class="lp-toc-num">부록 C</span>참고문헌</a></li>
     <li><a href="./book-modern.html#appendix-d"><span class="lp-toc-num">부록 D</span>도움 요청 가이드 · 용어집</a></li>
     <li><a href="./book-modern.html#appendix-e"><span class="lp-toc-num">부록 E</span>맘곁 태교 시리즈</a></li>
+  </ol>
+</section>
+
+<section class="lp-section">
+  <h2>실천편 차례</h2>
+  <ol class="lp-toc-grid">
+    <li><a href="./practice-modern.html#prologue"><span class="lp-toc-num">prologue</span>들어가며</a></li>
+    <li><a href="./practice-modern.html#part1"><span class="lp-toc-num">PART 1</span>태아 이전의 마음 준비</a></li>
+    <li><a href="./practice-modern.html#part2"><span class="lp-toc-num">PART 2</span>임신 초기 태교</a></li>
+    <li><a href="./practice-modern.html#part3"><span class="lp-toc-num">PART 3</span>임신 중기 태교</a></li>
+    <li><a href="./practice-modern.html#part4"><span class="lp-toc-num">PART 4</span>임신 후기 태교</a></li>
+    <li><a href="./practice-modern.html#part5"><span class="lp-toc-num">PART 5</span>출산과 첫 만남</a></li>
+    <li><a href="./practice-modern.html#epilogue"><span class="lp-toc-num">epilogue</span>닫으며</a></li>
   </ol>
 </section>
 
@@ -848,12 +1032,12 @@ TEMPLATE = """<!DOCTYPE html>
   } catch(e) {}
 })();
 </script>
-<title>맘곁 태교 — 이론편 · 사주당 이씨와 오늘의 의학이 같은 자리에서 만난다</title>
-<meta name="description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 책. 『맘곁 태교 — 이론편』. 권의철·최소라 공저, 바비즈코리아. 1800년 사주당 이씨의 『태교신기』를 오늘의 부모를 위한 언어로 다시 읽다.">
+<title>{{BOOK_TITLE}} · {{BOOK_TAGLINE}}</title>
+<meta name="description" content="『{{BOOK_TITLE}}』 · {{BOOK_TAGLINE}}. 권의철·최소라 공저, 바비즈코리아.">
 <meta name="author" content="권의철, 최소라">
 <meta name="keywords" content="태교, 사주당, 태교신기, 임신, 모성건강, 맘곁, 바비즈코리아">
-<meta property="og:title" content="맘곁 태교 — 이론편">
-<meta property="og:description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만난다. 권의철·최소라 공저.">
+<meta property="og:title" content="{{BOOK_TITLE}}">
+<meta property="og:description" content="{{BOOK_TAGLINE}}">
 <meta property="og:type" content="book">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="맘곁 태교">
@@ -1453,24 +1637,27 @@ table.data td { color: var(--text); }
   background: #a18260;
 }
 
-#theme-switcher {
-  position: fixed; top: 22px; right: 74px; z-index: 50;
+#theme-switcher, #series-switcher {
+  position: fixed; top: 22px; z-index: 50;
   padding: 6px 14px;
   background: var(--bg-soft); border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--text-soft);
   font-family: var(--sans); font-size: 12px;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   text-decoration: none;
   box-shadow: 0 2px 8px var(--shadow-soft);
-  transition: background 0.18s, color 0.18s;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
 }
-#theme-switcher:hover { background: var(--bg); color: var(--accent); }
+#theme-switcher { right: 74px; }
+#series-switcher { right: 154px; }
+#theme-switcher:hover, #series-switcher:hover { background: var(--bg); color: var(--accent); border-color: var(--accent); }
 
 @media (max-width: 600px) {
   #menu-toggle { top: 12px; left: 12px; width: 40px; height: 40px; }
   #dark-toggle { top: 12px; right: 12px; width: 40px; height: 40px; font-size: 16px; }
   #theme-switcher { top: 16px; right: 62px; padding: 5px 11px; font-size: 11px; }
+  #series-switcher { top: 16px; right: 130px; padding: 5px 11px; font-size: 11px; }
   #back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 17px; }
   #resume-toast { bottom: 16px; padding: 11px 14px; gap: 8px; font-size: 13px; }
 }
@@ -2169,7 +2356,8 @@ table.data td { color: var(--text); }
   <span class="dark-icon-light" aria-hidden="true">☀️</span>
 </button>
 
-<a id="theme-switcher" href="./book-modern.html" title="모던 디자인으로 보기">모던</a>
+<a id="theme-switcher" href="./{{THEME_TARGET}}" title="{{THEME_LABEL}} 디자인으로 보기">{{THEME_LABEL}}</a>
+<a id="series-switcher" href="./{{OTHER_BOOK_TARGET}}" title="시리즈 — {{OTHER_BOOK_LABEL}} 보기">📘 {{OTHER_BOOK_LABEL}}</a>
 
 <div id="drawer-backdrop"></div>
 
@@ -2194,7 +2382,7 @@ table.data td { color: var(--text); }
 <div class="book">
 <section class="book-cover">
   <figure class="book-cover-art">
-    <img src="./images/book-cover.png" alt="맘곁 태교 — 권의철·최소라 공저, 가족 일러스트 표지" onerror="this.closest('.book-cover').style.display='none'">
+    <img src="./images/{{COVER_IMAGE}}" alt="{{COVER_IMAGE_ALT}}" onerror="this.closest('.book-cover').style.display='none'">
   </figure>
 </section>
 
@@ -2202,9 +2390,9 @@ table.data td { color: var(--text); }
   <figure class="cover-logo illust"><img src="./images/logo.png" alt="맘곁 로고" onerror="this.closest('.cover-logo').style.display='none'"></figure>
   <div class="brand">맘곁</div>
   <h1>맘곁 태교</h1>
-  <div class="sub">이론편</div>
+  <div class="sub">{{BOOK_SUBTITLE}}</div>
   <figure class="cover-hero illust"><img src="./images/cover-illustration.png" alt="맘곁 태교 표지 일러스트 — 가족이 손을 잡고 함께 걷는 모습" onerror="this.closest('.cover-hero').style.display='none'"></figure>
-  <div class="cover-tagline">사주당 이씨와 오늘의 의학이 같은 자리에서 만난다</div>
+  <div class="cover-tagline">{{BOOK_TAGLINE}}</div>
   <div class="cover-authors">권의철 · 최소라 공저</div>
   <div class="cover-publisher">펴낸곳 : 바비즈코리아</div>
 </header>
@@ -3425,18 +3613,26 @@ table.data tr:last-child td { border-bottom: none; }
 :root.dark #dark-toggle .dark-icon-dark { display: none; }
 :root.dark #dark-toggle .dark-icon-light { display: inline-block; }
 
-#theme-switcher {
-  position: fixed; top: 22px; right: 134px; z-index: 50;
+#theme-switcher, #series-switcher {
+  position: fixed; top: 22px; z-index: 50;
   padding: 6px 14px;
-  background: var(--accent); color: #ffffff;
   border-radius: 999px;
   font-family: var(--sans); font-size: 12px;
-  letter-spacing: 0.15em; font-weight: 600;
+  letter-spacing: 0.12em; font-weight: 600;
   text-decoration: none;
   box-shadow: 0 2px 8px var(--shadow-medium);
   transition: transform 0.18s, box-shadow 0.18s;
 }
-#theme-switcher:hover { transform: translateY(-1px); box-shadow: 0 4px 14px var(--shadow-strong); }
+#theme-switcher {
+  right: 134px;
+  background: var(--accent); color: #ffffff;
+}
+#series-switcher {
+  right: 214px;
+  background: var(--bg-soft); color: var(--accent);
+  border: 1px solid var(--line);
+}
+#theme-switcher:hover, #series-switcher:hover { transform: translateY(-1px); box-shadow: 0 4px 14px var(--shadow-strong); }
 
 /* 다운로드 버튼 + 메뉴 */
 #download-btn {
@@ -3597,6 +3793,7 @@ table.data tr:last-child td { border-bottom: none; }
   #dark-toggle { top: 12px; right: 12px; width: 40px; height: 40px; font-size: 16px; }
   #download-btn { top: 12px; right: 60px; width: 40px; height: 40px; font-size: 16px; }
   #theme-switcher { top: 16px; right: 108px; padding: 5px 11px; font-size: 11px; }
+  #series-switcher { top: 16px; right: 178px; padding: 5px 11px; font-size: 11px; }
   #download-menu { top: 60px; right: 12px; min-width: 180px; }
   #back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 17px; }
 }
@@ -3795,7 +3992,8 @@ table.data tr:last-child td { border-bottom: none; }
     <span class="dl-label">HTML 파일 받기<span class="dl-sub">오프라인 보관용 단일 파일</span></span>
   </a>
 </div>
-<a id="theme-switcher" href="./book.html" title="클래식 디자인으로 보기">클래식</a>
+<a id="theme-switcher" href="./{{THEME_TARGET}}" title="{{THEME_LABEL}} 디자인으로 보기">{{THEME_LABEL}}</a>
+<a id="series-switcher" href="./{{OTHER_BOOK_TARGET}}" title="시리즈 — {{OTHER_BOOK_LABEL}} 보기">📘 {{OTHER_BOOK_LABEL}}</a>
 
 <div id="drawer-backdrop"></div>
 
@@ -3820,16 +4018,16 @@ table.data tr:last-child td { border-bottom: none; }
 <div class="book">
 <section class="book-cover">
   <figure class="book-cover-art">
-    <img src="./images/book-cover.png" alt="맘곁 태교 — 권의철·최소라 공저, 가족 일러스트 표지" onerror="this.closest('.book-cover').style.display='none'">
+    <img src="./images/{{COVER_IMAGE}}" alt="{{COVER_IMAGE_ALT}}" onerror="this.closest('.book-cover').style.display='none'">
   </figure>
 </section>
 
 <header class="cover">
   <figure class="cover-logo illust"><img src="./images/logo.png" alt="맘곁 로고" onerror="this.closest('.cover-logo').style.display='none'"></figure>
   <h1>맘곁 태교</h1>
-  <div class="sub">이론편</div>
+  <div class="sub">{{BOOK_SUBTITLE}}</div>
   <figure class="cover-hero illust"><img src="./images/cover-illustration.png" alt="맘곁 태교 표지 일러스트" onerror="this.closest('.cover-hero').style.display='none'"></figure>
-  <div class="cover-tagline">사주당 이씨와 오늘의 의학이 같은 자리에서 만난다</div>
+  <div class="cover-tagline">{{BOOK_TAGLINE}}</div>
   <div class="cover-authors">권의철 · 최소라 공저</div>
   <div class="cover-publisher">펴낸곳 : 바비즈코리아</div>
 </header>

@@ -6,15 +6,15 @@
 <script>
 (function(){try{var s=localStorage.getItem('mamgyeot-theme');var d=s?(s==='dark'):(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark');}catch(e){}})();
 </script>
-<title>맘곁 태교 — 이론편 · 사주당 이씨와 오늘의 의학이 같은 자리에서 만난다</title>
-<meta name="description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 책. 『맘곁 태교 — 이론편』. 권의철·최소라 공저, 바비즈코리아 (2026년 4월 28일).">
+<title>{{BOOK_TITLE}} · {{BOOK_TAGLINE}}</title>
+<meta name="description" content="『{{BOOK_TITLE}}』 · {{BOOK_TAGLINE}}. 권의철·최소라 공저, 바비즈코리아.">
 <meta name="author" content="권의철, 최소라">
 <meta name="keywords" content="태교, 사주당, 태교신기, 임신, 모성건강, 맘곁, 바비즈코리아">
-<meta property="og:title" content="맘곁 태교 — 이론편">
-<meta property="og:description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만난다.">
+<meta property="og:title" content="{{BOOK_TITLE}}">
+<meta property="og:description" content="{{BOOK_TAGLINE}}">
 <meta property="og:type" content="book">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:image" content="./images/book-cover.png">
+<meta property="og:image" content="./images/{{COVER_IMAGE}}">
 <link rel="canonical" href="./index.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -107,17 +107,18 @@
     letter-spacing: 0.06em;
   }
 
-  /* 읽기 옵션 */
-  .lp-cta-row {
+  /* 두 책 카드 */
+  .lp-books {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-    margin: 0 auto 56px;
-    max-width: 580px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 18px 0 22px;
   }
-  .lp-cta {
-    display: flex; flex-direction: column; align-items: center;
-    padding: 22px 18px;
+  .lp-book {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px; align-items: stretch;
+    padding: 18px;
     background: var(--bg-soft);
     border: 1px solid var(--line);
     border-radius: 14px;
@@ -125,22 +126,68 @@
     color: var(--text);
     transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
   }
-  .lp-cta:hover {
+  .lp-book:hover {
     transform: translateY(-2px);
     border-color: var(--accent);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   }
-  .lp-cta-primary {
-    background: var(--accent); color: #fff;
-    border-color: var(--accent);
+  .lp-book-cover {
+    margin: 0;
+    border-radius: 8px; overflow: hidden;
+    background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    aspect-ratio: 5/7;
   }
-  .lp-cta-primary:hover { background: var(--accent); border-color: var(--accent); }
-  .lp-cta-icon { font-size: 28px; line-height: 1; margin-bottom: 8px; }
-  .lp-cta-label { font-size: 15px; font-weight: 700; letter-spacing: -0.005em; }
-  .lp-cta-sub {
-    font-size: 12px; margin-top: 2px;
-    color: inherit; opacity: 0.75;
+  .lp-book-cover img { width: 100%; height: 100%; object-fit: cover; }
+  .lp-book-meta { display: flex; flex-direction: column; gap: 4px; }
+  .lp-book-tag {
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent);
   }
+  .lp-book-title {
+    margin: 2px 0 4px;
+    font-family: var(--serif);
+    font-size: 17px; font-weight: 700;
+    line-height: 1.35;
+    color: var(--text);
+    letter-spacing: -0.005em;
+  }
+  .lp-book-desc {
+    margin: 0; font-size: 13px;
+    color: var(--text-soft); line-height: 1.6;
+    flex: 1;
+  }
+  .lp-book-cta {
+    margin-top: 8px;
+    font-size: 13px; font-weight: 700;
+    color: var(--accent);
+  }
+
+  /* 디자인 4링크 줄 */
+  .lp-design-row {
+    margin-top: 8px;
+    padding: 14px 16px;
+    background: var(--bg-soft);
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    font-family: var(--sans);
+    font-size: 12.5px;
+  }
+  .lp-design-label {
+    font-weight: 700; letter-spacing: 0.18em;
+    color: var(--text-soft); text-transform: uppercase;
+    margin-right: 4px;
+  }
+  .lp-design-link {
+    color: var(--text);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .lp-design-link:hover { background: var(--bg); color: var(--accent); }
 
   /* 섹션 */
   .lp-section { margin: 0 0 56px; }
@@ -238,27 +285,47 @@
 </header>
 
 <section class="lp-hero">
-  <figure class="lp-hero-cover" style="margin: 0 auto 24px;">
-    <img src="./images/book-cover.png" alt="맘곁 태교 표지 — 가족 일러스트" onerror="this.parentElement.style.display='none'">
-  </figure>
   <h1>맘곁 태교</h1>
-  <div class="lp-hero-sub">이론편</div>
-  <p class="lp-hero-tagline">사주당 이씨와 오늘의 의학이 같은 자리에서 만난다.<br>1800년의 한 권을 오늘의 부모를 위한 언어로 다시 읽는 책.</p>
-  <div class="lp-hero-meta">권의철 · 최소라 공저 · 펴낸곳 바비즈코리아 · 2026년 4월 28일</div>
+  <div class="lp-hero-sub">이론편 · 실천편</div>
+  <p class="lp-hero-tagline">1800년 사주당 이씨의 시선과 오늘의 의학·실천을 같은 자리에서 만나는 두 권의 책.</p>
+  <div class="lp-hero-meta">권의철 · 최소라 공저 · 펴낸곳 바비즈코리아</div>
 </section>
 
-<div class="lp-cta-row">
-  <a class="lp-cta lp-cta-primary" href="./book-modern.html">
-    <div class="lp-cta-icon">📖</div>
-    <span class="lp-cta-label">모던 디자인으로 읽기</span>
-    <span class="lp-cta-sub">산세리프 · 카드 · 다운로드 지원</span>
-  </a>
-  <a class="lp-cta" href="./book.html">
-    <div class="lp-cta-icon">📜</div>
-    <span class="lp-cta-label">클래식 디자인으로 읽기</span>
-    <span class="lp-cta-sub">세리프 · 책 본연의 호흡</span>
-  </a>
-</div>
+<section class="lp-section lp-series">
+  <h2>두 권의 책</h2>
+  <p class="lp-section-lede">한 권은 왜 그러한지를, 한 권은 오늘 무엇을 할지를 이야기합니다.</p>
+  <div class="lp-books">
+    <a class="lp-book" href="./book-modern.html">
+      <figure class="lp-book-cover">
+        <img src="./images/book-cover.png" alt="이론편 표지" onerror="this.parentElement.style.display='none'">
+      </figure>
+      <div class="lp-book-meta">
+        <span class="lp-book-tag">이론편</span>
+        <h3 class="lp-book-title">사주당 이씨와 오늘의 의학</h3>
+        <p class="lp-book-desc">10장 본문 + 부록 A–E. 임신·태교를 둘러싼 이해의 결을 정리한 책.</p>
+        <span class="lp-book-cta">읽기 →</span>
+      </div>
+    </a>
+    <a class="lp-book" href="./practice-modern.html">
+      <figure class="lp-book-cover">
+        <img src="./images/book-cover-practice.png" alt="실천편 표지" onerror="this.parentElement.style.display='none'">
+      </figure>
+      <div class="lp-book-meta">
+        <span class="lp-book-tag">실천편</span>
+        <h3 class="lp-book-title">말을 거는 순간, 사랑이 시작됩니다</h3>
+        <p class="lp-book-desc">PART 1–5. 임신 준비부터 첫 만남까지, 오늘 해 볼 수 있는 작은 일들.</p>
+        <span class="lp-book-cta">읽기 →</span>
+      </div>
+    </a>
+  </div>
+  <div class="lp-design-row">
+    <span class="lp-design-label">디자인</span>
+    <a class="lp-design-link" href="./book-modern.html">📖 이론편 모던</a>
+    <a class="lp-design-link" href="./book.html">📜 이론편 클래식</a>
+    <a class="lp-design-link" href="./practice-modern.html">📖 실천편 모던</a>
+    <a class="lp-design-link" href="./practice.html">📜 실천편 클래식</a>
+  </div>
+</section>
 
 <section class="lp-section lp-about">
   <h2>이 책에 대하여</h2>
@@ -269,7 +336,7 @@
 </section>
 
 <section class="lp-section">
-  <h2>차례 한눈에</h2>
+  <h2>이론편 차례</h2>
   <ol class="lp-toc-grid">
     <li><a href="./book-modern.html#prologue"><span class="lp-toc-num">prologue</span>들어가며</a></li>
     <li><a href="./book-modern.html#ch1"><span class="lp-toc-num">1장</span>태교는 왜 지금 다시 필요할까</a></li>
@@ -288,6 +355,19 @@
     <li><a href="./book-modern.html#appendix-c"><span class="lp-toc-num">부록 C</span>참고문헌</a></li>
     <li><a href="./book-modern.html#appendix-d"><span class="lp-toc-num">부록 D</span>도움 요청 가이드 · 용어집</a></li>
     <li><a href="./book-modern.html#appendix-e"><span class="lp-toc-num">부록 E</span>맘곁 태교 시리즈</a></li>
+  </ol>
+</section>
+
+<section class="lp-section">
+  <h2>실천편 차례</h2>
+  <ol class="lp-toc-grid">
+    <li><a href="./practice-modern.html#prologue"><span class="lp-toc-num">prologue</span>들어가며</a></li>
+    <li><a href="./practice-modern.html#part1"><span class="lp-toc-num">PART 1</span>태아 이전의 마음 준비</a></li>
+    <li><a href="./practice-modern.html#part2"><span class="lp-toc-num">PART 2</span>임신 초기 태교</a></li>
+    <li><a href="./practice-modern.html#part3"><span class="lp-toc-num">PART 3</span>임신 중기 태교</a></li>
+    <li><a href="./practice-modern.html#part4"><span class="lp-toc-num">PART 4</span>임신 후기 태교</a></li>
+    <li><a href="./practice-modern.html#part5"><span class="lp-toc-num">PART 5</span>출산과 첫 만남</a></li>
+    <li><a href="./practice-modern.html#epilogue"><span class="lp-toc-num">epilogue</span>닫으며</a></li>
   </ol>
 </section>
 

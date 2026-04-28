@@ -16,11 +16,11 @@
 })();
 </script>
 <title>맘곁 태교 — 이론편 · 사주당 이씨와 오늘의 의학이 같은 자리에서 만난다</title>
-<meta name="description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 책. 『맘곁 태교 — 이론편』. 권의철·최소라 공저, 바비즈코리아. 1800년 사주당 이씨의 『태교신기』를 오늘의 부모를 위한 언어로 다시 읽다.">
+<meta name="description" content="『맘곁 태교 — 이론편』 · 사주당 이씨와 오늘의 의학이 같은 자리에서 만난다. 권의철·최소라 공저, 바비즈코리아.">
 <meta name="author" content="권의철, 최소라">
 <meta name="keywords" content="태교, 사주당, 태교신기, 임신, 모성건강, 맘곁, 바비즈코리아">
 <meta property="og:title" content="맘곁 태교 — 이론편">
-<meta property="og:description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만난다. 권의철·최소라 공저.">
+<meta property="og:description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만난다">
 <meta property="og:type" content="book">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="맘곁 태교">
@@ -620,24 +620,27 @@ table.data td { color: var(--text); }
   background: #a18260;
 }
 
-#theme-switcher {
-  position: fixed; top: 22px; right: 74px; z-index: 50;
+#theme-switcher, #series-switcher {
+  position: fixed; top: 22px; z-index: 50;
   padding: 6px 14px;
   background: var(--bg-soft); border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--text-soft);
   font-family: var(--sans); font-size: 12px;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   text-decoration: none;
   box-shadow: 0 2px 8px var(--shadow-soft);
-  transition: background 0.18s, color 0.18s;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
 }
-#theme-switcher:hover { background: var(--bg); color: var(--accent); }
+#theme-switcher { right: 74px; }
+#series-switcher { right: 154px; }
+#theme-switcher:hover, #series-switcher:hover { background: var(--bg); color: var(--accent); border-color: var(--accent); }
 
 @media (max-width: 600px) {
   #menu-toggle { top: 12px; left: 12px; width: 40px; height: 40px; }
   #dark-toggle { top: 12px; right: 12px; width: 40px; height: 40px; font-size: 16px; }
   #theme-switcher { top: 16px; right: 62px; padding: 5px 11px; font-size: 11px; }
+  #series-switcher { top: 16px; right: 130px; padding: 5px 11px; font-size: 11px; }
   #back-to-top { bottom: 16px; right: 16px; width: 40px; height: 40px; font-size: 17px; }
   #resume-toast { bottom: 16px; padding: 11px 14px; gap: 8px; font-size: 13px; }
 }
@@ -1337,6 +1340,7 @@ table.data td { color: var(--text); }
 </button>
 
 <a id="theme-switcher" href="./book-modern.html" title="모던 디자인으로 보기">모던</a>
+<a id="series-switcher" href="./practice.html" title="시리즈 — 실천편 보기">📘 실천편</a>
 
 <div id="drawer-backdrop"></div>
 
@@ -1370,7 +1374,7 @@ table.data td { color: var(--text); }
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-b"><span class="toc-num">부록 B</span><span class="toc-title">임신 280일 환경 점검 체크리스트</span></a><button class="toc-expand" type="button" data-target="appendix-b-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-b-subs" class="toc-subs" hidden><li><a href="#appendix-b-s1">B-1. 체크리스트의 자리</a></li><li><a href="#appendix-b-s2">B-2. 시기별 환경 점검 카드</a></li><li><a href="#appendix-b-s3">B-3. 체크리스트 사용 원칙</a></li></ol></li>
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-c"><span class="toc-num">부록 C</span><span class="toc-title">참고문헌</span></a><button class="toc-expand" type="button" data-target="appendix-c-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-c-subs" class="toc-subs" hidden><li><a href="#appendix-c-s1">C-1. 1차 사료 — 조선 태교 의서 계보 (1434~1800)</a></li><li><a href="#appendix-c-s2">C-2. 1차 사료 — 관제·의례</a></li><li><a href="#appendix-c-s3">C-3. 현대 학술 — DOHaD · 태내 환경</a></li><li><a href="#appendix-c-s4">C-4. 현대 학술 — 모성 정서·산전우울·MBCP</a></li><li><a href="#appendix-c-s5">C-5. 현대 학술 — 태아 청각·감각 학습</a></li><li><a href="#appendix-c-s6">C-6. 현대 학술 — 부성 영향 (아빠의 태교 근거)</a></li><li><a href="#appendix-c-s7">C-7. 공공 가이드라인 · 통계</a></li><li><a href="#appendix-c-s8">C-8. 학습 이론 · 기타</a></li><li><a href="#appendix-c-s9">C-9. 본 권의 자체 자산</a></li><li><a href="#appendix-c-s10">부록 일러두기</a></li></ol></li>
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-d"><span class="toc-num">부록 D</span><span class="toc-title">도움 요청 가이드 · 용어집 · 빠른 찾아보기</span></a><button class="toc-expand" type="button" data-target="appendix-d-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-d-subs" class="toc-subs" hidden><li><a href="#appendix-d-s1">D-1. 도움 요청 가이드</a></li><li><a href="#appendix-d-s2">D-2. 용어집</a></li><li><a href="#appendix-d-s3">D-3. 빠른 찾아보기</a></li></ol></li>
-<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-e"><span class="toc-num">부록 E</span><span class="toc-title">맘곁 태교 시리즈 안내</span></a><button class="toc-expand" type="button" data-target="appendix-e-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-e-subs" class="toc-subs" hidden><li><a href="#appendix-e-s1">E-1. 시리즈의 자리</a></li><li><a href="#appendix-e-s2">E-2. 함께 읽는 길</a></li><li><a href="#appendix-e-s3">E-3. 매체별 만남</a></li><li><a href="#appendix-e-s4">E-4. 그 너머의 자리</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-e"><span class="toc-num">부록 E</span><span class="toc-title">맘곁 태교 시리즈 안내</span></a><button class="toc-expand" type="button" data-target="appendix-e-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-e-subs" class="toc-subs" hidden><li><a href="#appendix-e-s1">E-1. 시리즈의 자리</a></li><li><a href="#appendix-e-s2">E-2. 함께 읽는 길</a></li><li><a href="#appendix-e-s3">E-3. 매체별 만남</a></li><li><a href="#appendix-e-s4">E-4. 웹 전자책 — 시리즈 바로 가기</a></li><li><a href="#appendix-e-s5">E-4. 그 너머의 자리</a></li></ol></li>
 </ol>
 </div>
   </nav>
@@ -1387,7 +1391,7 @@ table.data td { color: var(--text); }
 <div class="book">
 <section class="book-cover">
   <figure class="book-cover-art">
-    <img src="./images/book-cover.png" alt="맘곁 태교 — 권의철·최소라 공저, 가족 일러스트 표지" onerror="this.closest('.book-cover').style.display='none'">
+    <img src="./images/book-cover.png" alt="맘곁 태교 표지 — 권의철·최소라 공저, 가족 일러스트 표지" onerror="this.closest('.book-cover').style.display='none'">
   </figure>
 </section>
 
@@ -5790,7 +5794,17 @@ SNS에 인증을 남겼던 하루,<br>
 시기에 따라 채널이 바뀌거나 새로운 매체가 추가될 수 있다.</p>
 <blockquote class="meta-note">두 매체는 같은 한 권의 책이다.<br>
 어떤 매체를 펼쳐도 <em>같은 자리</em>에서 만난다.</blockquote>
-<h3 id="appendix-e-s4" class="subhead">E-4. 그 너머의 자리</h3>
+<h3 id="appendix-e-s4" class="subhead">E-4. 웹 전자책 — 시리즈 바로 가기</h3>
+<p>이 시리즈의 웹 전자책은 같은 사이트에서 두 권을 함께 만난다.<br>
+한 화면 안에서 책 사이를 오갈 수 있도록 우측 상단의 <strong>📘 실천편 / 📘 이론편</strong> 버튼이 항상 떠 있다.</p>
+<ul class="bullets">
+<li><strong>이론편 모던</strong> — `book-modern.html` (산세리프·카드·다운로드)</li>
+<li><strong>이론편 클래식</strong> — `book.html` (세리프·책 본연의 호흡)</li>
+<li><strong>실천편 모던</strong> — `practice-modern.html` (산세리프·카드·다운로드)</li>
+<li><strong>실천편 클래식</strong> — `practice.html` (세리프·책 본연의 호흡)</li>
+</ul>
+<p>랜딩페이지(`index.html`)에서 두 책 카드 중 하나를 누르면 바로 펼쳐진다.</p>
+<h3 id="appendix-e-s5" class="subhead">E-4. 그 너머의 자리</h3>
 <p>바비즈코리아는 두 개의 브랜드로<br>
 임신·출산·양육의 시간을 함께한다.</p>
 <p><strong>맘곁</strong>은 태교와 임신 시기의 자리에,<br>
