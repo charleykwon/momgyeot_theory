@@ -589,6 +589,29 @@ body {
   margin: 0 auto;
   padding: 64px 24px 96px;
 }
+/* 풀-블리드 아트 표지 — 이미지 한 장만, 텍스트 없음 */
+.book-cover {
+  margin: -64px -24px 48px;  /* book.padding 만큼 외부로 끌어내 풀폭 표지 */
+  padding: 0;
+  background: transparent;
+}
+.book-cover-art {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.book-cover-art img {
+  display: block;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto;
+}
+@media print {
+  .book-cover { page-break-after: always; margin: 0; }
+}
+
 .cover {
   text-align: center;
   padding: 80px 0 64px;
@@ -1431,6 +1454,12 @@ table.data td { color: var(--text); }
 </div>
 
 <div class="book">
+<section class="book-cover">
+  <figure class="book-cover-art">
+    <img src="./images/book-cover.png" alt="맘곁 태교 — 권의철·최소라 공저, 가족 일러스트 표지" onerror="this.closest('.book-cover').style.display='none'">
+  </figure>
+</section>
+
 <header class="cover">
   <figure class="cover-logo illust"><img src="./images/logo.png" alt="맘곁 로고" onerror="this.closest('.cover-logo').style.display='none'"></figure>
   <div class="brand">맘곁</div>
@@ -1742,6 +1771,28 @@ body {
   max-width: 720px;
   margin: 0 auto;
   padding: 64px 22px 96px;
+}
+
+/* 풀-블리드 아트 표지 — 이미지 한 장만 */
+.book-cover {
+  margin: -64px -22px 36px;
+  padding: 0;
+}
+.book-cover-art {
+  margin: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 0 0 18px 18px;
+  overflow: hidden;
+}
+.book-cover-art img {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  margin: 0 auto;
+}
+@media print {
+  .book-cover { page-break-after: always; margin: 0; }
 }
 
 /* =========== Cover (모던) =========== */
@@ -2419,9 +2470,14 @@ table.data tr:last-child td { border-bottom: none; }
 </div>
 
 <div class="book">
+<section class="book-cover">
+  <figure class="book-cover-art">
+    <img src="./images/book-cover.png" alt="맘곁 태교 — 권의철·최소라 공저, 가족 일러스트 표지" onerror="this.closest('.book-cover').style.display='none'">
+  </figure>
+</section>
+
 <header class="cover">
   <figure class="cover-logo illust"><img src="./images/logo.png" alt="맘곁 로고" onerror="this.closest('.cover-logo').style.display='none'"></figure>
-  <div class="brand">맘곁 · 바비즈코리아</div>
   <h1>맘곁 태교</h1>
   <div class="sub">이론편</div>
   <figure class="cover-hero illust"><img src="./images/cover-illustration.png" alt="맘곁 태교 표지 일러스트" onerror="this.closest('.cover-hero').style.display='none'"></figure>
