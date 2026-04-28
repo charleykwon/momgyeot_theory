@@ -6,27 +6,308 @@
 <script>
 (function(){try{var s=localStorage.getItem('mamgyeot-theme');var d=s?(s==='dark'):(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark');}catch(e){}})();
 </script>
-<meta http-equiv="refresh" content="0; url=./book.html">
-<title>맘곁 태교 — 이론편</title>
-<meta name="description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 책. 『맘곁 태교 — 이론편』. 권의철·최소라 공저, 바비즈코리아.">
+<title>맘곁 태교 — 이론편 · 사주당 이씨와 오늘의 의학이 같은 자리에서 만난다</title>
+<meta name="description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 책. 『맘곁 태교 — 이론편』. 권의철·최소라 공저, 바비즈코리아 (2026년 4월 28일).">
 <meta name="author" content="권의철, 최소라">
+<meta name="keywords" content="태교, 사주당, 태교신기, 임신, 모성건강, 맘곁, 바비즈코리아">
 <meta property="og:title" content="맘곁 태교 — 이론편">
 <meta property="og:description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만난다.">
 <meta property="og:type" content="book">
 <meta property="og:locale" content="ko_KR">
-<link rel="canonical" href="./book.html">
+<meta property="og:image" content="./images/book-cover.png">
+<link rel="canonical" href="./index.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root { --bg: #faf6f0; --text: #2c2826; --accent: #8c6e4e; }
-  :root.dark { --bg: #1a1a1a; --text: #eaeaea; --accent: #8a9a5b; }
-  body { font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
-         display: flex; align-items: center; justify-content: center;
-         min-height: 100vh; margin: 0;
-         background: var(--bg); color: var(--text);
-         transition: background-color 0.3s ease, color 0.3s ease; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+  :root {
+    --bg: #f5f3f0; --bg-soft: #ffffff;
+    --text: #1a1612; --text-soft: #45403b;
+    --accent: #7a5e40; --accent-rose: #c49db0;
+    --accent-sage: #8fa985; --accent-mustard: #c8a35a;
+    --line: #d9d0bf;
+    --serif: 'Noto Serif KR', serif;
+    --sans: 'Noto Sans KR', 'Apple SD Gothic Neo', system-ui, -apple-system, sans-serif;
+  }
+  :root.dark {
+    --bg: #1c1c1c; --bg-soft: #262626;
+    --text: #ececec; --text-soft: #b6b2ad;
+    --accent: #d49380; --accent-rose: #d4adbe;
+    --accent-sage: #a3bc99; --accent-mustard: #d6b676;
+    --line: #333;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+  }
+  .landing { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  /* 헤더 */
+  .lp-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 36px;
+  }
+  .lp-brand {
+    font-family: var(--sans); font-size: 12px;
+    letter-spacing: 0.36em; color: var(--accent);
+    text-transform: uppercase; font-weight: 700;
+  }
+  .lp-dark-toggle {
+    width: 40px; height: 40px;
+    background: var(--bg-soft); border: 1px solid var(--line);
+    border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .lp-dark-toggle .dark-icon-light { display: none; }
+  :root.dark .lp-dark-toggle .dark-icon-dark { display: none; }
+  :root.dark .lp-dark-toggle .dark-icon-light { display: inline-block; }
+
+  /* 히어로 */
+  .lp-hero {
+    text-align: center;
+    margin-bottom: 56px;
+    padding: 36px 24px 40px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+  }
+  .lp-hero-cover {
+    max-width: 280px; margin: 0 auto 24px;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  }
+  .lp-hero-cover img { display: block; width: 100%; height: auto; }
+  .lp-hero h1 {
+    font-family: var(--serif);
+    font-size: 38px; font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em; line-height: 1.25;
+  }
+  .lp-hero-sub {
+    font-size: 14px; color: var(--accent);
+    letter-spacing: 0.25em; font-weight: 600;
+    text-transform: uppercase;
+  }
+  .lp-hero-tagline {
+    margin: 18px auto 0; max-width: 520px;
+    font-size: 16px; color: var(--text);
+    line-height: 1.7;
+  }
+  .lp-hero-meta {
+    margin-top: 22px;
+    font-size: 13px; color: var(--text-soft);
+    letter-spacing: 0.06em;
+  }
+
+  /* 읽기 옵션 */
+  .lp-cta-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 0 auto 56px;
+    max-width: 580px;
+  }
+  .lp-cta {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 22px 18px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+  }
+  .lp-cta:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  }
+  .lp-cta-primary {
+    background: var(--accent); color: #fff;
+    border-color: var(--accent);
+  }
+  .lp-cta-primary:hover { background: var(--accent); border-color: var(--accent); }
+  .lp-cta-icon { font-size: 28px; line-height: 1; margin-bottom: 8px; }
+  .lp-cta-label { font-size: 15px; font-weight: 700; letter-spacing: -0.005em; }
+  .lp-cta-sub {
+    font-size: 12px; margin-top: 2px;
+    color: inherit; opacity: 0.75;
+  }
+
+  /* 섹션 */
+  .lp-section { margin: 0 0 56px; }
+  .lp-section h2 {
+    font-family: var(--sans); font-size: 13px;
+    letter-spacing: 0.32em; color: var(--accent);
+    text-transform: uppercase; font-weight: 700;
+    margin: 0 0 16px;
+  }
+  .lp-section h2::before { content: "❯ "; }
+  .lp-section-lede {
+    font-family: var(--serif);
+    font-size: 19px; font-weight: 500;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 18px;
+    letter-spacing: -0.005em;
+  }
+
+  /* 책 소개 */
+  .lp-about p { font-size: 15px; line-height: 1.85; margin: 0 0 1em; color: var(--text); }
+
+  /* 차례 미리보기 */
+  .lp-toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+    list-style: none; padding: 0; margin: 0;
+  }
+  .lp-toc-grid li { margin: 0; }
+  .lp-toc-grid a {
+    display: block;
+    padding: 12px 14px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 500;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .lp-toc-grid a:hover { transform: translateY(-1px); }
+  .lp-toc-grid li:nth-child(5n+2) a { border-left-color: var(--accent-sage); }
+  .lp-toc-grid li:nth-child(5n+3) a { border-left-color: var(--accent-rose); }
+  .lp-toc-grid li:nth-child(5n+4) a { border-left-color: var(--accent-mustard); }
+  .lp-toc-grid li:nth-child(5n+5) a { border-left-color: var(--accent); }
+  .lp-toc-num {
+    display: block;
+    font-family: var(--sans); font-size: 10.5px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  /* 푸터 */
+  .lp-footer {
+    margin-top: 64px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--text-soft);
+    line-height: 1.7;
+  }
+  .lp-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px; align-items: end;
+  }
+  .lp-footer a {
+    color: var(--accent); text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+  }
+  @media (max-width: 600px) {
+    .landing { padding: 32px 18px 56px; }
+    .lp-hero { padding: 28px 18px 32px; }
+    .lp-hero h1 { font-size: 30px; }
+    .lp-toc-grid { grid-template-columns: 1fr 1fr; }
+    .lp-footer-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
-<p>맘곁 태교 — 이론편으로 이동합니다 · <a href="./book.html">바로 가기</a></p>
+
+<div class="landing">
+
+<header class="lp-header">
+  <span class="lp-brand">맘곁 · 바비즈코리아</span>
+  <button class="lp-dark-toggle" type="button" aria-label="다크모드 전환" onclick="(function(){document.documentElement.classList.toggle('dark');try{localStorage.setItem('mamgyeot-theme',document.documentElement.classList.contains('dark')?'dark':'light');}catch(e){}})()">
+    <span class="dark-icon-dark" aria-hidden="true">🌙</span>
+    <span class="dark-icon-light" aria-hidden="true">☀️</span>
+  </button>
+</header>
+
+<section class="lp-hero">
+  <figure class="lp-hero-cover" style="margin: 0 auto 24px;">
+    <img src="./images/book-cover.png" alt="맘곁 태교 표지 — 가족 일러스트" onerror="this.parentElement.style.display='none'">
+  </figure>
+  <h1>맘곁 태교</h1>
+  <div class="lp-hero-sub">이론편</div>
+  <p class="lp-hero-tagline">사주당 이씨와 오늘의 의학이 같은 자리에서 만난다.<br>1800년의 한 권을 오늘의 부모를 위한 언어로 다시 읽는 책.</p>
+  <div class="lp-hero-meta">권의철 · 최소라 공저 · 펴낸곳 바비즈코리아 · 2026년 4월 28일</div>
+</section>
+
+<div class="lp-cta-row">
+  <a class="lp-cta lp-cta-primary" href="./book-modern.html">
+    <div class="lp-cta-icon">📖</div>
+    <span class="lp-cta-label">모던 디자인으로 읽기</span>
+    <span class="lp-cta-sub">산세리프 · 카드 · 다운로드 지원</span>
+  </a>
+  <a class="lp-cta" href="./book.html">
+    <div class="lp-cta-icon">📜</div>
+    <span class="lp-cta-label">클래식 디자인으로 읽기</span>
+    <span class="lp-cta-sub">세리프 · 책 본연의 호흡</span>
+  </a>
+</div>
+
+<section class="lp-section lp-about">
+  <h2>이 책에 대하여</h2>
+  <p class="lp-section-lede">무엇을 해야 한다고 가르치는 책이 아니라, 무엇이 이미 일어나고 있는지를 함께 보는 책으로.</p>
+  <p>『맘곁 태교 — 이론편』은 1800년 사주당 이씨가 짓고 1801년 아들 유희가 한글 음을 단 『태교신기』의 시선을 오늘의 임신·출산과 연결한다. 이 책은 <strong>잘해야 하는 과제로서의 태교</strong>가 아니라, <strong>이해해도 괜찮은 한 시간으로서의 태교</strong>를 이야기한다.</p>
+  <p>본문은 10장. 임신을 둘러싼 변화부터 사주당 이씨, 현대 의학의 태아 발달, 임신 중 식·운동·생활, 오감, 엄마의 감정, 가족 태교, 아빠의 태교, 좋은 태교와 부담스러운 태교, 그리고 맘곁의 다섯 원칙까지 — 한 번에 읽지 않아도 좋다.</p>
+  <p>부록 A는 『태교신기』 35절 전문 매핑, 부록 B는 임신 280일 환경 점검 카드 체크리스트, 부록 C는 참고문헌, 부록 D는 도움 요청 가이드와 용어집, 부록 E는 시리즈 안내(이론편 · 실천편)로 구성된다.</p>
+</section>
+
+<section class="lp-section">
+  <h2>차례 한눈에</h2>
+  <ol class="lp-toc-grid">
+    <li><a href="./book-modern.html#prologue"><span class="lp-toc-num">prologue</span>들어가며</a></li>
+    <li><a href="./book-modern.html#ch1"><span class="lp-toc-num">1장</span>태교는 왜 지금 다시 필요할까</a></li>
+    <li><a href="./book-modern.html#ch2"><span class="lp-toc-num">2장</span>사주당 이씨</a></li>
+    <li><a href="./book-modern.html#ch3"><span class="lp-toc-num">3장</span>현대 의학이 보는 태아의 발달</a></li>
+    <li><a href="./book-modern.html#ch4"><span class="lp-toc-num">4장</span>임신 중의 식·운동·생활</a></li>
+    <li><a href="./book-modern.html#ch5"><span class="lp-toc-num">5장</span>오감으로 만나는 태아</a></li>
+    <li><a href="./book-modern.html#ch6"><span class="lp-toc-num">6장</span>엄마의 감정은 태아의 환경이 된다</a></li>
+    <li><a href="./book-modern.html#ch7"><span class="lp-toc-num">7장</span>가족의 태교</a></li>
+    <li><a href="./book-modern.html#ch8"><span class="lp-toc-num">8장</span>아빠의 태교</a></li>
+    <li><a href="./book-modern.html#ch9"><span class="lp-toc-num">9장</span>좋은 태교와 부담스러운 태교의 차이</a></li>
+    <li><a href="./book-modern.html#ch10"><span class="lp-toc-num">10장</span>맘곁 태교의 다섯 원칙</a></li>
+    <li><a href="./book-modern.html#epilogue"><span class="lp-toc-num">epilogue</span>닫으며</a></li>
+    <li><a href="./book-modern.html#appendix-a"><span class="lp-toc-num">부록 A</span>『태교신기』 35절 매핑</a></li>
+    <li><a href="./book-modern.html#appendix-b"><span class="lp-toc-num">부록 B</span>임신 280일 체크리스트</a></li>
+    <li><a href="./book-modern.html#appendix-c"><span class="lp-toc-num">부록 C</span>참고문헌</a></li>
+    <li><a href="./book-modern.html#appendix-d"><span class="lp-toc-num">부록 D</span>도움 요청 가이드 · 용어집</a></li>
+    <li><a href="./book-modern.html#appendix-e"><span class="lp-toc-num">부록 E</span>맘곁 태교 시리즈</a></li>
+  </ol>
+</section>
+
+<section class="lp-section">
+  <h2>도움이 필요할 때</h2>
+  <p class="lp-section-lede">혼자 견디지 않아도 됩니다.</p>
+  <p style="font-size: 14.5px; color: var(--text); line-height: 1.75;">생명·안전·정서적 어려움이 클 때 가장 빨리 닿을 수 있는 자리는 <strong>119</strong> · <strong>1393</strong>(자살예방) · <strong>1577-0199</strong>(정신건강위기상담, 24시간) · <strong>1366</strong>(여성긴급전화)입니다. 자세한 안내는 <a href="./book-modern.html#appendix-d" style="color: var(--accent); font-weight: 600;">부록 D — 도움 요청 가이드</a>를 펴 보세요.</p>
+</section>
+
+<footer class="lp-footer">
+  <div class="lp-footer-grid">
+    <div>
+      © 2026 권의철 · 최소라. 펴낸곳 바비즈코리아.<br>
+      『맘곁 태교 — 이론편』 · 1판 1쇄 2026년 4월 28일.<br>
+      이 페이지는 <a href="https://github.com/charleykwon/momgyeot_theory" target="_blank" rel="noopener">GitHub</a>에서 관리되며, 원고는 <code style="font-family: monospace; font-size: 11px; background: var(--bg-soft); padding: 1px 5px; border-radius: 3px;">docs/*.md</code> 파일에서 직접 확인할 수 있습니다.
+    </div>
+  </div>
+</footer>
+
+</div>
+
 </body>
 </html>

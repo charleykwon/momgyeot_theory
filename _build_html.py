@@ -341,14 +341,48 @@ def build():
         "epilogue":  ("father-face.png", "아빠 얼굴 일러스트"),
     }
 
-    toc_items = []
+    # 챕터별 "다음 행동" CTA — 한 장당 1개 (icon, headline, sub, action, target)
+    # action="link"는 a href, action="button"은 버튼(자바스크립트 동작 없이 시각적 CTA)
+    chapter_cta = {
+        "prologue": ("📖", "1장부터 천천히 읽어 보기",
+                    "오늘 한 장만 펴 봐도 충분합니다.", "#ch1"),
+        "ch1": ("💬", "오늘 한 문장 태담하기",
+                "배에 손을 얹고 \"나 여기 있어\" 한 마디로 시작해 보세요.", None),
+        "ch2": ("📜", "사주당의 한 문장 적어 두기",
+                "본문에서 마음에 닿은 한 줄을 메모장에 옮겨 적어 보세요.", None),
+        "ch3": ("🩺", "다음 산전 진료에서 물어볼 한 가지 정하기",
+                "이 장에서 궁금해진 점 하나를 검진 메모로 옮겨 두세요.", None),
+        "ch4": ("🍽️", "내일 한 끼만 다르게 차려 보기",
+                "거창한 식단보다 한 끼의 결이 부드러워지는 시도를 해 보세요.", None),
+        "ch5": ("👂", "조용한 1분 — 아이의 청각에 닿기",
+                "하루 한 번 1분, 배에 손을 얹고 같은 노래를 작게 들려주세요.", None),
+        "ch6": ("🌿", "오늘의 감정에 한 줄 이름 붙이기",
+                "\"오늘 내 마음의 색은 ___\" — 하루의 결을 짧게 메모해 보세요.", None),
+        "ch7": ("🏠", "배우자·가족과 함께 이 장 읽기",
+                "가족 한 사람에게 이 장의 한 문단을 보여 주세요.", None),
+        "ch8": ("👨", "오늘 아빠의 한 행동 정하기",
+                "배에 손 얹기, 함께 산책 한 번, 잠들기 전 한 마디 — 한 가지를 골라 보세요.", None),
+        "ch9": ("⚖️", "지난 한 주의 태교를 한 줄로 정리하기",
+                "잘한 것과 부담된 것을 같은 무게로 적어 보세요.", None),
+        "ch10": ("✨", "다섯 원칙 중 한 가지 골라 한 주 살아 보기",
+                 "연결·반복·기록·다정한 생활·이해 가운데 가장 마음이 가는 하나로.", None),
+        "epilogue": ("📓", "임신 280일 환경 점검 체크리스트 열기",
+                    "부록 B에서 오늘 해당하는 시기 카드를 한 번 살펴보세요.", "#appendix-b"),
+    }
+
+    toc_body_items = []
+    toc_appendix_items = []
     sections = []
     drawer_items = []
     for cid, fname, title, num in CHAPTERS:
         text = (DOCS / fname).read_text(encoding="utf-8")
         body, subs = md_to_html(text, cid)
         label = f"{num} — {title}" if num else title
-        toc_items.append(f'<li><a href="#{cid}">{escape_html(label)}</a></li>')
+        toc_li = f'<li><a href="#{cid}">{escape_html(label)}</a></li>'
+        if cid.startswith("appendix-"):
+            toc_appendix_items.append(toc_li)
+        else:
+            toc_body_items.append(toc_li)
 
         # 챕터 헤더 일러스트 (파일 있으면 표시, 없으면 onerror로 자동 숨김)
         illust_html = ""
@@ -377,23 +411,62 @@ def build():
                 "</header>"
             )
         section_class = "chapter is-appendix" if cid.startswith("appendix-") else "chapter"
+        # "다음 행동" CTA 카드 — 부록 외 챕터 본문 끝에 자동 주입
+        cta_html = ""
+        if cid in chapter_cta:
+            icon, headline, sub, target = chapter_cta[cid]
+            target_attr = f'href="{escape_html(target)}"' if target else 'href="#" onclick="return false;"'
+            cta_html = (
+                '<aside class="next-action" aria-label="다음 행동">\n'
+                '  <span class="next-action-tag">다음 행동</span>\n'
+                f'  <div class="next-action-icon" aria-hidden="true">{icon}</div>\n'
+                '  <div class="next-action-text">\n'
+                f'    <strong class="next-action-headline">{escape_html(headline)}</strong>\n'
+                f'    <span class="next-action-sub">{escape_html(sub)}</span>\n'
+                '  </div>\n'
+                + (f'  <a class="next-action-link" {target_attr}>이동 →</a>\n' if target else '')
+                + '</aside>'
+            )
         sections.append(
             f'<section id="{cid}" class="{section_class}">\n{header}\n'
-            f'<div class="chapter-body">\n{body}\n</div>\n</section>'
+            f'<div class="chapter-body">\n{body}\n{cta_html}\n</div>\n</section>'
         )
-        # Build drawer accordion item
-        drawer_items.append(_build_drawer_item(cid, num, title, subs))
+        # Build drawer accordion item (본문/부록 분리)
+        drawer_items.append((cid, _build_drawer_item(cid, num, title, subs)))
 
     toc_html = (
-        '<nav class="toc"><h2>차례</h2><ol>\n'
-        + "\n".join(toc_items)
-        + "\n</ol></nav>"
+        '<nav class="toc">\n'
+        '  <h2>차례</h2>\n'
+        '  <div class="toc-group">\n'
+        '    <h3 class="toc-group-label">본문</h3>\n'
+        '    <ol class="toc-body">\n'
+        + "\n".join(toc_body_items)
+        + '\n    </ol>\n'
+        '  </div>\n'
+        '  <div class="toc-group">\n'
+        '    <h3 class="toc-group-label">부록</h3>\n'
+        '    <ol class="toc-appendix">\n'
+        + "\n".join(toc_appendix_items)
+        + '\n    </ol>\n'
+        '  </div>\n'
+        '</nav>'
     )
     chapters_html = "\n".join(sections)
+    drawer_body = [html for cid, html in drawer_items if not cid.startswith("appendix-")]
+    drawer_appendix = [html for cid, html in drawer_items if cid.startswith("appendix-")]
     drawer_toc_html = (
+        '<div class="drawer-group">\n'
+        '<h4 class="drawer-group-label">본문</h4>\n'
         '<ol class="drawer-toc-list">\n'
-        + "\n".join(drawer_items)
-        + "\n</ol>"
+        + "\n".join(drawer_body)
+        + "\n</ol>\n"
+        '</div>\n'
+        '<div class="drawer-group">\n'
+        '<h4 class="drawer-group-label">부록</h4>\n'
+        '<ol class="drawer-toc-list">\n'
+        + "\n".join(drawer_appendix)
+        + "\n</ol>\n"
+        '</div>'
     )
 
     template = (
@@ -451,28 +524,309 @@ INDEX_REDIRECT = """<!DOCTYPE html>
 <script>
 (function(){try{var s=localStorage.getItem('mamgyeot-theme');var d=s?(s==='dark'):(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark');}catch(e){}})();
 </script>
-<meta http-equiv="refresh" content="0; url=./book.html">
-<title>맘곁 태교 — 이론편</title>
-<meta name="description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 책. 『맘곁 태교 — 이론편』. 권의철·최소라 공저, 바비즈코리아.">
+<title>맘곁 태교 — 이론편 · 사주당 이씨와 오늘의 의학이 같은 자리에서 만난다</title>
+<meta name="description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 책. 『맘곁 태교 — 이론편』. 권의철·최소라 공저, 바비즈코리아 (2026년 4월 28일).">
 <meta name="author" content="권의철, 최소라">
+<meta name="keywords" content="태교, 사주당, 태교신기, 임신, 모성건강, 맘곁, 바비즈코리아">
 <meta property="og:title" content="맘곁 태교 — 이론편">
 <meta property="og:description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만난다.">
 <meta property="og:type" content="book">
 <meta property="og:locale" content="ko_KR">
-<link rel="canonical" href="./book.html">
+<meta property="og:image" content="./images/book-cover.png">
+<link rel="canonical" href="./index.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root { --bg: #faf6f0; --text: #2c2826; --accent: #8c6e4e; }
-  :root.dark { --bg: #1a1a1a; --text: #eaeaea; --accent: #8a9a5b; }
-  body { font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
-         display: flex; align-items: center; justify-content: center;
-         min-height: 100vh; margin: 0;
-         background: var(--bg); color: var(--text);
-         transition: background-color 0.3s ease, color 0.3s ease; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+  :root {
+    --bg: #f5f3f0; --bg-soft: #ffffff;
+    --text: #1a1612; --text-soft: #45403b;
+    --accent: #7a5e40; --accent-rose: #c49db0;
+    --accent-sage: #8fa985; --accent-mustard: #c8a35a;
+    --line: #d9d0bf;
+    --serif: 'Noto Serif KR', serif;
+    --sans: 'Noto Sans KR', 'Apple SD Gothic Neo', system-ui, -apple-system, sans-serif;
+  }
+  :root.dark {
+    --bg: #1c1c1c; --bg-soft: #262626;
+    --text: #ececec; --text-soft: #b6b2ad;
+    --accent: #d49380; --accent-rose: #d4adbe;
+    --accent-sage: #a3bc99; --accent-mustard: #d6b676;
+    --line: #333;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    word-break: keep-all;
+    -webkit-font-smoothing: antialiased;
+  }
+  .landing { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  /* 헤더 */
+  .lp-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 36px;
+  }
+  .lp-brand {
+    font-family: var(--sans); font-size: 12px;
+    letter-spacing: 0.36em; color: var(--accent);
+    text-transform: uppercase; font-weight: 700;
+  }
+  .lp-dark-toggle {
+    width: 40px; height: 40px;
+    background: var(--bg-soft); border: 1px solid var(--line);
+    border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .lp-dark-toggle .dark-icon-light { display: none; }
+  :root.dark .lp-dark-toggle .dark-icon-dark { display: none; }
+  :root.dark .lp-dark-toggle .dark-icon-light { display: inline-block; }
+
+  /* 히어로 */
+  .lp-hero {
+    text-align: center;
+    margin-bottom: 56px;
+    padding: 36px 24px 40px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+  }
+  .lp-hero-cover {
+    max-width: 280px; margin: 0 auto 24px;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  }
+  .lp-hero-cover img { display: block; width: 100%; height: auto; }
+  .lp-hero h1 {
+    font-family: var(--serif);
+    font-size: 38px; font-weight: 700;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em; line-height: 1.25;
+  }
+  .lp-hero-sub {
+    font-size: 14px; color: var(--accent);
+    letter-spacing: 0.25em; font-weight: 600;
+    text-transform: uppercase;
+  }
+  .lp-hero-tagline {
+    margin: 18px auto 0; max-width: 520px;
+    font-size: 16px; color: var(--text);
+    line-height: 1.7;
+  }
+  .lp-hero-meta {
+    margin-top: 22px;
+    font-size: 13px; color: var(--text-soft);
+    letter-spacing: 0.06em;
+  }
+
+  /* 읽기 옵션 */
+  .lp-cta-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 0 auto 56px;
+    max-width: 580px;
+  }
+  .lp-cta {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 22px 18px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+  }
+  .lp-cta:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  }
+  .lp-cta-primary {
+    background: var(--accent); color: #fff;
+    border-color: var(--accent);
+  }
+  .lp-cta-primary:hover { background: var(--accent); border-color: var(--accent); }
+  .lp-cta-icon { font-size: 28px; line-height: 1; margin-bottom: 8px; }
+  .lp-cta-label { font-size: 15px; font-weight: 700; letter-spacing: -0.005em; }
+  .lp-cta-sub {
+    font-size: 12px; margin-top: 2px;
+    color: inherit; opacity: 0.75;
+  }
+
+  /* 섹션 */
+  .lp-section { margin: 0 0 56px; }
+  .lp-section h2 {
+    font-family: var(--sans); font-size: 13px;
+    letter-spacing: 0.32em; color: var(--accent);
+    text-transform: uppercase; font-weight: 700;
+    margin: 0 0 16px;
+  }
+  .lp-section h2::before { content: "❯ "; }
+  .lp-section-lede {
+    font-family: var(--serif);
+    font-size: 19px; font-weight: 500;
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0 0 18px;
+    letter-spacing: -0.005em;
+  }
+
+  /* 책 소개 */
+  .lp-about p { font-size: 15px; line-height: 1.85; margin: 0 0 1em; color: var(--text); }
+
+  /* 차례 미리보기 */
+  .lp-toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 8px;
+    list-style: none; padding: 0; margin: 0;
+  }
+  .lp-toc-grid li { margin: 0; }
+  .lp-toc-grid a {
+    display: block;
+    padding: 12px 14px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 500;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .lp-toc-grid a:hover { transform: translateY(-1px); }
+  .lp-toc-grid li:nth-child(5n+2) a { border-left-color: var(--accent-sage); }
+  .lp-toc-grid li:nth-child(5n+3) a { border-left-color: var(--accent-rose); }
+  .lp-toc-grid li:nth-child(5n+4) a { border-left-color: var(--accent-mustard); }
+  .lp-toc-grid li:nth-child(5n+5) a { border-left-color: var(--accent); }
+  .lp-toc-num {
+    display: block;
+    font-family: var(--sans); font-size: 10.5px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  /* 푸터 */
+  .lp-footer {
+    margin-top: 64px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--text-soft);
+    line-height: 1.7;
+  }
+  .lp-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px; align-items: end;
+  }
+  .lp-footer a {
+    color: var(--accent); text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+  }
+  @media (max-width: 600px) {
+    .landing { padding: 32px 18px 56px; }
+    .lp-hero { padding: 28px 18px 32px; }
+    .lp-hero h1 { font-size: 30px; }
+    .lp-toc-grid { grid-template-columns: 1fr 1fr; }
+    .lp-footer-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
-<p>맘곁 태교 — 이론편으로 이동합니다 · <a href="./book.html">바로 가기</a></p>
+
+<div class="landing">
+
+<header class="lp-header">
+  <span class="lp-brand">맘곁 · 바비즈코리아</span>
+  <button class="lp-dark-toggle" type="button" aria-label="다크모드 전환" onclick="(function(){document.documentElement.classList.toggle('dark');try{localStorage.setItem('mamgyeot-theme',document.documentElement.classList.contains('dark')?'dark':'light');}catch(e){}})()">
+    <span class="dark-icon-dark" aria-hidden="true">🌙</span>
+    <span class="dark-icon-light" aria-hidden="true">☀️</span>
+  </button>
+</header>
+
+<section class="lp-hero">
+  <figure class="lp-hero-cover" style="margin: 0 auto 24px;">
+    <img src="./images/book-cover.png" alt="맘곁 태교 표지 — 가족 일러스트" onerror="this.parentElement.style.display='none'">
+  </figure>
+  <h1>맘곁 태교</h1>
+  <div class="lp-hero-sub">이론편</div>
+  <p class="lp-hero-tagline">사주당 이씨와 오늘의 의학이 같은 자리에서 만난다.<br>1800년의 한 권을 오늘의 부모를 위한 언어로 다시 읽는 책.</p>
+  <div class="lp-hero-meta">권의철 · 최소라 공저 · 펴낸곳 바비즈코리아 · 2026년 4월 28일</div>
+</section>
+
+<div class="lp-cta-row">
+  <a class="lp-cta lp-cta-primary" href="./book-modern.html">
+    <div class="lp-cta-icon">📖</div>
+    <span class="lp-cta-label">모던 디자인으로 읽기</span>
+    <span class="lp-cta-sub">산세리프 · 카드 · 다운로드 지원</span>
+  </a>
+  <a class="lp-cta" href="./book.html">
+    <div class="lp-cta-icon">📜</div>
+    <span class="lp-cta-label">클래식 디자인으로 읽기</span>
+    <span class="lp-cta-sub">세리프 · 책 본연의 호흡</span>
+  </a>
+</div>
+
+<section class="lp-section lp-about">
+  <h2>이 책에 대하여</h2>
+  <p class="lp-section-lede">무엇을 해야 한다고 가르치는 책이 아니라, 무엇이 이미 일어나고 있는지를 함께 보는 책으로.</p>
+  <p>『맘곁 태교 — 이론편』은 1800년 사주당 이씨가 짓고 1801년 아들 유희가 한글 음을 단 『태교신기』의 시선을 오늘의 임신·출산과 연결한다. 이 책은 <strong>잘해야 하는 과제로서의 태교</strong>가 아니라, <strong>이해해도 괜찮은 한 시간으로서의 태교</strong>를 이야기한다.</p>
+  <p>본문은 10장. 임신을 둘러싼 변화부터 사주당 이씨, 현대 의학의 태아 발달, 임신 중 식·운동·생활, 오감, 엄마의 감정, 가족 태교, 아빠의 태교, 좋은 태교와 부담스러운 태교, 그리고 맘곁의 다섯 원칙까지 — 한 번에 읽지 않아도 좋다.</p>
+  <p>부록 A는 『태교신기』 35절 전문 매핑, 부록 B는 임신 280일 환경 점검 카드 체크리스트, 부록 C는 참고문헌, 부록 D는 도움 요청 가이드와 용어집, 부록 E는 시리즈 안내(이론편 · 실천편)로 구성된다.</p>
+</section>
+
+<section class="lp-section">
+  <h2>차례 한눈에</h2>
+  <ol class="lp-toc-grid">
+    <li><a href="./book-modern.html#prologue"><span class="lp-toc-num">prologue</span>들어가며</a></li>
+    <li><a href="./book-modern.html#ch1"><span class="lp-toc-num">1장</span>태교는 왜 지금 다시 필요할까</a></li>
+    <li><a href="./book-modern.html#ch2"><span class="lp-toc-num">2장</span>사주당 이씨</a></li>
+    <li><a href="./book-modern.html#ch3"><span class="lp-toc-num">3장</span>현대 의학이 보는 태아의 발달</a></li>
+    <li><a href="./book-modern.html#ch4"><span class="lp-toc-num">4장</span>임신 중의 식·운동·생활</a></li>
+    <li><a href="./book-modern.html#ch5"><span class="lp-toc-num">5장</span>오감으로 만나는 태아</a></li>
+    <li><a href="./book-modern.html#ch6"><span class="lp-toc-num">6장</span>엄마의 감정은 태아의 환경이 된다</a></li>
+    <li><a href="./book-modern.html#ch7"><span class="lp-toc-num">7장</span>가족의 태교</a></li>
+    <li><a href="./book-modern.html#ch8"><span class="lp-toc-num">8장</span>아빠의 태교</a></li>
+    <li><a href="./book-modern.html#ch9"><span class="lp-toc-num">9장</span>좋은 태교와 부담스러운 태교의 차이</a></li>
+    <li><a href="./book-modern.html#ch10"><span class="lp-toc-num">10장</span>맘곁 태교의 다섯 원칙</a></li>
+    <li><a href="./book-modern.html#epilogue"><span class="lp-toc-num">epilogue</span>닫으며</a></li>
+    <li><a href="./book-modern.html#appendix-a"><span class="lp-toc-num">부록 A</span>『태교신기』 35절 매핑</a></li>
+    <li><a href="./book-modern.html#appendix-b"><span class="lp-toc-num">부록 B</span>임신 280일 체크리스트</a></li>
+    <li><a href="./book-modern.html#appendix-c"><span class="lp-toc-num">부록 C</span>참고문헌</a></li>
+    <li><a href="./book-modern.html#appendix-d"><span class="lp-toc-num">부록 D</span>도움 요청 가이드 · 용어집</a></li>
+    <li><a href="./book-modern.html#appendix-e"><span class="lp-toc-num">부록 E</span>맘곁 태교 시리즈</a></li>
+  </ol>
+</section>
+
+<section class="lp-section">
+  <h2>도움이 필요할 때</h2>
+  <p class="lp-section-lede">혼자 견디지 않아도 됩니다.</p>
+  <p style="font-size: 14.5px; color: var(--text); line-height: 1.75;">생명·안전·정서적 어려움이 클 때 가장 빨리 닿을 수 있는 자리는 <strong>119</strong> · <strong>1393</strong>(자살예방) · <strong>1577-0199</strong>(정신건강위기상담, 24시간) · <strong>1366</strong>(여성긴급전화)입니다. 자세한 안내는 <a href="./book-modern.html#appendix-d" style="color: var(--accent); font-weight: 600;">부록 D — 도움 요청 가이드</a>를 펴 보세요.</p>
+</section>
+
+<footer class="lp-footer">
+  <div class="lp-footer-grid">
+    <div>
+      © 2026 권의철 · 최소라. 펴낸곳 바비즈코리아.<br>
+      『맘곁 태교 — 이론편』 · 1판 1쇄 2026년 4월 28일.<br>
+      이 페이지는 <a href="https://github.com/charleykwon/momgyeot_theory" target="_blank" rel="noopener">GitHub</a>에서 관리되며, 원고는 <code style="font-family: monospace; font-size: 11px; background: var(--bg-soft); padding: 1px 5px; border-radius: 3px;">docs/*.md</code> 파일에서 직접 확인할 수 있습니다.
+    </div>
+  </div>
+</footer>
+
+</div>
+
 </body>
 </html>
 """
@@ -716,6 +1070,20 @@ body {
   margin: 0 0 22px;
   text-transform: uppercase;
 }
+.toc .toc-group + .toc-group {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.toc-group-label {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  letter-spacing: 0.32em;
+  color: var(--text-soft);
+  font-weight: 600;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+}
 .toc ol {
   list-style: none;
   padding: 0;
@@ -725,6 +1093,7 @@ body {
   margin: 8px 0;
   font-size: 16.5px;
 }
+.toc ol.toc-appendix li { font-size: 15px; color: var(--text-soft); }
 .toc a {
   color: var(--text);
   text-decoration: none;
@@ -1001,6 +1370,16 @@ table.data td { color: var(--text); }
 #drawer-close:hover { color: var(--text); }
 
 .drawer-nav { flex: 1; overflow-y: auto; padding: 8px 0 24px; }
+.drawer-group + .drawer-group { margin-top: 6px; }
+.drawer-group-label {
+  font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.32em;
+  color: var(--text-soft); font-weight: 600;
+  text-transform: uppercase;
+  padding: 14px 18px 8px; margin: 0;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
 .drawer-toc-list { list-style: none; padding: 0; margin: 0; }
 .toc-item { border-bottom: 1px solid var(--line); }
 .toc-row { display: flex; align-items: stretch; }
@@ -1180,6 +1559,353 @@ table.data td { color: var(--text); }
 @media print {
   .fetus-progress { background: white; }
 }
+/* =========== 부록 D 안전 박스 =========== */
+.safety-board { margin: 1.6em 0 2em; }
+.safety-emergency {
+  margin: 0 0 24px;
+  padding: 22px 24px 24px;
+  background: linear-gradient(135deg, #fff5f0 0%, #ffe9e0 100%);
+  border: 2px solid #d97757;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(217, 119, 87, 0.15);
+}
+:root.dark .safety-emergency {
+  background: linear-gradient(135deg, #2a1f1c 0%, #3a2520 100%);
+  border-color: #c9805f;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+.safety-emergency-head {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 6px;
+}
+.safety-emergency-icon { font-size: 28px; line-height: 1; }
+.safety-emergency-title {
+  font-family: var(--sans);
+  font-size: 18px; font-weight: 700;
+  margin: 0;
+  color: #b04830;
+  letter-spacing: -0.005em;
+}
+:root.dark .safety-emergency-title { color: #ffb89e; }
+.safety-emergency-lede {
+  font-family: var(--sans); font-size: 14px;
+  color: var(--text); line-height: 1.6;
+  margin: 0 0 14px;
+}
+.safety-emergency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 8px;
+}
+.safety-call {
+  display: block;
+  padding: 12px 14px;
+  background: #ffffff;
+  border: 1px solid rgba(176, 72, 48, 0.3);
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+:root.dark .safety-call { background: #1a1a1a; border-color: rgba(255, 184, 158, 0.3); }
+.safety-call:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+.safety-call-num {
+  display: block;
+  font-family: var(--sans); font-size: 22px; font-weight: 800;
+  color: #b04830;
+  letter-spacing: -0.005em;
+  font-variant-numeric: tabular-nums;
+}
+:root.dark .safety-call-num { color: #ffb89e; }
+.safety-call-label {
+  display: block; margin-top: 2px;
+  font-family: var(--sans); font-size: 11.5px;
+  color: var(--text-soft);
+  letter-spacing: 0;
+}
+
+.safety-tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 14px;
+}
+.safety-tier {
+  padding: 18px 20px 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 12px;
+  font-family: var(--sans);
+}
+.safety-tier--soft { border-left-color: #8c6e4e; }
+.safety-tier--rose { border-left-color: #c97b8a; }
+.safety-tier--sage { border-left-color: #6e8669; }
+.safety-tier--mustard { border-left-color: #c8a35a; }
+.safety-tier--lavender { border-left-color: #8a7da3; }
+.safety-tier-head { margin-bottom: 6px; }
+.safety-tier-tag {
+  display: inline-block;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.safety-tier--rose .safety-tier-tag { color: #b86276; }
+.safety-tier--sage .safety-tier-tag { color: #5e7459; }
+.safety-tier--mustard .safety-tier-tag { color: #a48345; }
+.safety-tier--lavender .safety-tier-tag { color: #7a6f8c; }
+.safety-tier-title {
+  font-size: 16px; font-weight: 700;
+  margin: 0 0 6px; color: var(--text);
+  line-height: 1.4; letter-spacing: -0.005em;
+}
+.safety-tier-lede {
+  font-size: 13.5px; color: var(--text-soft);
+  margin: 0 0 10px; line-height: 1.6;
+}
+.safety-tier-list {
+  list-style: none; padding: 0; margin: 0 0 12px;
+  font-size: 13px; line-height: 1.65;
+}
+.safety-tier-list li {
+  padding: 4px 0 4px 18px;
+  position: relative;
+  color: var(--text);
+}
+.safety-tier-list li::before {
+  content: "•"; position: absolute; left: 4px;
+  color: var(--accent); font-weight: 700;
+}
+.safety-tier-list strong { font-weight: 700; }
+.safety-tier-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.safety-tier-btn {
+  display: inline-block;
+  padding: 7px 12px;
+  background: var(--accent);
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border: 1px solid var(--accent) !important;
+  border-radius: 999px;
+  font-size: 12.5px; font-weight: 600;
+  letter-spacing: -0.005em;
+  transition: transform 0.15s, opacity 0.15s;
+}
+.safety-tier-btn:hover { transform: translateY(-1px); }
+.safety-tier-btn--ghost {
+  background: transparent !important;
+  color: var(--text) !important;
+  border-color: var(--line) !important;
+}
+.safety-tier-btn--ghost:hover { border-color: var(--accent) !important; color: var(--accent) !important; }
+
+.safety-footnote {
+  margin: 22px 0 0;
+  padding: 12px 16px;
+  background: var(--bg);
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 12px; line-height: 1.65;
+  color: var(--text-soft);
+}
+@media (max-width: 600px) {
+  .safety-emergency { padding: 18px 18px 20px; }
+  .safety-emergency-grid { grid-template-columns: repeat(2, 1fr); }
+  .safety-tiers { grid-template-columns: 1fr; }
+}
+@media print {
+  .safety-emergency, .safety-tier { page-break-inside: avoid; box-shadow: none; }
+  .safety-tier-btn { background: transparent !important; color: #000 !important; border-color: #999 !important; }
+}
+
+/* =========== 부록 B 카드형 체크리스트 =========== */
+.check-board { margin: 1.4em 0 2em; }
+.check-stage {
+  margin: 1.6em 0 2em;
+  padding: 22px 22px 20px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 2px 10px var(--shadow-soft);
+}
+.check-stage-head { margin-bottom: 16px; }
+.check-stage-meta {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 8px;
+}
+.check-stage-num {
+  font-family: var(--sans); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: #fff; background: var(--accent);
+  padding: 4px 11px; border-radius: 999px;
+}
+.check-stage-range {
+  font-family: var(--sans); font-size: 12px;
+  color: var(--text-soft); letter-spacing: 0.04em;
+}
+.check-stage-title {
+  font-family: var(--sans);
+  font-size: 18px; font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--text); letter-spacing: -0.005em;
+}
+.check-stage-sub {
+  font-family: var(--sans);
+  font-size: 13.5px; color: var(--text-soft);
+  margin: 0 0 12px;
+  line-height: 1.55;
+}
+.check-stage-progress {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--sans); font-size: 12px; color: var(--text-soft);
+}
+.check-progress-bar {
+  flex: 1; height: 5px; border-radius: 999px;
+  background: var(--bg);
+  position: relative; overflow: hidden;
+}
+.check-progress-bar::after {
+  content: ""; position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: var(--progress, 0%);
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+.check-progress-text { font-weight: 600; min-width: 48px; text-align: right; font-variant-numeric: tabular-nums; }
+
+.check-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+.check-card {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  grid-template-rows: auto auto auto;
+  column-gap: 12px; row-gap: 4px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
+  font-family: var(--sans);
+}
+.check-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px var(--shadow-soft);
+}
+.check-card input[type="checkbox"] {
+  grid-row: 1 / span 3; grid-column: 1;
+  width: 18px; height: 18px; margin: 3px 0 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.check-card .check-area {
+  grid-column: 2; grid-row: 1;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent);
+}
+.check-card .check-item {
+  grid-column: 2; grid-row: 2;
+  font-size: 14px; line-height: 1.55;
+  color: var(--text);
+}
+.check-card .check-ref {
+  grid-column: 2; grid-row: 3;
+  font-size: 11.5px; color: var(--text-soft);
+  letter-spacing: 0.02em;
+}
+.check-card:has(input:checked) {
+  background: rgba(140, 110, 78, 0.08);
+  border-color: var(--accent);
+}
+.check-card:has(input:checked) .check-item {
+  text-decoration: line-through;
+  text-decoration-color: var(--text-soft);
+  color: var(--text-soft);
+}
+.check-board-tools {
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 18px 0 0; padding-top: 16px;
+  border-top: 1px dashed var(--line);
+  font-family: var(--sans); font-size: 12.5px;
+}
+.check-reset {
+  background: none; border: 1px solid var(--line);
+  color: var(--text-soft);
+  padding: 6px 14px; border-radius: 999px;
+  font-family: var(--sans); font-size: 12.5px;
+  cursor: pointer;
+  transition: border-color 0.18s, color 0.18s;
+}
+.check-reset:hover { border-color: var(--accent); color: var(--accent); }
+.check-board-note { color: var(--text-soft); font-size: 11.5px; }
+@media (max-width: 600px) {
+  .check-stage { padding: 18px 16px 16px; }
+  .check-cards { grid-template-columns: 1fr; }
+}
+@media print {
+  .check-card { page-break-inside: avoid; }
+  .check-card input[type="checkbox"] { print-color-adjust: exact; }
+  .check-board-tools { display: none; }
+}
+
+/* 다음 행동 CTA — 챕터 끝 카드 */
+.next-action {
+  display: flex; align-items: center; gap: 16px;
+  margin: 3em 0 1em;
+  padding: 18px 22px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  position: relative;
+}
+.next-action-tag {
+  position: absolute; top: -10px; left: 18px;
+  background: var(--accent); color: #fff;
+  font-family: var(--sans); font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 999px;
+}
+.next-action-icon {
+  font-size: 28px; line-height: 1;
+  flex-shrink: 0;
+}
+.next-action-text { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.next-action-headline {
+  font-family: var(--sans);
+  font-size: 15px; font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+.next-action-sub {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+.next-action-link {
+  flex-shrink: 0;
+  background: var(--accent); color: #fff;
+  text-decoration: none;
+  font-family: var(--sans); font-size: 13px; font-weight: 600;
+  padding: 8px 14px; border-radius: 999px;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.next-action-link:hover { transform: translateY(-1px); }
+.chapter.is-appendix .next-action { display: none; }
+@media (max-width: 600px) {
+  .next-action { flex-wrap: wrap; padding: 16px 18px; gap: 12px; }
+  .next-action-icon { font-size: 24px; }
+  .next-action-text { flex: 1 1 60%; }
+  .next-action-link { width: 100%; text-align: center; }
+}
+@media print { .next-action { page-break-inside: avoid; } }
+
 .chapter.is-appendix .chapter-num {
   color: #6b6358;
 }
@@ -1667,6 +2393,52 @@ table.data td { color: var(--text); }
       setTimeout(showResumePrompt, 600);
     });
   }
+
+  // ---- Checklist (부록 B) — localStorage 동기화 + 진행률 ----
+  function initChecklists() {
+    var boards = document.querySelectorAll('.check-board');
+    boards.forEach(function(board) {
+      var key = 'momgyeot-checklist-' + (board.getAttribute('data-checklist') || 'default');
+      var saved = {};
+      try { saved = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) { saved = {}; }
+      var inputs = board.querySelectorAll('input[type="checkbox"][data-key]');
+      inputs.forEach(function(inp) {
+        if (saved[inp.getAttribute('data-key')]) inp.checked = true;
+        inp.addEventListener('change', function() {
+          saved[inp.getAttribute('data-key')] = inp.checked;
+          try { localStorage.setItem(key, JSON.stringify(saved)); } catch (e) {}
+          updateProgress(inp.closest('.check-stage'));
+        });
+      });
+      board.querySelectorAll('.check-stage').forEach(updateProgress);
+      var resetBtn = board.querySelector('.check-reset');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+          if (!confirm('전체 체크 상태를 초기화할까요?')) return;
+          inputs.forEach(function(inp) { inp.checked = false; });
+          try { localStorage.removeItem(key); } catch (e) {}
+          board.querySelectorAll('.check-stage').forEach(updateProgress);
+        });
+      }
+    });
+  }
+  function updateProgress(stage) {
+    if (!stage) return;
+    var inps = stage.querySelectorAll('input[type="checkbox"]');
+    var total = inps.length;
+    var done = 0;
+    inps.forEach(function(i) { if (i.checked) done++; });
+    var bar = stage.querySelector('.check-progress-bar');
+    var txt = stage.querySelector('.check-progress-text');
+    var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+    if (bar) bar.style.setProperty('--progress', pct + '%');
+    if (txt) txt.textContent = done + ' / ' + total;
+  }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initChecklists();
+  } else {
+    document.addEventListener('DOMContentLoaded', initChecklists);
+  }
 })();
 </script>
 
@@ -1918,6 +2690,18 @@ body {
   text-align: center;
 }
 .toc h2::before { content: "📖 "; letter-spacing: normal; }
+.toc .toc-group + .toc-group { margin-top: 36px; }
+.toc-group-label {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  letter-spacing: 0.3em;
+  color: var(--text-soft);
+  font-weight: 700;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.toc-group-label::before { content: "❯ "; color: var(--accent); }
 .toc ol {
   list-style: none;
   padding: 0;
@@ -1926,6 +2710,15 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 10px;
 }
+.toc ol.toc-appendix { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+.toc ol.toc-appendix a {
+  background: var(--bg);
+  border-color: var(--line);
+  font-weight: 500;
+  font-size: 13.5px;
+  color: var(--text-soft);
+}
+.toc ol.toc-appendix a:hover { color: var(--text); }
 .toc li { margin: 0; font-size: 14.5px; }
 .toc a {
   display: block;
@@ -2220,6 +3013,383 @@ table.data tr:last-child td { border-bottom: none; }
   table.data th, table.data td { padding: 9px 10px; }
 }
 
+/* =========== 부록 D 안전 박스 (모던) =========== */
+.safety-board { margin: 1.6em 0 2em; }
+.safety-emergency {
+  margin: 0 0 28px;
+  padding: 26px 28px 28px;
+  background: linear-gradient(135deg, #fff3ec 0%, #ffe1d2 100%);
+  border: 2px solid #d97757;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(217, 119, 87, 0.18);
+}
+:root.dark .safety-emergency {
+  background: linear-gradient(135deg, #2c1f1c 0%, #3a2520 100%);
+  border-color: #c9805f;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
+}
+.safety-emergency-head {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 8px;
+}
+.safety-emergency-icon { font-size: 32px; line-height: 1; }
+.safety-emergency-title {
+  font-family: var(--sans);
+  font-size: 22px; font-weight: 800;
+  margin: 0;
+  color: #b04830;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+:root.dark .safety-emergency-title { color: #ffb89e; }
+.safety-emergency-lede {
+  font-family: var(--sans); font-size: 15px;
+  color: var(--text); line-height: 1.65;
+  margin: 0 0 16px;
+  font-weight: 500;
+}
+.safety-emergency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 10px;
+}
+.safety-call {
+  display: block;
+  padding: 14px 16px;
+  background: #ffffff;
+  border: 1px solid rgba(176, 72, 48, 0.3);
+  border-radius: 12px;
+  text-decoration: none !important;
+  text-align: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+  border-bottom: 1px solid rgba(176, 72, 48, 0.3) !important;
+}
+:root.dark .safety-call { background: #1c1c1c; border-color: rgba(255, 184, 158, 0.3) !important; }
+.safety-call:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  background: #fff !important;
+}
+.safety-call-num {
+  display: block;
+  font-family: var(--sans); font-size: 24px; font-weight: 800;
+  color: #b04830;
+  letter-spacing: -0.005em;
+  font-variant-numeric: tabular-nums;
+}
+:root.dark .safety-call-num { color: #ffb89e; }
+.safety-call-label {
+  display: block; margin-top: 3px;
+  font-family: var(--sans); font-size: 12px;
+  color: var(--text-soft);
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+.safety-tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+.safety-tier {
+  padding: 20px 22px 18px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 14px;
+  font-family: var(--sans);
+}
+.safety-tier--soft { border-left-color: var(--accent); }
+.safety-tier--rose { border-left-color: var(--accent-rose); }
+.safety-tier--sage { border-left-color: var(--accent-sage); }
+.safety-tier--mustard { border-left-color: var(--accent-mustard); }
+.safety-tier--lavender { border-left-color: var(--accent-lavender); }
+.safety-tier-head { margin-bottom: 8px; }
+.safety-tier-tag {
+  display: inline-block;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.safety-tier--rose .safety-tier-tag { color: var(--accent-rose); }
+.safety-tier--sage .safety-tier-tag { color: var(--accent-sage); }
+.safety-tier--mustard .safety-tier-tag { color: var(--accent-mustard); }
+.safety-tier--lavender .safety-tier-tag { color: var(--accent-lavender); }
+.safety-tier-title {
+  font-size: 17px; font-weight: 800;
+  margin: 0 0 8px; color: var(--text);
+  line-height: 1.4; letter-spacing: -0.01em;
+}
+.safety-tier-lede {
+  font-size: 14px; color: var(--text-soft);
+  margin: 0 0 12px; line-height: 1.65;
+}
+.safety-tier-list {
+  list-style: none; padding: 0; margin: 0 0 14px;
+  font-size: 13.5px; line-height: 1.7;
+}
+.safety-tier-list li {
+  padding: 5px 0 5px 20px;
+  position: relative;
+  color: var(--text);
+}
+.safety-tier-list li::before {
+  content: "•"; position: absolute; left: 6px;
+  color: var(--accent); font-weight: 700;
+}
+.safety-tier-list strong { font-weight: 700; }
+.safety-tier-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.safety-tier-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  background: var(--accent) !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border: 1px solid var(--accent) !important;
+  border-radius: 999px;
+  font-size: 12.5px; font-weight: 700;
+  letter-spacing: -0.005em;
+  transition: transform 0.15s;
+}
+.safety-tier-btn:hover { transform: translateY(-1px); }
+.safety-tier-btn--ghost {
+  background: transparent !important;
+  color: var(--text) !important;
+  border-color: var(--line) !important;
+}
+.safety-tier-btn--ghost:hover { border-color: var(--accent) !important; color: var(--accent) !important; }
+
+.safety-footnote {
+  margin: 24px 0 0;
+  padding: 14px 18px;
+  background: var(--bg-soft);
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  font-family: var(--sans);
+  font-size: 12.5px; line-height: 1.7;
+  color: var(--text-soft);
+}
+@media (max-width: 600px) {
+  .safety-emergency { padding: 22px 20px 22px; }
+  .safety-emergency-title { font-size: 19px; }
+  .safety-emergency-grid { grid-template-columns: repeat(2, 1fr); }
+  .safety-tiers { grid-template-columns: 1fr; }
+}
+@media print {
+  .safety-emergency, .safety-tier { page-break-inside: avoid; box-shadow: none; }
+  .safety-tier-btn { background: transparent !important; color: #000 !important; border-color: #999 !important; }
+}
+
+/* =========== 부록 B 카드형 체크리스트 (모던) =========== */
+.check-board { margin: 1.4em 0 2em; }
+.check-stage {
+  margin: 1.8em 0 2.2em;
+  padding: 26px 26px 22px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.check-stage-head { margin-bottom: 18px; }
+.check-stage-meta {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 10px;
+}
+.check-stage-num {
+  font-family: var(--sans); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: #fff; background: var(--accent);
+  padding: 4px 12px; border-radius: 999px;
+}
+.check-stage:nth-of-type(5n+2) .check-stage-num { background: var(--accent-sage); }
+.check-stage:nth-of-type(5n+3) .check-stage-num { background: var(--accent-rose); }
+.check-stage:nth-of-type(5n+4) .check-stage-num { background: var(--accent-mustard); }
+.check-stage:nth-of-type(5n+5) .check-stage-num { background: var(--accent-lavender); }
+.check-stage-range {
+  font-family: var(--sans); font-size: 13px;
+  color: var(--text-soft); letter-spacing: 0.04em;
+  font-weight: 500;
+}
+.check-stage-title {
+  font-family: var(--sans);
+  font-size: 20px; font-weight: 800;
+  margin: 0 0 6px;
+  color: var(--text); letter-spacing: -0.015em;
+  line-height: 1.35;
+}
+.check-stage-sub {
+  font-family: var(--sans);
+  font-size: 14.5px; color: var(--text-soft);
+  margin: 0 0 14px; line-height: 1.55;
+}
+.check-stage-progress {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--sans); font-size: 12.5px; color: var(--text-soft);
+}
+.check-progress-bar {
+  flex: 1; height: 5px; border-radius: 999px;
+  background: var(--bg-soft);
+  position: relative; overflow: hidden;
+  border: 1px solid var(--line);
+}
+.check-progress-bar::after {
+  content: ""; position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: var(--progress, 0%);
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+.check-progress-text { font-weight: 700; min-width: 52px; text-align: right; font-variant-numeric: tabular-nums; }
+
+.check-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+.check-card {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  grid-template-rows: auto auto auto;
+  column-gap: 14px; row-gap: 5px;
+  padding: 16px 18px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
+  font-family: var(--sans);
+}
+.check-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 10px var(--shadow-soft);
+}
+.check-card input[type="checkbox"] {
+  grid-row: 1 / span 3; grid-column: 1;
+  width: 18px; height: 18px; margin: 4px 0 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.check-card .check-area {
+  grid-column: 2; grid-row: 1;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent);
+}
+.check-card[data-area="신체"] .check-area,
+.check-card[data-area="청각"] .check-area,
+.check-card[data-area="청각 환경"] .check-area { color: var(--accent-sage); }
+.check-card[data-area="정서"] .check-area,
+.check-card[data-area="정서 환경"] .check-area { color: var(--accent-rose); }
+.check-card[data-area="가족"] .check-area,
+.check-card[data-area="부부 환경"] .check-area { color: var(--accent-mustard); }
+.check-card[data-area="정보 환경"] .check-area,
+.check-card[data-area="시각"] .check-area { color: var(--accent-lavender); }
+.check-card .check-item {
+  grid-column: 2; grid-row: 2;
+  font-size: 15px; line-height: 1.6;
+  color: var(--text);
+  font-weight: 500;
+}
+.check-card .check-ref {
+  grid-column: 2; grid-row: 3;
+  font-size: 11.5px; color: var(--text-soft);
+  letter-spacing: 0.03em;
+}
+.check-card:has(input:checked) {
+  background: rgba(184, 111, 92, 0.08);
+  border-color: var(--accent);
+}
+.check-card:has(input:checked) .check-item {
+  text-decoration: line-through;
+  text-decoration-color: var(--text-soft);
+  color: var(--text-soft);
+}
+:root.dark .check-card:has(input:checked) {
+  background: rgba(212, 147, 128, 0.1);
+}
+.check-board-tools {
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 22px 0 0; padding-top: 18px;
+  border-top: 1px dashed var(--line);
+  font-family: var(--sans); font-size: 12.5px;
+}
+.check-reset {
+  background: none; border: 1px solid var(--line);
+  color: var(--text-soft);
+  padding: 7px 16px; border-radius: 999px;
+  font-family: var(--sans); font-size: 12.5px; font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+}
+.check-reset:hover { border-color: var(--accent); color: var(--accent); background: var(--bg-soft); }
+.check-board-note { color: var(--text-soft); font-size: 11.5px; }
+@media (max-width: 600px) {
+  .check-stage { padding: 20px 18px 18px; border-radius: 14px; }
+  .check-cards { grid-template-columns: 1fr; }
+  .check-stage-title { font-size: 18px; }
+}
+@media print {
+  .check-stage { page-break-inside: auto; box-shadow: none; }
+  .check-card { page-break-inside: avoid; }
+  .check-card input[type="checkbox"] { print-color-adjust: exact; }
+  .check-board-tools { display: none; }
+}
+
+/* 다음 행동 CTA — 챕터 끝 카드 (모던) */
+.next-action {
+  display: flex; align-items: center; gap: 18px;
+  margin: 3em 0 1em;
+  padding: 22px 24px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 14px;
+  position: relative;
+}
+.next-action-tag {
+  position: absolute; top: -11px; left: 20px;
+  background: var(--accent); color: #fff;
+  font-family: var(--sans); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 999px;
+}
+.next-action-icon { font-size: 32px; line-height: 1; flex-shrink: 0; }
+.next-action-text { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.next-action-headline {
+  font-family: var(--sans);
+  font-size: 17px; font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+.next-action-sub {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  color: var(--text-soft);
+  line-height: 1.65;
+}
+.next-action-link {
+  flex-shrink: 0;
+  background: var(--accent); color: #fff;
+  text-decoration: none; border-bottom: none;
+  font-family: var(--sans); font-size: 13px; font-weight: 700;
+  padding: 9px 16px; border-radius: 999px;
+  transition: transform 0.18s;
+}
+.next-action-link:hover { transform: translateY(-1px); background: var(--accent); }
+.chapter.is-appendix .next-action { display: none; }
+@media (max-width: 600px) {
+  .next-action { flex-wrap: wrap; padding: 20px 18px; gap: 12px; }
+  .next-action-icon { font-size: 26px; }
+  .next-action-text { flex: 1 1 60%; }
+  .next-action-link { width: 100%; text-align: center; }
+}
+@media print {
+  .next-action { page-break-inside: avoid; background: white !important; border-color: #ccc !important; }
+  .next-action-link { display: none; }
+}
+
 /* 부록은 한 톤 차분히 */
 .chapter.is-appendix .chapter-num {
   color: var(--text-soft);
@@ -2347,6 +3517,16 @@ table.data tr:last-child td { border-bottom: none; }
   color: var(--text-soft); cursor: pointer; padding: 0 4px;
 }
 .drawer-nav { flex: 1; overflow-y: auto; padding: 8px 0 24px; }
+.drawer-group + .drawer-group { margin-top: 6px; }
+.drawer-group-label {
+  font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.3em;
+  color: var(--text-soft); font-weight: 700;
+  text-transform: uppercase;
+  padding: 14px 18px 8px; margin: 0;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
 .drawer-toc-list { list-style: none; padding: 0; margin: 0; }
 .toc-item { border-bottom: 1px solid var(--line); }
 .toc-row { display: flex; align-items: stretch; }
@@ -2847,6 +4027,52 @@ table.data tr:last-child td { border-bottom: none; }
     document.addEventListener('DOMContentLoaded', function() {
       setTimeout(showResumePrompt, 600);
     });
+  }
+
+  // ---- Checklist (부록 B) — localStorage 동기화 + 진행률 ----
+  function initChecklists() {
+    var boards = document.querySelectorAll('.check-board');
+    boards.forEach(function(board) {
+      var key = 'momgyeot-checklist-' + (board.getAttribute('data-checklist') || 'default');
+      var saved = {};
+      try { saved = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) { saved = {}; }
+      var inputs = board.querySelectorAll('input[type="checkbox"][data-key]');
+      inputs.forEach(function(inp) {
+        if (saved[inp.getAttribute('data-key')]) inp.checked = true;
+        inp.addEventListener('change', function() {
+          saved[inp.getAttribute('data-key')] = inp.checked;
+          try { localStorage.setItem(key, JSON.stringify(saved)); } catch (e) {}
+          updateProgress(inp.closest('.check-stage'));
+        });
+      });
+      board.querySelectorAll('.check-stage').forEach(updateProgress);
+      var resetBtn = board.querySelector('.check-reset');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+          if (!confirm('전체 체크 상태를 초기화할까요?')) return;
+          inputs.forEach(function(inp) { inp.checked = false; });
+          try { localStorage.removeItem(key); } catch (e) {}
+          board.querySelectorAll('.check-stage').forEach(updateProgress);
+        });
+      }
+    });
+  }
+  function updateProgress(stage) {
+    if (!stage) return;
+    var inps = stage.querySelectorAll('input[type="checkbox"]');
+    var total = inps.length;
+    var done = 0;
+    inps.forEach(function(i) { if (i.checked) done++; });
+    var bar = stage.querySelector('.check-progress-bar');
+    var txt = stage.querySelector('.check-progress-text');
+    var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+    if (bar) bar.style.setProperty('--progress', pct + '%');
+    if (txt) txt.textContent = done + ' / ' + total;
+  }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initChecklists();
+  } else {
+    document.addEventListener('DOMContentLoaded', initChecklists);
   }
 })();
 </script>

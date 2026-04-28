@@ -3,20 +3,132 @@
 ## D-1. 도움 요청 가이드
 
 이 페이지는 책을 덮고도 곁에 둘 수 있도록 짧게 정리한 안내다.
-*혼자 견디지 않아도 된다*는 자리를 한눈에 보기 위한 페이지다.
+**혼자 견디지 않아도 된다.** 이 한 줄을 한눈에 보기 위한 페이지다.
 
-| 자리 | 도움이 닿는 곳 | 비고 |
-|---|---|---|
-| 일상 진료 | 산부인과 정기 진료 | 임신 초기부터 분만 직전까지 가장 먼저 닿는 자리 |
-| 정서적 어려움 | 정신건강 전문가 상담 | 산전·산후 우울, 불안, 길어지는 무거움 |
-| 산후 위기 | 산후우울 관련 상담·의료 자원 | 출산 후 6주를 전후한 시기에 특히 |
-| 사회적 위기 | 가정 폭력·위기 임신 관련 공공 상담 | 안전이 위협받는 자리 |
-| 가족·관계 어려움 | 가족 상담·부부 상담 | 가족 안에서 결이 자주 부딪힐 때 |
-| 경제·돌봄 자원 | 지역 보건소 모자보건사업, 산모·신생아 건강관리 지원 | 출산 전후 도움이 필요할 때 |
+:::raw
+<div class="safety-board" role="region" aria-label="도움 요청 가이드">
 
-> 출간 시점에 검수자가 한국 공공 자원의 정확한 명칭·전화·링크를 채운다.
-> 위 표는 *어디에 손을 내밀 수 있는지*의 결을 보여 주기 위한 골격이며,
-> 책의 어떤 페이지보다 먼저 외워 두어도 좋은 자리다.
+<div class="safety-emergency" role="alert">
+  <div class="safety-emergency-head">
+    <span class="safety-emergency-icon" aria-hidden="true">🚨</span>
+    <h3 class="safety-emergency-title">지금 바로 도움이 필요할 때</h3>
+  </div>
+  <p class="safety-emergency-lede">생명·안전이 위협받거나 분만 중 응급 상황이라면 망설이지 말고 아래로 연결합니다. 모두 24시간 운영입니다.</p>
+  <div class="safety-emergency-grid">
+    <a class="safety-call" href="tel:119">
+      <span class="safety-call-num">119</span>
+      <span class="safety-call-label">응급 의료 · 분만 응급</span>
+    </a>
+    <a class="safety-call" href="tel:1393">
+      <span class="safety-call-num">1393</span>
+      <span class="safety-call-label">자살예방상담전화</span>
+    </a>
+    <a class="safety-call" href="tel:1577-0199">
+      <span class="safety-call-num">1577-0199</span>
+      <span class="safety-call-label">정신건강위기상담</span>
+    </a>
+    <a class="safety-call" href="tel:1366">
+      <span class="safety-call-num">1366</span>
+      <span class="safety-call-label">여성긴급전화 · 가정폭력</span>
+    </a>
+  </div>
+</div>
+
+<div class="safety-tiers">
+  <article class="safety-tier safety-tier--soft">
+    <header class="safety-tier-head">
+      <span class="safety-tier-tag">평상 시</span>
+      <h4 class="safety-tier-title">정기 진료와 의료적 동행</h4>
+    </header>
+    <p class="safety-tier-lede">임신 초기부터 분만 직전까지 가장 먼저 닿는 자리입니다.</p>
+    <ul class="safety-tier-list">
+      <li><strong>산부인과 정기 진료</strong> — 작은 변화도 다음 진료에 한 줄로 메모해 가세요.</li>
+      <li><strong>가까운 보건소 모자건강사업</strong> — 임산부 등록·엽산·철분 지원, 산전 검사 안내.</li>
+      <li><strong>국가건강정보포털 · 모성건강 자료</strong> — 보건복지부 · 질병관리청 공식 가이드 우선.</li>
+    </ul>
+    <div class="safety-tier-actions">
+      <a href="tel:1577-1389" class="safety-tier-btn">📞 1577-1389 보건복지콜센터</a>
+      <a href="https://www.mw.go.kr" target="_blank" rel="noopener" class="safety-tier-btn safety-tier-btn--ghost">🔗 보건복지부</a>
+    </div>
+  </article>
+
+  <article class="safety-tier safety-tier--rose">
+    <header class="safety-tier-head">
+      <span class="safety-tier-tag">정서가 무거울 때</span>
+      <h4 class="safety-tier-title">산전·산후 우울 · 불안 · 길어지는 무거움</h4>
+    </header>
+    <p class="safety-tier-lede">슬픔 · 무력감 · 잠들기 어려움 · 식욕 변화가 <strong>2주 이상</strong> 이어지면 전문가의 자리로 옮겨 보세요.</p>
+    <ul class="safety-tier-list">
+      <li><strong>가까운 정신건강복지센터</strong> — 시·군·구마다 운영. 산전·산후 정서 상담 가능.</li>
+      <li><strong>국가정신건강정보포털</strong> — 자가검진(EPDS 산후우울) · 기관 찾기.</li>
+      <li><strong>산부인과 진료 시 함께 이야기</strong> — 정신건강 이력은 의료진이 알면 더 잘 도울 수 있습니다.</li>
+    </ul>
+    <div class="safety-tier-actions">
+      <a href="tel:1577-0199" class="safety-tier-btn">📞 1577-0199 정신건강위기상담 (24h)</a>
+      <a href="https://www.mentalhealth.go.kr" target="_blank" rel="noopener" class="safety-tier-btn safety-tier-btn--ghost">🔗 국가정신건강정보포털</a>
+    </div>
+  </article>
+
+  <article class="safety-tier safety-tier--sage">
+    <header class="safety-tier-head">
+      <span class="safety-tier-tag">출산 후 6주 전후</span>
+      <h4 class="safety-tier-title">산후우울 · 산후 위기</h4>
+    </header>
+    <p class="safety-tier-lede">출산 후 호르몬 · 수면 · 회복이 한 번에 겹치는 시기입니다. <strong>"이상하다"는 감각</strong>이 들면 그 자체가 도움 신호입니다.</p>
+    <ul class="safety-tier-list">
+      <li><strong>산후 진료 시 EPDS 자가검진</strong> — 13점 이상이면 추가 평가 권유.</li>
+      <li><strong>지역 보건소 산모·신생아 건강관리 지원</strong> — 산후도우미 비용 지원.</li>
+      <li><strong>가까운 정신건강복지센터 · 산부인과 협진</strong>.</li>
+    </ul>
+    <div class="safety-tier-actions">
+      <a href="tel:1577-0199" class="safety-tier-btn">📞 1577-0199 정신건강위기상담</a>
+      <a href="tel:129" class="safety-tier-btn safety-tier-btn--ghost">📞 129 보건복지 긴급</a>
+    </div>
+  </article>
+
+  <article class="safety-tier safety-tier--mustard">
+    <header class="safety-tier-head">
+      <span class="safety-tier-tag">관계 · 안전</span>
+      <h4 class="safety-tier-title">가족 갈등 · 가정 폭력 · 위기 임신</h4>
+    </header>
+    <p class="safety-tier-lede">신체 · 정서 안전이 위협받거나 임신을 둘러싼 사회적 어려움이 클 때, <strong>익명 · 무료</strong>로 상담받을 수 있습니다.</p>
+    <ul class="safety-tier-list">
+      <li><strong>여성긴급전화 1366</strong> — 24시간 · 가정폭력 · 성폭력 · 위기 임신 · 이주여성 · 디지털성범죄.</li>
+      <li><strong>한국가정법률상담소 · 한부모가족지원센터</strong> — 법률 · 양육 상담.</li>
+      <li><strong>가족 상담 · 부부 상담</strong> — 건강가정지원센터(지역별).</li>
+    </ul>
+    <div class="safety-tier-actions">
+      <a href="tel:1366" class="safety-tier-btn">📞 1366 여성긴급전화 (24h)</a>
+      <a href="tel:129" class="safety-tier-btn safety-tier-btn--ghost">📞 129 보건복지 긴급</a>
+    </div>
+  </article>
+
+  <article class="safety-tier safety-tier--lavender">
+    <header class="safety-tier-head">
+      <span class="safety-tier-tag">경제 · 돌봄</span>
+      <h4 class="safety-tier-title">출산 전후 비용 · 돌봄 자원</h4>
+    </header>
+    <p class="safety-tier-lede">필요할 때 신청만으로 닿을 수 있는 공공 자원입니다.</p>
+    <ul class="safety-tier-list">
+      <li><strong>국민행복카드 · 임신·출산 진료비 지원</strong> — 신청은 산부인과 또는 카드사·정부24.</li>
+      <li><strong>산모·신생아 건강관리 지원</strong> — 산후도우미 비용 일부 정부 지원, 가까운 보건소 신청.</li>
+      <li><strong>아이돌봄서비스 (시간제 · 종일제)</strong> — 만 12세 이하 가정 방문 돌봄.</li>
+    </ul>
+    <div class="safety-tier-actions">
+      <a href="tel:1577-1389" class="safety-tier-btn">📞 1577-1389 보건복지콜센터</a>
+      <a href="https://www.gov.kr" target="_blank" rel="noopener" class="safety-tier-btn safety-tier-btn--ghost">🔗 정부24</a>
+    </div>
+  </article>
+</div>
+
+<p class="safety-footnote">
+  ※ 위 번호 · 명칭 · 링크는 2026년 4월 기준 한국 공공 자원입니다.
+  <strong>출간 시점</strong>에 의학·정책 검수자가 최신 운영 여부와 정확한 표기를 다시 한 번 확인합니다.
+  공공 자원의 변경 가능성을 고려해 <strong>가까운 보건소 · 정신건강복지센터</strong>를 1차 접근점으로 권장합니다.
+</p>
+
+</div>
+:::
 
 도움을 청하는 일은 약함이 아니라
 *나와 아이를 함께 돌보려는 가장 적극적인 태도*다.

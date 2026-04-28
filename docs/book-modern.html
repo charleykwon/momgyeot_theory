@@ -241,6 +241,18 @@ body {
   text-align: center;
 }
 .toc h2::before { content: "📖 "; letter-spacing: normal; }
+.toc .toc-group + .toc-group { margin-top: 36px; }
+.toc-group-label {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  letter-spacing: 0.3em;
+  color: var(--text-soft);
+  font-weight: 700;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+  text-align: center;
+}
+.toc-group-label::before { content: "❯ "; color: var(--accent); }
 .toc ol {
   list-style: none;
   padding: 0;
@@ -249,6 +261,15 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 10px;
 }
+.toc ol.toc-appendix { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+.toc ol.toc-appendix a {
+  background: var(--bg);
+  border-color: var(--line);
+  font-weight: 500;
+  font-size: 13.5px;
+  color: var(--text-soft);
+}
+.toc ol.toc-appendix a:hover { color: var(--text); }
 .toc li { margin: 0; font-size: 14.5px; }
 .toc a {
   display: block;
@@ -543,6 +564,383 @@ table.data tr:last-child td { border-bottom: none; }
   table.data th, table.data td { padding: 9px 10px; }
 }
 
+/* =========== 부록 D 안전 박스 (모던) =========== */
+.safety-board { margin: 1.6em 0 2em; }
+.safety-emergency {
+  margin: 0 0 28px;
+  padding: 26px 28px 28px;
+  background: linear-gradient(135deg, #fff3ec 0%, #ffe1d2 100%);
+  border: 2px solid #d97757;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(217, 119, 87, 0.18);
+}
+:root.dark .safety-emergency {
+  background: linear-gradient(135deg, #2c1f1c 0%, #3a2520 100%);
+  border-color: #c9805f;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
+}
+.safety-emergency-head {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 8px;
+}
+.safety-emergency-icon { font-size: 32px; line-height: 1; }
+.safety-emergency-title {
+  font-family: var(--sans);
+  font-size: 22px; font-weight: 800;
+  margin: 0;
+  color: #b04830;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+:root.dark .safety-emergency-title { color: #ffb89e; }
+.safety-emergency-lede {
+  font-family: var(--sans); font-size: 15px;
+  color: var(--text); line-height: 1.65;
+  margin: 0 0 16px;
+  font-weight: 500;
+}
+.safety-emergency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 10px;
+}
+.safety-call {
+  display: block;
+  padding: 14px 16px;
+  background: #ffffff;
+  border: 1px solid rgba(176, 72, 48, 0.3);
+  border-radius: 12px;
+  text-decoration: none !important;
+  text-align: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+  border-bottom: 1px solid rgba(176, 72, 48, 0.3) !important;
+}
+:root.dark .safety-call { background: #1c1c1c; border-color: rgba(255, 184, 158, 0.3) !important; }
+.safety-call:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  background: #fff !important;
+}
+.safety-call-num {
+  display: block;
+  font-family: var(--sans); font-size: 24px; font-weight: 800;
+  color: #b04830;
+  letter-spacing: -0.005em;
+  font-variant-numeric: tabular-nums;
+}
+:root.dark .safety-call-num { color: #ffb89e; }
+.safety-call-label {
+  display: block; margin-top: 3px;
+  font-family: var(--sans); font-size: 12px;
+  color: var(--text-soft);
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+.safety-tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+.safety-tier {
+  padding: 20px 22px 18px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 14px;
+  font-family: var(--sans);
+}
+.safety-tier--soft { border-left-color: var(--accent); }
+.safety-tier--rose { border-left-color: var(--accent-rose); }
+.safety-tier--sage { border-left-color: var(--accent-sage); }
+.safety-tier--mustard { border-left-color: var(--accent-mustard); }
+.safety-tier--lavender { border-left-color: var(--accent-lavender); }
+.safety-tier-head { margin-bottom: 8px; }
+.safety-tier-tag {
+  display: inline-block;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.safety-tier--rose .safety-tier-tag { color: var(--accent-rose); }
+.safety-tier--sage .safety-tier-tag { color: var(--accent-sage); }
+.safety-tier--mustard .safety-tier-tag { color: var(--accent-mustard); }
+.safety-tier--lavender .safety-tier-tag { color: var(--accent-lavender); }
+.safety-tier-title {
+  font-size: 17px; font-weight: 800;
+  margin: 0 0 8px; color: var(--text);
+  line-height: 1.4; letter-spacing: -0.01em;
+}
+.safety-tier-lede {
+  font-size: 14px; color: var(--text-soft);
+  margin: 0 0 12px; line-height: 1.65;
+}
+.safety-tier-list {
+  list-style: none; padding: 0; margin: 0 0 14px;
+  font-size: 13.5px; line-height: 1.7;
+}
+.safety-tier-list li {
+  padding: 5px 0 5px 20px;
+  position: relative;
+  color: var(--text);
+}
+.safety-tier-list li::before {
+  content: "•"; position: absolute; left: 6px;
+  color: var(--accent); font-weight: 700;
+}
+.safety-tier-list strong { font-weight: 700; }
+.safety-tier-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+.safety-tier-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  background: var(--accent) !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border: 1px solid var(--accent) !important;
+  border-radius: 999px;
+  font-size: 12.5px; font-weight: 700;
+  letter-spacing: -0.005em;
+  transition: transform 0.15s;
+}
+.safety-tier-btn:hover { transform: translateY(-1px); }
+.safety-tier-btn--ghost {
+  background: transparent !important;
+  color: var(--text) !important;
+  border-color: var(--line) !important;
+}
+.safety-tier-btn--ghost:hover { border-color: var(--accent) !important; color: var(--accent) !important; }
+
+.safety-footnote {
+  margin: 24px 0 0;
+  padding: 14px 18px;
+  background: var(--bg-soft);
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  font-family: var(--sans);
+  font-size: 12.5px; line-height: 1.7;
+  color: var(--text-soft);
+}
+@media (max-width: 600px) {
+  .safety-emergency { padding: 22px 20px 22px; }
+  .safety-emergency-title { font-size: 19px; }
+  .safety-emergency-grid { grid-template-columns: repeat(2, 1fr); }
+  .safety-tiers { grid-template-columns: 1fr; }
+}
+@media print {
+  .safety-emergency, .safety-tier { page-break-inside: avoid; box-shadow: none; }
+  .safety-tier-btn { background: transparent !important; color: #000 !important; border-color: #999 !important; }
+}
+
+/* =========== 부록 B 카드형 체크리스트 (모던) =========== */
+.check-board { margin: 1.4em 0 2em; }
+.check-stage {
+  margin: 1.8em 0 2.2em;
+  padding: 26px 26px 22px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.check-stage-head { margin-bottom: 18px; }
+.check-stage-meta {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 10px;
+}
+.check-stage-num {
+  font-family: var(--sans); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: #fff; background: var(--accent);
+  padding: 4px 12px; border-radius: 999px;
+}
+.check-stage:nth-of-type(5n+2) .check-stage-num { background: var(--accent-sage); }
+.check-stage:nth-of-type(5n+3) .check-stage-num { background: var(--accent-rose); }
+.check-stage:nth-of-type(5n+4) .check-stage-num { background: var(--accent-mustard); }
+.check-stage:nth-of-type(5n+5) .check-stage-num { background: var(--accent-lavender); }
+.check-stage-range {
+  font-family: var(--sans); font-size: 13px;
+  color: var(--text-soft); letter-spacing: 0.04em;
+  font-weight: 500;
+}
+.check-stage-title {
+  font-family: var(--sans);
+  font-size: 20px; font-weight: 800;
+  margin: 0 0 6px;
+  color: var(--text); letter-spacing: -0.015em;
+  line-height: 1.35;
+}
+.check-stage-sub {
+  font-family: var(--sans);
+  font-size: 14.5px; color: var(--text-soft);
+  margin: 0 0 14px; line-height: 1.55;
+}
+.check-stage-progress {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--sans); font-size: 12.5px; color: var(--text-soft);
+}
+.check-progress-bar {
+  flex: 1; height: 5px; border-radius: 999px;
+  background: var(--bg-soft);
+  position: relative; overflow: hidden;
+  border: 1px solid var(--line);
+}
+.check-progress-bar::after {
+  content: ""; position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: var(--progress, 0%);
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+.check-progress-text { font-weight: 700; min-width: 52px; text-align: right; font-variant-numeric: tabular-nums; }
+
+.check-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+.check-card {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  grid-template-rows: auto auto auto;
+  column-gap: 14px; row-gap: 5px;
+  padding: 16px 18px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
+  font-family: var(--sans);
+}
+.check-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 10px var(--shadow-soft);
+}
+.check-card input[type="checkbox"] {
+  grid-row: 1 / span 3; grid-column: 1;
+  width: 18px; height: 18px; margin: 4px 0 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.check-card .check-area {
+  grid-column: 2; grid-row: 1;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent);
+}
+.check-card[data-area="신체"] .check-area,
+.check-card[data-area="청각"] .check-area,
+.check-card[data-area="청각 환경"] .check-area { color: var(--accent-sage); }
+.check-card[data-area="정서"] .check-area,
+.check-card[data-area="정서 환경"] .check-area { color: var(--accent-rose); }
+.check-card[data-area="가족"] .check-area,
+.check-card[data-area="부부 환경"] .check-area { color: var(--accent-mustard); }
+.check-card[data-area="정보 환경"] .check-area,
+.check-card[data-area="시각"] .check-area { color: var(--accent-lavender); }
+.check-card .check-item {
+  grid-column: 2; grid-row: 2;
+  font-size: 15px; line-height: 1.6;
+  color: var(--text);
+  font-weight: 500;
+}
+.check-card .check-ref {
+  grid-column: 2; grid-row: 3;
+  font-size: 11.5px; color: var(--text-soft);
+  letter-spacing: 0.03em;
+}
+.check-card:has(input:checked) {
+  background: rgba(184, 111, 92, 0.08);
+  border-color: var(--accent);
+}
+.check-card:has(input:checked) .check-item {
+  text-decoration: line-through;
+  text-decoration-color: var(--text-soft);
+  color: var(--text-soft);
+}
+:root.dark .check-card:has(input:checked) {
+  background: rgba(212, 147, 128, 0.1);
+}
+.check-board-tools {
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 22px 0 0; padding-top: 18px;
+  border-top: 1px dashed var(--line);
+  font-family: var(--sans); font-size: 12.5px;
+}
+.check-reset {
+  background: none; border: 1px solid var(--line);
+  color: var(--text-soft);
+  padding: 7px 16px; border-radius: 999px;
+  font-family: var(--sans); font-size: 12.5px; font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+}
+.check-reset:hover { border-color: var(--accent); color: var(--accent); background: var(--bg-soft); }
+.check-board-note { color: var(--text-soft); font-size: 11.5px; }
+@media (max-width: 600px) {
+  .check-stage { padding: 20px 18px 18px; border-radius: 14px; }
+  .check-cards { grid-template-columns: 1fr; }
+  .check-stage-title { font-size: 18px; }
+}
+@media print {
+  .check-stage { page-break-inside: auto; box-shadow: none; }
+  .check-card { page-break-inside: avoid; }
+  .check-card input[type="checkbox"] { print-color-adjust: exact; }
+  .check-board-tools { display: none; }
+}
+
+/* 다음 행동 CTA — 챕터 끝 카드 (모던) */
+.next-action {
+  display: flex; align-items: center; gap: 18px;
+  margin: 3em 0 1em;
+  padding: 22px 24px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 14px;
+  position: relative;
+}
+.next-action-tag {
+  position: absolute; top: -11px; left: 20px;
+  background: var(--accent); color: #fff;
+  font-family: var(--sans); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 999px;
+}
+.next-action-icon { font-size: 32px; line-height: 1; flex-shrink: 0; }
+.next-action-text { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.next-action-headline {
+  font-family: var(--sans);
+  font-size: 17px; font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+.next-action-sub {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  color: var(--text-soft);
+  line-height: 1.65;
+}
+.next-action-link {
+  flex-shrink: 0;
+  background: var(--accent); color: #fff;
+  text-decoration: none; border-bottom: none;
+  font-family: var(--sans); font-size: 13px; font-weight: 700;
+  padding: 9px 16px; border-radius: 999px;
+  transition: transform 0.18s;
+}
+.next-action-link:hover { transform: translateY(-1px); background: var(--accent); }
+.chapter.is-appendix .next-action { display: none; }
+@media (max-width: 600px) {
+  .next-action { flex-wrap: wrap; padding: 20px 18px; gap: 12px; }
+  .next-action-icon { font-size: 26px; }
+  .next-action-text { flex: 1 1 60%; }
+  .next-action-link { width: 100%; text-align: center; }
+}
+@media print {
+  .next-action { page-break-inside: avoid; background: white !important; border-color: #ccc !important; }
+  .next-action-link { display: none; }
+}
+
 /* 부록은 한 톤 차분히 */
 .chapter.is-appendix .chapter-num {
   color: var(--text-soft);
@@ -670,6 +1068,16 @@ table.data tr:last-child td { border-bottom: none; }
   color: var(--text-soft); cursor: pointer; padding: 0 4px;
 }
 .drawer-nav { flex: 1; overflow-y: auto; padding: 8px 0 24px; }
+.drawer-group + .drawer-group { margin-top: 6px; }
+.drawer-group-label {
+  font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.3em;
+  color: var(--text-soft); font-weight: 700;
+  text-transform: uppercase;
+  padding: 14px 18px 8px; margin: 0;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
 .drawer-toc-list { list-style: none; padding: 0; margin: 0; }
 .toc-item { border-bottom: 1px solid var(--line); }
 .toc-row { display: flex; align-items: stretch; }
@@ -948,6 +1356,8 @@ table.data tr:last-child td { border-bottom: none; }
     <button id="drawer-close" type="button" aria-label="차례 닫기">×</button>
   </header>
   <nav class="drawer-nav">
+<div class="drawer-group">
+<h4 class="drawer-group-label">본문</h4>
 <ol class="drawer-toc-list">
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#prologue"><span class="toc-title">들어가며</span></a></div></li>
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#ch1"><span class="toc-num">1장</span><span class="toc-title">태교는 왜 지금 다시 필요할까</span></a><button class="toc-expand" type="button" data-target="ch1-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="ch1-subs" class="toc-subs" hidden><li><a href="#ch1-s1">잘해야 하는 태교가 아니라, 연결되는 태교</a></li><li><a href="#ch1-s2">정보가 많은 시대의 부담</a></li><li><a href="#ch1-s3">왜 지금 태교인가 — 한국 사회의 세 가지 변화</a></li><li><a href="#ch1-s4">태교의 원래 자리</a></li><li><a href="#ch1-s5">현대 의학도 같은 방향을 가리킨다</a></li><li><a href="#ch1-s6">정보가 아니라 분위기, 활동이 아니라 관계</a></li><li><a href="#ch1-s7">안심에서 출발하기</a></li><li><a href="#ch1-s8">이 장의 정리</a></li><li><a href="#ch1-s9">다음 장으로</a></li></ol></li>
@@ -961,12 +1371,18 @@ table.data tr:last-child td { border-bottom: none; }
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#ch9"><span class="toc-num">9장</span><span class="toc-title">좋은 태교와 부담스러운 태교의 차이</span></a><button class="toc-expand" type="button" data-target="ch9-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="ch9-subs" class="toc-subs" hidden><li><a href="#ch9-s1">차이는 "얼마나"가 아니라 "무엇을 중심에 두었는가"</a></li><li><a href="#ch9-s2">비교라는 함정</a></li><li><a href="#ch9-s3">감정을 실패로 보지 않기</a></li><li><a href="#ch9-s4">맘곁이 생각하는 좋은 태교의 기준</a></li><li><a href="#ch9-s5">이 장의 정리</a></li><li><a href="#ch9-s6">다음 장으로</a></li></ol></li>
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#ch10"><span class="toc-num">10장</span><span class="toc-title">맘곁 태교의 다섯 원칙</span></a><button class="toc-expand" type="button" data-target="ch10-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="ch10-subs" class="toc-subs" hidden><li><a href="#ch10-s1">1. 연결</a></li><li><a href="#ch10-s2">2. 반복</a></li><li><a href="#ch10-s3">3. 기록</a></li><li><a href="#ch10-s4">4. 다정한 생활</a></li><li><a href="#ch10-s5">5. 실천으로 이어지는 이해</a></li><li><a href="#ch10-s6">다섯 원칙 한눈에 — 강도별 실천 매트릭스</a></li><li><a href="#ch10-s7">한 가지부터 해도 충분하다</a></li><li><a href="#ch10-s8">이 장의 정리</a></li><li><a href="#ch10-s9">실천편으로 이어지는 길</a></li><li><a href="#ch10-s10">사주당 이씨에게</a></li></ol></li>
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#epilogue"><span class="toc-title">닫으며</span></a></div></li>
+</ol>
+</div>
+<div class="drawer-group">
+<h4 class="drawer-group-label">부록</h4>
+<ol class="drawer-toc-list">
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-a"><span class="toc-num">부록 A</span><span class="toc-title">『태교신기』 35절 전문 — 사주당 이씨와 현대 의학의 대화</span></a><button class="toc-expand" type="button" data-target="appendix-a-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-a-subs" class="toc-subs" hidden><li><a href="#appendix-a-s1">A-1. 부록의 자리</a></li><li><a href="#appendix-a-s2">A-2. 35절 전문 매핑</a></li><li><a href="#appendix-a-s3">A-3. 35절을 한눈에 — 핵심 메시지 분포</a></li></ol></li>
-<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-b"><span class="toc-num">부록 B</span><span class="toc-title">임신 280일 환경 점검 체크리스트</span></a><button class="toc-expand" type="button" data-target="appendix-b-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-b-subs" class="toc-subs" hidden><li><a href="#appendix-b-s1">B-1. 체크리스트의 자리</a></li><li><a href="#appendix-b-s2">B-2. 시기별 환경 점검표</a></li><li><a href="#appendix-b-s3">B-3. 체크리스트 사용 원칙</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-b"><span class="toc-num">부록 B</span><span class="toc-title">임신 280일 환경 점검 체크리스트</span></a><button class="toc-expand" type="button" data-target="appendix-b-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-b-subs" class="toc-subs" hidden><li><a href="#appendix-b-s1">B-1. 체크리스트의 자리</a></li><li><a href="#appendix-b-s2">B-2. 시기별 환경 점검 카드</a></li><li><a href="#appendix-b-s3">B-3. 체크리스트 사용 원칙</a></li></ol></li>
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-c"><span class="toc-num">부록 C</span><span class="toc-title">참고문헌</span></a><button class="toc-expand" type="button" data-target="appendix-c-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-c-subs" class="toc-subs" hidden><li><a href="#appendix-c-s1">C-1. 1차 사료 — 조선 태교 의서 계보 (1434~1800)</a></li><li><a href="#appendix-c-s2">C-2. 1차 사료 — 관제·의례</a></li><li><a href="#appendix-c-s3">C-3. 현대 학술 — DOHaD · 태내 환경</a></li><li><a href="#appendix-c-s4">C-4. 현대 학술 — 모성 정서·산전우울·MBCP</a></li><li><a href="#appendix-c-s5">C-5. 현대 학술 — 태아 청각·감각 학습</a></li><li><a href="#appendix-c-s6">C-6. 현대 학술 — 부성 영향 (아빠의 태교 근거)</a></li><li><a href="#appendix-c-s7">C-7. 공공 가이드라인 · 통계</a></li><li><a href="#appendix-c-s8">C-8. 학습 이론 · 기타</a></li><li><a href="#appendix-c-s9">C-9. 본 권의 자체 자산</a></li><li><a href="#appendix-c-s10">부록 일러두기</a></li></ol></li>
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-d"><span class="toc-num">부록 D</span><span class="toc-title">도움 요청 가이드 · 용어집 · 빠른 찾아보기</span></a><button class="toc-expand" type="button" data-target="appendix-d-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-d-subs" class="toc-subs" hidden><li><a href="#appendix-d-s1">D-1. 도움 요청 가이드</a></li><li><a href="#appendix-d-s2">D-2. 용어집</a></li><li><a href="#appendix-d-s3">D-3. 빠른 찾아보기</a></li></ol></li>
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-e"><span class="toc-num">부록 E</span><span class="toc-title">맘곁 태교 시리즈 안내</span></a><button class="toc-expand" type="button" data-target="appendix-e-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-e-subs" class="toc-subs" hidden><li><a href="#appendix-e-s1">E-1. 시리즈의 자리</a></li><li><a href="#appendix-e-s2">E-2. 함께 읽는 길</a></li><li><a href="#appendix-e-s3">E-3. 매체별 만남</a></li><li><a href="#appendix-e-s4">E-4. 그 너머의 자리</a></li></ol></li>
 </ol>
+</div>
   </nav>
 </aside>
 
@@ -1002,7 +1418,11 @@ table.data tr:last-child td { border-bottom: none; }
   </p>
 </section>
 
-<nav class="toc"><h2>차례</h2><ol>
+<nav class="toc">
+  <h2>차례</h2>
+  <div class="toc-group">
+    <h3 class="toc-group-label">본문</h3>
+    <ol class="toc-body">
 <li><a href="#prologue">들어가며</a></li>
 <li><a href="#ch1">1장 — 태교는 왜 지금 다시 필요할까</a></li>
 <li><a href="#ch2">2장 — 사주당 이씨</a></li>
@@ -1015,12 +1435,19 @@ table.data tr:last-child td { border-bottom: none; }
 <li><a href="#ch9">9장 — 좋은 태교와 부담스러운 태교의 차이</a></li>
 <li><a href="#ch10">10장 — 맘곁 태교의 다섯 원칙</a></li>
 <li><a href="#epilogue">닫으며</a></li>
+    </ol>
+  </div>
+  <div class="toc-group">
+    <h3 class="toc-group-label">부록</h3>
+    <ol class="toc-appendix">
 <li><a href="#appendix-a">부록 A — 『태교신기』 35절 전문 — 사주당 이씨와 현대 의학의 대화</a></li>
 <li><a href="#appendix-b">부록 B — 임신 280일 환경 점검 체크리스트</a></li>
 <li><a href="#appendix-c">부록 C — 참고문헌</a></li>
 <li><a href="#appendix-d">부록 D — 도움 요청 가이드 · 용어집 · 빠른 찾아보기</a></li>
 <li><a href="#appendix-e">부록 E — 맘곁 태교 시리즈 안내</a></li>
-</ol></nav>
+    </ol>
+  </div>
+</nav>
 <section id="prologue" class="chapter">
 <header class="chapter-header"><h2 class="chapter-title">들어가며</h2></header>
 <div class="chapter-body">
@@ -1045,6 +1472,15 @@ table.data tr:last-child td { border-bottom: none; }
 당신의 어떤 하루를 조금 부드럽게 해 드릴 수 있다면,<br>
 이 책은 자기 일을 다 한 셈입니다.</mark></p>
 <p>이제 시작하겠습니다.</p>
+<aside class="next-action" aria-label="다음 행동">
+  <span class="next-action-tag">다음 행동</span>
+  <div class="next-action-icon" aria-hidden="true">📖</div>
+  <div class="next-action-text">
+    <strong class="next-action-headline">1장부터 천천히 읽어 보기</strong>
+    <span class="next-action-sub">오늘 한 장만 펴 봐도 충분합니다.</span>
+  </div>
+  <a class="next-action-link" href="#ch1">이동 →</a>
+</aside>
 </div>
 </section>
 <section id="ch1" class="chapter">
@@ -1249,6 +1685,14 @@ table.data tr:last-child td { border-bottom: none; }
 <li id="fn-ch1-2">한국의 출생아 수·합계출산율 추이 및 산모 평균 출산연령 변화 — 통계청(KOSIS) 인구동태통계, OECD Family Database. 본 장에서는 비율 단정 없이 "지속적으로 낮아져 왔다", "30대 중반으로 이동" 수준의 일반 추세 진술로만 인용. 출간 전 검수자가 가장 최근 발표 자료의 연도·수치를 채워 표기. 부록 C-7 공공 가이드라인·통계 항목과 동일 자료 계통을 사용한다. <a class="fn-back" href="#fnref-ch1-2" aria-label="본문으로 돌아가기">↩</a></li>
 <li id="fn-ch1-3">한국의 산전·산후 우울 인식 및 유병률 — 보건복지부·한국보건사회연구원 『산후우울 실태조사』 등의 공공 보고서. 본 장에서는 단정적 비율 대신 "10명 가운데 1~2명 정도가 비슷한 시기를 통과한다" 식의 부드러운 표현을 사용했다. 출간 전 검수자가 가장 최신 보고서의 정확한 비율과 발간 연도로 보강. 6장 <code>[^1]</code>과 동일 자료 계통. <a class="fn-back" href="#fnref-ch1-3" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
+</aside>
+<aside class="next-action" aria-label="다음 행동">
+  <span class="next-action-tag">다음 행동</span>
+  <div class="next-action-icon" aria-hidden="true">💬</div>
+  <div class="next-action-text">
+    <strong class="next-action-headline">오늘 한 문장 태담하기</strong>
+    <span class="next-action-sub">배에 손을 얹고 "나 여기 있어" 한 마디로 시작해 보세요.</span>
+  </div>
 </aside>
 </div>
 </section>
@@ -1764,6 +2208,14 @@ DOHaD(태아기 환경의 평생 영향) 가설이 도달한 자리와 그리 �
 <li id="fn-ch2-14">『태교신기』의 일본어 번역과 일본 학교 교과서 사용 — 1932년경 일본어로 옮겨져 일본의 여중·고등학교에서 한 시기 교재로 사용되었다는 기록은 한국학 자료와 학술지에서 종종 함께 언급된다. 출간 전 검수자가 1차 자료(번역 출판본의 역자·출판사·연도, 학교 채택 시기·범위)로 보강해 표기. "세계적으로 매우 이른 시기에 속하는 임신·태교 전문서"라는 학계의 평가는 한국 여성 학문사·동아시아 의학사 연구에서 다뤄져 왔으며, 본 권에서는 <em>대단한 첫 자리에 두지 않는다</em>는 톤을 유지한다. <a class="fn-back" href="#fnref-ch2-14" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
+<aside class="next-action" aria-label="다음 행동">
+  <span class="next-action-tag">다음 행동</span>
+  <div class="next-action-icon" aria-hidden="true">📜</div>
+  <div class="next-action-text">
+    <strong class="next-action-headline">사주당의 한 문장 적어 두기</strong>
+    <span class="next-action-sub">본문에서 마음에 닿은 한 줄을 메모장에 옮겨 적어 보세요.</span>
+  </div>
+</aside>
 </div>
 </section>
 <section id="ch3" class="chapter">
@@ -2030,6 +2482,14 @@ DOHaD(태아기 환경의 평생 영향) 가설이 도달한 자리와 그리 �
 <li id="fn-ch3-5">신생아의 어머니 목소리 선호 등 출생 직후 행동 단서를 통한 태내 경험의 연속성에 관한 고전 연구 — A. J. DeCasper와 W. P. Fifer의 <em>Of human bonding: Newborns prefer their mothers' voices</em> (1980, <em>Science</em> 208) 계열의 연구를 출발점으로, 본 챕터의 진술 범위(인과 단정 회피)에 부합하는 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch3-5" aria-label="본문으로 돌아가기">↩</a></li>
 <li id="fn-ch3-6">임신 시기별 태아 발달의 일반 흐름과 자궁 안 음향 환경의 음향학적 특성 — 표 두 개(시기별 발달, 자궁 안 청각 환경)가 동시에 참조하는 합집합 자료. 산부인과·태아 발달학 표준 교과서, ACOG 임신 발달 자료, 자궁 안 청각 환경 분야의 종설(예: Querleu D et al. <em>Hearing by the human fetus?</em> <em>Seminars in Perinatology</em>, 1989; Hepper PG, Shahidullah BS. <em>Development of fetal hearing</em>, <em>Archives of Disease in Childhood</em>, 1994)을 출발점으로, 본 챕터의 진술 범위(시기 단정 회피, 음향학적 일반 합의)에 부합하는 1~2건으로 좁혀 표기. 부록 C-5 태아 청각·감각 학습 항목과 동일 자료 계통. <a class="fn-back" href="#fnref-ch3-6" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
+</aside>
+<aside class="next-action" aria-label="다음 행동">
+  <span class="next-action-tag">다음 행동</span>
+  <div class="next-action-icon" aria-hidden="true">🩺</div>
+  <div class="next-action-text">
+    <strong class="next-action-headline">다음 산전 진료에서 물어볼 한 가지 정하기</strong>
+    <span class="next-action-sub">이 장에서 궁금해진 점 하나를 검진 메모로 옮겨 두세요.</span>
+  </div>
 </aside>
 </div>
 </section>
@@ -2311,6 +2771,14 @@ DOHaD(태아기 환경의 평생 영향) 가설이 도달한 자리와 그리 �
 <li id="fn-ch4-3">사주당 이씨, 『태교신기』 — 임산부의 일상 규범(식·움직임·잠·보고듣기·마음가짐·환경)에 대한 본문 구절. 2장 [^2] 및 7장 [^1]과 동일한 한국어 번역본·역자·페이지를 사용한다. 이 장에서는 일상 규범 6개 영역 모두에 대해 동일 자료를 참조한다. <a class="fn-back" href="#fnref-ch4-3" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
+<aside class="next-action" aria-label="다음 행동">
+  <span class="next-action-tag">다음 행동</span>
+  <div class="next-action-icon" aria-hidden="true">🍽️</div>
+  <div class="next-action-text">
+    <strong class="next-action-headline">내일 한 끼만 다르게 차려 보기</strong>
+    <span class="next-action-sub">거창한 식단보다 한 끼의 결이 부드러워지는 시도를 해 보세요.</span>
+  </div>
+</aside>
 </div>
 </section>
 <section id="ch5" class="chapter">
@@ -2576,6 +3044,14 @@ DOHaD(태아기 환경의 평생 영향) 가설이 도달한 자리와 그리 �
 <li id="fn-ch5-3">태아의 시각 발달과 임신 후기 빛 자극에 대한 반응 — Hepper PG 등의 fetal visual response 종설 흐름을 출발점으로, 본 장의 진술 범위(<em>강한 인과 회피, 일반적 관찰 수준</em>)에 부합하는 1~2건으로 좁혀 표기. 빛 자극이 태아 행동에 단정적 영향을 준다고 주장하는 자료는 채택하지 않는다. <a class="fn-back" href="#fnref-ch5-3" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
+<aside class="next-action" aria-label="다음 행동">
+  <span class="next-action-tag">다음 행동</span>
+  <div class="next-action-icon" aria-hidden="true">👂</div>
+  <div class="next-action-text">
+    <strong class="next-action-headline">조용한 1분 — 아이의 청각에 닿기</strong>
+    <span class="next-action-sub">하루 한 번 1분, 배에 손을 얹고 같은 노래를 작게 들려주세요.</span>
+  </div>
+</aside>
 </div>
 </section>
 <section id="ch6" class="chapter">
@@ -2822,6 +3298,14 @@ DOHaD 흐름의 일관된 시사다.</p>
 <li id="fn-ch6-4">마음챙김 기반 출산·양육 프로그램(MBCP) — Duncan LG, Bardacke N. <em>Mindfulness-Based Childbirth and Parenting Education</em>, <em>J Child Fam Stud</em>, 2010; 후속 메타분석은 Dhillon A et al. <em>Mindfulness-Based Interventions During Pregnancy: A Systematic Review and Meta-analysis</em>, <em>Mindfulness</em>, 2017. 본 장에서는 효과 크기 단정 없이 일반 합의 방향으로만 인용. 부록 C-4 항목과 동일 자료 계통. <a class="fn-back" href="#fnref-ch6-4" aria-label="본문으로 돌아가기">↩</a></li>
 <li id="fn-ch6-5">한국의 임신 중·산후 우울 인식 및 유병률 — 보건복지부·한국보건사회연구원의 산후우울 실태조사 등 공공 보고서. 1장 [^3]과 동일 자료 계통이며, 본 장에서는 비율 단정 대신 "드문 일이 아니다"·"적지 않은 임신부와 산모"라는 톤으로 인용한다. 출간 전 검수자가 가장 최신 보고서의 비율과 발간 연도로 보강. <a class="fn-back" href="#fnref-ch6-5" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
+</aside>
+<aside class="next-action" aria-label="다음 행동">
+  <span class="next-action-tag">다음 행동</span>
+  <div class="next-action-icon" aria-hidden="true">🌿</div>
+  <div class="next-action-text">
+    <strong class="next-action-headline">오늘의 감정에 한 줄 이름 붙이기</strong>
+    <span class="next-action-sub">"오늘 내 마음의 색은 ___" — 하루의 결을 짧게 메모해 보세요.</span>
+  </div>
 </aside>
 </div>
 </section>
@@ -3089,6 +3573,14 @@ DOHaD 흐름의 일관된 시사다.</p>
 <li id="fn-ch7-7">한국의 산후 돌봄 풍속과 산후조리원 이용 현황 — 통계청(KOSIS) 산후조리 실태조사, 보건복지부 산후조리원 관련 보고서. 본 장에서는 비율 단정 없이 "비교적 높은 이용률"·"여전히 이어지고 있다" 수준의 일반 추세 진술로만 인용. 출간 전 검수자가 가장 최근 발표 자료의 연도·수치로 보강. <a class="fn-back" href="#fnref-ch7-7" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
+<aside class="next-action" aria-label="다음 행동">
+  <span class="next-action-tag">다음 행동</span>
+  <div class="next-action-icon" aria-hidden="true">🏠</div>
+  <div class="next-action-text">
+    <strong class="next-action-headline">배우자·가족과 함께 이 장 읽기</strong>
+    <span class="next-action-sub">가족 한 사람에게 이 장의 한 문단을 보여 주세요.</span>
+  </div>
+</aside>
 </div>
 </section>
 <section id="ch8" class="chapter">
@@ -3286,6 +3778,14 @@ DOHaD 흐름의 일관된 시사다.</p>
 <li id="fn-ch8-4">한국 남성 육아휴직 사용률·평균 근로시간 — 통계청(KOSIS), 고용노동부 통계, OECD Family Database. 본 장에서는 비율 단정 없이 "지속적으로 늘어 왔다", "OECD 평균보다 낮은 편", "비교적 긴 편으로 보고된다" 수준의 일반 추세 진술로만 인용. 출간 전 검수자가 가장 최근 발표 자료의 연도·수치로 보강. <a class="fn-back" href="#fnref-ch8-4" aria-label="본문으로 돌아가기">↩</a></li>
 <li id="fn-ch8-5">산전·산후 부성 우울 — Paulson JF, Bazemore SD. <em>Prenatal and postpartum depression in fathers and its association with maternal depression: a meta-analysis</em>, <em>JAMA</em>, 2010. 부의 호르몬 변화 관련 자료는 Saxbe DE et al. <em>Fathers' decline in testosterone and synchrony with partner</em>, <em>Hormones and Behavior</em>, 2017. 본 장에서는 "10명 가운데 1명 정도의 흐름이 자주 보고된다" 수준의 부드러운 표현으로 인용. 부록 C-6 항목과 동일. <a class="fn-back" href="#fnref-ch8-5" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
+</aside>
+<aside class="next-action" aria-label="다음 행동">
+  <span class="next-action-tag">다음 행동</span>
+  <div class="next-action-icon" aria-hidden="true">👨</div>
+  <div class="next-action-text">
+    <strong class="next-action-headline">오늘 아빠의 한 행동 정하기</strong>
+    <span class="next-action-sub">배에 손 얹기, 함께 산책 한 번, 잠들기 전 한 마디 — 한 가지를 골라 보세요.</span>
+  </div>
 </aside>
 </div>
 </section>
@@ -3523,6 +4023,14 @@ SNS에 인증을 남겼던 하루,<br>
 <li id="fn-ch9-1">모성 스트레스의 생화학과 태아 환경 — 6장 [^3]과 동일 자료 계통(DOHaD: Barker 1995 <em>BMJ</em>; Gluckman &amp; Hanson 2008 <em>NEJM</em>; Hanson &amp; Gluckman 2014 <em>Physiological Reviews</em>; 모성 스트레스–태아 신경발달: Glover 2014 <em>J Child Psychol Psychiatry</em>). 본 장에서는 <em>지속되는 부담이 호르몬 환경에 미세한 결을 남길 수 있다</em>는 가능성 수준의 인용에 머문다. 부록 C-3·C-4 항목과 동일. <a class="fn-back" href="#fnref-ch9-1" aria-label="본문으로 돌아가기">↩</a></li>
 <li id="fn-ch9-2">임신부 SNS·인터넷 정보 환경과 산전 정서의 관련성 — 국내·외 모성건강·디지털건강 분야의 임신부 미디어 사용 연구를 출발점으로, 본 장의 진술 범위(정보 환경의 결과 정서 흐름의 양적 관련 가능성)에 부합하는 1~2건으로 좁혀 표기. 본 장에서는 비율·시간 단정 없이 일반 흐름 진술에 머문다. <a class="fn-back" href="#fnref-ch9-2" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
+</aside>
+<aside class="next-action" aria-label="다음 행동">
+  <span class="next-action-tag">다음 행동</span>
+  <div class="next-action-icon" aria-hidden="true">⚖️</div>
+  <div class="next-action-text">
+    <strong class="next-action-headline">지난 한 주의 태교를 한 줄로 정리하기</strong>
+    <span class="next-action-sub">잘한 것과 부담된 것을 같은 무게로 적어 보세요.</span>
+  </div>
 </aside>
 </div>
 </section>
@@ -3801,6 +4309,14 @@ SNS에 인증을 남겼던 하루,<br>
 <li id="fn-ch10-5">자기효능감과 산모 적응 — Bandura A, <em>Social Foundations of Thought and Action</em>(1986) 자기효능감 이론 및 산모 자기효능감 관련 국내 간호학·발달심리 학술지의 연구. 본 장의 진술 범위(자기효능감이 임신·출산·산후 적응의 보호 요인 가운데 하나)에 부합하는 1건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch10-5" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
+<aside class="next-action" aria-label="다음 행동">
+  <span class="next-action-tag">다음 행동</span>
+  <div class="next-action-icon" aria-hidden="true">✨</div>
+  <div class="next-action-text">
+    <strong class="next-action-headline">다섯 원칙 중 한 가지 골라 한 주 살아 보기</strong>
+    <span class="next-action-sub">연결·반복·기록·다정한 생활·이해 가운데 가장 마음이 가는 하나로.</span>
+  </div>
+</aside>
 </div>
 </section>
 <section id="epilogue" class="chapter">
@@ -3826,6 +4342,15 @@ SNS에 인증을 남겼던 하루,<br>
 맘곁 태교 실천편입니다.<br>
 오늘 하루 해 볼 수 있는 작은 일들을 함께 적어 둔 책입니다.</p>
 <p>언제든, 다시 만나도 좋습니다.</p>
+<aside class="next-action" aria-label="다음 행동">
+  <span class="next-action-tag">다음 행동</span>
+  <div class="next-action-icon" aria-hidden="true">📓</div>
+  <div class="next-action-text">
+    <strong class="next-action-headline">임신 280일 환경 점검 체크리스트 열기</strong>
+    <span class="next-action-sub">부록 B에서 오늘 해당하는 시기 카드를 한 번 살펴보세요.</span>
+  </div>
+  <a class="next-action-link" href="#appendix-b">이동 →</a>
+</aside>
 </div>
 </section>
 <section id="appendix-a" class="chapter is-appendix">
@@ -4285,6 +4810,7 @@ SNS에 인증을 남겼던 하루,<br>
 35절 전체가 어머니를 향해 쓰인 것 같지만,<br>
 책의 양 끝은 단호하게 아버지를 호명한다.<br>
 200년 뒤 부성 후성유전·부성 우울 연구가 도달한 결론과 같은 자리다.</p>
+
 </div>
 </section>
 <section id="appendix-b" class="chapter is-appendix">
@@ -4299,267 +4825,351 @@ SNS에 인증을 남겼던 하루,<br>
 <em>어느 칸이 비어 있는지 알아차리는 것</em>만으로 이미 태교의 출발선에 선다.<br>
 이는 본문 10장 다섯 원칙 중 "기록"과 "한 가지부터" 원칙의 실천 도구이기도 하다.</p>
 <blockquote class="meta-note">사용 안내: 임신 진단 직후 1회 → 분기별(13주, 27주, 37주) 점검 → 출산 후 회고 1회. 체크 결과는 부담의 근거가 아니라 <em>대화의 자료</em>가 되도록.</blockquote>
-<h3 id="appendix-b-s2" class="subhead">B-2. 시기별 환경 점검표</h3>
-<h4 class="subhead-2">0단계. 임신 전·진단 직후 (수태 ~ 12주)</h4>
-<table class="data">
-<thead><tr>
-<th>영역</th>
-<th>점검 항목</th>
-<th>사주당 근거 절</th>
-</tr></thead><tbody>
-<tr>
-<td>부부 환경</td>
-<td>□ 배우자와 임신·출산에 대해 30분 이상 대화한 적 있다</td>
-<td>1-2, 1-3</td>
-</tr>
-<tr>
-<td>부부 환경</td>
-<td>□ 배우자도 음주·흡연·고강도 야근 조절을 시작했다</td>
-<td>1-3, 10-1</td>
-</tr>
-<tr>
-<td>부부 환경</td>
-<td>□ 배우자가 첫 산전 진료에 동행할 의사가 있다</td>
-<td>4-1, 10-1</td>
-</tr>
-<tr>
-<td>신체</td>
-<td>□ 엽산 보충(임신 전~12주)을 시작했다</td>
-<td>4-12</td>
-</tr>
-<tr>
-<td>신체</td>
-<td>□ 알코올·흡연을 중단했다</td>
-<td>4-12</td>
-</tr>
-<tr>
-<td>신체</td>
-<td>□ 카페인을 권장 한도 안에서 조절하고 있다</td>
-<td>4-12</td>
-</tr>
-<tr>
-<td>정보 환경</td>
-<td>□ 정보 출처를 3개 이내로 정해 두었다 (산부인과·공식 가이드·신뢰 도서)</td>
-<td>7-1</td>
-</tr>
-<tr>
-<td>정보 환경</td>
-<td>□ SNS·맘카페 정보 노출 시간을 의식하고 있다</td>
-<td>7-1</td>
-</tr>
-<tr>
-<td>정서</td>
-<td>□ 임신 전부터 진료받던 정신건강 이슈가 있다면 의료진에게 알렸다</td>
-<td>4-5, 8-2</td>
-</tr>
-<tr>
-<td>가족</td>
-<td>□ 직계가족·시가족·친정에 임신 사실을 알릴 시점·범위를 정했다</td>
-<td>4-1, 4-2</td>
-</tr>
-</tbody></table>
-<h4 class="subhead-2">1단계. 1분기 (13~26주) — 환경의 기초를 만드는 시기</h4>
-<table class="data">
-<thead><tr>
-<th>영역</th>
-<th>점검 항목</th>
-<th>사주당 근거 절</th>
-</tr></thead><tbody>
-<tr>
-<td>거처</td>
-<td>□ 잠자리 매트리스·베개의 지지가 충분하다</td>
-<td>4-7, 4-11</td>
-</tr>
-<tr>
-<td>거처</td>
-<td>□ 침실 온도(18~22℃)·습도(40~60%)가 안정적이다</td>
-<td>4-7</td>
-</tr>
-<tr>
-<td>거처</td>
-<td>□ 욕실·계단 미끄럼 방지를 점검했다</td>
-<td>4-7</td>
-</tr>
-<tr>
-<td>노동</td>
-<td>□ 1시간 이상 연속해서 서 있거나 앉아 있지 않는다</td>
-<td>4-8, 4-9, 4-10</td>
-</tr>
-<tr>
-<td>노동</td>
-<td>□ 무거운 물건을 자주 들지 않는다</td>
-<td>4-8</td>
-</tr>
-<tr>
-<td>노동</td>
-<td>□ 야근·교대근무 빈도를 줄이는 방향으로 조정 중이다</td>
-<td>4-8</td>
-</tr>
-<tr>
-<td>식이</td>
-<td>□ 매일 1끼 이상 따뜻하고 균형 잡힌 식사를 한다</td>
-<td>4-12</td>
-</tr>
-<tr>
-<td>식이</td>
-<td>□ 회피 식품(날생선·미가공 유제품·고수은어·미숙성 육류·생계란)을 알고 있다</td>
-<td>4-12</td>
-</tr>
-<tr>
-<td>식이</td>
-<td>□ 수분(권장량 안에서)을 의식적으로 섭취한다</td>
-<td>4-12</td>
-</tr>
-<tr>
-<td>청각</td>
-<td>□ 하루 한 번 이상 <em>조용한</em> 시간(15분 이상)을 가진다</td>
-<td>4-4</td>
-</tr>
-<tr>
-<td>청각</td>
-<td>□ 좋아하는 음악·낭독·자연음을 정해 두었다</td>
-<td>4-4</td>
-</tr>
-<tr>
-<td>시각</td>
-<td>□ 자극적·폭력적 영상 노출을 의식적으로 줄이고 있다</td>
-<td>4-3</td>
-</tr>
-<tr>
-<td>정서</td>
-<td>□ 일주일에 한 번은 자기 감정을 글이나 말로 표현한다</td>
-<td>4-5, 9-1</td>
-</tr>
-<tr>
-<td>정서</td>
-<td>□ 불안·우울이 2주 이상 지속될 때 도움 요청 경로를 알고 있다</td>
-<td>4-5, 8-2</td>
-</tr>
-<tr>
-<td>가족</td>
-<td>□ 배우자가 태동·진료·일상 변화에 정기적으로 관심을 보인다</td>
-<td>4-1, 4-2</td>
-</tr>
-</tbody></table>
-<h4 class="subhead-2">2단계. 2분기 (27~36주) — 감각의 시기</h4>
-<table class="data">
-<thead><tr>
-<th>영역</th>
-<th>점검 항목</th>
-<th>사주당 근거 절</th>
-</tr></thead><tbody>
-<tr>
-<td>청각 환경</td>
-<td>□ 태아에게 들려주는 <em>소리 루틴</em> (음악·낭독·태담)이 일정하게 자리잡혔다</td>
-<td>4-4</td>
-</tr>
-<tr>
-<td>촉각 환경</td>
-<td>□ 매일 5~10분 배 쓰다듬기·태담 시간을 가진다</td>
-<td>4-4</td>
-</tr>
-<tr>
-<td>촉각 환경</td>
-<td>□ 배우자도 주 3회 이상 태담·접촉에 참여한다</td>
-<td>4-1, 10-1</td>
-</tr>
-<tr>
-<td>신체</td>
-<td>□ 좌측위 수면 자세에 적응하고 있다 (만삭 권장)</td>
-<td>4-11</td>
-</tr>
-<tr>
-<td>신체</td>
-<td>□ 가벼운 산책·임산부 요가·수영 중 1가지를 의료진과 상의한 강도로 한다</td>
-<td>4-10</td>
-</tr>
-<tr>
-<td>신체</td>
-<td>□ 골반저근·자세 운동을 알고 있다</td>
-<td>4-9, 4-10</td>
-</tr>
-<tr>
-<td>정서</td>
-<td>□ 출산에 대한 공포·불안을 의료진과 이야기한 적이 있다</td>
-<td>4-5, 4-13</td>
-</tr>
-<tr>
-<td>정서</td>
-<td>□ 부담스러운 태교 정보가 들어올 때 <em>밀어내는 방식</em>을 정해 두었다</td>
-<td>7-1, 7-2</td>
-</tr>
-<tr>
-<td>가족</td>
-<td>□ 산후 한 달 동안 누가 어떤 도움을 줄지 <em>이름과 역할</em>이 정해져 있다</td>
-<td>4-2</td>
-</tr>
-</tbody></table>
-<h4 class="subhead-2">3단계. 3분기 (37주~출산) — 분만 준비기</h4>
-<table class="data">
-<thead><tr>
-<th>영역</th>
-<th>점검 항목</th>
-<th>사주당 근거 절</th>
-</tr></thead><tbody>
-<tr>
-<td>분만</td>
-<td>□ 분만 병원·이동 경로·도착 신호를 정해 두었다</td>
-<td>4-13</td>
-</tr>
-<tr>
-<td>분만</td>
-<td>□ 진통 시작 신호와 응급 호출 기준을 알고 있다</td>
-<td>4-13</td>
-</tr>
-<tr>
-<td>분만</td>
-<td>□ 출산 동반자(배우자/가족)가 분만 전 과정에 함께할 준비가 되었다</td>
-<td>4-13, 10-1</td>
-</tr>
-<tr>
-<td>가족</td>
-<td>□ 산후 도우미·산후조리원·친정 등 산후 환경이 결정되어 있다</td>
-<td>4-2</td>
-</tr>
-<tr>
-<td>신체</td>
-<td>□ 출산 가방을 챙겼다</td>
-<td>4-13</td>
-</tr>
-<tr>
-<td>정서</td>
-<td>□ 분만이 예측대로 되지 않을 가능성을 의료진과 이야기했다</td>
-<td>4-13, 8-2</td>
-</tr>
-<tr>
-<td>정서</td>
-<td>□ 산후우울증의 신호와 도움 요청 경로를 알고 있다</td>
-<td>4-5, 8-2</td>
-</tr>
-</tbody></table>
-<h4 class="subhead-2">4단계. 산후 회고 (출산 후 6주)</h4>
-<table class="data">
-<thead><tr>
-<th>영역</th>
-<th>점검 항목</th>
-<th>사주당 근거 절</th>
-</tr></thead><tbody>
-<tr>
-<td>회고</td>
-<td>□ 임신 기간 중 <em>나에게 가장 큰 환경</em>은 무엇이었는지 한 줄 적어 보았다</td>
-<td>9-1</td>
-</tr>
-<tr>
-<td>회고</td>
-<td>□ 다음 자녀 또는 주변 임신부에게 전해주고 싶은 한 가지가 있다</td>
-<td>9-1</td>
-</tr>
-<tr>
-<td>회고</td>
-<td>□ 배우자와 함께 280일을 한 번 되짚는 시간을 가졌다</td>
-<td>1-2, 10-1</td>
-</tr>
-</tbody></table>
+<h3 id="appendix-b-s2" class="subhead">B-2. 시기별 환경 점검 카드</h3>
+<p>각 시기 카드는 그대로 맘곁 앱의 한 화면 단위로 옮길 수 있도록 정리되어 있다.<br>
+<strong>체크 상태는 이 페이지 안에서 저장</strong>되며 (브라우저 로컬 저장소), 다시 열어도 그대로 남는다.</p>
+<div class="check-board" data-checklist="momgyeot-280">
+
+<section class="check-stage" data-stage="0">
+  <header class="check-stage-head">
+    <div class="check-stage-meta">
+      <span class="check-stage-num">0단계</span>
+      <span class="check-stage-range">수태 ~ 12주</span>
+    </div>
+    <h3 class="check-stage-title">임신 전 · 진단 직후</h3>
+    <p class="check-stage-sub">기초 환경을 점검하고 알리는 시기.</p>
+    <div class="check-stage-progress"><span class="check-progress-bar"></span><span class="check-progress-text">0 / 10</span></div>
+  </header>
+  <div class="check-cards">
+    <label class="check-card" data-area="부부 환경">
+      <input type="checkbox" data-key="s0-c1">
+      <span class="check-area">부부 환경</span>
+      <span class="check-item">배우자와 임신·출산에 대해 30분 이상 대화한 적 있다</span>
+      <span class="check-ref">사주당 1-2 · 1-3</span>
+    </label>
+    <label class="check-card" data-area="부부 환경">
+      <input type="checkbox" data-key="s0-c2">
+      <span class="check-area">부부 환경</span>
+      <span class="check-item">배우자도 음주·흡연·고강도 야근 조절을 시작했다</span>
+      <span class="check-ref">사주당 1-3 · 10-1</span>
+    </label>
+    <label class="check-card" data-area="부부 환경">
+      <input type="checkbox" data-key="s0-c3">
+      <span class="check-area">부부 환경</span>
+      <span class="check-item">배우자가 첫 산전 진료에 동행할 의사가 있다</span>
+      <span class="check-ref">사주당 4-1 · 10-1</span>
+    </label>
+    <label class="check-card" data-area="신체">
+      <input type="checkbox" data-key="s0-c4">
+      <span class="check-area">신체</span>
+      <span class="check-item">엽산 보충(임신 전 ~ 12주)을 시작했다</span>
+      <span class="check-ref">사주당 4-12</span>
+    </label>
+    <label class="check-card" data-area="신체">
+      <input type="checkbox" data-key="s0-c5">
+      <span class="check-area">신체</span>
+      <span class="check-item">알코올 · 흡연을 중단했다</span>
+      <span class="check-ref">사주당 4-12</span>
+    </label>
+    <label class="check-card" data-area="신체">
+      <input type="checkbox" data-key="s0-c6">
+      <span class="check-area">신체</span>
+      <span class="check-item">카페인을 권장 한도 안에서 조절하고 있다</span>
+      <span class="check-ref">사주당 4-12</span>
+    </label>
+    <label class="check-card" data-area="정보 환경">
+      <input type="checkbox" data-key="s0-c7">
+      <span class="check-area">정보 환경</span>
+      <span class="check-item">정보 출처를 3개 이내로 정해 두었다 (산부인과 · 공식 가이드 · 신뢰 도서)</span>
+      <span class="check-ref">사주당 7-1</span>
+    </label>
+    <label class="check-card" data-area="정보 환경">
+      <input type="checkbox" data-key="s0-c8">
+      <span class="check-area">정보 환경</span>
+      <span class="check-item">SNS · 맘카페 정보 노출 시간을 의식하고 있다</span>
+      <span class="check-ref">사주당 7-1</span>
+    </label>
+    <label class="check-card" data-area="정서">
+      <input type="checkbox" data-key="s0-c9">
+      <span class="check-area">정서</span>
+      <span class="check-item">임신 전부터 진료받던 정신건강 이슈가 있다면 의료진에게 알렸다</span>
+      <span class="check-ref">사주당 4-5 · 8-2</span>
+    </label>
+    <label class="check-card" data-area="가족">
+      <input type="checkbox" data-key="s0-c10">
+      <span class="check-area">가족</span>
+      <span class="check-item">직계가족 · 시가족 · 친정에 임신 사실을 알릴 시점·범위를 정했다</span>
+      <span class="check-ref">사주당 4-1 · 4-2</span>
+    </label>
+  </div>
+</section>
+
+<section class="check-stage" data-stage="1">
+  <header class="check-stage-head">
+    <div class="check-stage-meta">
+      <span class="check-stage-num">1단계</span>
+      <span class="check-stage-range">13 ~ 26주</span>
+    </div>
+    <h3 class="check-stage-title">1분기 — 환경의 기초를 만드는 시기</h3>
+    <p class="check-stage-sub">생활 공간과 일상의 결을 정돈한다.</p>
+    <div class="check-stage-progress"><span class="check-progress-bar"></span><span class="check-progress-text">0 / 15</span></div>
+  </header>
+  <div class="check-cards">
+    <label class="check-card" data-area="거처">
+      <input type="checkbox" data-key="s1-c1">
+      <span class="check-area">거처</span>
+      <span class="check-item">잠자리 매트리스 · 베개의 지지가 충분하다</span>
+      <span class="check-ref">사주당 4-7 · 4-11</span>
+    </label>
+    <label class="check-card" data-area="거처">
+      <input type="checkbox" data-key="s1-c2">
+      <span class="check-area">거처</span>
+      <span class="check-item">침실 온도(18 ~ 22℃) · 습도(40 ~ 60%)가 안정적이다</span>
+      <span class="check-ref">사주당 4-7</span>
+    </label>
+    <label class="check-card" data-area="거처">
+      <input type="checkbox" data-key="s1-c3">
+      <span class="check-area">거처</span>
+      <span class="check-item">욕실 · 계단 미끄럼 방지를 점검했다</span>
+      <span class="check-ref">사주당 4-7</span>
+    </label>
+    <label class="check-card" data-area="노동">
+      <input type="checkbox" data-key="s1-c4">
+      <span class="check-area">노동</span>
+      <span class="check-item">1시간 이상 연속해서 서 있거나 앉아 있지 않는다</span>
+      <span class="check-ref">사주당 4-8 · 4-9 · 4-10</span>
+    </label>
+    <label class="check-card" data-area="노동">
+      <input type="checkbox" data-key="s1-c5">
+      <span class="check-area">노동</span>
+      <span class="check-item">무거운 물건을 자주 들지 않는다</span>
+      <span class="check-ref">사주당 4-8</span>
+    </label>
+    <label class="check-card" data-area="노동">
+      <input type="checkbox" data-key="s1-c6">
+      <span class="check-area">노동</span>
+      <span class="check-item">야근 · 교대근무 빈도를 줄이는 방향으로 조정 중이다</span>
+      <span class="check-ref">사주당 4-8</span>
+    </label>
+    <label class="check-card" data-area="식이">
+      <input type="checkbox" data-key="s1-c7">
+      <span class="check-area">식이</span>
+      <span class="check-item">매일 1끼 이상 따뜻하고 균형 잡힌 식사를 한다</span>
+      <span class="check-ref">사주당 4-12</span>
+    </label>
+    <label class="check-card" data-area="식이">
+      <input type="checkbox" data-key="s1-c8">
+      <span class="check-area">식이</span>
+      <span class="check-item">회피 식품(날생선·미가공 유제품·고수은어·미숙성 육류·생계란)을 알고 있다</span>
+      <span class="check-ref">사주당 4-12</span>
+    </label>
+    <label class="check-card" data-area="식이">
+      <input type="checkbox" data-key="s1-c9">
+      <span class="check-area">식이</span>
+      <span class="check-item">수분(권장량 안에서)을 의식적으로 섭취한다</span>
+      <span class="check-ref">사주당 4-12</span>
+    </label>
+    <label class="check-card" data-area="청각">
+      <input type="checkbox" data-key="s1-c10">
+      <span class="check-area">청각</span>
+      <span class="check-item">하루 한 번 이상 *조용한* 시간(15분 이상)을 가진다</span>
+      <span class="check-ref">사주당 4-4</span>
+    </label>
+    <label class="check-card" data-area="청각">
+      <input type="checkbox" data-key="s1-c11">
+      <span class="check-area">청각</span>
+      <span class="check-item">좋아하는 음악·낭독·자연음을 정해 두었다</span>
+      <span class="check-ref">사주당 4-4</span>
+    </label>
+    <label class="check-card" data-area="시각">
+      <input type="checkbox" data-key="s1-c12">
+      <span class="check-area">시각</span>
+      <span class="check-item">자극적·폭력적 영상 노출을 의식적으로 줄이고 있다</span>
+      <span class="check-ref">사주당 4-3</span>
+    </label>
+    <label class="check-card" data-area="정서">
+      <input type="checkbox" data-key="s1-c13">
+      <span class="check-area">정서</span>
+      <span class="check-item">일주일에 한 번은 자기 감정을 글이나 말로 표현한다</span>
+      <span class="check-ref">사주당 4-5 · 9-1</span>
+    </label>
+    <label class="check-card" data-area="정서">
+      <input type="checkbox" data-key="s1-c14">
+      <span class="check-area">정서</span>
+      <span class="check-item">불안·우울이 2주 이상 지속될 때 도움 요청 경로를 알고 있다</span>
+      <span class="check-ref">사주당 4-5 · 8-2 · 부록 D</span>
+    </label>
+    <label class="check-card" data-area="가족">
+      <input type="checkbox" data-key="s1-c15">
+      <span class="check-area">가족</span>
+      <span class="check-item">배우자가 태동·진료·일상 변화에 정기적으로 관심을 보인다</span>
+      <span class="check-ref">사주당 4-1 · 4-2</span>
+    </label>
+  </div>
+</section>
+
+<section class="check-stage" data-stage="2">
+  <header class="check-stage-head">
+    <div class="check-stage-meta">
+      <span class="check-stage-num">2단계</span>
+      <span class="check-stage-range">27 ~ 36주</span>
+    </div>
+    <h3 class="check-stage-title">2분기 — 감각의 시기</h3>
+    <p class="check-stage-sub">소리·접촉·자세를 통해 아이와의 연결을 만드는 시기.</p>
+    <div class="check-stage-progress"><span class="check-progress-bar"></span><span class="check-progress-text">0 / 9</span></div>
+  </header>
+  <div class="check-cards">
+    <label class="check-card" data-area="청각 환경">
+      <input type="checkbox" data-key="s2-c1">
+      <span class="check-area">청각 환경</span>
+      <span class="check-item">태아에게 들려주는 *소리 루틴* (음악·낭독·태담)이 일정하게 자리잡혔다</span>
+      <span class="check-ref">사주당 4-4</span>
+    </label>
+    <label class="check-card" data-area="촉각 환경">
+      <input type="checkbox" data-key="s2-c2">
+      <span class="check-area">촉각 환경</span>
+      <span class="check-item">매일 5 ~ 10분 배 쓰다듬기·태담 시간을 가진다</span>
+      <span class="check-ref">사주당 4-4</span>
+    </label>
+    <label class="check-card" data-area="촉각 환경">
+      <input type="checkbox" data-key="s2-c3">
+      <span class="check-area">촉각 환경</span>
+      <span class="check-item">배우자도 주 3회 이상 태담·접촉에 참여한다</span>
+      <span class="check-ref">사주당 4-1 · 10-1</span>
+    </label>
+    <label class="check-card" data-area="신체">
+      <input type="checkbox" data-key="s2-c4">
+      <span class="check-area">신체</span>
+      <span class="check-item">좌측위 수면 자세에 적응하고 있다 (만삭 권장)</span>
+      <span class="check-ref">사주당 4-11</span>
+    </label>
+    <label class="check-card" data-area="신체">
+      <input type="checkbox" data-key="s2-c5">
+      <span class="check-area">신체</span>
+      <span class="check-item">가벼운 산책·임산부 요가·수영 중 1가지를 의료진과 상의한 강도로 한다</span>
+      <span class="check-ref">사주당 4-10</span>
+    </label>
+    <label class="check-card" data-area="신체">
+      <input type="checkbox" data-key="s2-c6">
+      <span class="check-area">신체</span>
+      <span class="check-item">골반저근·자세 운동을 알고 있다</span>
+      <span class="check-ref">사주당 4-9 · 4-10</span>
+    </label>
+    <label class="check-card" data-area="정서">
+      <input type="checkbox" data-key="s2-c7">
+      <span class="check-area">정서</span>
+      <span class="check-item">출산에 대한 공포·불안을 의료진과 이야기한 적이 있다</span>
+      <span class="check-ref">사주당 4-5 · 4-13</span>
+    </label>
+    <label class="check-card" data-area="정서">
+      <input type="checkbox" data-key="s2-c8">
+      <span class="check-area">정서</span>
+      <span class="check-item">부담스러운 태교 정보가 들어올 때 *밀어내는 방식*을 정해 두었다</span>
+      <span class="check-ref">사주당 7-1 · 7-2</span>
+    </label>
+    <label class="check-card" data-area="가족">
+      <input type="checkbox" data-key="s2-c9">
+      <span class="check-area">가족</span>
+      <span class="check-item">산후 한 달 동안 누가 어떤 도움을 줄지 *이름과 역할*이 정해져 있다</span>
+      <span class="check-ref">사주당 4-2</span>
+    </label>
+  </div>
+</section>
+
+<section class="check-stage" data-stage="3">
+  <header class="check-stage-head">
+    <div class="check-stage-meta">
+      <span class="check-stage-num">3단계</span>
+      <span class="check-stage-range">37주 ~ 출산</span>
+    </div>
+    <h3 class="check-stage-title">3분기 — 분만 준비기</h3>
+    <p class="check-stage-sub">의료적 동선을 결정하고 산후 환경을 정한다.</p>
+    <div class="check-stage-progress"><span class="check-progress-bar"></span><span class="check-progress-text">0 / 7</span></div>
+  </header>
+  <div class="check-cards">
+    <label class="check-card" data-area="분만">
+      <input type="checkbox" data-key="s3-c1">
+      <span class="check-area">분만</span>
+      <span class="check-item">분만 병원·이동 경로·도착 신호를 정해 두었다</span>
+      <span class="check-ref">사주당 4-13</span>
+    </label>
+    <label class="check-card" data-area="분만">
+      <input type="checkbox" data-key="s3-c2">
+      <span class="check-area">분만</span>
+      <span class="check-item">진통 시작 신호와 응급 호출 기준을 알고 있다</span>
+      <span class="check-ref">사주당 4-13 · 부록 D</span>
+    </label>
+    <label class="check-card" data-area="분만">
+      <input type="checkbox" data-key="s3-c3">
+      <span class="check-area">분만</span>
+      <span class="check-item">출산 동반자(배우자/가족)가 분만 전 과정에 함께할 준비가 되었다</span>
+      <span class="check-ref">사주당 4-13 · 10-1</span>
+    </label>
+    <label class="check-card" data-area="가족">
+      <input type="checkbox" data-key="s3-c4">
+      <span class="check-area">가족</span>
+      <span class="check-item">산후 도우미·산후조리원·친정 등 산후 환경이 결정되어 있다</span>
+      <span class="check-ref">사주당 4-2</span>
+    </label>
+    <label class="check-card" data-area="신체">
+      <input type="checkbox" data-key="s3-c5">
+      <span class="check-area">신체</span>
+      <span class="check-item">출산 가방을 챙겼다</span>
+      <span class="check-ref">사주당 4-13</span>
+    </label>
+    <label class="check-card" data-area="정서">
+      <input type="checkbox" data-key="s3-c6">
+      <span class="check-area">정서</span>
+      <span class="check-item">분만이 예측대로 되지 않을 가능성을 의료진과 이야기했다</span>
+      <span class="check-ref">사주당 4-13 · 8-2</span>
+    </label>
+    <label class="check-card" data-area="정서">
+      <input type="checkbox" data-key="s3-c7">
+      <span class="check-area">정서</span>
+      <span class="check-item">산후우울증의 신호와 도움 요청 경로를 알고 있다</span>
+      <span class="check-ref">사주당 4-5 · 8-2 · 부록 D</span>
+    </label>
+  </div>
+</section>
+
+<section class="check-stage" data-stage="4">
+  <header class="check-stage-head">
+    <div class="check-stage-meta">
+      <span class="check-stage-num">4단계</span>
+      <span class="check-stage-range">출산 후 6주</span>
+    </div>
+    <h3 class="check-stage-title">산후 회고</h3>
+    <p class="check-stage-sub">280일을 한 번 되짚고, 다음을 위해 한 줄을 남긴다.</p>
+    <div class="check-stage-progress"><span class="check-progress-bar"></span><span class="check-progress-text">0 / 3</span></div>
+  </header>
+  <div class="check-cards">
+    <label class="check-card" data-area="회고">
+      <input type="checkbox" data-key="s4-c1">
+      <span class="check-area">회고</span>
+      <span class="check-item">임신 기간 중 *나에게 가장 큰 환경*은 무엇이었는지 한 줄 적어 보았다</span>
+      <span class="check-ref">사주당 9-1</span>
+    </label>
+    <label class="check-card" data-area="회고">
+      <input type="checkbox" data-key="s4-c2">
+      <span class="check-area">회고</span>
+      <span class="check-item">다음 자녀 또는 주변 임신부에게 전해주고 싶은 한 가지가 있다</span>
+      <span class="check-ref">사주당 9-1</span>
+    </label>
+    <label class="check-card" data-area="회고">
+      <input type="checkbox" data-key="s4-c3">
+      <span class="check-area">회고</span>
+      <span class="check-item">배우자와 함께 280일을 한 번 되짚는 시간을 가졌다</span>
+      <span class="check-ref">사주당 1-2 · 10-1</span>
+    </label>
+  </div>
+</section>
+
+<div class="check-board-tools">
+  <button type="button" class="check-reset" data-reset="momgyeot-280">전체 초기화</button>
+  <span class="check-board-note">체크 상태는 이 브라우저에만 저장됩니다.</span>
+</div>
+
+</div>
 <h3 id="appendix-b-s3" class="subhead">B-3. 체크리스트 사용 원칙</h3>
 <p>체크리스트는 다음 다섯 원칙 위에서 작동한다.<br>
 본문 10장의 <em>맘곁 다섯 원칙</em>과 같은 자리다.</p>
@@ -4568,6 +5178,7 @@ SNS에 인증을 남겼던 하루,<br>
 3. <strong>분기별 1회로 충분하다</strong> — 매일 점검은 부담을 만든다. 분기 전환 시점이 적정 빈도다.<br>
 4. <strong>기록은 짧게</strong> — 체크 후 <em>한 줄 메모</em>만 남긴다. 길게 쓸수록 지속이 어렵다.<br>
 5. <strong>의료적 판단을 대체하지 않는다</strong> — 모든 신체·정서 신호는 산부인과 또는 정신건강 전문가의 진료가 우선이다.</p>
+
 </div>
 </section>
 <section id="appendix-c" class="chapter is-appendix">
@@ -4802,6 +5413,7 @@ SNS에 인증을 남겼던 하루,<br>
 다 외우거나 다 채울 필요가 없다.<br>
 필요할 때 펼쳐서, 한 줄을 만나고, 다시 일상으로 돌아가는 것 —<br>
 그것이 사주당 이씨가 200년 전 짧은 35절을 남긴 자리이기도 하다.</p>
+
 </div>
 </section>
 <section id="appendix-d" class="chapter is-appendix">
@@ -4809,47 +5421,129 @@ SNS에 인증을 남겼던 하루,<br>
 <div class="chapter-body">
 <h3 id="appendix-d-s1" class="subhead">D-1. 도움 요청 가이드</h3>
 <p>이 페이지는 책을 덮고도 곁에 둘 수 있도록 짧게 정리한 안내다.<br>
-<em>혼자 견디지 않아도 된다</em>는 자리를 한눈에 보기 위한 페이지다.</p>
-<table class="data">
-<thead><tr>
-<th>자리</th>
-<th>도움이 닿는 곳</th>
-<th>비고</th>
-</tr></thead><tbody>
-<tr>
-<td>일상 진료</td>
-<td>산부인과 정기 진료</td>
-<td>임신 초기부터 분만 직전까지 가장 먼저 닿는 자리</td>
-</tr>
-<tr>
-<td>정서적 어려움</td>
-<td>정신건강 전문가 상담</td>
-<td>산전·산후 우울, 불안, 길어지는 무거움</td>
-</tr>
-<tr>
-<td>산후 위기</td>
-<td>산후우울 관련 상담·의료 자원</td>
-<td>출산 후 6주를 전후한 시기에 특히</td>
-</tr>
-<tr>
-<td>사회적 위기</td>
-<td>가정 폭력·위기 임신 관련 공공 상담</td>
-<td>안전이 위협받는 자리</td>
-</tr>
-<tr>
-<td>가족·관계 어려움</td>
-<td>가족 상담·부부 상담</td>
-<td>가족 안에서 결이 자주 부딪힐 때</td>
-</tr>
-<tr>
-<td>경제·돌봄 자원</td>
-<td>지역 보건소 모자보건사업, 산모·신생아 건강관리 지원</td>
-<td>출산 전후 도움이 필요할 때</td>
-</tr>
-</tbody></table>
-<blockquote class="meta-note">출간 시점에 검수자가 한국 공공 자원의 정확한 명칭·전화·링크를 채운다.<br>
-위 표는 <em>어디에 손을 내밀 수 있는지</em>의 결을 보여 주기 위한 골격이며,<br>
-책의 어떤 페이지보다 먼저 외워 두어도 좋은 자리다.</blockquote>
+<strong>혼자 견디지 않아도 된다.</strong> 이 한 줄을 한눈에 보기 위한 페이지다.</p>
+<div class="safety-board" role="region" aria-label="도움 요청 가이드">
+
+<div class="safety-emergency" role="alert">
+  <div class="safety-emergency-head">
+    <span class="safety-emergency-icon" aria-hidden="true">🚨</span>
+    <h3 class="safety-emergency-title">지금 바로 도움이 필요할 때</h3>
+  </div>
+  <p class="safety-emergency-lede">생명·안전이 위협받거나 분만 중 응급 상황이라면 망설이지 말고 아래로 연결합니다. 모두 24시간 운영입니다.</p>
+  <div class="safety-emergency-grid">
+    <a class="safety-call" href="tel:119">
+      <span class="safety-call-num">119</span>
+      <span class="safety-call-label">응급 의료 · 분만 응급</span>
+    </a>
+    <a class="safety-call" href="tel:1393">
+      <span class="safety-call-num">1393</span>
+      <span class="safety-call-label">자살예방상담전화</span>
+    </a>
+    <a class="safety-call" href="tel:1577-0199">
+      <span class="safety-call-num">1577-0199</span>
+      <span class="safety-call-label">정신건강위기상담</span>
+    </a>
+    <a class="safety-call" href="tel:1366">
+      <span class="safety-call-num">1366</span>
+      <span class="safety-call-label">여성긴급전화 · 가정폭력</span>
+    </a>
+  </div>
+</div>
+
+<div class="safety-tiers">
+  <article class="safety-tier safety-tier--soft">
+    <header class="safety-tier-head">
+      <span class="safety-tier-tag">평상 시</span>
+      <h4 class="safety-tier-title">정기 진료와 의료적 동행</h4>
+    </header>
+    <p class="safety-tier-lede">임신 초기부터 분만 직전까지 가장 먼저 닿는 자리입니다.</p>
+    <ul class="safety-tier-list">
+      <li><strong>산부인과 정기 진료</strong> — 작은 변화도 다음 진료에 한 줄로 메모해 가세요.</li>
+      <li><strong>가까운 보건소 모자건강사업</strong> — 임산부 등록·엽산·철분 지원, 산전 검사 안내.</li>
+      <li><strong>국가건강정보포털 · 모성건강 자료</strong> — 보건복지부 · 질병관리청 공식 가이드 우선.</li>
+    </ul>
+    <div class="safety-tier-actions">
+      <a href="tel:1577-1389" class="safety-tier-btn">📞 1577-1389 보건복지콜센터</a>
+      <a href="https://www.mw.go.kr" target="_blank" rel="noopener" class="safety-tier-btn safety-tier-btn--ghost">🔗 보건복지부</a>
+    </div>
+  </article>
+
+  <article class="safety-tier safety-tier--rose">
+    <header class="safety-tier-head">
+      <span class="safety-tier-tag">정서가 무거울 때</span>
+      <h4 class="safety-tier-title">산전·산후 우울 · 불안 · 길어지는 무거움</h4>
+    </header>
+    <p class="safety-tier-lede">슬픔 · 무력감 · 잠들기 어려움 · 식욕 변화가 <strong>2주 이상</strong> 이어지면 전문가의 자리로 옮겨 보세요.</p>
+    <ul class="safety-tier-list">
+      <li><strong>가까운 정신건강복지센터</strong> — 시·군·구마다 운영. 산전·산후 정서 상담 가능.</li>
+      <li><strong>국가정신건강정보포털</strong> — 자가검진(EPDS 산후우울) · 기관 찾기.</li>
+      <li><strong>산부인과 진료 시 함께 이야기</strong> — 정신건강 이력은 의료진이 알면 더 잘 도울 수 있습니다.</li>
+    </ul>
+    <div class="safety-tier-actions">
+      <a href="tel:1577-0199" class="safety-tier-btn">📞 1577-0199 정신건강위기상담 (24h)</a>
+      <a href="https://www.mentalhealth.go.kr" target="_blank" rel="noopener" class="safety-tier-btn safety-tier-btn--ghost">🔗 국가정신건강정보포털</a>
+    </div>
+  </article>
+
+  <article class="safety-tier safety-tier--sage">
+    <header class="safety-tier-head">
+      <span class="safety-tier-tag">출산 후 6주 전후</span>
+      <h4 class="safety-tier-title">산후우울 · 산후 위기</h4>
+    </header>
+    <p class="safety-tier-lede">출산 후 호르몬 · 수면 · 회복이 한 번에 겹치는 시기입니다. <strong>"이상하다"는 감각</strong>이 들면 그 자체가 도움 신호입니다.</p>
+    <ul class="safety-tier-list">
+      <li><strong>산후 진료 시 EPDS 자가검진</strong> — 13점 이상이면 추가 평가 권유.</li>
+      <li><strong>지역 보건소 산모·신생아 건강관리 지원</strong> — 산후도우미 비용 지원.</li>
+      <li><strong>가까운 정신건강복지센터 · 산부인과 협진</strong>.</li>
+    </ul>
+    <div class="safety-tier-actions">
+      <a href="tel:1577-0199" class="safety-tier-btn">📞 1577-0199 정신건강위기상담</a>
+      <a href="tel:129" class="safety-tier-btn safety-tier-btn--ghost">📞 129 보건복지 긴급</a>
+    </div>
+  </article>
+
+  <article class="safety-tier safety-tier--mustard">
+    <header class="safety-tier-head">
+      <span class="safety-tier-tag">관계 · 안전</span>
+      <h4 class="safety-tier-title">가족 갈등 · 가정 폭력 · 위기 임신</h4>
+    </header>
+    <p class="safety-tier-lede">신체 · 정서 안전이 위협받거나 임신을 둘러싼 사회적 어려움이 클 때, <strong>익명 · 무료</strong>로 상담받을 수 있습니다.</p>
+    <ul class="safety-tier-list">
+      <li><strong>여성긴급전화 1366</strong> — 24시간 · 가정폭력 · 성폭력 · 위기 임신 · 이주여성 · 디지털성범죄.</li>
+      <li><strong>한국가정법률상담소 · 한부모가족지원센터</strong> — 법률 · 양육 상담.</li>
+      <li><strong>가족 상담 · 부부 상담</strong> — 건강가정지원센터(지역별).</li>
+    </ul>
+    <div class="safety-tier-actions">
+      <a href="tel:1366" class="safety-tier-btn">📞 1366 여성긴급전화 (24h)</a>
+      <a href="tel:129" class="safety-tier-btn safety-tier-btn--ghost">📞 129 보건복지 긴급</a>
+    </div>
+  </article>
+
+  <article class="safety-tier safety-tier--lavender">
+    <header class="safety-tier-head">
+      <span class="safety-tier-tag">경제 · 돌봄</span>
+      <h4 class="safety-tier-title">출산 전후 비용 · 돌봄 자원</h4>
+    </header>
+    <p class="safety-tier-lede">필요할 때 신청만으로 닿을 수 있는 공공 자원입니다.</p>
+    <ul class="safety-tier-list">
+      <li><strong>국민행복카드 · 임신·출산 진료비 지원</strong> — 신청은 산부인과 또는 카드사·정부24.</li>
+      <li><strong>산모·신생아 건강관리 지원</strong> — 산후도우미 비용 일부 정부 지원, 가까운 보건소 신청.</li>
+      <li><strong>아이돌봄서비스 (시간제 · 종일제)</strong> — 만 12세 이하 가정 방문 돌봄.</li>
+    </ul>
+    <div class="safety-tier-actions">
+      <a href="tel:1577-1389" class="safety-tier-btn">📞 1577-1389 보건복지콜센터</a>
+      <a href="https://www.gov.kr" target="_blank" rel="noopener" class="safety-tier-btn safety-tier-btn--ghost">🔗 정부24</a>
+    </div>
+  </article>
+</div>
+
+<p class="safety-footnote">
+  ※ 위 번호 · 명칭 · 링크는 2026년 4월 기준 한국 공공 자원입니다.
+  <strong>출간 시점</strong>에 의학·정책 검수자가 최신 운영 여부와 정확한 표기를 다시 한 번 확인합니다.
+  공공 자원의 변경 가능성을 고려해 <strong>가까운 보건소 · 정신건강복지센터</strong>를 1차 접근점으로 권장합니다.
+</p>
+
+</div>
 <p>도움을 청하는 일은 약함이 아니라<br>
 <em>나와 아이를 함께 돌보려는 가장 적극적인 태도</em>다.<br>
 이 사실은 이 책의 5·7·8장에서 거듭 짚었다.<br>
@@ -5041,6 +5735,7 @@ SNS에 인증을 남겼던 하루,<br>
 </tbody></table>
 <p>이 표는 책을 <em>처음부터 끝까지 한 번 통독한 뒤</em> 다시 펼치는 독자를 위한 자리다.<br>
 어느 페이지를 다시 읽고 싶은지 한 줄로 찾을 수 있도록 정리했다.</p>
+
 </div>
 </section>
 <section id="appendix-e" class="chapter is-appendix">
@@ -5115,6 +5810,7 @@ SNS에 인증을 남겼던 하루,<br>
 바로 그 두 결 가운데 어딘가에서 만날 수 있다.</p>
 <p><mark class="pen-peach">이 책이 가리킨 자리에서 한 걸음 더 옮겨 가실 때,<br>
 그 자리에 맘곁과 마더스베이비가 함께 있을 것이다.</mark></p>
+
 </div>
 </section>
 </div>
@@ -5301,6 +5997,52 @@ SNS에 인증을 남겼던 하루,<br>
     document.addEventListener('DOMContentLoaded', function() {
       setTimeout(showResumePrompt, 600);
     });
+  }
+
+  // ---- Checklist (부록 B) — localStorage 동기화 + 진행률 ----
+  function initChecklists() {
+    var boards = document.querySelectorAll('.check-board');
+    boards.forEach(function(board) {
+      var key = 'momgyeot-checklist-' + (board.getAttribute('data-checklist') || 'default');
+      var saved = {};
+      try { saved = JSON.parse(localStorage.getItem(key) || '{}'); } catch (e) { saved = {}; }
+      var inputs = board.querySelectorAll('input[type="checkbox"][data-key]');
+      inputs.forEach(function(inp) {
+        if (saved[inp.getAttribute('data-key')]) inp.checked = true;
+        inp.addEventListener('change', function() {
+          saved[inp.getAttribute('data-key')] = inp.checked;
+          try { localStorage.setItem(key, JSON.stringify(saved)); } catch (e) {}
+          updateProgress(inp.closest('.check-stage'));
+        });
+      });
+      board.querySelectorAll('.check-stage').forEach(updateProgress);
+      var resetBtn = board.querySelector('.check-reset');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+          if (!confirm('전체 체크 상태를 초기화할까요?')) return;
+          inputs.forEach(function(inp) { inp.checked = false; });
+          try { localStorage.removeItem(key); } catch (e) {}
+          board.querySelectorAll('.check-stage').forEach(updateProgress);
+        });
+      }
+    });
+  }
+  function updateProgress(stage) {
+    if (!stage) return;
+    var inps = stage.querySelectorAll('input[type="checkbox"]');
+    var total = inps.length;
+    var done = 0;
+    inps.forEach(function(i) { if (i.checked) done++; });
+    var bar = stage.querySelector('.check-progress-bar');
+    var txt = stage.querySelector('.check-progress-text');
+    var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+    if (bar) bar.style.setProperty('--progress', pct + '%');
+    if (txt) txt.textContent = done + ' / ' + total;
+  }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initChecklists();
+  } else {
+    document.addEventListener('DOMContentLoaded', initChecklists);
   }
 })();
 </script>
