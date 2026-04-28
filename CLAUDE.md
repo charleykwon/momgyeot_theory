@@ -123,6 +123,13 @@
 - docs/appendix-d-glossary.md — 부록 D. 도움 요청 가이드 · 용어집 · 빠른 찾아보기
 - docs/appendix-e-series.md — 부록 E. 맘곁 태교 시리즈 안내(이론편·실천편 종이/웹 전자책)
 
+## 빌드·배포
+
+- 빌더 `_build_html.py`는 `docs/` 안의 마크다운을 읽어 같은 폴더에 `book.html`·`index.html`·`.nojekyll`을 갱신한다.
+- 별도 `dist/` 폴더는 사용하지 않는다(폐기). 마크다운 소스와 HTML 출력이 `docs/` 한 폴더에 공존하며, `.nojekyll` 덕분에 GitHub Pages가 .md 파일을 변환하지 않는다.
+- GitHub Pages는 **Settings → Pages** 에서 `main` / `/docs`를 서빙하도록 설정되어 있다.
+- 수정 후 `python3 _build_html.py` → `git add . && git commit && git push`만으로 자동 재배포된다.
+
 검수 자료:
 
 - reviews/medical-safety-checklist.md — 의학 안전 체크리스트
@@ -131,6 +138,7 @@
 - reviews/medical-reviewer-package.md — 의학·문헌 검수자 의뢰 패키지(각주 46개 인벤토리 포함)
 - reviews/reviewer-cover-letter.md — 검수자에게 발송할 안내문 템플릿
 - reviews/expansion-roadmap-2026-04-28.md — 보강 로드맵(진단서 반영판). 챕터별 잔여 분량·도표·1차 사료·학술 인용 진척도
+- reviews/series-tone-guide.md — 맘곁 태교 시리즈 톤 가이드 1.0 (이론편·실천편 공통 4개 앵커: 사주당 인용 표준 / 의학 헤지 표준 / 공통 어휘 / 안전 라인)
 
 ## 작업 지시
 

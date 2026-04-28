@@ -1,9 +1,13 @@
 # macOS
 .DS_Store
+**/.DS_Store
 
 # Python
 __pycache__/
 *.pyc
+
+# 폐기된 빌드 폴더 (현재는 docs/에 직접 빌드)
+dist/
 
 # 외부에서 가져온 참조 자료(저작권·용량)
 _refs/

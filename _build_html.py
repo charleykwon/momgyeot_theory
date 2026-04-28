@@ -5,8 +5,10 @@ import re
 from pathlib import Path
 
 DOCS = Path(__file__).parent / "docs"
-OUT = Path(__file__).parent / "dist" / "book.html"
-OUT.parent.mkdir(exist_ok=True)
+# GitHub Pages는 /docs 폴더를 서빙. 마크다운 소스와 HTML 출력이 같은 폴더에 공존.
+# .nojekyll로 Jekyll 파싱이 차단되어 .md 파일은 그대로 소스로 보존된다.
+OUT = DOCS / "book.html"
+DOCS.mkdir(exist_ok=True)
 
 CHAPTERS = [
     ("prologue", "prologue.md", "들어가며", None),
@@ -409,8 +411,16 @@ INDEX_REDIRECT = """<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=book.html">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="0; url=./book.html">
 <title>맘곁 태교 — 이론편</title>
+<meta name="description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 책. 『맘곁 태교 — 이론편』. 권의철·최소라 공저, 바비즈코리아.">
+<meta name="author" content="권의철, 최소라">
+<meta property="og:title" content="맘곁 태교 — 이론편">
+<meta property="og:description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만난다.">
+<meta property="og:type" content="book">
+<meta property="og:locale" content="ko_KR">
+<link rel="canonical" href="./book.html">
 <style>
   body { font-family: 'Apple SD Gothic Neo', system-ui, sans-serif;
          display: flex; align-items: center; justify-content: center;
@@ -419,7 +429,7 @@ INDEX_REDIRECT = """<!DOCTYPE html>
 </style>
 </head>
 <body>
-<p>맘곁 태교 — 이론편으로 이동합니다 · <a href="book.html">바로 가기</a></p>
+<p>맘곁 태교 — 이론편으로 이동합니다 · <a href="./book.html">바로 가기</a></p>
 </body>
 </html>
 """
@@ -429,7 +439,18 @@ TEMPLATE = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>맘곁 태교 — 이론편</title>
+<title>맘곁 태교 — 이론편 · 사주당 이씨와 오늘의 의학이 같은 자리에서 만난다</title>
+<meta name="description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 책. 『맘곁 태교 — 이론편』. 권의철·최소라 공저, 바비즈코리아. 1800년 사주당 이씨의 『태교신기』를 오늘의 부모를 위한 언어로 다시 읽다.">
+<meta name="author" content="권의철, 최소라">
+<meta name="keywords" content="태교, 사주당, 태교신기, 임신, 모성건강, 맘곁, 바비즈코리아">
+<meta property="og:title" content="맘곁 태교 — 이론편">
+<meta property="og:description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만난다. 권의철·최소라 공저.">
+<meta property="og:type" content="book">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="맘곁 태교">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="맘곁 태교 — 이론편">
+<meta name="twitter:description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만난다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
