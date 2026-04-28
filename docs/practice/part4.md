@@ -76,12 +76,14 @@
 오히려, 진짜 대화가 시작되는 것이다."
 — 태교신기의 지혜
 배 안에서의 태담은 끝이 아니야. 태어난 후에도 계속될 대화의 **서막**이야. 지금 나누는 말들이 아기와의 관계를 평생 이어줄 첫 번째 연결고리가 될 거야.
-💬 CHAPTER 1 태담
-아가야, 이제 정말 얼마 안 남았어.
-엄마 배 안에서 보내는 마지막 시간들이야.
-곧 네 얼굴을 볼 수 있다니, 믿기지 않아.
-설레기도 하고, 떨리기도 해.
-하지만 뭐든 함께 해나갈 수 있을 거야.
+
+:::raw
+<aside class="chapter-end-script" aria-label="장 끝 태담">
+  <header class="cend-head"><span class="cend-tag">CHAPTER 1 · 태담</span></header>
+  <blockquote class="cend-body">아가야, 이제 정말 얼마 안 남았어. 엄마 배 안에서 보내는 마지막 시간들이야. 곧 네 얼굴을 볼 수 있다니, 믿기지 않아. 설레기도 하고, 떨리기도 해. 하지만 뭐든 함께 해나갈 수 있을 거야.</blockquote>
+</aside>
+:::
+
 ## 출산 준비와 마음 다스리기 불안 다루기 + 출산 계획
 ### 1. 출산에 대한 두려움 인정하기
 출산이 두렵다면, 그건 **지극히 정상**이야. 처음 경험하는 일이고, 예측할 수 없는 부분이 많으니까. 두려움을 부정하거나 억누르지 말고, 인정하는 것부터 시작하자.
@@ -148,12 +150,14 @@
 "출산은 끝이 아니라 시작이다.
 두려워하지 말고, 기대하라.
 네가 만날 사람이 기다리고 있다."
-💬 CHAPTER 2 태담
-아가야, 엄마가 너를 만날 준비를 하고 있어.
-솔직히 좀 떨려. 어떻게 될지 모르니까.
-하지만 너를 만난다는 생각에 용기가 나.
-엄마가 힘내볼게. 너도 힘내줘.
-우리 함께 그 순간을 넘자.
+
+:::raw
+<aside class="chapter-end-script" aria-label="장 끝 태담">
+  <header class="cend-head"><span class="cend-tag">CHAPTER 2 · 태담</span></header>
+  <blockquote class="cend-body">아가야, 엄마가 너를 만날 준비를 하고 있어. 솔직히 좀 떨려. 어떻게 될지 모르니까. 하지만 너를 만난다는 생각에 용기가 나. 엄마가 힘내볼게. 너도 힘내줘. 우리 함께 그 순간을 넘자.</blockquote>
+</aside>
+:::
+
 ## 아기에게 보내는 마지막 편지 만남 전 마무리 태담
 ### 1. 배 안에서의 마지막 시간
 10달 동안 아기는 엄마 배 안에서 살아왔어. 엄마의 심장 소리를 들으며, 엄마의 목소리에 반응하며, 엄마가 먹는 음식의 맛을 느끼며. 이제 그 시간이 끝나가고 있어.
@@ -205,20 +209,14 @@
 네가 내 안에 머문 것은 축복이었다.
 네가 세상에 나오는 것은 선물이다."
 이제 곧 아기를 눈으로 보고, 손으로 만지고, 품에 안을 수 있어. 그 순간을 위해, 마지막 태담으로 마음을 전하자.
-💬 CHAPTER 3 태담 (마지막 편지)
-아가야,
-이제 정말 얼마 안 남았어.
-네가 엄마 배 안에 있던 날들,
-엄마는 평생 잊지 않을 거야.
-처음 네 존재를 알았을 때의 떨림,
-처음 네 심장 소리를 들었을 때의 눈물,
-처음 네가 발로 찼을 때의 기쁨.
-모든 순간이 기적이었어.
-곧 너를 품에 안을 거야.
-그때까지, 그리고 그 이후로도,
-엄마는 늘 네 편이야.
-사랑해, 나의 아가.
-CHAPTER 4 ⭐
+
+:::raw
+<aside class="chapter-end-script" aria-label="장 끝 태담">
+  <header class="cend-head"><span class="cend-tag">CHAPTER 3 · 태담</span> <span class="cend-extra">(마지막 편지)</span></header>
+  <blockquote class="cend-body">아가야, 이제 정말 얼마 안 남았어. 네가 엄마 배 안에 있던 날들, 엄마는 평생 잊지 않을 거야. 처음 네 존재를 알았을 때의 떨림, 처음 네 심장 소리를 들었을 때의 눈물, 처음 네가 발로 찼을 때의 기쁨. 모든 순간이 기적이었어. 곧 너를 품에 안을 거야. 그때까지, 그리고 그 이후로도, 엄마는 늘 네 편이야. 사랑해, 나의 아가.</blockquote>
+</aside>
+:::
+
 ## 후기 태담 펼쳐보기 10가지 상황별 태담 예시
 ### 임신 후기의 태담
 임신 후기의 태담은 **만남을 앞둔 설렘과 떨림**을 담고 있어. 아기도 거의 완전한 상태로 엄마의 목소리를 듣고, 반응하고 있어.
@@ -230,67 +228,81 @@ CHAPTER 4 ⭐
 • 태어난 후의 삶에 대한 이야기
 • 마지막이라는 감정 담아 이야기하기
 ### 🌙 임신 후기 상황별 태담 10선
-01 태동이 강하게 느껴질 때
-와, 오늘 엄청 세게 움직이네!
-아가야, 거기서 운동회 하는 거야?
-엄마 갈비뼈 아프긴 한데, 기분은 좋아.
-네가 건강하다는 증거니까.
-힘이 세구나. 우리 아기.
-02 배가 많이 불러서 힘들 때
-아가야, 엄마 배가 정말 많이 커졌어.
-움직이기도 힘들고, 숨도 차.
-하지만 이건 네가 잘 크고 있다는 뜻이래.
-조금만 더 힘내볼게.
-곧 만나면 다 잊어버릴 것 같아.
-03 출산이 두려울 때
-아가야, 솔직히 말하면 엄마 좀 무서워.
-어떻게 될지 모르니까 떨려.
-하지만 너를 만나려면 이 과정을 지나야 해.
-우리 함께 이겨내자.
-엄마 믿고, 엄마도 널 믿을게.
-04 아기 물건을 준비할 때
-아가야, 오늘 네 옷을 정리했어.
-배냇저고리가 이렇게 작다니, 신기해.
-이 작은 옷을 네가 입을 생각에 설레.
-빨리 입혀보고 싶다.
-예쁜 거 많이 준비해뒀어.
-05 병원 검진 후
-아가야, 오늘 병원 다녀왔어.
-선생님이 네가 머리를 아래로 잘 두고 있대.
-나올 준비 하고 있는 거야?
-엄마도 준비하고 있어.
-우리 호흡 맞춰서 잘 해보자.
-06 잠들기 전
-아가야, 좋은 밤이야.
-오늘 하루도 무사히 지나갔어.
-엄마 배 안에서 보내는 밤이 얼마 안 남았네.
-이 시간이 소중해.
-푹 자. 엄마도 잘게. 사랑해.
-07 가진통(연습 진통)이 올 때
-아가야, 방금 배가 단단해졌어.
-아직 진짜 진통은 아니래.
-우리 몸이 연습하는 거야.
-조금씩 준비하고 있는 거지.
-때가 되면, 함께 시작하자.
-08 예정일이 가까워질 때
-아가야, 예정일이 코앞이야.
-언제 나올지 모르니까 두근두근해.
-네가 준비되면 신호 보내줘.
-엄마는 언제든 준비되어 있어.
-기다리고 있을게.
-09 아빠와 함께 기다릴 때
-아가야, 지금 아빠도 옆에 있어.
-둘이 네 이야기 하고 있었어.
-어떻게 생겼을지, 누굴 닮았을지.
-아빠도 너 만나는 거 엄청 기대하고 있어.
-우리 셋이 곧 만나.
-10 마지막 태담
-아가야, 이제 정말 마지막이야.
-엄마 배 안에서 하는 마지막 대화.
-10달 동안 정말 행복했어.
-네 덕분에 엄마가 됐어.
-이제 세상에서 만나자.
-엄마가 꼭 안아줄게. 사랑해.
+
+:::raw
+<div class="situ-grid" aria-label="상황별 태담 10선">
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">01</span>
+      <h5 class="situ-card-title">태동이 강하게 느껴질 때</h5>
+    </header>
+    <blockquote class="situ-card-body">와, 오늘 엄청 세게 움직이네!<br>아가야, 거기서 운동회 하는 거야?<br>엄마 갈비뼈 아프긴 한데, 기분은 좋아.<br>네가 건강하다는 증거니까.<br>힘이 세구나. 우리 아기.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">02</span>
+      <h5 class="situ-card-title">배가 많이 불러서 힘들 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 엄마 배가 정말 많이 커졌어.<br>움직이기도 힘들고, 숨도 차.<br>하지만 이건 네가 잘 크고 있다는 뜻이래.<br>조금만 더 힘내볼게.<br>곧 만나면 다 잊어버릴 것 같아.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">03</span>
+      <h5 class="situ-card-title">출산이 두려울 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 솔직히 말하면 엄마 좀 무서워.<br>어떻게 될지 모르니까 떨려.<br>하지만 너를 만나려면 이 과정을 지나야 해.<br>우리 함께 이겨내자.<br>엄마 믿고, 엄마도 널 믿을게.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">04</span>
+      <h5 class="situ-card-title">아기 물건을 준비할 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 오늘 네 옷을 정리했어.<br>배냇저고리가 이렇게 작다니, 신기해.<br>이 작은 옷을 네가 입을 생각에 설레.<br>빨리 입혀보고 싶다.<br>예쁜 거 많이 준비해뒀어.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">05</span>
+      <h5 class="situ-card-title">병원 검진 후</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 오늘 병원 다녀왔어.<br>선생님이 네가 머리를 아래로 잘 두고 있대.<br>나올 준비 하고 있는 거야?<br>엄마도 준비하고 있어.<br>우리 호흡 맞춰서 잘 해보자.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">06</span>
+      <h5 class="situ-card-title">잠들기 전</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 좋은 밤이야.<br>오늘 하루도 무사히 지나갔어.<br>엄마 배 안에서 보내는 밤이 얼마 안 남았네.<br>이 시간이 소중해.<br>푹 자. 엄마도 잘게. 사랑해.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">07</span>
+      <h5 class="situ-card-title">가진통(연습 진통)이 올 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 방금 배가 단단해졌어.<br>아직 진짜 진통은 아니래.<br>우리 몸이 연습하는 거야.<br>조금씩 준비하고 있는 거지.<br>때가 되면, 함께 시작하자.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">08</span>
+      <h5 class="situ-card-title">예정일이 가까워질 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 예정일이 코앞이야.<br>언제 나올지 모르니까 두근두근해.<br>네가 준비되면 신호 보내줘.<br>엄마는 언제든 준비되어 있어.<br>기다리고 있을게.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">09</span>
+      <h5 class="situ-card-title">아빠와 함께 기다릴 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 지금 아빠도 옆에 있어.<br>둘이 네 이야기 하고 있었어.<br>어떻게 생겼을지, 누굴 닮았을지.<br>아빠도 너 만나는 거 엄청 기대하고 있어.<br>우리 셋이 곧 만나.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">10</span>
+      <h5 class="situ-card-title">마지막 태담</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 이제 정말 마지막이야.<br>엄마 배 안에서 하는 마지막 대화.<br>10달 동안 정말 행복했어.<br>네 덕분에 엄마가 됐어.<br>이제 세상에서 만나자.<br>엄마가 꼭 안아줄게. 사랑해.</blockquote>
+  </article>
+</div>
+:::
 ### 태담 활용 팁
 #### 💡 마지막 시간을 특별하게
 임신 후기는 배 안에서 함께하는 마지막 시간이야. 서둘러 지나가지 말고, 천천히 음미해봐. 불편하고 힘들어도, 이 시간은 다시 오지 않아. 매일 조금씩 아기에게 말을 걸고, 마음을 전해봐. 나중에 돌아보면 가장 소중한 기억이 될 거야.

@@ -1778,6 +1778,108 @@ table.data td { color: var(--text); }
 @media print {
   .fetus-progress { background: white; }
 }
+/* =========== 장 끝 태담 카드 (실천편) =========== */
+.chapter-end-script {
+  margin: 2.4em 0 2em;
+  padding: 22px 24px 20px;
+  background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg) 100%);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  font-family: var(--sans);
+  position: relative;
+}
+.cend-head {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--line);
+}
+.cend-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.cend-extra {
+  font-size: 12px; font-weight: 500;
+  color: var(--text-soft);
+  letter-spacing: 0.05em;
+}
+.cend-body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-size: 15px; line-height: 1.85;
+  color: var(--text);
+  font-style: italic;
+  font-weight: 400;
+}
+.cend-body::before { content: none; }
+
+/* =========== 상황별 태담 10선 카드 그리드 (실천편) =========== */
+.situ-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin: 1.4em 0 2em;
+  counter-reset: situ;
+}
+.situ-card {
+  padding: 18px 20px 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-family: var(--sans);
+  display: flex; flex-direction: column;
+}
+.situ-card-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--line);
+}
+.situ-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 30px; height: 30px;
+  padding: 0 8px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 12px; font-weight: 800;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.situ-card-title {
+  margin: 0;
+  font-size: 14.5px; font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+.situ-card-body {
+  margin: 0;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: none;
+  border-radius: 8px;
+  font-size: 14px; line-height: 1.7;
+  color: var(--text);
+  font-style: italic;
+}
+.situ-card-body::before { content: none; }
+.situ-card:nth-child(5n+2) .situ-num { background: #6aa1c2; }
+.situ-card:nth-child(5n+3) .situ-num { background: #8fa766; }
+.situ-card:nth-child(5n+4) .situ-num { background: #e08aa1; }
+.situ-card:nth-child(5n+5) .situ-num { background: #c8a35a; }
+@media (max-width: 600px) {
+  .situ-grid { grid-template-columns: 1fr; }
+}
+
 /* =========== 시기별 변화 타임라인 (실천편) =========== */
 .period-timeline {
   display: grid;
@@ -3549,6 +3651,113 @@ table.data tr:last-child td { border-bottom: none; }
 @media (max-width: 600px) {
   table.data { font-size: 12.5px; }
   table.data th, table.data td { padding: 9px 10px; }
+}
+
+/* =========== 장 끝 태담 카드 (실천편, 모던) =========== */
+.chapter-end-script {
+  margin: 2.6em 0 2.2em;
+  padding: 26px 28px 24px;
+  background: linear-gradient(135deg, var(--bg-soft) 0%, var(--bg) 100%);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 14px;
+  font-family: var(--sans);
+  position: relative;
+}
+.cend-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px dashed var(--line);
+}
+.cend-tag {
+  display: inline-block;
+  padding: 5px 14px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+}
+.cend-extra {
+  font-size: 13px; font-weight: 500;
+  color: var(--text-soft);
+  letter-spacing: 0.04em;
+}
+.cend-body {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-size: 16px; line-height: 1.85;
+  color: var(--text);
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+.cend-body::before { content: none; }
+
+/* =========== 상황별 태담 10선 카드 그리드 (실천편, 모던) =========== */
+.situ-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+  margin: 1.6em 0 2.2em;
+}
+.situ-card {
+  padding: 22px 24px 20px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  font-family: var(--sans);
+  display: flex; flex-direction: column;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.situ-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+.situ-card-head {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--line);
+}
+.situ-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 36px; height: 36px;
+  padding: 0 10px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 14px; font-weight: 800;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.situ-card-title {
+  margin: 0;
+  font-size: 16px; font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+.situ-card-body {
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-left: none;
+  border-radius: 10px;
+  font-size: 14.5px; line-height: 1.75;
+  color: var(--text);
+  font-style: normal;
+  font-weight: 500;
+}
+.situ-card-body::before { content: none; }
+.situ-card:nth-child(5n+2) .situ-num { background: var(--accent-sage); }
+.situ-card:nth-child(5n+3) .situ-num { background: var(--accent-rose); }
+.situ-card:nth-child(5n+4) .situ-num { background: var(--accent-mustard); }
+.situ-card:nth-child(5n+5) .situ-num { background: var(--accent-lavender); }
+@media (max-width: 600px) {
+  .situ-grid { grid-template-columns: 1fr; }
+  .situ-card { padding: 20px 20px 18px; }
 }
 
 /* =========== 시기별 변화 타임라인 (실천편, 모던) =========== */

@@ -56,12 +56,14 @@ PART 1에서 배운 감정 색상표를 기억해? 오늘의 감정을 색으로
 착상은 생명이 뿌리내리는 순간이야. 그리고 그 순간부터 엄마와 아기의 대화는 이미 시작돼.
 보이지 않기 때문에 더 먼저 마음을 열어야 해. 눈에 보이지 않는 존재와 대화하는 법, 그것이 바로 임신 초기 태교의 본질이야.
 "보이지 않아도 이미 함께 있다. 들리지 않아도 이미 전해진다."
-CHAPTER 1 태담
-아가야, 안녕.
-엄마가 아직 너를 볼 수는 없지만,
-네가 엄마 안에서 자리 잡고 있다는 걸 느껴.
-오늘도 무사히, 따뜻하게 있어줘서 고마워.
-우리 함께 천천히 가자, 서두르지 않아도 돼.
+
+:::raw
+<aside class="chapter-end-script" aria-label="장 끝 태담">
+  <header class="cend-head"><span class="cend-tag">CHAPTER 1 · 태담</span></header>
+  <blockquote class="cend-body">아가야, 안녕. 엄마가 아직 너를 볼 수는 없지만, 네가 엄마 안에서 자리 잡고 있다는 걸 느껴. 오늘도 무사히, 따뜻하게 있어줘서 고마워. 우리 함께 천천히 가자, 서두르지 않아도 돼.</blockquote>
+</aside>
+:::
+
 
 ## 입덧 기간 마음 관리
 몸이 힘들 때, 마음은 어떻게 지켜야 할까
@@ -111,12 +113,14 @@ CHAPTER 1 태담
 입덧은 몸이 힘든 시간이지만, 동시에 생명이 자라고 있다는 증거이기도 해.
 이 시기의 태교는 거창한 게 아니야. 힘든 와중에도 아기에게 "우리 함께 버티고 있어"라고 말해주는 것, 그것만으로 충분해.
 "입덧은 생명을 품은 몸의 수고다. 그 수고를 견디는 것 자체가 태교다."
-CHAPTER 2 태담
-아가야, 오늘도 엄마가 좀 힘들었어.
-하지만 이건 네가 건강하게 자라고 있다는 신호래.
-엄마는 조금 불편해도 괜찮아.
-네가 따뜻하게 자리 잡고 있다는 게 더 중요해.
-우리 조금만 더 힘내보자. 곧 나아질 거야.
+
+:::raw
+<aside class="chapter-end-script" aria-label="장 끝 태담">
+  <header class="cend-head"><span class="cend-tag">CHAPTER 2 · 태담</span></header>
+  <blockquote class="cend-body">아가야, 오늘도 엄마가 좀 힘들었어. 하지만 이건 네가 건강하게 자라고 있다는 신호래. 엄마는 조금 불편해도 괜찮아. 네가 따뜻하게 자리 잡고 있다는 게 더 중요해. 우리 조금만 더 힘내보자. 곧 나아질 거야.</blockquote>
+</aside>
+:::
+
 
 ## 아빠의 역할을 시작해요
 태교는 엄마만의 일이 아니다
@@ -170,69 +174,95 @@ PART 1에서 『태교신기』의 핵심 문장을 기억해?
 아빠가 해야 할 일은 거창한 게 아니야. "들어주고, 공감하고, 함께하는 것." 이것이 아빠 태교의 본질이야.
 "아빠의 역할은 아기를 직접 품는 것이 아니라,
 아기를 품고 있는 엄마를 품는 것이다."
-CHAPTER 3 태담 (아빠가 하는)
-아가야, 오늘도 엄마가 많이 힘들었어.
-아빠가 옆에서 지켜보면서 마음이 짠했어.
-네가 건강하게 자라고 있다는 게 얼마나 소중한지 알아.
-아빠가 엄마를 잘 도와줄게.
-우리 셋이 함께하는 여정, 아빠도 열심히 할게.
 
-CHAPTER 4 ⭐
+:::raw
+<aside class="chapter-end-script" aria-label="장 끝 태담">
+  <header class="cend-head"><span class="cend-tag">CHAPTER 3 · 태담</span> <span class="cend-extra">(아빠가 하는)</span></header>
+  <blockquote class="cend-body">아가야, 오늘도 엄마가 많이 힘들었어. 아빠가 옆에서 지켜보면서 마음이 짠했어. 네가 건강하게 자라고 있다는 게 얼마나 소중한지 알아. 아빠가 엄마를 잘 도와줄게. 우리 셋이 함께하는 여정, 아빠도 열심히 할게.</blockquote>
+</aside>
+:::
+
+
 ## 초기 태담 펼쳐보기 10가지 상황별 태담 예시
 ### 태담, 이렇게 시작해보세요
 태담이 처음이라 어떻게 시작해야 할지 모르겠다면, 이 챕터의 예시들을 참고해봐. 상황별로 정리해두었으니 필요할 때마다 펼쳐서 활용해도 좋아.
 태담에는 정해진 규칙이 없어. 편하게 수정하고, 자신만의 말투로 바꿔도 돼. 중요한 건 진심을 담아 말하는 것이야.
 ### 🌱 임신 초기 상황별 태담 10선
-01 아침에 눈을 떴을 때
-아가야, 좋은 아침이야.
-오늘도 엄마 안에서 잘 지냈어?
-오늘 하루도 우리 함께 보내자.
-밖에 햇살이 좋아. 따뜻한 하루가 될 거야.
-02 입덧이 심할 때
-아가야, 엄마가 지금 좀 힘들어.
-속이 울렁거리고 뭘 먹기가 힘들어.
-하지만 이건 네가 잘 자라고 있다는 신호래.
-엄마가 잘 이겨낼게. 조금만 기다려줘.
-03 병원 검진 가기 전
-아가야, 오늘 우리 병원에 가.
-선생님이 네가 잘 있는지 확인해주실 거야.
-엄마도 살짝 떨리지만, 기대도 돼.
-건강하게 자라고 있다는 거 보여줘.
-04 초음파로 심장 소리 들었을 때
-아가야, 드디어 네 심장 소리를 들었어.
-두근두근, 정말 빠르게 뛰더라.
-그 작은 소리가 엄마한테는 세상에서 가장 큰 소리였어.
-건강하게 뛰어줘서 고마워. 사랑해.
-05 피곤하고 무기력할 때
-아가야, 엄마가 오늘 많이 피곤해.
-몸이 무겁고 뭘 해도 힘이 안 나.
-하지만 이건 네가 잘 자라고 있어서 그런 거래.
-엄마 조금 쉬었다가 다시 힘낼게.
-06 걱정이 많아질 때
-아가야, 엄마가 요즘 걱정이 많아.
-네가 잘 자라고 있는지, 건강한지 궁금해.
-하지만 엄마는 믿어. 우리가 잘 해낼 거라는 걸.
-걱정 대신 믿음을 갖고 기다릴게.
-07 맛있는 걸 먹을 때
-아가야, 엄마가 지금 맛있는 거 먹고 있어.
-오늘은 입맛이 좀 돌아왔나 봐.
-이거 먹고 힘내서 너한테 좋은 영양분 보내줄게.
-엄마가 잘 먹을 테니 너도 잘 받아먹어.
-08 밤에 잠들기 전
-아가야, 하루가 끝나가고 있어.
-오늘 하루도 무사히 보냈네.
-엄마 안에서 편히 쉬어.
-내일도 우리 함께 좋은 하루 보내자. 잘 자.
-09 감정이 복잡할 때
-아가야, 엄마 마음이 오늘 좀 복잡해.
-기쁘기도 하고, 걱정되기도 하고, 무섭기도 해.
-하지만 이런 감정들도 다 자연스러운 거래.
-엄마가 천천히 정리할게. 너는 편히 있어.
-10 아빠와 함께할 때
-아가야, 지금 아빠도 옆에 있어.
-우리 셋이 함께 있는 시간이야.
-아빠도 너를 기다리고 있어.
-앞으로 우리 셋이 함께할 날이 정말 많을 거야.
+
+:::raw
+<div class="situ-grid" aria-label="상황별 태담 10선">
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">01</span>
+      <h5 class="situ-card-title">아침에 눈을 떴을 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 좋은 아침이야.<br>오늘도 엄마 안에서 잘 지냈어?<br>오늘 하루도 우리 함께 보내자.<br>밖에 햇살이 좋아. 따뜻한 하루가 될 거야.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">02</span>
+      <h5 class="situ-card-title">입덧이 심할 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 엄마가 지금 좀 힘들어.<br>속이 울렁거리고 뭘 먹기가 힘들어.<br>하지만 이건 네가 잘 자라고 있다는 신호래.<br>엄마가 잘 이겨낼게. 조금만 기다려줘.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">03</span>
+      <h5 class="situ-card-title">병원 검진 가기 전</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 오늘 우리 병원에 가.<br>선생님이 네가 잘 있는지 확인해주실 거야.<br>엄마도 살짝 떨리지만, 기대도 돼.<br>건강하게 자라고 있다는 거 보여줘.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">04</span>
+      <h5 class="situ-card-title">초음파로 심장 소리 들었을 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 드디어 네 심장 소리를 들었어.<br>두근두근, 정말 빠르게 뛰더라.<br>그 작은 소리가 엄마한테는 세상에서 가장 큰 소리였어.<br>건강하게 뛰어줘서 고마워. 사랑해.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">05</span>
+      <h5 class="situ-card-title">피곤하고 무기력할 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 엄마가 오늘 많이 피곤해.<br>몸이 무겁고 뭘 해도 힘이 안 나.<br>하지만 이건 네가 잘 자라고 있어서 그런 거래.<br>엄마 조금 쉬었다가 다시 힘낼게.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">06</span>
+      <h5 class="situ-card-title">걱정이 많아질 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 엄마가 요즘 걱정이 많아.<br>네가 잘 자라고 있는지, 건강한지 궁금해.<br>하지만 엄마는 믿어. 우리가 잘 해낼 거라는 걸.<br>걱정 대신 믿음을 갖고 기다릴게.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">07</span>
+      <h5 class="situ-card-title">맛있는 걸 먹을 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 엄마가 지금 맛있는 거 먹고 있어.<br>오늘은 입맛이 좀 돌아왔나 봐.<br>이거 먹고 힘내서 너한테 좋은 영양분 보내줄게.<br>엄마가 잘 먹을 테니 너도 잘 받아먹어.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">08</span>
+      <h5 class="situ-card-title">밤에 잠들기 전</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 하루가 끝나가고 있어.<br>오늘 하루도 무사히 보냈네.<br>엄마 안에서 편히 쉬어.<br>내일도 우리 함께 좋은 하루 보내자. 잘 자.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">09</span>
+      <h5 class="situ-card-title">감정이 복잡할 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 엄마 마음이 오늘 좀 복잡해.<br>기쁘기도 하고, 걱정되기도 하고, 무섭기도 해.<br>하지만 이런 감정들도 다 자연스러운 거래.<br>엄마가 천천히 정리할게. 너는 편히 있어.</blockquote>
+  </article>
+  <article class="situ-card">
+    <header class="situ-card-head">
+      <span class="situ-num">10</span>
+      <h5 class="situ-card-title">아빠와 함께할 때</h5>
+    </header>
+    <blockquote class="situ-card-body">아가야, 지금 아빠도 옆에 있어.<br>우리 셋이 함께 있는 시간이야.<br>아빠도 너를 기다리고 있어.<br>앞으로 우리 셋이 함께할 날이 정말 많을 거야.</blockquote>
+  </article>
+</div>
+:::
 ### 태담 활용 팁
 #### 💡 나만의 태담 만들기
 위의 예시들은 참고용이야. 가장 좋은 태담은 내 말투로 자연스럽게 하는 것이야. 존댓말이든 반말이든, 길든 짧든 상관없어. 진심을 담아 말하면 그게 최고의 태담이야.
