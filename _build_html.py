@@ -1124,12 +1124,20 @@ table.data td { color: var(--text); }
 }
 .cover .cover-hero img { width: 100%; height: auto; }
 
-/* 챕터 헤더 일러스트 — 챕터 번호·제목 옆 작은 캐릭터 */
+/* 챕터 헤더 일러스트 — 챕터 번호·제목 옆 캐릭터 (세로 비율 유지) */
 .chapter-illust {
-  width: 92px; height: 92px;
-  margin: 0 auto 14px;
+  width: 120px;
+  height: 150px;
+  margin: 0 auto 16px;
 }
-.chapter-illust img { width: 100%; height: 100%; object-fit: contain; }
+.chapter-illust img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  display: block;
+}
+@media (max-width: 600px) {
+  .chapter-illust { width: 104px; height: 130px; }
+}
 
 /* 시기별 태아 진행 — 3장 발달표 위 */
 .fetus-progress {
@@ -1979,14 +1987,27 @@ body {
 }
 
 .chapter-illust {
-  width: 84px; height: 84px;
-  margin: 0 auto 14px;
-  border-radius: 50%;
+  width: 120px;
+  height: 150px;
+  margin: 0 auto 16px;
+  border-radius: 14px;
   overflow: hidden;
   background: var(--bg);
   padding: 8px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
-.chapter-illust img { width: 100%; height: 100%; object-fit: contain; }
+.chapter-illust img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+}
+@media (max-width: 600px) {
+  .chapter-illust { width: 104px; height: 130px; padding: 6px; border-radius: 12px; }
+}
 
 /* =========== Body — 가독성 강화 =========== */
 .chapter-body { font-size: 16.5px; line-height: 1.95; }

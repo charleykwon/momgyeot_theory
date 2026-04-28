@@ -316,14 +316,27 @@ body {
 }
 
 .chapter-illust {
-  width: 84px; height: 84px;
-  margin: 0 auto 14px;
-  border-radius: 50%;
+  width: 120px;
+  height: 150px;
+  margin: 0 auto 16px;
+  border-radius: 14px;
   overflow: hidden;
   background: var(--bg);
   padding: 8px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
-.chapter-illust img { width: 100%; height: 100%; object-fit: contain; }
+.chapter-illust img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+}
+@media (max-width: 600px) {
+  .chapter-illust { width: 104px; height: 130px; padding: 6px; border-radius: 12px; }
+}
 
 /* =========== Body — 가독성 강화 =========== */
 .chapter-body { font-size: 16.5px; line-height: 1.95; }
