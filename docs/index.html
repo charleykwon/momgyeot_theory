@@ -202,8 +202,8 @@
   }
   .lp-book {
     display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 16px; align-items: stretch;
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 16px; align-items: start;
     padding: 18px;
     background: var(--bg-soft);
     border: 1px solid var(--line);
@@ -219,12 +219,17 @@
   }
   .lp-book-cover {
     margin: 0;
+    width: 100px; height: 140px;
+    flex-shrink: 0;
     border-radius: 8px; overflow: hidden;
     background: var(--bg);
     display: flex; align-items: center; justify-content: center;
-    aspect-ratio: 5/7;
   }
-  .lp-book-cover img { width: 100%; height: 100%; object-fit: cover; }
+  .lp-book-cover img {
+    display: block;
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
   /* 실천편 카드 — 가족 일러스트는 일러스트 배경색과 매칭, contain으로 4명+아기 모두 보이게 */
   .lp-book-cover--family {
     background: #788A1E;
@@ -232,7 +237,11 @@
   .lp-book-cover--family img {
     object-fit: contain;
   }
-  .lp-book-meta { display: flex; flex-direction: column; gap: 4px; }
+  .lp-book-meta {
+    display: flex; flex-direction: column; gap: 4px;
+    min-width: 0;
+  }
+  .lp-book-meta * { word-break: keep-all; overflow-wrap: anywhere; }
   .lp-book-tag {
     font-size: 10.5px; font-weight: 700;
     letter-spacing: 0.22em; text-transform: uppercase;
@@ -394,6 +403,17 @@
     .lp-hero h1 { font-size: 30px; }
     .lp-toc-grid { grid-template-columns: 1fr 1fr; }
     .lp-footer-grid { grid-template-columns: 1fr; }
+  }
+  /* 카드 폭이 너무 좁아지면 표지 위·메타 아래로 스택 */
+  @media (max-width: 420px) {
+    .lp-book {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .lp-book-cover {
+      width: 100%; height: auto; aspect-ratio: 5/4;
+      max-height: 180px;
+    }
   }
 </style>
 </head>
