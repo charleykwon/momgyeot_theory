@@ -1484,7 +1484,21 @@ table.data td { color: var(--text); }
   color: var(--text);
 }
 .chapter-body em {
+  font-style: normal;
+  font-weight: 700;
+  background: linear-gradient(180deg,
+    transparent 0%, transparent 60%,
+    var(--pen-yellow) 60%, var(--pen-yellow) 92%,
+    transparent 92%);
+  padding: 0 2px;
+}
+/* 본문 영문 인용은 이탤릭 유지 (각주·참고문헌 표 등) */
+aside.footnotes em,
+.chapter.is-appendix table.data em {
   font-style: italic;
+  font-weight: inherit;
+  background: none;
+  padding: 0;
 }
 .chapter-body mark {
   color: inherit;
@@ -3664,7 +3678,23 @@ body {
 
 /* 강조 마커 */
 .chapter-body strong { font-weight: 700; color: var(--text); }
-.chapter-body em { font-style: italic; }
+.chapter-body em {
+  font-style: normal;
+  font-weight: 700;
+  background: linear-gradient(180deg,
+    transparent 0%, transparent 60%,
+    var(--pen-yellow) 60%, var(--pen-yellow) 92%,
+    transparent 92%);
+  padding: 0 2px;
+}
+/* 영문 인용·각주·참고문헌 표는 이탤릭 유지 */
+aside.footnotes em,
+.chapter.is-appendix table.data em {
+  font-style: italic;
+  font-weight: inherit;
+  background: none;
+  padding: 0;
+}
 .chapter-body mark { color: inherit; padding: 0 3px; border-radius: 3px; }
 .chapter-body mark.pen-yellow {
   background: linear-gradient(180deg,
