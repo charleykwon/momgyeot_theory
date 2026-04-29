@@ -225,6 +225,13 @@
     aspect-ratio: 5/7;
   }
   .lp-book-cover img { width: 100%; height: 100%; object-fit: cover; }
+  /* 실천편 카드 — 가족 일러스트는 일러스트 배경색과 매칭, contain으로 4명+아기 모두 보이게 */
+  .lp-book-cover--family {
+    background: #788A1E;
+  }
+  .lp-book-cover--family img {
+    object-fit: contain;
+  }
   .lp-book-meta { display: flex; flex-direction: column; gap: 4px; }
   .lp-book-tag {
     font-size: 10.5px; font-weight: 700;
@@ -442,8 +449,8 @@
       </div>
     </a>
     <a class="lp-book" href="./practice-modern.html">
-      <figure class="lp-book-cover">
-        <img src="./images/book-cover-practice.png" alt="실천편 표지" onerror="this.parentElement.style.display='none'">
+      <figure class="lp-book-cover lp-book-cover--family">
+        <img src="./images/family-faces.jpg" alt="실천편 — 맘곁 가족 일러스트" onerror="this.parentElement.style.display='none'">
       </figure>
       <div class="lp-book-meta">
         <span class="lp-book-tag">실천편</span>
