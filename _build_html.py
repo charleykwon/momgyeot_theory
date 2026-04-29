@@ -390,8 +390,9 @@ THEORY_CTA = {
             "잘한 것과 부담된 것을 같은 무게로 적어 보세요.", None),
     "ch10": ("✨", "다섯 원칙 중 한 가지 골라 한 주 살아 보기",
              "연결·반복·기록·다정한 생활·이해 가운데 가장 마음이 가는 하나로.", None),
-    "epilogue": ("📓", "임신 280일 환경 점검 체크리스트 열기",
-                "부록 B에서 오늘 해당하는 시기 카드를 한 번 살펴보세요.", "#appendix-b"),
+    "epilogue": ("📱", "맘곁에서 일상으로 이어 가기",
+                "책에서 만난 다섯 원칙을 하루 안으로 옮기는 자리 — 맘곁 사이트.",
+                "https://www.momgyeot.com"),
 }
 
 # 실천편 PART별 "다음 행동" CTA — 실천 중심 책의 결에 맞춰 행동 카드
@@ -408,8 +409,9 @@ PRACTICE_CTA = {
               "거창한 준비 대신 오늘 한 가지만 — 동선·신호·연락처 중 하나.", None),
     "part5": ("👶", "산후 회고 한 줄 — 이론편 부록 B로",
               "출산 직후의 결을 한 줄로 적어 두는 자리가 부록 B 4단계입니다.", "./book-modern.html#appendix-b"),
-    "epilogue": ("📖", "이론편으로 한 번 더 깊이 읽기",
-                "사주당 이씨와 오늘의 의학이 만나는 자리 — 맘곁 태교 이론편.", "./book-modern.html"),
+    "epilogue": ("📱", "맘곁과 함께 다음 시간으로",
+                "임신·출산·육아의 결을 잇는 자리 — 맘곁 사이트로 이어 갑니다.",
+                "https://www.momgyeot.com"),
 }
 
 
@@ -644,16 +646,67 @@ INDEX_REDIRECT = """<!DOCTYPE html>
 <script>
 (function(){try{var s=localStorage.getItem('mamgyeot-theme');var d=s?(s==='dark'):(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);if(d)document.documentElement.classList.add('dark');}catch(e){}})();
 </script>
-<title>{{BOOK_TITLE}} · {{BOOK_TAGLINE}}</title>
-<meta name="description" content="『{{BOOK_TITLE}}』 · {{BOOK_TAGLINE}}. 권의철·최소라 공저, 바비즈코리아.">
+<title>맘곁 태교 — 사주당 이씨와 오늘의 의학 · 이론편 · 실천편</title>
+<meta name="description" content="혼자 버티는 시간이 아니라 함께 지나가는 시간. 1800년 사주당 이씨의 시선과 오늘의 의학·실천을 한자리에서 만나는 두 권의 책.">
 <meta name="author" content="권의철, 최소라">
-<meta name="keywords" content="태교, 사주당, 태교신기, 임신, 모성건강, 맘곁, 바비즈코리아">
-<meta property="og:title" content="{{BOOK_TITLE}}">
-<meta property="og:description" content="{{BOOK_TAGLINE}}">
-<meta property="og:type" content="book">
+<meta name="keywords" content="태교, 사주당, 태교신기, 임신, 출산, 모성건강, 태담, 맘곁, 바비즈코리아">
+<meta name="theme-color" content="#7a5e40">
+<meta property="og:title" content="맘곁 태교 — 사주당 이씨와 오늘의 의학">
+<meta property="og:description" content="혼자 버티는 시간이 아니라 함께 지나가는 시간. 이론편 · 실천편을 한자리에서.">
+<meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:image" content="./images/{{COVER_IMAGE}}">
-<link rel="canonical" href="./index.html">
+<meta property="og:site_name" content="맘곁 태교">
+<meta property="og:url" content="https://taegyo.momgyeot.com/">
+<meta property="og:image" content="https://taegyo.momgyeot.com/images/book-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="맘곁 태교 — 사주당 이씨와 오늘의 의학">
+<meta name="twitter:description" content="혼자 버티는 시간이 아니라 함께 지나가는 시간.">
+<meta name="twitter:image" content="https://taegyo.momgyeot.com/images/book-cover.png">
+<link rel="canonical" href="https://taegyo.momgyeot.com/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "맘곁",
+      "alternateName": "Momgyeot",
+      "url": "https://www.momgyeot.com",
+      "logo": "https://taegyo.momgyeot.com/images/logo.png",
+      "parentOrganization": { "@type": "Organization", "name": "바비즈코리아" }
+    },
+    {
+      "@type": "Book",
+      "name": "맘곁 태교 — 이론편",
+      "author": [
+        { "@type": "Person", "name": "권의철" },
+        { "@type": "Person", "name": "최소라" }
+      ],
+      "publisher": { "@type": "Organization", "name": "바비즈코리아" },
+      "inLanguage": "ko",
+      "url": "https://taegyo.momgyeot.com/book-modern.html",
+      "image": "https://taegyo.momgyeot.com/images/book-cover.png",
+      "description": "사주당 이씨의 『태교신기』와 오늘의 의학·DOHaD가 같은 자리에서 만나는 이해의 책. 10장 본문 + 부록 A–E.",
+      "datePublished": "2026-04-28"
+    },
+    {
+      "@type": "Book",
+      "name": "맘곁 태교 — 실천편",
+      "author": [
+        { "@type": "Person", "name": "권의철" },
+        { "@type": "Person", "name": "최소라" }
+      ],
+      "publisher": { "@type": "Organization", "name": "바비즈코리아" },
+      "inLanguage": "ko",
+      "url": "https://taegyo.momgyeot.com/practice-modern.html",
+      "image": "https://taegyo.momgyeot.com/images/book-cover-practice.png",
+      "description": "임신 준비부터 첫 만남까지 — 시기별 태담과 일상 실천 5개 PART."
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -744,6 +797,41 @@ INDEX_REDIRECT = """<!DOCTYPE html>
     font-size: 13px; color: var(--text-soft);
     letter-spacing: 0.06em;
   }
+  /* 히어로 CTA 3개 — 앱 / 이론편 / 실천편 */
+  .lp-hero-ctas {
+    margin: 26px auto 0; max-width: 540px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+  }
+  .lp-cta {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 12px 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-family: var(--sans);
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+  .lp-cta:hover { transform: translateY(-2px); }
+  .lp-cta-emoji { font-size: 22px; line-height: 1; }
+  .lp-cta-label { font-size: 13px; font-weight: 700; letter-spacing: -0.005em; }
+  .lp-cta-sub { font-size: 11px; color: var(--text-soft); letter-spacing: 0.02em; }
+  .lp-cta-app {
+    background: var(--accent); color: #fff;
+    box-shadow: 0 4px 14px rgba(122, 94, 64, 0.28);
+  }
+  .lp-cta-app .lp-cta-sub { color: rgba(255,255,255,0.78); }
+  :root.dark .lp-cta-app { box-shadow: 0 4px 14px rgba(212, 147, 128, 0.3); }
+  .lp-cta-book {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+  .lp-cta-book:hover { border-color: var(--accent); }
+  @media (max-width: 480px) {
+    .lp-hero-ctas { grid-template-columns: 1fr; gap: 8px; }
+    .lp-cta { flex-direction: row; justify-content: center; padding: 14px; }
+    .lp-cta-emoji { font-size: 18px; margin-right: 6px; }
+    .lp-cta-sub { display: none; }
+  }
 
   /* 두 책 카드 */
   .lp-books {
@@ -826,6 +914,38 @@ INDEX_REDIRECT = """<!DOCTYPE html>
     transition: background 0.15s;
   }
   .lp-design-link:hover { background: var(--bg); color: var(--accent); }
+
+  /* 맘곁 앱 프로모 */
+  .lp-app-card {
+    display: flex; align-items: center; gap: 22px;
+    padding: 22px 24px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: 14px;
+  }
+  .lp-app-qr {
+    flex-shrink: 0; padding: 8px;
+    background: #fff; border: 1px solid var(--line); border-radius: 10px;
+    line-height: 0; text-decoration: none;
+  }
+  .lp-app-qr img { display: block; width: 140px; height: 140px; }
+  .lp-app-meta { display: flex; flex-direction: column; gap: 14px; }
+  .lp-app-stanza { margin: 0; font-size: 14.5px; line-height: 1.85; color: var(--text); }
+  .lp-app-stanza strong { color: var(--accent); font-weight: 700; }
+  .lp-app-link {
+    align-self: flex-start;
+    background: var(--accent); color: #fff;
+    text-decoration: none; font-family: var(--sans);
+    font-size: 14px; font-weight: 600;
+    padding: 10px 16px; border-radius: 999px;
+    transition: transform 0.18s;
+  }
+  .lp-app-link:hover { transform: translateY(-1px); }
+  @media (max-width: 600px) {
+    .lp-app-card { flex-direction: column; align-items: flex-start; gap: 16px; padding: 18px; }
+    .lp-app-qr img { width: 120px; height: 120px; }
+  }
 
   /* 섹션 */
   .lp-section { margin: 0 0 56px; }
@@ -925,7 +1045,24 @@ INDEX_REDIRECT = """<!DOCTYPE html>
 <section class="lp-hero">
   <h1>맘곁 태교</h1>
   <div class="lp-hero-sub">이론편 · 실천편</div>
-  <p class="lp-hero-tagline">1800년 사주당 이씨의 시선과 오늘의 의학·실천을 같은 자리에서 만나는 두 권의 책.</p>
+  <p class="lp-hero-tagline">혼자 버티는 시간이 아니라 함께 지나가는 시간.<br>1800년 사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 두 권의 책.</p>
+  <div class="lp-hero-ctas" role="group" aria-label="시작하기">
+    <a class="lp-cta lp-cta-app" href="https://www.momgyeot.com" target="_blank" rel="noopener">
+      <span class="lp-cta-emoji" aria-hidden="true">📱</span>
+      <span class="lp-cta-label">맘곁 앱</span>
+      <span class="lp-cta-sub">곁에 두기</span>
+    </a>
+    <a class="lp-cta lp-cta-book" href="./book-modern.html">
+      <span class="lp-cta-emoji" aria-hidden="true">📘</span>
+      <span class="lp-cta-label">이론편</span>
+      <span class="lp-cta-sub">왜 그런지</span>
+    </a>
+    <a class="lp-cta lp-cta-book" href="./practice-modern.html">
+      <span class="lp-cta-emoji" aria-hidden="true">📗</span>
+      <span class="lp-cta-label">실천편</span>
+      <span class="lp-cta-sub">오늘 한 마디</span>
+    </a>
+  </div>
   <div class="lp-hero-meta">권의철 · 최소라 공저 · 펴낸곳 바비즈코리아</div>
 </section>
 
@@ -941,7 +1078,7 @@ INDEX_REDIRECT = """<!DOCTYPE html>
         <span class="lp-book-tag">이론편</span>
         <h3 class="lp-book-title">사주당 이씨와 오늘의 의학</h3>
         <p class="lp-book-desc">10장 본문 + 부록 A–E. 임신·태교를 둘러싼 이해의 결을 정리한 책.</p>
-        <span class="lp-book-cta">읽기 →</span>
+        <span class="lp-book-cta">왜 그런지 이해하기 →</span>
       </div>
     </a>
     <a class="lp-book" href="./practice-modern.html">
@@ -952,16 +1089,14 @@ INDEX_REDIRECT = """<!DOCTYPE html>
         <span class="lp-book-tag">실천편</span>
         <h3 class="lp-book-title">말을 거는 순간, 사랑이 시작됩니다</h3>
         <p class="lp-book-desc">PART 1–5. 임신 준비부터 첫 만남까지, 오늘 해 볼 수 있는 작은 일들.</p>
-        <span class="lp-book-cta">읽기 →</span>
+        <span class="lp-book-cta">오늘 한 마디부터 →</span>
       </div>
     </a>
   </div>
   <div class="lp-design-row">
-    <span class="lp-design-label">디자인</span>
-    <a class="lp-design-link" href="./book-modern.html">📖 이론편 모던</a>
-    <a class="lp-design-link" href="./book.html">📜 이론편 클래식</a>
-    <a class="lp-design-link" href="./practice-modern.html">📖 실천편 모던</a>
-    <a class="lp-design-link" href="./practice.html">📜 실천편 클래식</a>
+    <span class="lp-design-label">또 다른 결로 읽기</span>
+    <a class="lp-design-link" href="./book.html">📜 이론편 세리프판</a>
+    <a class="lp-design-link" href="./practice.html">📜 실천편 세리프판</a>
   </div>
 </section>
 
@@ -1009,10 +1144,30 @@ INDEX_REDIRECT = """<!DOCTYPE html>
   </ol>
 </section>
 
+<section class="lp-section lp-app-promo">
+  <h2>맘곁과 함께 지나가기</h2>
+  <p class="lp-section-lede">책에서 만난 이해를 일상으로 잇는 자리.</p>
+  <div class="lp-app-card">
+    <a class="lp-app-qr" href="https://www.momgyeot.com" target="_blank" rel="noopener" aria-label="맘곁 사이트 QR (www.momgyeot.com)">
+      <img src="./images/momgyeot-qr.png" alt="맘곁 공식 사이트 QR 코드" width="140" height="140">
+    </a>
+    <div class="lp-app-meta">
+      <p class="lp-app-stanza">
+        <strong>예비맘곁</strong>은 부모가 되기 전 마음과 관계를 준비하는 자리,<br>
+        <strong>임신맘곁</strong>은 아기와 처음으로 연결을 시작하는 자리,<br>
+        <strong>육아맘곁</strong>은 함께 살아가는 리듬을 만드는 자리.
+      </p>
+      <a class="lp-app-link" href="https://www.momgyeot.com" target="_blank" rel="noopener">
+        📱 맘곁 사이트 — www.momgyeot.com
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="lp-section">
   <h2>도움이 필요할 때</h2>
   <p class="lp-section-lede">혼자 견디지 않아도 됩니다.</p>
-  <p style="font-size: 14.5px; color: var(--text); line-height: 1.75;">생명·안전·정서적 어려움이 클 때 가장 빨리 닿을 수 있는 자리는 <strong>119</strong> · <strong>1393</strong>(자살예방) · <strong>1577-0199</strong>(정신건강위기상담, 24시간) · <strong>1366</strong>(여성긴급전화)입니다. 자세한 안내는 <a href="./book-modern.html#appendix-d" style="color: var(--accent); font-weight: 600;">부록 D — 도움 요청 가이드</a>를 펴 보세요.</p>
+  <p style="font-size: 14.5px; color: var(--text); line-height: 1.75;">생명·안전·정서적 어려움이 클 때 가장 빨리 닿을 수 있는 자리는 <a href="tel:119" style="color: var(--accent); font-weight: 700;">119</a> · <a href="tel:1393" style="color: var(--accent); font-weight: 700;">1393</a>(자살예방) · <a href="tel:1577-0199" style="color: var(--accent); font-weight: 700;">1577-0199</a>(정신건강위기상담, 24시간) · <a href="tel:1366" style="color: var(--accent); font-weight: 700;">1366</a>(여성긴급전화)입니다. 자세한 안내는 <a href="./book-modern.html#appendix-d" style="color: var(--accent); font-weight: 600;">부록 D — 도움 요청 가이드</a>를 펴 보세요.</p>
 </section>
 
 <footer class="lp-footer">
@@ -1104,9 +1259,9 @@ TEMPLATE = """<!DOCTYPE html>
   --bg-flow-from: #2a2a2a;
   --card-modern-bg: #232323;
   --ring-bg: rgba(40, 40, 40, 0.6);
-  --pen-yellow: rgba(245, 211, 100, 0.28);
-  --pen-peach: rgba(244, 178, 154, 0.24);
-  --pen-sage: rgba(167, 198, 169, 0.24);
+  --pen-yellow: rgba(245, 211, 100, 0.5);
+  --pen-peach: rgba(244, 178, 154, 0.42);
+  --pen-sage: rgba(167, 198, 169, 0.42);
   --shadow-soft: rgba(0, 0, 0, 0.3);
   --shadow-medium: rgba(0, 0, 0, 0.4);
   --shadow-strong: rgba(0, 0, 0, 0.55);
@@ -3267,9 +3422,9 @@ TEMPLATE_MODERN = """<!DOCTYPE html>
   --card-shadow: 0 2px 10px rgba(0,0,0,0.35);
   --card-shadow-hover: 0 6px 18px rgba(0,0,0,0.5);
 
-  --pen-yellow: rgba(245, 211, 100, 0.28);
-  --pen-peach: rgba(244, 178, 154, 0.24);
-  --pen-sage: rgba(167, 198, 169, 0.24);
+  --pen-yellow: rgba(245, 211, 100, 0.5);
+  --pen-peach: rgba(244, 178, 154, 0.42);
+  --pen-sage: rgba(167, 198, 169, 0.42);
   --backdrop: rgba(0, 0, 0, 0.55);
   --shadow-soft: rgba(0, 0, 0, 0.3);
   --shadow-medium: rgba(0, 0, 0, 0.4);
