@@ -2518,6 +2518,88 @@ table.data td { color: var(--text); }
 }
 @media print { .next-action { page-break-inside: avoid; } }
 
+/* 맘곁 브랜드 — 함께 지나가는 시간 */
+.momgyeot-brand {
+  margin: 2.2em 0 1.4em;
+  padding: 28px 26px 22px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  font-family: var(--serif);
+  color: var(--text);
+  line-height: 1.85;
+}
+.momgyeot-brand .momgyeot-lead {
+  font-family: var(--sans);
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.22em; color: var(--accent);
+  margin: 0 0 14px;
+}
+.momgyeot-brand .momgyeot-stanza {
+  margin: 0 0 14px; font-size: 15.5px;
+}
+.momgyeot-brand .momgyeot-stanza em {
+  font-style: normal;
+  background: linear-gradient(180deg, transparent 60%, rgba(196, 157, 176, 0.35) 60%);
+  padding: 0 2px;
+}
+.momgyeot-brand .momgyeot-stanza strong { color: var(--accent); font-weight: 700; }
+.momgyeot-stages {
+  list-style: none; padding: 0;
+  margin: 22px 0 18px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+}
+.momgyeot-stage {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 16px 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  position: relative;
+}
+.momgyeot-stage .stage-tag {
+  font-family: var(--sans); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.06em; color: var(--text-soft);
+}
+.momgyeot-stage .stage-desc {
+  font-family: var(--sans); font-size: 12.5px;
+  color: var(--text-soft); line-height: 1.6;
+}
+.momgyeot-stage.is-current {
+  background: var(--bg-soft);
+  border-color: var(--accent);
+  box-shadow: 0 2px 10px var(--shadow-soft);
+}
+.momgyeot-stage.is-current .stage-tag { color: var(--accent); }
+.momgyeot-stage.is-current .stage-desc { color: var(--text); }
+.momgyeot-stage .stage-now {
+  position: absolute; top: -10px; right: 12px;
+  background: var(--accent); color: #fff;
+  font-family: var(--sans); font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 3px 9px; border-radius: 999px;
+  white-space: nowrap;
+}
+.momgyeot-brand .momgyeot-now {
+  margin: 18px 0 6px;
+  font-family: var(--sans); font-size: 14.5px; font-weight: 500;
+  color: var(--text); line-height: 1.75;
+}
+.momgyeot-brand .momgyeot-cta {
+  margin: 0; font-family: var(--serif); font-size: 17px; font-style: italic;
+  color: var(--accent);
+}
+@media (max-width: 600px) {
+  .momgyeot-brand { padding: 22px 18px 18px; }
+  .momgyeot-stages { grid-template-columns: 1fr; gap: 10px; }
+  .momgyeot-stage .stage-now { right: 10px; top: -9px; }
+}
+@media print {
+  .momgyeot-brand { page-break-inside: avoid; background: #fff !important; border-color: #ccc !important; }
+  .momgyeot-stage { background: #fff !important; box-shadow: none !important; }
+}
+
 /* 맘곁 공식 사이트 QR 카드 */
 .momgyeot-card {
   display: flex; align-items: center; gap: 22px;
@@ -4489,6 +4571,87 @@ table.data tr:last-child td { border-bottom: none; }
 @media print {
   .next-action { page-break-inside: avoid; background: white !important; border-color: #ccc !important; }
   .next-action-link { display: none; }
+}
+
+/* 맘곁 브랜드 — 함께 지나가는 시간 */
+.momgyeot-brand {
+  margin: 2.4em 0 1.6em;
+  padding: 32px 30px 26px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: 0 1px 6px var(--shadow-soft);
+  font-family: var(--sans);
+  color: var(--text);
+  line-height: 1.85;
+}
+.momgyeot-brand .momgyeot-lead {
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.22em; color: var(--accent);
+  margin: 0 0 16px;
+}
+.momgyeot-brand .momgyeot-stanza {
+  margin: 0 0 14px; font-size: 16px;
+}
+.momgyeot-brand .momgyeot-stanza em {
+  font-style: normal;
+  background: linear-gradient(180deg, transparent 60%, rgba(196, 157, 176, 0.4) 60%);
+  padding: 0 2px;
+}
+.momgyeot-brand .momgyeot-stanza strong { color: var(--accent); font-weight: 700; }
+.momgyeot-stages {
+  list-style: none; padding: 0;
+  margin: 24px 0 20px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+.momgyeot-stage {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 18px 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  position: relative;
+}
+.momgyeot-stage .stage-tag {
+  font-size: 13.5px; font-weight: 700;
+  letter-spacing: 0.06em; color: var(--text-soft);
+}
+.momgyeot-stage .stage-desc {
+  font-size: 13px; color: var(--text-soft); line-height: 1.65;
+}
+.momgyeot-stage.is-current {
+  background: var(--bg-soft);
+  border-color: var(--accent);
+  box-shadow: 0 2px 12px var(--shadow-soft);
+}
+.momgyeot-stage.is-current .stage-tag { color: var(--accent); }
+.momgyeot-stage.is-current .stage-desc { color: var(--text); }
+.momgyeot-stage .stage-now {
+  position: absolute; top: -11px; right: 14px;
+  background: var(--accent); color: #fff;
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 3px 10px; border-radius: 999px;
+  white-space: nowrap;
+}
+.momgyeot-brand .momgyeot-now {
+  margin: 20px 0 6px;
+  font-size: 15px; font-weight: 500;
+  color: var(--text); line-height: 1.75;
+}
+.momgyeot-brand .momgyeot-cta {
+  margin: 0; font-size: 17px; font-weight: 600;
+  color: var(--accent);
+}
+@media (max-width: 600px) {
+  .momgyeot-brand { padding: 24px 20px 20px; }
+  .momgyeot-stages { grid-template-columns: 1fr; gap: 12px; }
+  .momgyeot-stage .stage-now { right: 12px; top: -10px; }
+}
+@media print {
+  .momgyeot-brand { page-break-inside: avoid; background: #fff !important; border-color: #ccc !important; box-shadow: none !important; }
+  .momgyeot-stage { background: #fff !important; box-shadow: none !important; }
 }
 
 /* 맘곁 공식 사이트 QR 카드 */

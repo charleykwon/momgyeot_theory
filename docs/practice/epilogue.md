@@ -26,9 +26,39 @@
 
 ---
 
-### 🔗 맘곁 공식 사이트
+### 🌿 맘곁 — 함께 지나가는 시간
 
-이 책과 이론편, 그리고 새로 더해지는 자료들은
+:::raw
+<section class="momgyeot-brand" aria-label="맘곁 소개">
+  <p class="momgyeot-lead">맘곁은</p>
+  <p class="momgyeot-stanza">혼자 버티는 시간이 아니라<br>함께 지나가는 시간입니다.</p>
+  <p class="momgyeot-stanza">임신을 준비하는 시간부터,<br>아기를 맞이하고 함께 살아가는 시간까지<br>부모의 마음과 아기의 하루를<br>하나의 흐름으로 이어줍니다.</p>
+  <p class="momgyeot-stanza">우리는 기록을 남기는 것보다<br><em>그 시간을 어떻게 지나가는지</em>가 더 중요하다고 생각합니다.</p>
+  <p class="momgyeot-stanza">맘곁은 부모가 혼자 판단하고 버티는 시간을 줄이고,<br>데이터와 감정을 함께 이해해<br>지금 필요한 선택을 도와드립니다.</p>
+  <p class="momgyeot-stanza">그래서 맘곁은 정보를 제공하는 앱이 아니라<br>부모와 아이가 같은 시간을 함께 지나가도록 돕는<br><strong>하나의 곁</strong>입니다.</p>
+  <ul class="momgyeot-stages" aria-label="맘곁의 세 자리">
+    <li class="momgyeot-stage">
+      <span class="stage-tag">예비맘곁</span>
+      <span class="stage-desc">부모가 되기 전,<br>우리의 마음과 관계를<br>준비하는 시간</span>
+    </li>
+    <li class="momgyeot-stage is-current" aria-current="true">
+      <span class="stage-tag">임신맘곁</span>
+      <span class="stage-desc">아기와 처음으로<br>연결을 시작하는 시간</span>
+      <span class="stage-now">지금 우리의 자리</span>
+    </li>
+    <li class="momgyeot-stage">
+      <span class="stage-tag">육아맘곁</span>
+      <span class="stage-desc">함께 살아가는 리듬을<br>만들어가는 시간</span>
+    </li>
+  </ul>
+  <p class="momgyeot-now">지금 우리는<br>아기와 처음으로 관계를 시작하는 시간을 지나고 있어요.</p>
+  <p class="momgyeot-cta">이 시간, 같이 시작해 볼까요?</p>
+</section>
+:::
+
+#### 🔗 맘곁 공식 사이트
+
+새로 더해지는 자료들과 시기별 안내는
 맘곁 공식 사이트에서 한자리에 만날 수 있습니다.
 
 :::raw
