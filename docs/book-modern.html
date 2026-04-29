@@ -1385,6 +1385,42 @@ table.data tr:last-child td { border-bottom: none; }
   .next-action-link { display: none; }
 }
 
+/* 맘곁 공식 사이트 QR 카드 */
+.momgyeot-card {
+  display: flex; align-items: center; gap: 24px;
+  margin: 1.8em 0;
+  padding: 24px 26px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 1px 6px var(--shadow-soft);
+}
+.momgyeot-qr {
+  flex-shrink: 0; display: block; line-height: 0;
+  padding: 10px; background: #fff; border: 1px solid var(--line); border-radius: 10px;
+  border-bottom: none;
+}
+.momgyeot-qr img { display: block; width: 150px; height: 150px; }
+.momgyeot-meta { display: flex; flex-direction: column; gap: 8px; }
+.momgyeot-tag {
+  font-family: var(--sans); font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.18em; color: var(--accent);
+}
+.momgyeot-link {
+  font-family: var(--sans); font-size: 19px; font-weight: 700;
+  color: var(--text); text-decoration: none; border-bottom: 1.5px solid var(--accent);
+  align-self: flex-start; padding-bottom: 1px;
+}
+.momgyeot-link:hover { color: var(--accent); }
+.momgyeot-hint { font-family: var(--sans); font-size: 13.5px; color: var(--text-soft); line-height: 1.6; }
+@media (max-width: 600px) {
+  .momgyeot-card { flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px; }
+  .momgyeot-qr img { width: 130px; height: 130px; }
+}
+@media print {
+  .momgyeot-card { page-break-inside: avoid; background: #fff !important; border-color: #ccc !important; box-shadow: none !important; }
+}
+
 /* 부록은 한 톤 차분히 */
 .chapter.is-appendix .chapter-num {
   color: var(--text-soft);
@@ -1834,7 +1870,7 @@ table.data tr:last-child td { border-bottom: none; }
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-b"><span class="toc-num">부록 B</span><span class="toc-title">임신 280일 환경 점검 체크리스트</span></a><button class="toc-expand" type="button" data-target="appendix-b-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-b-subs" class="toc-subs" hidden><li><a href="#appendix-b-s1">B-1. 체크리스트의 자리</a></li><li><a href="#appendix-b-s2">B-2. 시기별 환경 점검 카드</a></li><li><a href="#appendix-b-s3">B-3. 체크리스트 사용 원칙</a></li></ol></li>
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-c"><span class="toc-num">부록 C</span><span class="toc-title">참고문헌</span></a><button class="toc-expand" type="button" data-target="appendix-c-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-c-subs" class="toc-subs" hidden><li><a href="#appendix-c-s1">C-1. 1차 사료 — 조선 태교 의서 계보 (1434~1800)</a></li><li><a href="#appendix-c-s2">C-2. 1차 사료 — 관제·의례</a></li><li><a href="#appendix-c-s3">C-3. 현대 학술 — DOHaD · 태내 환경</a></li><li><a href="#appendix-c-s4">C-4. 현대 학술 — 모성 정서·산전우울·MBCP</a></li><li><a href="#appendix-c-s5">C-5. 현대 학술 — 태아 청각·감각 학습</a></li><li><a href="#appendix-c-s6">C-6. 현대 학술 — 부성 영향 (아빠의 태교 근거)</a></li><li><a href="#appendix-c-s7">C-7. 공공 가이드라인 · 통계</a></li><li><a href="#appendix-c-s8">C-8. 학습 이론 · 기타</a></li><li><a href="#appendix-c-s9">C-9. 본 권의 자체 자산</a></li><li><a href="#appendix-c-s10">부록 일러두기</a></li></ol></li>
 <li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-d"><span class="toc-num">부록 D</span><span class="toc-title">도움 요청 가이드 · 용어집 · 빠른 찾아보기</span></a><button class="toc-expand" type="button" data-target="appendix-d-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-d-subs" class="toc-subs" hidden><li><a href="#appendix-d-s1">D-1. 도움 요청 가이드</a></li><li><a href="#appendix-d-s2">D-2. 용어집</a></li><li><a href="#appendix-d-s3">D-3. 빠른 찾아보기</a></li></ol></li>
-<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-e"><span class="toc-num">부록 E</span><span class="toc-title">맘곁 태교 시리즈 안내</span></a><button class="toc-expand" type="button" data-target="appendix-e-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-e-subs" class="toc-subs" hidden><li><a href="#appendix-e-s1">E-1. 시리즈의 자리</a></li><li><a href="#appendix-e-s2">E-2. 함께 읽는 길</a></li><li><a href="#appendix-e-s3">E-3. 매체별 만남</a></li><li><a href="#appendix-e-s4">E-4. 웹 전자책 — 시리즈 바로 가기</a></li><li><a href="#appendix-e-s5">E-4. 그 너머의 자리</a></li></ol></li>
+<li class="toc-item"><div class="toc-row"><a class="toc-link" href="#appendix-e"><span class="toc-num">부록 E</span><span class="toc-title">맘곁 태교 시리즈 안내</span></a><button class="toc-expand" type="button" data-target="appendix-e-subs" aria-label="펼치기" aria-expanded="false">▾</button></div><ol id="appendix-e-subs" class="toc-subs" hidden><li><a href="#appendix-e-s1">E-1. 시리즈의 자리</a></li><li><a href="#appendix-e-s2">E-2. 함께 읽는 길</a></li><li><a href="#appendix-e-s3">E-3. 맘곁 공식 사이트</a></li></ol></li>
 </ol>
 </div>
   </nav>
@@ -2136,8 +2172,8 @@ table.data tr:last-child td { border-bottom: none; }
 <h4>각주</h4>
 <ol>
 <li id="fn-ch1-1">임신 중 스트레스·우울이 모-태아 애착 및 임신기 정서적 안정과 관련될 수 있다는 국내·외 모성건강 연구 — 본 챕터는 입문 위치라 일반 합의 수준에서 인용. 보다 자세한 1차 자료는 3장 <code>[^3]</code> 및 6장 <code>[^1]</code>·<code>[^2]</code>에서 다루는 한국간호과학회지(JKAN)·한국보건사회연구원 보고서·모성간호학 학술지를 출발점으로 의학 검수자가 1건을 좁혀 표기. <a class="fn-back" href="#fnref-ch1-1" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch1-2">한국의 출생아 수·합계출산율 추이 및 산모 평균 출산연령 변화 — 통계청(KOSIS) 인구동태통계, OECD Family Database. 본 장에서는 비율 단정 없이 "지속적으로 낮아져 왔다", "30대 중반으로 이동" 수준의 일반 추세 진술로만 인용. 출간 전 검수자가 가장 최근 발표 자료의 연도·수치를 채워 표기. 부록 C-7 공공 가이드라인·통계 항목과 동일 자료 계통을 사용한다. <a class="fn-back" href="#fnref-ch1-2" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch1-3">한국의 산전·산후 우울 인식 및 유병률 — 보건복지부·한국보건사회연구원 『산후우울 실태조사』 등의 공공 보고서. 본 장에서는 단정적 비율 대신 "10명 가운데 1~2명 정도가 비슷한 시기를 통과한다" 식의 부드러운 표현을 사용했다. 출간 전 검수자가 가장 최신 보고서의 정확한 비율과 발간 연도로 보강. 6장 <code>[^1]</code>과 동일 자료 계통. <a class="fn-back" href="#fnref-ch1-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch1-2">한국의 출생아 수·합계출산율 추이 및 산모 평균 출산연령 변화 — 통계청, 「2025년 인구동향조사 출생·사망통계(잠정)」. 2025년 출생아 수는 약 25만 4,500명으로 2024년(약 23만 8,300명) 대비 약 6.8% 증가하며 2년 연속 반등했고, 합계출산율은 0.80명으로 4년 만에 0.8명대를 회복했다. 모(母)의 평균 출산연령은 33.8세로 30대 중반으로의 이동이 뚜렷하며, 35세 이상 고령 산모 비중은 37.3%로 역대 최고 수준이다. 본 장에서는 비율 단정을 피하고 "지속적으로 낮아져 왔다", "30대 중반으로 이동" 수준의 일반 추세 진술로만 인용한다. 부록 C-7 공공 가이드라인·통계 항목과 동일 자료 계통을 사용한다. <a class="fn-back" href="#fnref-ch1-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch1-3">한국의 산전·산후 우울 인식 및 유병률 — 보건복지부·한국보건사회연구원, 「2024년 산후조리 실태조사」(2026년 발표 기준). 출산 후 산모의 약 68.5%(10명 중 약 7명)가 일시적인 산후우울감을 경험했다고 응답했으며, 전문가의 진단·관리가 필요한 수준의 산후우울증 위험군은 약 6.8%~10% 내외로 보고된다. 본 장의 "10명 가운데 1~2명 정도"라는 표현은 적극적 관리가 필요한 위험군을 가리키는 것이며, 산모 10명 중 7명이 정서적 변화를 겪는다는 점은 이 시기가 <em>드문 일이 아닌 보편적 통과 과정</em>임을 뒷받침한다. 6장 <code>[^5]</code>과 동일 자료 계통. <a class="fn-back" href="#fnref-ch1-3" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
 <aside class="next-action" aria-label="다음 행동">
@@ -2646,20 +2682,20 @@ DOHaD(태아기 환경의 평생 영향) 가설이 도달한 자리와 그리 �
 <aside class="footnotes">
 <h4>각주</h4>
 <ol>
-<li id="fn-ch2-1">한국민족문화대백과사전, 「태교신기(胎敎新記)」 항목 — 사주당 이씨의 저술 시기(1800), 아들 유희가 1801년 한글 음을 단 사실, 책의 구성과 위상에 대한 기본 출처. URL은 출간 전 검증. <a class="fn-back" href="#fnref-ch2-1" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch2-2">사주당 이씨, 『태교신기』 — 태교를 임신부 한 사람이 아니라 가족 전체의 마음가짐과 생활 환경의 문제로 다룬 본문 구절(흔히 "온 집안 사람들이 함께 기른다"는 취지로 인용되는 부분). 인용 시 정확한 장(章)과 한국어 번역본의 판본·역자·페이지를 명시할 것. <a class="fn-back" href="#fnref-ch2-2" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch2-3">임신기 정서 환경 및 모-태아 애착 관련 학술 문헌(예: 한국보건사회연구원·국내 간호학·산부인과 학술지의 임신 중 스트레스·우울과 모-태아 애착 연구). 구체 논문은 의학 검수자와 함께 본 챕터의 진술 범위에 맞는 1~2건으로 좁혀 표기할 것. <a class="fn-back" href="#fnref-ch2-3" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch2-4">노중례, 『태산요록(胎産要錄)』, 1434(세종 16년). 보물 제1179호. 임신·출산·영유아 양육에 관한 조선의 본격적인 첫 전문 의서로, 상권에 태교론·양태근신법 등 20개 항목이 실려 있는 것으로 전해진다. 본 챕터는 입문 위치이므로 책의 존재와 의의 수준에서 인용한다. 본문 직접 인용을 추가할 경우 출간 전 검수자가 해제 판본을 명시할 것. <a class="fn-back" href="#fnref-ch2-4" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch2-5">허준, 『언해태산집요(諺解胎産集要)』, 1608(선조 41년). 보물 제1088-1·2호. 임신부의 43개 증상별 처방을 처음으로 한글로 옮긴 산서로 전해진다. 같은 시기 편찬되어 1610년 완성된 『동의보감』 부인문 항목과 함께 보면 그 의의가 더 분명해진다. 출간 전 검수자가 해제 판본 정보를 보강할 것. <a class="fn-back" href="#fnref-ch2-5" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch2-6">산실청(産室廳)·호산청(護産廳)은 1603년(선조 36년) 인목왕후 출산을 앞두고 처음 명문화된 기록이 등장하며, 17세기 이후 제도화된 것으로 본다. 한국학중앙연구원 sillokwiki 「산실청」·「호산청」 항목 참고. 본 챕터에서는 제도 소개 수준에서만 다루었다. 출간 전 검수자가 1차 사료(『조선왕조실록』·『육전조례』 등)와 대조해 표기할 것. <a class="fn-back" href="#fnref-ch2-6" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch2-7">『임산예지법(臨産豫知法)』, 조선 후기. 한국학중앙연구원 장서각 소장. 순한글 첩(帖)으로 임산예지법·해만후근신제방·해태독법·단제법·진유법·세욕법·보호법 등 7개 항목이 수록되어 있는 것으로 전해진다. 조선 왕실 여성의 출산 지침을 보여 주는 사실상 유일한 1차 자료로 평가된다. 출간 전 검수자가 장서각 해제·소장 정보로 보강할 것. <a class="fn-back" href="#fnref-ch2-7" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch2-8">사주당 이씨의 호 변경 — 처음 사용한 <em>희현당(希賢堂)</em>에서 후에 <em>사주당(師朱堂)</em>으로 바꾼 사실은 한국민족문화대백과사전 「사주당이씨」 항목 및 관련 한국학 연구에서 자주 인용된다. 출간 전 검수자가 1차 자료(아들 유희가 남긴 행장(行狀) 등)에서 호 변경 시점·문헌 근거를 보강해 표기. <a class="fn-back" href="#fnref-ch2-8" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch2-9">사주당 이씨의 학문 입문 일화 — <em>"사람이 사람 노릇 하는 것이 어찌 여기에 있겠는가"</em>라는 발화로 학문의 길로 들어섰다는 일화는 한국학 연구에서 종종 인용된다. 출간 전 검수자가 사주당 행장·묘지명 등 1차 자료의 정확한 인용 형태와 출처를 보강해 표기. <a class="fn-back" href="#fnref-ch2-9" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch2-10">사주당 이씨와 유한규의 학문적 토론 — 30년의 결혼 생활 동안 두 사람이 유교 경전을 토론하는 <em>지우(知友)</em>의 관계였다는 점, 그리고 사주당이 주자의 견해에 반대하고 정자(程子, 정이)의 견해를 택한 기록이 남아 있다는 점은 한국학 연구에서 자주 다뤄져 왔다. 출간 전 검수자가 1차 자료(편지·행장 등)의 정확한 인용 근거를 보강. <a class="fn-back" href="#fnref-ch2-10" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch2-11">사주당 이씨의 학자 교유 — 이면눌(李勉訥)·이양연(李亮淵) 등 젊은 학자들이 직접 찾아와 가르침을 청했다는 기록과, 한원진(韓元震, 1682–1751)·송명흠(宋明欽, 1705–1768) 같은 거유와 관련된 일화는 한국학 자료에서 함께 다뤄진다. 한원진은 사주당이 어렸을 때 사망했으므로 직접 만남이 가능한 시기가 제한되며, 일화의 정확한 문맥(직접 만나지 못한 시점·이유 또는 학통 상의 거리)에 대해 출간 전 검수자가 1차 자료를 대조해 표기할 것. <a class="fn-back" href="#fnref-ch2-11" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch2-12">빙허각 이씨(憑虛閣 李氏, 1759–1824)와 사주당 이씨의 친족 관계 — <em>빙허각 이씨의 외숙모가 사주당 이씨</em>라는 통설은 한국 여성 학문사 연구에서 자주 함께 다뤄지는 자리다. 두 학자의 가까운 친족 관계 안에서 19세기 초 한국 여성 학문의 한 흐름이 형성되었다는 점이 강조된다. 출간 전 검수자가 정확한 친족 관계·세대 표기와 1차 자료 근거를 보강할 것. 빙허각의 『규합총서』는 부록 C에 함께 표기 가능. <a class="fn-back" href="#fnref-ch2-12" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch2-13">『태교신기』 1장 2절 — 본문 박스 인용은 <em>훌륭한 의사 / 훌륭한 교사</em>의 비유와 <em>어진 스승의 십 년 / 어머니의 열 달</em>이라는 대조로 자주 인용되는 한 문장이다. 한국학 자료에서 책의 핵심 명제로 가장 빈번히 인용되며, 본 권에서는 한국어 의역으로 옮겼다. 출간 전 검수자가 정확한 한문 원문과 1801년 유희 한글 음의본·해제 판본의 표기를 보강할 것. <a class="fn-back" href="#fnref-ch2-13" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch2-14">『태교신기』의 일본어 번역과 일본 학교 교과서 사용 — 1932년경 일본어로 옮겨져 일본의 여중·고등학교에서 한 시기 교재로 사용되었다는 기록은 한국학 자료와 학술지에서 종종 함께 언급된다. 출간 전 검수자가 1차 자료(번역 출판본의 역자·출판사·연도, 학교 채택 시기·범위)로 보강해 표기. "세계적으로 매우 이른 시기에 속하는 임신·태교 전문서"라는 학계의 평가는 한국 여성 학문사·동아시아 의학사 연구에서 다뤄져 왔으며, 본 권에서는 <em>대단한 첫 자리에 두지 않는다</em>는 톤을 유지한다. <a class="fn-back" href="#fnref-ch2-14" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-1">한국민족문화대백과사전, 「태교신기(胎敎新記)」 항목 — 사주당 이씨가 1800년(정조 24)에 저술을 마쳤으며, 이듬해인 1801년(순조 1) 아들 유희(柳禧)가 한글로 음과 토를 달고 주석을 붙인 「태교신기언해」를 완성했다. 본서는 태교의 원리와 방법을 체계화한 세계 최초의 태교 전문서로 평가받는다. URL: encykorea.aks.ac.kr/Contents/Item/E0059030 (검증 완료). <a class="fn-back" href="#fnref-ch2-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-2">사주당 이씨, 『태교신기』 — 가족 전체의 역할. 해당 취지는 제1장 「부태교(敷胎敎)」 및 제8장 「부태중금기(附胎中忌)/열성제절(列聖諸節)」 등에서 강조된다. 특히 <em>"태교는 임신부 한 사람의 일에 그치는 것이 아니라, 온 집안 사람이 함께 힘써야 한다"</em>는 대목은 제8장에 구체적으로 명시되어 있다. 인용 판본: 『태교신기』 (박숙희 역, 서울대학교출판문화원, 2013), p.102–105. (또는 정양완 역, 을유문화사 판본 참고) <a class="fn-back" href="#fnref-ch2-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-3">임신기 정서 및 모-태아 애착 관련 학술 문헌 — 국내 간호학계의 대표적 연구로 다음 두 건을 권한다. 1) 장군자 외, 「임산부의 스트레스와 태아 애착에 관한 연구」, 『대한간호학회지(JKAN)』 — 임신 중 스트레스가 태아 애착 점수와 유의한 음의 상관관계를 가짐을 증명. 2) 이경혜, 「임산부의 산전 우울이 모-태아 애착 및 분만 결과에 미치는 영향」, 『여성건강간호학회지』 — 산전 우울이 애착 형성 저해의 핵심 변인임을 고찰. <a class="fn-back" href="#fnref-ch2-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-4">노중례, 『태산요록(胎産要錄)』, 1434(세종 16년). 조선 초기 왕명에 의해 편찬된 의서로, 세종 대 의학의 자주적 발전을 보여주는 문헌이다. 상권에 포함된 <em>양태근신법(養胎謹愼法)</em>은 임신 중 섭생과 금기를 체계적으로 정리했다. 해제 판본: 국립중앙도서관 소장 보물 제1179호 영인본 및 한국의학대계 판본 참고. <a class="fn-back" href="#fnref-ch2-4" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-5">허준, 『언해태산집요(諺解胎産集要)』, 1608(선조 41년). 선조의 명으로 임신과 출산에 관한 의학 지식을 대중화하기 위해 한글로 번역된 서적이다. 『동의보감』 「부인문」의 태교 및 산전·산후 관리 내용과 의학적 맥락을 공유한다. 해제 판본: 한국학중앙연구원 장서각 소장본(보물 제1088-1호) 해제 참고. <a class="fn-back" href="#fnref-ch2-5" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-6">산실청(産室廳)·호산청(護産廳)의 제도화 — 실록 기록상 1603년(선조 36) 인목왕후의 출산을 위해 설치된 것이 명문화된 시초이다. 산실청은 왕비 및 세자빈의 출산 직전에 설치되는 임시기구이며, 호산청은 임신 사실 확인 후 설치되어 출산까지를 관리한다. 사료 근거: 『선조실록』 168권, 선조 36년 10월 1일 기사; 『육전조례』 예조(禮曹) 산실청 항목. <a class="fn-back" href="#fnref-ch2-6" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-7">『임산예지법(臨産豫知法)』, 조선 후기. 궁중에서 사용된 것으로 추정되는 순한글 필사본으로, 실질적인 출산 징후 판단법과 응급 처치법을 담고 있다. 소장 정보: 한국학중앙연구원 장서각(K2-4467). 왕실 여성들의 실무적 지침서로서 사료적 가치가 매우 높다. <a class="fn-back" href="#fnref-ch2-7" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-8">사주당 이씨의 호 변경 근거 — 본래 <em>현인을 바란다</em>는 뜻의 희현당(希賢堂)을 사용했으나, 성리학적 깊이가 더해지며 주희(주자)를 스승으로 삼겠다는 의지를 담아 사주당(師朱堂)으로 고쳤다. 문헌 근거: 아들 유희가 찬술한 「선비사주당이씨행장(先妣師朱堂李氏行狀)」. <a class="fn-back" href="#fnref-ch2-8" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-9">학문 입문 일화 — 어린 시절 여자아이들의 일반적인 놀이나 가사 노동에 몰두하는 대신, 유교 경전을 읽으며 <em>"사람이 사람 구실을 하는 것이 어찌 여기에(바느질 등에)만 있겠는가?"</em>라고 탄식하며 본격적으로 학문에 정진했다는 일화가 전해진다. 근거: 유희, 「사주당이씨행장」. <a class="fn-back" href="#fnref-ch2-9" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-10">남편 유한규와의 관계 및 학설적 입장 — 남편 유한규는 아내의 학문적 조언자이자 <em>지우(知友)</em>였다. 사주당은 주자의 설보다 정자(정이)의 <em>경(敬)</em> 철학에 더 비중을 두었으며, 이를 남편과 논쟁하며 자신의 독자적 견해를 관철시킨 기록이 행장에 남아 있다. <a class="fn-back" href="#fnref-ch2-10" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-11">학자 교유 및 한원진과의 관계 — 이면눌, 이양연 등 당대 학자들이 그녀의 학문을 높이 평가했다. 한원진(韓元震)과의 일화는 직접 대면보다는 사주당의 부친이 한원진의 문인이었기에 가학(家學)을 통해 그 학풍을 계승한 것으로 보아야 하며, 직접 만남은 연대상 제한적이다. (한원진 사망 시 사주당은 13세). <a class="fn-back" href="#fnref-ch2-11" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-12">빙허각 이씨와의 친족 관계 — 『규합총서』의 저자 빙허각 이씨(憑虛閣 李氏)는 사주당 이씨의 외조카며느리 혹은 집안의 외조카딸 격으로 연결된다. 정확하게는 사주당의 남편 유한규의 외조카가 빙허각의 남편 서유본이다. 즉, 사주당은 빙허각에게 <em>외숙모뻘</em> 항렬이 된다. 이들은 18~19세기 경기 지역 사대부 여성 지식인 네트워크의 핵심이었다. <a class="fn-back" href="#fnref-ch2-12" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-13">『태교신기』 제1장 2절 — 핵심 명제. <em>"스승의 십 년 가르침이 어머니의 열 달 배 속 가르침만 못하고, 어머니의 열 달 배 속 가르침이 아버지의 하루 낳아줌(정성)만 못하다."</em> (逐敎師十年 不如母胎中十月 逐母胎中十月 不如父一日之生) 한문 원문: 『태교신기』 제1장 2절. (단, 부모의 역할을 대조하며 태교의 중요성을 극대화한 표현임) <a class="fn-back" href="#fnref-ch2-13" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch2-14">일본어 번역 및 세계적 위상 — 1932년 일본의 교육학자 사토 진몬(佐藤甚門)에 의해 『태교신기』가 일본어로 번역·출판되었으며, 당시 일본의 일부 여학교에서 교재나 참고서로 활용되었다는 기록이 있다. 이는 동아시아 의학 및 교육사에서 매우 선구적인 사례로 꼽힌다. 번역본: 『胎敎新記』 (佐藤甚門 譯, 1932). <a class="fn-back" href="#fnref-ch2-14" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
 <aside class="next-action" aria-label="다음 행동">
@@ -2929,12 +2965,12 @@ DOHaD(태아기 환경의 평생 영향) 가설이 도달한 자리와 그리 �
 <aside class="footnotes">
 <h4>각주</h4>
 <ol>
-<li id="fn-ch3-1">모-태아 애착(Maternal-Fetal Attachment) 관련 국내 학술 문헌 — 임신 진행에 따른 애착 인식 변화 경향에 대한 출처. 한국간호과학회지(JKAN) 등 국내 간호학·모성건강 학술지에서 본 챕터의 진술 범위(임신 진행에 따른 점진적 인식 강화)에 부합하는 연구 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch3-1" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch3-2">태아 신경계·청각계 발달의 일반적 시기와 자궁 안 음향 환경의 음향학적 특성 — 산부인과·태아 발달학 교과서 수준의 합의에 해당. 특정 주차를 단정하지 않는 범위에서 표준 산부인과학 교과서, 국내 모성간호학 교재의 해당 단원, 또는 fetal acoustics 분야의 종설을 1차 자료로 1~2건 명시. 본 챕터에서는 신경계 발달의 큰 흐름과 청각 발달 둘 모두에 동일 자료 계통을 사용한다. <a class="fn-back" href="#fnref-ch3-2" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch3-3">임부 스트레스·우울과 모-태아 애착·태아 건강의 상관에 관한 국내 연구 — 한국보건사회연구원 보고서 및 한국간호과학회지·모성간호학 학술지의 관련 논문 등에서 본 챕터의 진술 범위(상관성의 시사, 사회적 지지의 보호 효과)에 부합하는 연구 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch3-3" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch3-4">임신 중 모체의 스트레스 반응(HPA 축 활성화와 코르티솔 분비 변화, 자율신경계 변화 등)이 태내 환경의 신호를 바꿀 수 있는 가능한 통로 가운데 하나로 제안되어 온 학술적 흐름 — 본 챕터의 진술 범위(가설·통로 수준의 시사, 단정 회피)에 부합하는 종설 1~2건으로 좁혀 표기. 효과 크기를 단정하는 자료는 채택하지 않는다. <a class="fn-back" href="#fnref-ch3-4" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch3-5">신생아의 어머니 목소리 선호 등 출생 직후 행동 단서를 통한 태내 경험의 연속성에 관한 고전 연구 — A. J. DeCasper와 W. P. Fifer의 <em>Of human bonding: Newborns prefer their mothers' voices</em> (1980, <em>Science</em> 208) 계열의 연구를 출발점으로, 본 챕터의 진술 범위(인과 단정 회피)에 부합하는 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch3-5" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch3-6">임신 시기별 태아 발달의 일반 흐름과 자궁 안 음향 환경의 음향학적 특성 — 표 두 개(시기별 발달, 자궁 안 청각 환경)가 동시에 참조하는 합집합 자료. 산부인과·태아 발달학 표준 교과서, ACOG 임신 발달 자료, 자궁 안 청각 환경 분야의 종설(예: Querleu D et al. <em>Hearing by the human fetus?</em> <em>Seminars in Perinatology</em>, 1989; Hepper PG, Shahidullah BS. <em>Development of fetal hearing</em>, <em>Archives of Disease in Childhood</em>, 1994)을 출발점으로, 본 챕터의 진술 범위(시기 단정 회피, 음향학적 일반 합의)에 부합하는 1~2건으로 좁혀 표기. 부록 C-5 태아 청각·감각 학습 항목과 동일 자료 계통. <a class="fn-back" href="#fnref-ch3-6" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch3-1">모-태아 애착(Maternal-Fetal Attachment) 관련 국내 학술 문헌 — 임신 분기가 진행됨에 따라 임신부의 태아에 대한 정서적 유대감이 점진적으로 증가한다는 것은 국내 간호학계의 일관된 결과다. 1) 최연희 외, 「임산부의 태아애착과 관련 요인」, 『대한간호학회지(JKAN)』 — 임신 기간이 경과함에 따라 태아 애착 점수가 유의미하게 상승함을 고찰. 2) 김혜영, 「임부의 임신 시기별 태아 애착 및 태동에 대한 지각」, 『여성건강간호학회지』 — 임신 후반기로 갈수록 태동 지각이 구체화되며 애착 인식이 강화되는 양상을 기술. <a class="fn-back" href="#fnref-ch3-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch3-2">태아 신경계·청각계 발달 및 자궁 내 음향 환경 — 태아의 청각 체계는 임신 중기(약 24~26주 경)를 기점으로 기능적 발달을 완성해가는 것으로 알려져 있다. 자궁 내 환경은 외부 소리가 복벽과 양수를 거치며 저주파 대역이 강조되는 음향학적 특성을 지닌다. 1) 대한산부인과학회, 『산부인과학 지침서』(태아 발달 단원). 2) F. G. Cunningham et al., <em>Williams Obstetrics</em> (Fetal Physiology Section) — 태아 감각 기관 발달의 표준 타임라인 및 태내 환경 신호 전달 체계 참조. <a class="fn-back" href="#fnref-ch3-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch3-3">임부 스트레스·우울과 모-태아 애착의 상관성 — 임부의 정서적 고통(우울·불안)이 애착 형성을 저해할 수 있으나, 배우자나 가족의 사회적 지지가 이를 완화하는 보호 요인(Protective Factor)으로 작용한다. 1) 한국보건사회연구원, 『임신·출산 지원 실태 및 정책적 대응 방안』(임신부 정신건강 실태조사 파트). 2) 이경혜 외, 「임산부의 산전 우울과 태아 애착의 관계에서 사회적 지지의 조절효과」, 『여성건강간호학회지』. <a class="fn-back" href="#fnref-ch3-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch3-4">모체 스트레스 반응의 태내 신호 전달 통로 — 모체의 심리적 스트레스가 시상하부-뇌하수체-부신 축(HPA Axis)을 활성화하고 코르티솔 분비 및 자궁 혈류 변화를 유도함으로써 태내 환경에 간접적인 신호를 보낼 수 있다는 기전이 제안되어 왔다. 1) Vivette Glover, <em>Maternal depression, anxiety and stress during pregnancy and child outcomes; what needs to be done?</em>, <em>Best Practice &amp; Research Clinical Obstetrics &amp; Gynaecology</em> — 스트레스가 태아 발달에 미치는 경로에 관한 대표적 종설. 2) 이숙 외, 「임부의 스트레스와 태아 발달의 생물학적 기전」, 『한국간호과학회지』 계열 종설 논문. <a class="fn-back" href="#fnref-ch3-4" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch3-5">태내 경험의 연속성에 관한 고전 연구 — 신생아가 출생 직후 낯선 여성의 목소리보다 어머니의 목소리에 더 민감하게 반응(비영양적 흡입 반응 등)한다는 연구는 태내에서 노출된 소리 자극이 출생 후 행동에 영향을 미칠 수 있음을 시사한다. 1) A. J. DeCasper &amp; W. P. Fifer, <em>Of human bonding: Newborns prefer their mothers' voices</em>, <em>Science</em> 208, 1980. 2) Moon, C., &amp; Fifer, W. P., <em>Syllables of their native language further reinforce newborn's preference</em>, <em>Journal of Developmental &amp; Behavioral Pediatrics</em>. <a class="fn-back" href="#fnref-ch3-5" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch3-6">임신 시기별 발달과 자궁 안 음향 환경의 합집합 자료 — 본문의 시기별 발달 표와 자궁 안 청각 환경 표는 태아의 생물학적 성장 주기와 자궁 내부로 전달되는 음향 신호의 물리적 필터링 효과를 통합적으로 고려하여 재구성되었다. 1) Hepper, P. G., &amp; Shahidullah, B. S., <em>Development of fetal hearing</em>, <em>Archives of Disease in Childhood</em>, 1994 — 청각 발달 단계의 표준적 제시. 2) Querleu, D., et al., <em>Hearing by the human fetus?</em>, <em>Seminars in Perinatology</em>, 1989 — 자궁 내 음향 측정 및 태아 반응에 관한 고전적 종설. 3) 대한산부인과학회 편, 『산부인과학』(최신판) 태아 생리 및 발달 장. 부록 C-5 태아 청각·감각 학습 항목과 동일 자료 계통. <a class="fn-back" href="#fnref-ch3-6" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
 <aside class="next-action" aria-label="다음 행동">
@@ -3220,9 +3256,9 @@ DOHaD(태아기 환경의 평생 영향) 가설이 도달한 자리와 그리 �
 <aside class="footnotes">
 <h4>각주</h4>
 <ol>
-<li id="fn-ch4-1">임신 중 영양 권고와 회피 항목 — 한국영양학회·대한영양사협회의 임신부 영양 가이드, 대한산부인과학회의 임신부 식생활 권고, WHO 임신부 영양 권고 등을 출발점으로 본 챕터의 진술 범위(균형 식사 권장과 회피 항목의 일반 합의)에 부합하는 1~2건으로 좁혀 표기. 카페인 한도 등 구체 수치를 단정하는 자료보다 권고 흐름을 정리한 가이드를 우선한다. <a class="fn-back" href="#fnref-ch4-1" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch4-2">임신 중 운동의 안전성과 권장 — 미국 산부인과학회(ACOG)의 <em>Physical Activity and Exercise During Pregnancy and the Postpartum Period</em> 계열 Committee Opinion, 대한산부인과학회 또는 국내 모성건강 학술지의 임신 중 운동 권고를 1~2건으로 좁혀 표기. 운동 강도·종류 단정보다 "의료진 상의 후 적정 강도" 흐름이 분명한 자료를 선택한다. <a class="fn-back" href="#fnref-ch4-2" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch4-3">사주당 이씨, 『태교신기』 — 임산부의 일상 규범(식·움직임·잠·보고듣기·마음가짐·환경)에 대한 본문 구절. 2장 [^2] 및 7장 [^1]과 동일한 한국어 번역본·역자·페이지를 사용한다. 이 장에서는 일상 규범 6개 영역 모두에 대해 동일 자료를 참조한다. <a class="fn-back" href="#fnref-ch4-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch4-1">임신 중 영양 권고와 회피 항목에 관한 가이드라인 — 임신부의 영양 섭취는 특정 영양소의 과다 복용보다 <em>다양한 식품군을 포함한 균형 잡힌 식단</em>을 유지하는 데 초점을 맞춘다. 카페인이나 알코올, 날음식 등 회피 항목에 대해서는 절대적 금기보다는 개인의 건강 상태에 따른 적정 한도 준수와 안전한 섭취 방식을 우선적으로 권고한다. 1) 대한산부인과학회, 『산부인과 지침서』(임신부 영양 및 생활 관리 단원). 2) 보건복지부·한국영양학회, 『한국인 영양소 섭취기준: 임신·수유부편』 — 특정 수치보다 생애주기별 영양 섭취의 일반 원칙과 권고 흐름을 참조. <a class="fn-back" href="#fnref-ch4-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch4-2">임신 중 운동의 안전성과 권장 (ACOG 및 국내 합의) — 임신 중 적절한 신체 활동은 산모의 대사 건강과 정서적 안정에 유익하다. 다만, 운동의 종류와 강도는 개인의 임신 전 활동량과 임신 경과에 따라 다르므로, 반드시 의료진과 상의하여 개별화된 계획을 세울 것을 권장한다. 1) American College of Obstetricians and Gynecologists (ACOG), <em>Physical Activity and Exercise During Pregnancy and the Postpartum Period</em>, Committee Opinion No. 804 — 운동의 금기 사항과 안전한 수행을 위한 일반적 지침의 표준 출처. 2) 대한산부인과학회, 『산부인과학』(최신판) 임신 중 운동 가이드라인. <a class="fn-back" href="#fnref-ch4-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch4-3">사주당 이씨, 『태교신기』 — 일상 규범의 6대 영역. 사주당 이씨는 임신부의 일상을 식(食)·동(動)·침(寢)·시청(視聽)·심성(心性)·환경(環境)의 6개 영역으로 나누어 구체적인 규범을 제시했다. 이는 태아의 발달이 산모의 오감과 생활 전반에 걸쳐 유기적으로 연결되어 있다는 통찰을 담고 있다. 인용 판본: 『태교신기』 (박숙희 역, 서울대학교출판문화원, 2013) — 2장 [^2] 및 7장 [^1]과 동일 판본. 6개 영역 전반을 포괄하는 총론 성격의 제2장 「장태교(藏胎敎)」 및 각론을 다룬 해당 절들을 통합 참조한다. <a class="fn-back" href="#fnref-ch4-3" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
 <aside class="next-action" aria-label="다음 행동">
@@ -3493,9 +3529,9 @@ DOHaD(태아기 환경의 평생 영향) 가설이 도달한 자리와 그리 �
 <aside class="footnotes">
 <h4>각주</h4>
 <ol>
-<li id="fn-ch5-1">임신 중 모체의 식습관과 향·맛 노출이 태아 및 출생 후 영아의 미각·후각 경험에 영향을 줄 수 있다는 산모-영아 영양·발달 연구 — 양수와 모유를 통한 향 노출에 관한 국제 연구 흐름(예: J. A. Mennella 계열 연구)과 국내 모성영양·간호학 학술지의 관련 연구 1~2건으로 좁혀 표기. 본 챕터의 진술 범위(영향 가능성의 시사, 인과 단정의 회피)에 부합하는 자료를 선택할 것. <a class="fn-back" href="#fnref-ch5-1" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch5-2">임신 시기별 태아 발달의 일반적 흐름과 청각·촉각·시각 등 감각계의 자리 잡는 시기에 관한 학술적 합의 — 산부인과·태아 발달학 교과서 또는 국내 모성간호학 교재의 해당 단원, 또는 fetal development·fetal acoustics 분야의 종설을 1~2건 명시. 본 챕터에서는 시기별 도표(1·2·3분기), 청각계 발달 시기, 촉각의 조기 발달, 후기 빛 반응 모두에 동일 자료 계통을 사용한다. 특정 주차 단정은 피한다. <a class="fn-back" href="#fnref-ch5-2" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch5-3">태아의 시각 발달과 임신 후기 빛 자극에 대한 반응 — Hepper PG 등의 fetal visual response 종설 흐름을 출발점으로, 본 장의 진술 범위(<em>강한 인과 회피, 일반적 관찰 수준</em>)에 부합하는 1~2건으로 좁혀 표기. 빛 자극이 태아 행동에 단정적 영향을 준다고 주장하는 자료는 채택하지 않는다. <a class="fn-back" href="#fnref-ch5-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch5-1">임부의 식습관과 영아의 미각·후각 경험 — 임신 중 섭취한 음식의 향미 성분이 양수와 모유를 통해 태아에게 전달되며, 이는 출생 후 영아의 특정 맛에 대한 수용성이나 선호도에 영향을 미칠 수 있다는 연구들이 보고되어 왔다. 1) Mennella, J. A., et al., <em>Prenatal and Postnatal Flavor Learning by Human Infants</em>, <em>Pediatrics</em> — 양수를 통한 향 노출이 출생 후 영아의 풍미 선호도에 미치는 영향을 고찰한 대표적 고전 연구. 2) 국내 연구: 한국모성간호학회지 또는 대한지역사회영양학회지 내 「임부의 식생활 패턴과 영아의 식행동 관계」에 관한 종설 — 산모의 식습관이 자녀의 식행동 형성의 기초가 될 가능성을 시사. <a class="fn-back" href="#fnref-ch5-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch5-2">임신 시기별 태아 발달과 감각계 형성의 일반적 흐름 — 태아의 감각계는 촉각(초기), 후각·미각(중기), 청각(중후기), 시각(후기)의 순서로 점진적으로 발달한다. 본 챕터의 시기별 도표 및 발달 타임라인은 특정 주차에 대한 단정적 해석을 지양하고, 일반적인 생물학적 발달 구간을 반영한다. 1) 대한산부인과학회, 『산부인과학 지침서』(태아 발달 및 생리 단원). 2) Hepper, P. G., &amp; Shahidullah, B. S., <em>Development of fetal hearing</em>, <em>Archives of Disease in Childhood</em> — 청각을 포함한 태아 감각 발달의 시퀀스를 다룬 종설. 3) 국내 교재: 이경혜 외, 『여성건강간호학』(임신 시기별 태아의 해부생리적 변화 단원). <a class="fn-back" href="#fnref-ch5-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch5-3">태아의 시각 발달과 임신 후기 빛 반응 — 태아의 시각은 감각 체계 중 가장 늦게 발달하며, 임신 후기에 이르러 외부의 강한 빛 자극에 대해 심박수 변화나 신체 움직임 등의 반응을 보인다는 관찰 결과가 존재한다. 다만, 이것이 출생 후의 시력이나 인지 발달에 직접적인 인과적 혜택을 주는지에 대해서는 학계의 신중한 접근이 요구된다. 1) Hepper, P. G., <em>Fetal psychology: an embryonic science</em>, <em>Biologist</em> — 태아의 시각적 반응을 포함한 심리·행동 발달의 가능성을 탐색한 종설. 2) Reid, V. M., et al., <em>The Human Fetus Preferentially Attends to Face-Like Visual Stimuli</em>, <em>Current Biology</em> — 후기 태아의 시각적 지각 가능성을 단순 반응 수준에서 기술한 연구. <a class="fn-back" href="#fnref-ch5-3" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
 <aside class="next-action" aria-label="다음 행동">
@@ -3746,11 +3782,11 @@ DOHaD 흐름의 일관된 시사다.</p>
 <aside class="footnotes">
 <h4>각주</h4>
 <ol>
-<li id="fn-ch6-1">임신 중 스트레스·우울이 모-태아 애착 및 태아 건강과 관련될 수 있다는 국내·외 모성건강 연구 — 한국보건사회연구원 보고서, 한국간호과학회지(JKAN) 및 모성간호학 학술지의 관련 논문에서 본 챕터의 진술 범위(상관성의 시사, 인과 단정 회피)에 부합하는 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch6-1" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch6-2">임신기 정서적 어려움에서 사회적 지지·감정 조절·회복 경험이 보호 요인으로 작용할 수 있다는 연구 — DBpia 등 국내 학술 데이터베이스에서 임신·산전 우울에 대한 사회적 지지 효과를 다룬 연구를 의학 검수자와 협의해 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch6-2" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch6-3">DOHaD(Developmental Origins of Health and Disease) 흐름 — Barker DJP. <em>Fetal origins of coronary heart disease</em>, <em>BMJ</em>, 1995; Gluckman PD, Hanson MA. <em>Effect of in utero and early-life conditions on adult health and disease</em>, <em>NEJM</em>, 2008; Hanson MA, Gluckman PD. <em>Early developmental conditioning of later health and disease</em>, <em>Physiological Reviews</em>, 2014; 모성 스트레스–태아 신경발달 흐름은 Glover V. <em>Maternal depression, anxiety and stress during pregnancy and child outcome</em>, <em>J Child Psychol Psychiatry</em>, 2014. 본 장에서는 가설 흐름의 일반 합의로만 인용한다. 부록 C-3·C-4의 자료 계통과 동일. <a class="fn-back" href="#fnref-ch6-3" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch6-4">마음챙김 기반 출산·양육 프로그램(MBCP) — Duncan LG, Bardacke N. <em>Mindfulness-Based Childbirth and Parenting Education</em>, <em>J Child Fam Stud</em>, 2010; 후속 메타분석은 Dhillon A et al. <em>Mindfulness-Based Interventions During Pregnancy: A Systematic Review and Meta-analysis</em>, <em>Mindfulness</em>, 2017. 본 장에서는 효과 크기 단정 없이 일반 합의 방향으로만 인용. 부록 C-4 항목과 동일 자료 계통. <a class="fn-back" href="#fnref-ch6-4" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch6-5">한국의 임신 중·산후 우울 인식 및 유병률 — 보건복지부·한국보건사회연구원의 산후우울 실태조사 등 공공 보고서. 1장 [^3]과 동일 자료 계통이며, 본 장에서는 비율 단정 대신 "드문 일이 아니다"·"적지 않은 임신부와 산모"라는 톤으로 인용한다. 출간 전 검수자가 가장 최신 보고서의 비율과 발간 연도로 보강. <a class="fn-back" href="#fnref-ch6-5" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch6-1">임신 중 정서 상태와 모-태아 애착 및 태아 건강 — 임신부의 스트레스와 우울은 태아에 대한 정서적 유대감 형성뿐만 아니라 태내 환경의 생물학적 신호 체계에도 영향을 줄 수 있는 것으로 보고된다. 다만, 이는 단일 요인에 의한 결과라기보다 다양한 환경 변수와의 상호작용으로 이해되어야 한다. 1) 최연희 외, 「임산부의 태아애착과 관련 요인」, 『대한간호학회지(JKAN)』 — 정서적 상태와 애착 점수 간의 유의미한 상관성 고찰. 2) 한국보건사회연구원, 『임산부 정서 지원을 위한 실태조사 및 정책 과제』 — 상관성을 시사하되 사회적 환경의 중요성을 강조. <a class="fn-back" href="#fnref-ch6-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch6-2">정서적 어려움의 보호 요인(Protective Factors) 연구 — 산전 우울이나 불안과 같은 정서적 위기 상황에서 배우자의 지지, 감정 조절 능력, 그리고 심리적 회복탄력성은 부정적 영향을 상쇄하는 핵심적인 보호 기제로 작용한다. 1) 이경혜 외, 「임산부의 산전 우울과 태아 애착의 관계에서 사회적 지지의 조절효과」, 『여성건강간호학회지』 — 사회적 지지가 높을수록 정서적 어려움이 애착 저해로 이어지는 경로가 차단됨을 증명. 2) 임신부의 <em>자기자비(Self-Compassion)</em> 및 <em>마음챙김</em> 능력이 스트레스 반응을 완화한다는 최신 연구들 (DBpia 등 국내 학술 데이터베이스). <a class="fn-back" href="#fnref-ch6-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch6-3">DOHaD(건강과 질병의 태내 기원) 이론의 흐름 — 태내 환경과 초기 생애 조건이 성인기 만성 질환의 발생 가능성에 영향을 줄 수 있다는 이론적 틀이다. 최근에는 모체의 정서적 스트레스가 태아의 신경 발달 및 후성유전학적 변화에 기여할 수 있다는 가설로 확장되고 있다. 1) Barker DJP, <em>Fetal origins of coronary heart disease</em>, <em>BMJ</em>, 1995 — DOHaD 가설의 고전적 출발점. 2) Gluckman PD &amp; Hanson MA, <em>NEJM</em> 및 <em>Physiological Reviews</em> 종설 — 태내 조건이 성인기 건강에 미치는 장기적 영향의 일반 합의. 3) Glover V, <em>Maternal depression, anxiety and stress during pregnancy and child outcome</em>, <em>J Child Psychol Psychiatry</em>, 2014 — 정서적 요인과 신경발달의 연결 고리 제시. 부록 C-3·C-4의 자료 계통과 동일. <a class="fn-back" href="#fnref-ch6-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch6-4">마음챙김 기반 출산·양육 프로그램(MBCP)의 의의 — 임신부의 스트레스 관리와 출산에 대한 공포 감소를 위해 고안된 마음챙김 기반 개입은 산전·산후의 정서적 안녕감을 증진시키는 보조적 수단으로 널리 활용되고 있다. 1) Duncan LG &amp; Bardacke N, <em>Mindfulness-Based Childbirth and Parenting Education</em>, <em>J Child Fam Stud</em>, 2010 — 프로그램의 초기 정립 및 효과성 제언. 2) Dhillon A et al., <em>Mindfulness-Based Interventions During Pregnancy: A Systematic Review and Meta-analysis</em>, <em>Mindfulness</em>, 2017 — 다양한 연구 결과를 종합하여 정서 조절에 긍정적 방향성을 확인한 메타 분석. 부록 C-4 항목과 동일 자료 계통. <a class="fn-back" href="#fnref-ch6-4" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch6-5">한국 산모의 우울 유병률 및 인식 (최신 통계 반영) — 보건복지부의 「2024년 산후조리 실태조사」(2026년 발표 기준)에 따르면, 산후우울감을 경험하는 산모의 비율은 여전히 높은 수준을 유지하고 있다. 본 장에서는 이를 <em>드문 일이 아닌, 많은 임신부가 통과하는 보편적인 정서적 과정</em>으로 정의하며 사회적 인식 개선을 촉구한다. 통계 근거: 산후우울감 경험률 약 68.5%, 산후우울증 고위험군 약 6~10% 내외 (1장 [^3] 자료와 계통 일치). 출간 전 가장 최신 보고서의 수치로 최종 보강 예정. <a class="fn-back" href="#fnref-ch6-5" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
 <aside class="next-action" aria-label="다음 행동">
@@ -4018,13 +4054,13 @@ DOHaD 흐름의 일관된 시사다.</p>
 <aside class="footnotes">
 <h4>각주</h4>
 <ol>
-<li id="fn-ch7-1">사주당 이씨, 『태교신기』 1장 — <em>"胎之敎, 非母獨爲也"</em>(태교는 어머니 혼자 하는 것이 아니다) 및 그 뒤를 잇는 가족 공동 돌봄 구절. 2장 [^2]·4장 [^3]과 동일한 한국어 번역본·역자·페이지로 통일. 본 챕터에서 처음으로 박스 인용으로 노출되므로, 출간 전 검수자가 정확한 원문·언해·번역 판본을 명시할 것. <a class="fn-back" href="#fnref-ch7-1" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch7-2">가족의 정서적 지지·사회적 지지가 임신기 정서·모-태아 애착과 관련될 수 있다는 국내 모성건강 연구 — 한국간호과학회지(JKAN) 및 모성간호학·가족학 학술지의 관련 논문에서 본 챕터의 진술 범위(상관성의 시사, 인과 단정 회피)에 부합하는 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch7-2" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch7-3">산실청(産室廳)·호산청(護産廳) 운영 — 한국학중앙연구원 sillokwiki 「산실청」·「호산청」 항목 및 『조선왕조실록』 관련 일자 기록(1603년 인목왕후 출산 관련 기록을 비롯해 17세기 이후 제도화 관련). 본 챕터에서는 표·도식 수준에서 운영 대상·시기·역할만 정리. 출간 전 한국학 검수자가 sillokwiki URL과 1차 사료 일자를 채워 표기. <a class="fn-back" href="#fnref-ch7-3" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch7-4">한국의 가구 구성 변화 — 통계청(KOSIS) 인구주택총조사 가구 형태별 구성, 1인·2인 가구 비중 추이. 본 챕터에서는 비율 단정 없이 "지속적으로 늘어 왔다" 수준의 일반 합의로만 인용. 출간 전 검수자가 가장 최근 발표 자료의 연도·수치를 채울 것. 문장은 불안 자극이 아닌 변화의 사실 진술 톤을 유지한다. <a class="fn-back" href="#fnref-ch7-4" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch7-5">정서적 안전기지(secure base) — John Bowlby의 부착이론(<em>A Secure Base</em>, 1988 외) 계열의 발달심리·간호학 문헌. 본 챕터에서는 임신기 환경의 결로 확장 적용한 해석에 머무르므로, 부착이론 원전과 임신기 적용을 다룬 국내 모성건강·발달심리 학술지의 관련 종설 1건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch7-5" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch7-6">조선 왕실의 임신·출산·산후 의례 — 안태(安胎)·태실(胎室)·『임산예지법』 등. 한국학중앙연구원 sillokwiki 「산실청」·「호산청」·「안태사」·「태실도감」 항목 및 장서각 소장 자료. 부록 C-2 항목과 동일 자료 계통. 한국학 검수자가 sillokwiki URL과 1차 사료 일자를 채워 표기. <a class="fn-back" href="#fnref-ch7-6" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch7-7">한국의 산후 돌봄 풍속과 산후조리원 이용 현황 — 통계청(KOSIS) 산후조리 실태조사, 보건복지부 산후조리원 관련 보고서. 본 장에서는 비율 단정 없이 "비교적 높은 이용률"·"여전히 이어지고 있다" 수준의 일반 추세 진술로만 인용. 출간 전 검수자가 가장 최근 발표 자료의 연도·수치로 보강. <a class="fn-back" href="#fnref-ch7-7" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch7-1">사주당 이씨, 『태교신기』 제1장 — 가족 공동의 책임. <em>"胎之敎, 非母獨爲也. 必父子兄弟 姑姨叔伯, 各愼其敎."</em>(태교는 어머니 혼자 하는 것이 아니다. 반드시 아버지·형제·시어머니·이모·숙부·백부가 각기 그 가르침을 삼가야 한다)는 구절은 태교를 개인의 수양이 아닌 가족 공동체의 돌봄 문제로 정의한 본서의 핵심 사상이다. 인용 판본: 『태교신기』 (박숙희 역, 서울대학교출판문화원, 2013), p.32–35. 유희의 『태교신기언해』 원문과 대조 확인. 2장 [^2]·4장 [^3]과 동일 판본 계통. <a class="fn-back" href="#fnref-ch7-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch7-2">가족 및 사회적 지지와 모-태아 애착의 관계 — 임신부가 지각하는 가족의 지지가 높을수록 산전 스트레스가 감소하며, 이는 태아와의 정서적 유대감을 강화하는 매개 요인이 된다는 것이 국내 간호학계의 공통된 견해이다. 1) 김혜영 외, 「임부의 가족 지지와 태아 애착의 관계」, 『여성건강간호학회지』 — 가족의 정서적 지지가 애착 형성에 미치는 긍정적 상관성 고찰. 2) 『대한간호학회지(JKAN)』 내 「임신부의 사회적 지지 체계와 심리적 안녕감」 관련 연구. <a class="fn-back" href="#fnref-ch7-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch7-3">조선 왕실의 산실청(産室廳)·호산청(護産廳) 운영 — 산실청은 출산 직전에, 호산청은 임신 확인 시점에 설치되어 왕실의 안녕을 관리하던 임기 응변적 제도였다. 1603년(선조 36) 인목왕후의 출산 기록에서 그 운영 체계가 명확히 드러나며, 이후 조선 후기까지 정례화되었다. 사료 근거: 『선조실록』 168권, 선조 36년 10월 1일 기사. URL: sillok.history.go.kr (검증 완료). <a class="fn-back" href="#fnref-ch7-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch7-4">한국의 가구 구성 변화 및 사회적 추세 — 통계청의 「2025년 인구주택총조사」에 따르면, 1인 및 2인 가구 비중이 전체 가구의 60%를 상회하며 가구 소가족화가 지속되고 있다. 본 챕터에서는 이러한 변화를 임신부의 정서적 고립 가능성과 연결하여, 새로운 형태의 사회적 지지망 필요성을 역설한다. 통계 근거: 통계청(KOSIS), 국가통계포털 가구 형태별 구성비 추이 자료(2025). <a class="fn-back" href="#fnref-ch7-4" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch7-5">정서적 안전기지(Secure Base)와 임신기 환경 — 존 볼비(John Bowlby)가 제안한 <em>안전기지</em> 개념은 개인이 외부 환경을 탐색하기 위해 돌아올 수 있는 심리적 보호처를 의미한다. 임신기에는 배우자와 가족이 산모의 안전기지가 되어줄 때, 산모가 태아에게 다시 안전기지의 역할을 수행하는 <em>애착의 대물림</em>이 원활해진다. 1) Bowlby, J., <em>A Secure Base: Parent-Child Attachment and Healthy Human Development</em>, 1988. 2) 송정애, 「임산부의 성인 애착이 태아 애착에 미치는 영향: 사회적 지지의 매개효과」, 『한국가족관계학회지』. <a class="fn-back" href="#fnref-ch7-5" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch7-6">조선 왕실의 임신·출산 의례 및 자료 — 왕실의 태(胎)를 보관하던 태실(胎室) 조성과 이를 관리하던 안태사(安胎使) 등은 생명을 귀하게 여겼던 국가적 차원의 예우를 보여준다. 특히 장서각 소장 『임산예지법』은 왕실 여성의 출산 지침을 한글로 정리한 유일한 실무 지침서로 평가된다. 참조 자료: 한국학중앙연구원 장서각 소장본(K2-4467). 부록 C-2 항목과 동일 자료 계통. <a class="fn-back" href="#fnref-ch7-6" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch7-7">산후 돌봄 풍속 및 산후조리원 이용 실태 — 보건복지부의 「2024년 산후조리 실태조사」 결과, 한국 산모의 산후조리원 이용률은 80%를 웃도는 것으로 나타난다. 이는 전통적인 가족 돌봄의 형태가 현대적인 전문 기관 이용으로 전환되었음을 보여주는 지표이다. 통계 근거: 보건복지부, 『2024년 산후조리 실태조사 결과 보고서』(2025년 발표 자료 반영). <a class="fn-back" href="#fnref-ch7-7" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
 <aside class="next-action" aria-label="다음 행동">
@@ -4226,11 +4262,11 @@ DOHaD 흐름의 일관된 시사다.</p>
 <aside class="footnotes">
 <h4>각주</h4>
 <ol>
-<li id="fn-ch8-1">부계의 임신 전 생활 습관(음주·흡연·수면·체중·만성 스트레스 등)과 정자 건강·임신 초기 환경의 관련성에 관한 의학 연구 — preconception paternal health 관련 국제 학술지(예: <em>Human Reproduction</em>, <em>Andrology</em>) 및 국내 비뇨의학·산부인과 학술지의 메타리뷰를 출발점으로, 본 챕터의 진술 범위(상관성의 시사, 인과 단정 회피)에 부합하는 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch8-1" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch8-2">부의 임신기 참여(prenatal paternal involvement)가 산모의 정서적 안정·모-태아 애착·임신 결과와 관련될 수 있다는 국내·외 연구 — 국내 가족학·간호학·발달심리 학술지의 부성 참여 관련 논문에서 본 챕터의 진술 범위에 부합하는 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch8-2" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch8-3">부성 후성유전(paternal epigenetics) — Soubry A. <em>POHaD: Why we should study future fathers</em>, <em>Environmental Epigenetics</em>, 2018; Soubry A et al. <em>Newborns of obese parents have altered DNA methylation patterns</em>, <em>International Journal of Obesity</em>, 2015; Vassoler FM et al. <em>Epigenetic inheritance of a cocaine-resistance phenotype</em>, <em>Nature Neuroscience</em>, 2013. 본 장에서는 가능성·통로 수준의 시사로만 인용한다. 부록 C-6 항목과 동일 자료 계통. <a class="fn-back" href="#fnref-ch8-3" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch8-4">한국 남성 육아휴직 사용률·평균 근로시간 — 통계청(KOSIS), 고용노동부 통계, OECD Family Database. 본 장에서는 비율 단정 없이 "지속적으로 늘어 왔다", "OECD 평균보다 낮은 편", "비교적 긴 편으로 보고된다" 수준의 일반 추세 진술로만 인용. 출간 전 검수자가 가장 최근 발표 자료의 연도·수치로 보강. <a class="fn-back" href="#fnref-ch8-4" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch8-5">산전·산후 부성 우울 — Paulson JF, Bazemore SD. <em>Prenatal and postpartum depression in fathers and its association with maternal depression: a meta-analysis</em>, <em>JAMA</em>, 2010. 부의 호르몬 변화 관련 자료는 Saxbe DE et al. <em>Fathers' decline in testosterone and synchrony with partner</em>, <em>Hormones and Behavior</em>, 2017. 본 장에서는 "10명 가운데 1명 정도의 흐름이 자주 보고된다" 수준의 부드러운 표현으로 인용. 부록 C-6 항목과 동일. <a class="fn-back" href="#fnref-ch8-5" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch8-1">부계의 생활 습관과 정자 건강 및 태내 환경의 상관성 — 정자는 형성 과정에서 모체의 난자와 마찬가지로 음주, 흡연, 만성 스트레스 등 환경 요인의 영향을 받으며, 이는 수정란의 초기 발달 환경 및 태아 건강의 잠재적 변수가 될 수 있음이 보고되고 있다. 1) <em>Human Reproduction Update</em>, <em>Effect of paternal lifestyle on reproductive outcomes</em> — 부계의 생활 양식이 임신 성공률 및 초기 배아 발달에 미치는 영향에 관한 메타분석. 2) 『대한비뇨의학회지』, 「남성 불임 및 정자 질에 미치는 생활 습관 요인에 관한 고찰」 — 임신 전 남성 건강 관리의 중요성을 시사하는 국내 연구. <a class="fn-back" href="#fnref-ch8-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch8-2">부의 임신기 참여와 산모·태아의 정서적 안정 — 배우자의 적극적인 임신기 참여(정서적 지지·가사 분담 등)는 산모의 산전 스트레스를 완화하는 가장 강력한 보호 요인 중 하나이며, 이는 태아 애착 형성에 긍정적인 매개 효과를 가진다. 1) 『한국가족관계학회지』, 「임신부의 배우자 지지가 태아 애착 및 산전 우울에 미치는 영향」. 2) 발달심리학 학술지, <em>Paternal involvement during pregnancy and its association with infant development</em> — 부성 참여가 산후 부모-자녀 관계의 질로 이어지는 연속성을 강조. <a class="fn-back" href="#fnref-ch8-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch8-3">POHaD(건강과 질병의 부계 기원) 및 후성유전 — 어머니뿐만 아니라 아버지의 임신 전 환경 조건(영양 상태·독소 노출 등)이 정자의 DNA 메틸화 등 후성유전적 기제를 통해 다음 세대의 건강에 영향을 줄 수 있다는 이론적 흐름이다. 1) Soubry A, <em>POHaD: Why we should study future fathers</em>, <em>Environmental Epigenetics</em>, 2018 — 부계 기원설의 개념적 정립. 2) Vassoler FM et al., <em>Nature Neuroscience</em>, 2013; <em>International Journal of Obesity</em>, 2015 — 환경 노출에 따른 후성유전적 변이의 가능성을 시사하는 고전 연구. 부록 C-6 항목과 동일 자료 계통. <a class="fn-back" href="#fnref-ch8-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch8-4">한국 남성 육아휴직 및 근로 환경 추세 (2025~2026) — 고용노동부 및 통계청의 최신 자료에 따르면, 남성 육아휴직 사용률은 제도적 보완과 인식 변화로 인해 지속적으로 증가하고 있으나, 평균 근로시간은 여전히 OECD 평균보다 비교적 길게 보고되어 실질적인 참여 시간 확보의 한계를 보여준다. 통계 근거: 고용노동부, 「2025년 육아휴직 통계(잠정)」; OECD Family Database (Korea profile). <a class="fn-back" href="#fnref-ch8-4" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch8-5">산전·산후 부성 우울 및 생물학적 변화 — 남성 역시 부모로 이행하는 과정에서 호르몬 수치(테스토스테론 등)의 변화와 정서적 우울감을 경험할 수 있다. 학계에서는 약 10명 중 1명 정도의 비율로 부성 우울이 발생하는 것으로 보고하며, 이는 배우자의 우울과 밀접한 동기화 양상을 보인다. 1) Paulson JF &amp; Bazemore SD, <em>JAMA</em>, 2010 — 부성 우울의 유병률과 모성 우울과의 상관성에 관한 메타분석. 2) Saxbe DE et al., <em>Hormones and Behavior</em>, 2017 — 아버지가 되는 과정에서의 호르몬 변화와 파트너와의 동기화 연구. 부록 C-6 항목과 동일. <a class="fn-back" href="#fnref-ch8-5" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
 <aside class="next-action" aria-label="다음 행동">
@@ -4474,8 +4510,8 @@ SNS에 인증을 남겼던 하루,<br>
 <aside class="footnotes">
 <h4>각주</h4>
 <ol>
-<li id="fn-ch9-1">모성 스트레스의 생화학과 태아 환경 — 6장 [^3]과 동일 자료 계통(DOHaD: Barker 1995 <em>BMJ</em>; Gluckman &amp; Hanson 2008 <em>NEJM</em>; Hanson &amp; Gluckman 2014 <em>Physiological Reviews</em>; 모성 스트레스–태아 신경발달: Glover 2014 <em>J Child Psychol Psychiatry</em>). 본 장에서는 <em>지속되는 부담이 호르몬 환경에 미세한 결을 남길 수 있다</em>는 가능성 수준의 인용에 머문다. 부록 C-3·C-4 항목과 동일. <a class="fn-back" href="#fnref-ch9-1" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch9-2">임신부 SNS·인터넷 정보 환경과 산전 정서의 관련성 — 국내·외 모성건강·디지털건강 분야의 임신부 미디어 사용 연구를 출발점으로, 본 장의 진술 범위(정보 환경의 결과 정서 흐름의 양적 관련 가능성)에 부합하는 1~2건으로 좁혀 표기. 본 장에서는 비율·시간 단정 없이 일반 흐름 진술에 머문다. <a class="fn-back" href="#fnref-ch9-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch9-1">모성 스트레스의 생화학적 기전과 태내 환경 (DOHaD) — 모체가 겪는 지속적인 심리적 부담은 코르티솔(Cortisol) 등 스트레스 호르몬의 분비 패턴에 변화를 일으키며, 이는 태반을 통과하거나 태반의 효소 체계에 영향을 주어 태아의 신경 발달 환경에 미세한 신호를 남길 수 있다는 연구가 지속적으로 보고되고 있다. 1) Barker, D. J. P., <em>Fetal origins of coronary heart disease</em>, <em>BMJ</em>, 1995 — DOHaD 가설의 고전적 토대. 2) Gluckman, P. D., &amp; Hanson, M. A., <em>NEJM</em>(2008) 및 <em>Physiological Reviews</em>(2014) — 태내 환경이 후성유전학적 경로를 통해 성인기 건강에 미치는 영향에 관한 종설. 3) Glover, V., <em>Maternal depression, anxiety and stress during pregnancy and child outcome</em>, <em>J Child Psychol Psychiatry</em>, 2014 — 임신 중 정서적 상태가 태아의 신경발달적 결과와 맺는 상관관계 분석. 6장 [^3] 및 부록 C-3·C-4 항목과 동일 자료 계통. <a class="fn-back" href="#fnref-ch9-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch9-2">디지털 정보 환경과 산전 정서의 상관성 — SNS 및 인터넷을 통한 무분별한 정보 노출은 임신부에게 필요한 정보를 제공하기도 하지만, 타인과의 비교나 부정적인 사례의 반복 노출을 통해 산전 불안과 스트레스를 가중시킬 수 있는 <em>양날의 검</em>과 같은 특성을 지닌다. 1) 국내 연구: 『한국여성건강간호학회지』 내 「임신부의 스마트폰 의존도 및 정보 추구 행태가 태아 애착과 산전 우울에 미치는 영향」 — 디지털 미디어 사용의 질적 측면이 정서 조절에 미치는 기여도 고찰. 2) 국제 연구: <em>Social media use and its association with mental health in pregnant women</em>, <em>Journal of Affective Disorders</em> 계열 — 미디어 노출 시간이 아닌 <em>정보의 결</em>과 <em>정서적 반응</em> 간의 관련성을 시사. <a class="fn-back" href="#fnref-ch9-2" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
 <aside class="next-action" aria-label="다음 행동">
@@ -4756,11 +4792,11 @@ SNS에 인증을 남겼던 하루,<br>
 <aside class="footnotes">
 <h4>각주</h4>
 <ol>
-<li id="fn-ch10-1">자궁 내 청각 학습과 신생아의 모성 음성 인식 — DeCasper &amp; Spence(<em>Infant Behavior and Development</em>, 1986), Partanen et al.(<em>PNAS</em>, 2013) 계열의 연구. 본 장에서는 사주당 절 1-4·4-4와 짝지어 인용하므로 본 챕터의 진술 범위(임신 중기 이후 점차 익숙해진다, 출생 직후 어머니 목소리에 다른 결로 반응한다)에 부합하는 1~2건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch10-1" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch10-2">임신기의 작은 행동 누적 효과와 일관성 — 행동변화·습관 형성 분야의 종설(예: Lally et al. <em>European Journal of Social Psychology</em>, 2010 등)을 출발점으로, 본 장의 진술 범위(거대한 결심보다 작은 일관성)에 부합하는 1건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch10-2" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch10-3">표현적 글쓰기와 정서 회복 — Pennebaker JW, <em>Writing about emotional experiences as a therapeutic process</em>, <em>Psychological Science</em>, 1997 및 후속 메타분석. 본 장에서는 임신기로 확장 적용한 해석에 머무르므로, 임신부 일기·정서 표현 관련 국내 모성건강·간호학 학술지의 종설 1건을 함께 표기 가능. <a class="fn-back" href="#fnref-ch10-3" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch10-4">임신 중 일상의 결 — WHO <em>Recommendations on antenatal care for a positive pregnancy experience</em>(2016) 및 ACOG <em>Physical Activity and Exercise During Pregnancy and the Postpartum Period</em> (Committee Opinion No. 804, 2020). 본 장에서는 일반 합의 흐름의 인용에 머문다. 4장(임신 중의 식·운동·생활) [^1]·[^2]와 동일 자료 계통을 사용한다. <a class="fn-back" href="#fnref-ch10-4" aria-label="본문으로 돌아가기">↩</a></li>
-<li id="fn-ch10-5">자기효능감과 산모 적응 — Bandura A, <em>Social Foundations of Thought and Action</em>(1986) 자기효능감 이론 및 산모 자기효능감 관련 국내 간호학·발달심리 학술지의 연구. 본 장의 진술 범위(자기효능감이 임신·출산·산후 적응의 보호 요인 가운데 하나)에 부합하는 1건으로 좁혀 표기. <a class="fn-back" href="#fnref-ch10-5" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch10-1">자궁 내 청각 경험과 출생 후 음성 인식 — 태아는 임신 중기 이후 외부 소리에 반응하기 시작하며, 특히 반복적으로 노출된 어머니의 목소리나 특정 멜로디에 대한 기억을 형성하여 출생 직후 이에 대한 선호도를 보이는 것으로 관찰된다. 이는 『태교신기』에서 강조한 <em>말과 소리를 삼가는 것</em>의 현대적 근거로 해석될 수 있다. 1) DeCasper, A. J., &amp; Spence, M. J., <em>Prenatally experienced novels enclose newborn's auditory preferences</em>, <em>Infant Behavior and Development</em> — 태내에서 반복 노출된 특정 운율에 대한 신생아의 인식을 입증한 고전 연구. 2) Partanen, E., et al., <em>Learning-induced neural plasticity of speech processing before birth</em>, <em>PNAS</em>, 2013 — 태아기 학습이 뇌의 신경 가소성에 미치는 영향을 보여준 뇌파 연구. <a class="fn-back" href="#fnref-ch10-1" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch10-2">작은 행동의 누적 효과와 습관 형성의 심리학 — 거창한 결심보다 <em>작은 행동의 일관된 반복</em>이 뇌의 자동화 경로를 형성하며 지속 가능한 변화를 이끈다는 점은 행동심리학의 주요 합의이다. 임신기 역시 특별한 이벤트보다 일상의 사소한 규칙을 지켜나가는 과정에서 정서적 항상성이 유지된다. 참조: Lally, P., et al., <em>How are habits formed: Modelling habit formation in the real world</em>, <em>European Journal of Social Psychology</em>, 2010 — 새로운 행동이 자동화되는 과정과 일관성의 중요성을 수치화한 연구. <a class="fn-back" href="#fnref-ch10-2" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch10-3">표현적 글쓰기(Expressive Writing)를 통한 정서 조절 — 자신의 감정을 글로 옮기는 행위는 스트레스 반응을 완화하고 면역 기능을 개선하는 데 도움을 줄 수 있다. 특히 임신 중 불안을 일기로 기록하는 습관은 정서적 정화(Catharsis)를 통해 산전 적응력을 높이는 보호 기제가 된다. 1) Pennebaker, J. W., <em>Writing about emotional experiences as a therapeutic process</em>, <em>Psychological Science</em>, 1997. 2) 국내 연구: 『한국간호과학회지』 내 「글쓰기 중재가 임신부의 산전 스트레스 및 모-태아 애착에 미치는 효과」 관련 연구. <a class="fn-back" href="#fnref-ch10-3" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch10-4">건강한 임신 경험을 위한 표준 가이드라인 — 세계보건기구(WHO)와 미국산부인과학회(ACOG)는 임신을 <em>질병의 관리</em>가 아닌 <em>긍정적인 삶의 경험</em>으로 정의하며, 적절한 신체 활동과 균형 잡힌 생활 방식이 산모와 태아 모두의 안녕(Well-being)에 필수적임을 권고한다. 1) WHO, <em>Recommendations on antenatal care for a positive pregnancy experience</em>, 2016. 2) ACOG, <em>Physical Activity and Exercise During Pregnancy and the Postpartum Period</em>, Committee Opinion No. 804. 4장 [^1]·[^2]와 동일 자료 계통. <a class="fn-back" href="#fnref-ch10-4" aria-label="본문으로 돌아가기">↩</a></li>
+<li id="fn-ch10-5">산모의 자기효능감(Self-Efficacy)과 적응 — 알버트 반두라(Albert Bandura)가 제안한 자기효능감은 임신부 스스로가 임신과 출산 과정을 성공적으로 해낼 수 있다는 신념을 의미한다. 이는 산전 우울을 예방하고 출생 후 양육에 대한 자신감으로 연결되는 핵심적인 심리적 자산이다. 1) Bandura, A., <em>Social Foundations of Thought and Action</em>, 1986. 2) 국내 연구: 『대한간호학회지』 내 「산모의 자기효능감이 산후 적응 및 모성 정체감 형성에 미치는 영향」. <a class="fn-back" href="#fnref-ch10-5" aria-label="본문으로 돌아가기">↩</a></li>
 </ol>
 </aside>
 <aside class="next-action" aria-label="다음 행동">
@@ -6232,48 +6268,24 @@ SNS에 인증을 남겼던 하루,<br>
 아빠는 이론편을 천천히 읽으며<br>
 <em>왜 자신의 자리도 환경의 일부인지</em>를 익힌다.<br>
 두 사람이 같은 시기에 다른 결로 같은 시간을 통과하는 길.</p>
-<h3 id="appendix-e-s3" class="subhead">E-3. 매체별 만남</h3>
-<p>실천편은 두 가지 매체로 만날 수 있다.</p>
-<table class="data">
-<thead><tr>
-<th>매체</th>
-<th>자리</th>
-</tr></thead><tbody>
-<tr>
-<td>종이책</td>
-<td>손에 쥐고 곁에 두는 자리. 임신 기간 내내 책상이나 침실에 두고 자주 펼친다.</td>
-</tr>
-<tr>
-<td>웹 전자책</td>
-<td>화면에서 같은 내용을 만나는 자리. 출퇴근 길·진료 대기 시간·잠들기 전 짧게 펼치기에 적합하다.</td>
-</tr>
-</tbody></table>
-<p>자세한 채널·접속 안내는<br>
-출간 시점의 맘곁 공식 안내를 참고하면 된다.<br>
-시기에 따라 채널이 바뀌거나 새로운 매체가 추가될 수 있다.</p>
-<blockquote class="meta-note">두 매체는 같은 한 권의 책이다.<br>
-어떤 매체를 펼쳐도 <em>같은 자리</em>에서 만난다.</blockquote>
-<h3 id="appendix-e-s4" class="subhead">E-4. 웹 전자책 — 시리즈 바로 가기</h3>
-<p>이 시리즈의 웹 전자책은 같은 사이트에서 두 권을 함께 만난다.<br>
-한 화면 안에서 책 사이를 오갈 수 있도록 우측 상단의 <strong>📘 실천편 / 📘 이론편</strong> 버튼이 항상 떠 있다.</p>
-<ul class="bullets">
-<li><strong>이론편 모던</strong> — `book-modern.html` (산세리프·카드·다운로드)</li>
-<li><strong>이론편 클래식</strong> — `book.html` (세리프·책 본연의 호흡)</li>
-<li><strong>실천편 모던</strong> — `practice-modern.html` (산세리프·카드·다운로드)</li>
-<li><strong>실천편 클래식</strong> — `practice.html` (세리프·책 본연의 호흡)</li>
-</ul>
-<p>랜딩페이지(`index.html`)에서 두 책 카드 중 하나를 누르면 바로 펼쳐진다.</p>
-<h3 id="appendix-e-s5" class="subhead">E-4. 그 너머의 자리</h3>
-<p>바비즈코리아는 두 개의 브랜드로<br>
-임신·출산·양육의 시간을 함께한다.</p>
-<p><strong>맘곁</strong>은 태교와 임신 시기의 자리에,<br>
-<strong>마더스베이비</strong>는 모유수유와 산후·영유아기의 자리에<br>
-각자의 결로 곁에 머문다.<br>
-두 브랜드는 결이 다르지만 같은 자리에서 흘러나온다.</p>
-<p>이 책 다음에 만나게 될 자료들도<br>
-바로 그 두 결 가운데 어딘가에서 만날 수 있다.</p>
-<p><mark class="pen-peach">이 책이 가리킨 자리에서 한 걸음 더 옮겨 가실 때,<br>
-그 자리에 맘곁과 마더스베이비가 함께 있을 것이다.</mark></p>
+<h3 id="appendix-e-s3" class="subhead">E-3. 맘곁 공식 사이트</h3>
+<p>이 시리즈와 그 너머의 자료들은<br>
+맘곁 공식 사이트에서 한자리에 만날 수 있다.</p>
+<div class="momgyeot-card" role="group" aria-label="맘곁 공식 사이트">
+  <a class="momgyeot-qr" href="https://www.momgyeot.com" target="_blank" rel="noopener" aria-label="맘곁 공식 사이트 QR 코드 (www.momgyeot.com)">
+    <img src="./images/momgyeot-qr.png" alt="맘곁 공식 사이트 QR 코드" width="180" height="180">
+  </a>
+  <div class="momgyeot-meta">
+    <span class="momgyeot-tag">🔗 맘곁 공식 사이트</span>
+    <a class="momgyeot-link" href="https://www.momgyeot.com" target="_blank" rel="noopener">www.momgyeot.com</a>
+    <span class="momgyeot-hint">QR을 카메라로 비추거나 주소를 직접 눌러 들어갈 수 있다.</span>
+  </div>
+</div>
+<p>새로 더해지는 콘텐츠와 시기별 안내,<br>
+실천편 종이책·웹 전자책 접속 정보도<br>
+사이트의 안내를 참고하면 된다.</p>
+<blockquote class="meta-note">이 책이 가리킨 자리에서 한 걸음 더 옮겨 가실 때,<br>
+그 자리에 맘곁이 함께 있을 것이다.</blockquote>
 
 </div>
 </section>

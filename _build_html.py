@@ -2518,6 +2518,38 @@ table.data td { color: var(--text); }
 }
 @media print { .next-action { page-break-inside: avoid; } }
 
+/* 맘곁 공식 사이트 QR 카드 */
+.momgyeot-card {
+  display: flex; align-items: center; gap: 22px;
+  margin: 1.6em 0;
+  padding: 22px 24px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.momgyeot-qr {
+  flex-shrink: 0; display: block; line-height: 0;
+  padding: 8px; background: #fff; border: 1px solid var(--line); border-radius: 8px;
+}
+.momgyeot-qr img { display: block; width: 140px; height: 140px; }
+.momgyeot-meta { display: flex; flex-direction: column; gap: 6px; }
+.momgyeot-tag {
+  font-family: var(--sans); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.18em; color: var(--accent); text-transform: none;
+}
+.momgyeot-link {
+  font-family: var(--sans); font-size: 18px; font-weight: 700;
+  color: var(--text); text-decoration: none; border-bottom: 1px dashed var(--accent);
+  align-self: flex-start;
+}
+.momgyeot-link:hover { color: var(--accent); }
+.momgyeot-hint { font-family: var(--sans); font-size: 13px; color: var(--text-soft); line-height: 1.6; }
+@media (max-width: 600px) {
+  .momgyeot-card { flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px; }
+  .momgyeot-qr img { width: 120px; height: 120px; }
+}
+@media print { .momgyeot-card { page-break-inside: avoid; background: #fff !important; border-color: #ccc !important; } }
+
 .chapter.is-appendix .chapter-num {
   color: #6b6358;
 }
@@ -4445,6 +4477,42 @@ table.data tr:last-child td { border-bottom: none; }
 @media print {
   .next-action { page-break-inside: avoid; background: white !important; border-color: #ccc !important; }
   .next-action-link { display: none; }
+}
+
+/* 맘곁 공식 사이트 QR 카드 */
+.momgyeot-card {
+  display: flex; align-items: center; gap: 24px;
+  margin: 1.8em 0;
+  padding: 24px 26px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 1px 6px var(--shadow-soft);
+}
+.momgyeot-qr {
+  flex-shrink: 0; display: block; line-height: 0;
+  padding: 10px; background: #fff; border: 1px solid var(--line); border-radius: 10px;
+  border-bottom: none;
+}
+.momgyeot-qr img { display: block; width: 150px; height: 150px; }
+.momgyeot-meta { display: flex; flex-direction: column; gap: 8px; }
+.momgyeot-tag {
+  font-family: var(--sans); font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.18em; color: var(--accent);
+}
+.momgyeot-link {
+  font-family: var(--sans); font-size: 19px; font-weight: 700;
+  color: var(--text); text-decoration: none; border-bottom: 1.5px solid var(--accent);
+  align-self: flex-start; padding-bottom: 1px;
+}
+.momgyeot-link:hover { color: var(--accent); }
+.momgyeot-hint { font-family: var(--sans); font-size: 13.5px; color: var(--text-soft); line-height: 1.6; }
+@media (max-width: 600px) {
+  .momgyeot-card { flex-direction: column; align-items: flex-start; gap: 16px; padding: 20px; }
+  .momgyeot-qr img { width: 130px; height: 130px; }
+}
+@media print {
+  .momgyeot-card { page-break-inside: avoid; background: #fff !important; border-color: #ccc !important; box-shadow: none !important; }
 }
 
 /* 부록은 한 톤 차분히 */

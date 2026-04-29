@@ -21,4 +21,25 @@
 
 아기에게 말을 거는 모든 부모님께,
 깊은 존경과 응원을 보냅니다.
+
 *— 새로 쓰는 태교신기*
+
+---
+
+### 🔗 맘곁 공식 사이트
+
+이 책과 이론편, 그리고 새로 더해지는 자료들은
+맘곁 공식 사이트에서 한자리에 만날 수 있습니다.
+
+:::raw
+<div class="momgyeot-card" role="group" aria-label="맘곁 공식 사이트">
+  <a class="momgyeot-qr" href="https://www.momgyeot.com" target="_blank" rel="noopener" aria-label="맘곁 공식 사이트 QR 코드 (www.momgyeot.com)">
+    <img src="./images/momgyeot-qr.png" alt="맘곁 공식 사이트 QR 코드" width="180" height="180">
+  </a>
+  <div class="momgyeot-meta">
+    <span class="momgyeot-tag">🔗 맘곁 공식 사이트</span>
+    <a class="momgyeot-link" href="https://www.momgyeot.com" target="_blank" rel="noopener">www.momgyeot.com</a>
+    <span class="momgyeot-hint">QR을 카메라로 비추거나 주소를 직접 눌러 주세요.</span>
+  </div>
+</div>
+:::
