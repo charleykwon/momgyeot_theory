@@ -3789,8 +3789,21 @@ table.data tr:last-child td { border-bottom: none; }
     });
   });
 
-  document.querySelectorAll('.drawer-nav a').forEach(function(a) {
-    a.addEventListener('click', function() { setTimeout(closeDrawer, 120); });
+  // body.overflow is locked while drawer is open, which blocks default
+  // anchor scroll. Close drawer first, then scroll to target manually.
+  document.querySelectorAll('.drawer-nav a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var href = a.getAttribute('href');
+      if (!href || href === '#') return;
+      var target = document.getElementById(href.slice(1));
+      if (!target) return;
+      e.preventDefault();
+      closeDrawer();
+      requestAnimationFrame(function() {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        try { history.replaceState(null, '', href); } catch (err) {}
+      });
+    });
   });
 
   if (backToTop) {

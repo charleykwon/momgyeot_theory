@@ -2950,10 +2950,22 @@ table.data td { color: var(--text); }
     });
   });
 
-  // ---- Close drawer on TOC link click ----
-  document.querySelectorAll('.drawer-nav a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      setTimeout(closeDrawer, 120);
+  // ---- Close drawer + scroll to anchor on TOC link click ----
+  // body.overflow is locked to 'hidden' while drawer is open, which blocks
+  // the browser's default anchor scroll. So intercept, close drawer first,
+  // then explicitly scroll to the target.
+  document.querySelectorAll('.drawer-nav a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var href = a.getAttribute('href');
+      if (!href || href === '#') return;
+      var target = document.getElementById(href.slice(1));
+      if (!target) return;
+      e.preventDefault();
+      closeDrawer();
+      requestAnimationFrame(function() {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        try { history.replaceState(null, '', href); } catch (err) {}
+      });
     });
   });
 
@@ -5093,8 +5105,21 @@ table.data tr:last-child td { border-bottom: none; }
     });
   });
 
-  document.querySelectorAll('.drawer-nav a').forEach(function(a) {
-    a.addEventListener('click', function() { setTimeout(closeDrawer, 120); });
+  // body.overflow is locked while drawer is open, which blocks default
+  // anchor scroll. Close drawer first, then scroll to target manually.
+  document.querySelectorAll('.drawer-nav a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var href = a.getAttribute('href');
+      if (!href || href === '#') return;
+      var target = document.getElementById(href.slice(1));
+      if (!target) return;
+      e.preventDefault();
+      closeDrawer();
+      requestAnimationFrame(function() {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        try { history.replaceState(null, '', href); } catch (err) {}
+      });
+    });
   });
 
   if (backToTop) {
