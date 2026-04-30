@@ -665,6 +665,11 @@ INDEX_REDIRECT = """<!DOCTYPE html>
 <meta name="twitter:description" content="혼자 버티는 시간이 아니라 함께 지나가는 시간.">
 <meta name="twitter:image" content="https://taegyo.momgyeot.com/images/book-cover.png">
 <link rel="canonical" href="https://taegyo.momgyeot.com/">
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="./images/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./images/icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+<link rel="manifest" href="./site.webmanifest">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1196,6 +1201,9 @@ INDEX_REDIRECT = """<!DOCTYPE html>
         <a class="lp-share-btn lp-share-btn--primary" href="./images/taegyo-qr.png" download="momgyeot-taegyo-qr.png">
           ⬇️ QR 이미지 저장
         </a>
+        <a class="lp-share-btn" href="./images/og-icon-1200.png" download="momgyeot-taegyo-icon.png">
+          🍼 아이콘 저장
+        </a>
         <a class="lp-share-btn" href="https://taegyo.momgyeot.com" target="_blank" rel="noopener">
           🔗 사이트 바로 가기
         </a>
@@ -1321,6 +1329,11 @@ TEMPLATE = """<!DOCTYPE html>
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="맘곁 태교 — 이론편">
 <meta name="twitter:description" content="사주당 이씨와 오늘의 의학이 같은 자리에서 만난다.">
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="./images/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./images/icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+<link rel="manifest" href="./site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -3475,6 +3488,11 @@ TEMPLATE_MODERN = """<!DOCTYPE html>
 <meta property="og:title" content="맘곁 태교 — 이론편 (모던)">
 <meta property="og:type" content="book">
 <meta property="og:locale" content="ko_KR">
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="./images/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./images/icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+<link rel="manifest" href="./site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Noto+Serif+KR:wght@500;600;700&display=swap" rel="stylesheet">

@@ -1,0 +1,30 @@
+{
+  "name": "맘곁 태교 — 사주당 이씨와 오늘의 의학",
+  "short_name": "맘곁 태교",
+  "description": "혼자 버티는 시간이 아니라 함께 지나가는 시간. 1800년 사주당 이씨와 오늘의 의학이 같은 자리에서 만나는 두 권의 책.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f3f0",
+  "theme_color": "#7a5e40",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
