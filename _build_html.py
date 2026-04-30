@@ -963,6 +963,60 @@ INDEX_REDIRECT = """<!DOCTYPE html>
     .lp-app-qr img { width: 120px; height: 120px; }
   }
 
+  /* 맘곁 태교 사이트 공유 카드 */
+  .lp-share-card {
+    display: flex; align-items: center; gap: 24px;
+    padding: 22px 24px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .lp-share-qr {
+    flex-shrink: 0; margin: 0;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .lp-share-qr img {
+    display: block; width: 160px; height: 160px;
+    padding: 8px; background: #fff;
+    border: 1px solid var(--line); border-radius: 10px;
+  }
+  .lp-share-qr figcaption {
+    font-family: var(--sans); font-size: 11px;
+    color: var(--text-soft); letter-spacing: 0.06em;
+  }
+  .lp-share-meta { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .lp-share-title {
+    margin: 0; font-family: var(--serif);
+    font-size: 18px; font-weight: 700;
+    color: var(--text); letter-spacing: -0.005em;
+  }
+  .lp-share-desc {
+    margin: 0; font-size: 13.5px; color: var(--text-soft); line-height: 1.7;
+  }
+  .lp-share-actions {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 6px;
+  }
+  .lp-share-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 14px; border-radius: 999px;
+    font-family: var(--sans); font-size: 13px; font-weight: 600;
+    text-decoration: none; cursor: pointer;
+    background: var(--bg); color: var(--text);
+    border: 1px solid var(--line);
+    transition: transform 0.18s, border-color 0.18s, background 0.18s;
+  }
+  .lp-share-btn:hover { transform: translateY(-1px); border-color: var(--accent); }
+  .lp-share-btn--primary {
+    background: var(--accent); color: #fff; border-color: var(--accent);
+  }
+  .lp-share-btn--primary:hover { background: var(--accent); border-color: var(--accent); }
+  @media (max-width: 600px) {
+    .lp-share-card { flex-direction: column; align-items: center; text-align: center; gap: 18px; padding: 20px; }
+    .lp-share-qr img { width: 140px; height: 140px; }
+    .lp-share-actions { justify-content: center; }
+  }
+
   /* 섹션 */
   .lp-section { margin: 0 0 56px; }
   .lp-section h2 {
@@ -1124,6 +1178,32 @@ INDEX_REDIRECT = """<!DOCTYPE html>
     <span class="lp-design-label">또 다른 결로 읽기</span>
     <a class="lp-design-link" href="./book.html">📜 이론편 세리프판</a>
     <a class="lp-design-link" href="./practice.html">📜 실천편 세리프판</a>
+  </div>
+</section>
+
+<section class="lp-section lp-share">
+  <h2>맘곁 태교 사이트 공유하기</h2>
+  <p class="lp-section-lede">QR을 카메라로 비추거나 이미지를 저장해 주변에 전해 주세요.</p>
+  <div class="lp-share-card">
+    <figure class="lp-share-qr">
+      <img src="./images/taegyo-qr.png" alt="맘곁 태교 사이트 QR 코드 (taegyo.momgyeot.com)" width="160" height="160">
+      <figcaption>taegyo.momgyeot.com</figcaption>
+    </figure>
+    <div class="lp-share-meta">
+      <h3 class="lp-share-title">맘곁 태교 — 이론편 · 실천편</h3>
+      <p class="lp-share-desc">사주당 이씨의 『태교신기』와 오늘의 의학이 같은 자리에서 만나는 두 권의 책. 모바일·PC 어디서든 바로 펼쳐 읽을 수 있습니다.</p>
+      <div class="lp-share-actions">
+        <a class="lp-share-btn lp-share-btn--primary" href="./images/taegyo-qr.png" download="momgyeot-taegyo-qr.png">
+          ⬇️ QR 이미지 저장
+        </a>
+        <a class="lp-share-btn" href="https://taegyo.momgyeot.com" target="_blank" rel="noopener">
+          🔗 사이트 바로 가기
+        </a>
+        <button class="lp-share-btn" type="button" onclick="(function(b){try{navigator.clipboard.writeText('https://taegyo.momgyeot.com').then(function(){var t=b.textContent;b.textContent='✓ 복사됨';setTimeout(function(){b.textContent=t;},1800);});}catch(e){}})(this)">
+          📋 주소 복사
+        </button>
+      </div>
+    </div>
   </div>
 </section>
 
