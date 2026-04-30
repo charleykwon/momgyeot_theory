@@ -1116,7 +1116,7 @@ INDEX_REDIRECT = """<!DOCTYPE html>
 <div class="landing">
 
 <header class="lp-header">
-  <span class="lp-brand">맘곁 · 바비즈코리아</span>
+  <span class="lp-brand" aria-hidden="true"></span>
   <button class="lp-dark-toggle" type="button" aria-label="다크모드 전환" onclick="(function(){document.documentElement.classList.toggle('dark');try{localStorage.setItem('mamgyeot-theme',document.documentElement.classList.contains('dark')?'dark':'light');}catch(e){}})()">
     <span class="dark-icon-dark" aria-hidden="true">🌙</span>
     <span class="dark-icon-light" aria-hidden="true">☀️</span>
@@ -1281,8 +1281,7 @@ INDEX_REDIRECT = """<!DOCTYPE html>
   <div class="lp-footer-grid">
     <div>
       © 2026 권의철 · 최소라. 펴낸곳 바비즈코리아.<br>
-      『맘곁 태교 — 이론편』 · 1판 1쇄 2026년 4월 28일.<br>
-      이 페이지는 <a href="https://github.com/charleykwon/momgyeot_theory" target="_blank" rel="noopener">GitHub</a>에서 관리되며, 원고는 <code style="font-family: monospace; font-size: 11px; background: var(--bg-soft); padding: 1px 5px; border-radius: 3px;">docs/*.md</code> 파일에서 직접 확인할 수 있습니다.
+      『맘곁 태교 — 이론편』 · 1판 1쇄 2026년 4월 28일.
     </div>
   </div>
 </footer>
