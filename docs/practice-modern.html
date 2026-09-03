@@ -1914,6 +1914,70 @@ table.data tr:last-child td { border-bottom: none; }
   a { color: inherit !important; text-decoration: none !important; border: none !important; background: transparent !important; }
 }
 </style>
+<style>
+.td { --td-focus: #5f7355; }
+:root.dark .td { --td-focus: var(--accent-sage); }
+.td { max-width: 44rem; margin: 4rem auto 1rem; padding: 1.6rem 1.4rem 1.5rem;
+      background: var(--bg-soft); border: 1px solid var(--line);
+      border-radius: 16px; box-shadow: var(--card-shadow); font-family: var(--sans); }
+.td-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+              overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+              border: 0; }
+.td-title { font-family: var(--serif); font-size: 1.18rem; font-weight: 600;
+            color: var(--text); margin: 0 0 .4rem; letter-spacing: -.01em; }
+.td-lead { font-size: .9rem; line-height: 1.65; color: var(--text-soft); margin: 0 0 1.1rem; }
+.td-banner { border: 1px solid var(--line); border-left: 3px solid var(--accent-sage);
+             background: var(--bg); border-radius: 10px; padding: .7rem .9rem; margin: 0 0 1rem; }
+.td-banner-h { font-size: .9rem; font-weight: 600; color: var(--text); margin: 0; }
+.td-meta { font-size: .8rem; line-height: 1.55; color: var(--text-soft); margin: 0 0 .9rem; }
+.td-notice { border: 1px solid var(--line-strong); background: var(--bg);
+             border-radius: 10px; padding: .75rem .9rem; margin: 0 0 1rem;
+             font-size: .86rem; line-height: 1.6; color: var(--text-soft); white-space: pre-line; }
+.td textarea { width: 100%; box-sizing: border-box; min-height: 5.2rem; resize: vertical;
+               font-family: var(--sans); font-size: 1rem; line-height: 1.65; color: var(--text);
+               background: var(--bg); border: 1px solid var(--line-strong); border-radius: 10px;
+               padding: .75rem .85rem; }
+.td textarea:focus-visible, .td textarea:focus {
+  outline: 2px solid var(--td-focus); outline-offset: 1px; border-color: var(--td-focus); }
+.td-row { display: flex; justify-content: flex-end; margin: .4rem 0 .5rem; }
+.td-count { font-size: .8rem; color: var(--text-soft); font-variant-numeric: tabular-nums; }
+.td-count[data-over="true"] { color: var(--accent); font-weight: 600; }
+.td-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.td-actions-sub { margin-top: .8rem; padding-top: .8rem; border-top: 1px solid var(--line); }
+.td-btn { display: inline-flex; align-items: center; justify-content: center;
+          min-height: 2.75rem; padding: .55rem 1.05rem; border-radius: 999px;
+          font-family: var(--sans); font-size: .92rem; font-weight: 500; line-height: 1.2;
+          cursor: pointer; border: 1px solid transparent; text-decoration: none;
+          transition: opacity .15s ease, background .15s ease; }
+.td-btn:focus-visible { outline: 2px solid var(--td-focus); outline-offset: 2px; }
+/* 대비: 흰 글씨는 sage 배경에서 AA 미달(라이트 2.57:1 / 다크 2.06:1)이라
+   두 테마 모두 통과하는 고정 잉크색을 쓴다 (6.2:1 / 7.8:1). */
+.td-btn-primary { background: var(--accent-sage); color: #1b241a; }
+.td-btn-primary[disabled] { opacity: .45; cursor: default; }
+.td-btn-ghost { background: transparent; color: var(--text); border-color: var(--line-strong); }
+.td-btn-quiet { background: transparent; color: var(--text-soft); border-color: transparent;
+                min-height: 2.4rem; padding: .4rem .55rem; font-size: .85rem;
+                text-decoration: underline; text-underline-offset: 3px; }
+/* --accent 는 흰 글씨와 3.8:1(라이트) / 2.5:1(다크) 로 AA 미달이라
+   파괴적 버튼에는 고정 딥테라코타를 쓴다 (6.2:1). */
+.td-btn-danger { background: #9a4a38; color: #ffffff; }
+.td-panel { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.td-panel-h { font-size: 1rem; font-weight: 600; color: var(--text); margin: 0 0 .5rem; }
+.td-panel-b { font-size: .9rem; line-height: 1.7; color: var(--text-soft); margin: 0 0 1rem; }
+.td-newwin { display: inline-block; margin-top: .7rem; font-size: .85rem; color: var(--text-soft); }
+.td-backdrop { position: fixed; inset: 0; background: var(--backdrop); z-index: 90;
+               display: flex; align-items: center; justify-content: center; padding: 1.2rem; }
+.td-dialog { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 14px;
+             box-shadow: 0 12px 40px var(--shadow-strong); max-width: 22rem; width: 100%;
+             padding: 1.3rem 1.2rem 1.1rem; }
+.td-dlg-t { font-family: var(--serif); font-size: 1.05rem; font-weight: 600;
+            color: var(--text); margin: 0 0 .6rem; }
+.td-dlg-b { font-size: .88rem; line-height: 1.7; color: var(--text-soft);
+            margin: 0 0 1.1rem; white-space: pre-line; }
+.td-dlg-actions { display: flex; gap: .5rem; justify-content: flex-end; }
+.td [hidden] { display: none !important; }
+@media print { .td { display: none !important; } }
+</style>
 </head>
 <body>
 
@@ -3802,6 +3866,74 @@ table.data tr:last-child td { border-bottom: none; }
 </aside>
 </div>
 </section>
+
+<section class="td" id="td-widget" aria-labelledby="td-title">
+  <h2 class="td-title" id="td-title">오늘 아기에게 한 줄 남겨보세요</h2>
+  <p class="td-lead">여기 적어두면 이 기기에 <strong>72시간</strong> 동안 임시 보관해요. 맘곁에 기록하려면 복사해서 붙여넣어 주세요.</p>
+
+  <div class="td-banner" id="td-restored" hidden>
+    <p class="td-banner-h">📝 이 기기에 임시 보관된 태담을 불러왔어요</p>
+  </div>
+
+  <div class="td-notice" id="td-notice" role="status" hidden></div>
+
+  <div id="td-edit">
+    <label class="td-sr-only" for="td-text">한 줄 태담</label>
+    <textarea id="td-text" maxlength="300" rows="3" aria-describedby="td-count td-meta"
+      placeholder="예: 오늘 네 발차기를 처음 느꼈어."></textarea>
+    <div class="td-row"><span class="td-count" id="td-count" aria-live="polite">0 / 300</span></div>
+    <p class="td-meta" id="td-meta" hidden></p>
+    <div class="td-actions">
+      <button type="button" class="td-btn td-btn-primary" id="td-copy" disabled>태담 복사하기</button>
+      <a class="td-btn td-btn-ghost td-go" id="td-go-edit" href="https://www.momgyeot.com/login" rel="noopener">맘곁으로 계속</a>
+    </div>
+    <a class="td-newwin" id="td-newwin" href="#" target="_blank" rel="noopener" hidden>새 창에서 열고 복사하기</a>
+    <div class="td-actions td-actions-sub" id="td-sub" hidden>
+      <button type="button" class="td-btn td-btn-quiet" id="td-new">기존 태담을 지우고 새로 쓰기</button>
+      <button type="button" class="td-btn td-btn-quiet" id="td-del">이 기기에서 임시 태담 지우기</button>
+    </div>
+  </div>
+
+  <div class="td-panel" id="td-conflict" role="status" hidden>
+    <p class="td-panel-h" id="td-conflict-h">다른 탭에서 태담이 바뀌었어요</p>
+    <p class="td-panel-b" id="td-conflict-b">이 탭에는 아직 반영하지 않은 내용이 있어요. 어느 쪽을 쓸지 골라주세요.</p>
+    <div class="td-actions">
+      <button type="button" class="td-btn td-btn-primary" id="td-conflict-keep">이 탭 내용 계속 쓰기</button>
+      <button type="button" class="td-btn td-btn-ghost" id="td-conflict-load">다른 탭의 최신 태담 불러오기</button>
+    </div>
+  </div>
+
+  <div class="td-panel" id="td-success" role="status" hidden>
+    <h3 class="td-panel-h" id="td-success-h" tabindex="-1">✓ 태담을 복사했어요</h3>
+    <p class="td-panel-b">맘곁에 가입한 뒤 태담 화면에서<br>길게 눌러 붙여넣으면 기록돼요.</p>
+    <div class="td-actions">
+      <a class="td-btn td-btn-primary td-go" id="td-go" href="https://www.momgyeot.com/login" rel="noopener">맘곁으로 계속</a>
+      <button type="button" class="td-btn td-btn-ghost" id="td-later">나중에 할게요</button>
+    </div>
+  </div>
+
+  <div class="td-panel" id="td-manual" hidden>
+    <p class="td-panel-h">자동 복사가 되지 않았어요</p>
+    <p class="td-panel-b">아래 글을 길게 눌러 복사해주세요.</p>
+    <label class="td-sr-only" for="td-manual-text">복사할 태담</label>
+    <textarea id="td-manual-text" rows="3" readonly></textarea>
+    <div class="td-actions" style="margin-top:.8rem">
+      <button type="button" class="td-btn td-btn-ghost" id="td-retry">다시 복사해보기</button>
+      <a class="td-btn td-btn-primary td-go" href="https://www.momgyeot.com/login" rel="noopener">맘곁으로 계속</a>
+    </div>
+  </div>
+
+  <div class="td-backdrop" id="td-dialog" hidden>
+    <div class="td-dialog" role="dialog" aria-modal="true" aria-labelledby="td-dlg-t" aria-describedby="td-dlg-b">
+      <h3 class="td-dlg-t" id="td-dlg-t"></h3>
+      <p class="td-dlg-b" id="td-dlg-b"></p>
+      <div class="td-dlg-actions">
+        <button type="button" class="td-btn td-btn-ghost" id="td-dlg-cancel">취소</button>
+        <button type="button" class="td-btn td-btn-danger" id="td-dlg-ok"></button>
+      </div>
+    </div>
+  </div>
+</section>
 </div>
 
 <script>
@@ -4049,5 +4181,529 @@ table.data tr:last-child td { border-bottom: none; }
 })();
 </script>
 
+<script>
+(function () {
+  'use strict';
+
+  var root = document.getElementById('td-widget');
+  if (!root) return;
+
+  // ── 계약 상수 ───────────────────────────────────────────────────────────
+  var KEY    = 'mg_taegyo_draft_v1';
+  var TTL_MS = 72 * 60 * 60 * 1000;          // 72시간
+  var SKEW_MS = 24 * 60 * 60 * 1000;         // 허용 시계 오차. 이보다 미래면 손상 취급
+  var MAX    = 300;                          // UTF-16 code unit
+  var SAVE_DEBOUNCE_MS = 500;
+
+  var MSG_SAVE_FAIL =
+    '임시 보관은 하지 못했어요.\n태담을 복사해서 맘곁에서 계속 기록할 수 있어요.';
+  var MSG_DELETE_FAIL =
+    '이 기기의 임시 태담을 지우지 못했어요.\n브라우저 저장공간을 사용할 수 있는지 확인한 뒤 다시 시도해주세요.';
+
+  var el = {
+    restored: document.getElementById('td-restored'),
+    notice:   document.getElementById('td-notice'),
+    edit:     document.getElementById('td-edit'),
+    text:     document.getElementById('td-text'),
+    count:    document.getElementById('td-count'),
+    meta:     document.getElementById('td-meta'),
+    copy:     document.getElementById('td-copy'),
+    newwin:   document.getElementById('td-newwin'),
+    sub:      document.getElementById('td-sub'),
+    newBtn:   document.getElementById('td-new'),
+    delBtn:   document.getElementById('td-del'),
+    conflict: document.getElementById('td-conflict'),
+    cTitle:   document.getElementById('td-conflict-h'),
+    cBody:    document.getElementById('td-conflict-b'),
+    cKeep:    document.getElementById('td-conflict-keep'),
+    cLoad:    document.getElementById('td-conflict-load'),
+    success:  document.getElementById('td-success'),
+    successH: document.getElementById('td-success-h'),
+    go:       document.getElementById('td-go'),
+    later:    document.getElementById('td-later'),
+    manual:   document.getElementById('td-manual'),
+    manualTx: document.getElementById('td-manual-text'),
+    retry:    document.getElementById('td-retry'),
+    dialog:   document.getElementById('td-dialog'),
+    dlgT:     document.getElementById('td-dlg-t'),
+    dlgB:     document.getElementById('td-dlg-b'),
+    dlgOk:    document.getElementById('td-dlg-ok'),
+    dlgCancel:document.getElementById('td-dlg-cancel')
+  };
+
+  var state = {
+    draft: null,              // 우리가 아는 보관본
+    baselineUpdatedAt: null,  // 우리가 아는 저장소 버전 — stale overwrite 방지 기준
+    storageOk: true,
+    saveTimer: null,
+    saveGen: 0,               // pending 콜백 무효화용 세대 번호
+    incoming: null,           // 다른 탭에서 온 최신본 (삭제면 null)
+    conflictKind: null,       // 'update' | 'delete' | null
+    navWarned: false,
+    onConfirm: null,
+    lastFocus: null
+  };
+
+  function show(n) { if (n) n.hidden = false; }
+  function hide(n) { if (n) n.hidden = true; }
+
+  // ── 길이 계약 ───────────────────────────────────────────────────────────
+  // trimmed.length — JavaScript UTF-16 code unit 기준.
+  // 코드포인트·자소 단위로 세지 않는다. Momgyeot 서버의 max(300) 과 같은 의미론.
+  function trimmedValue() { return el.text.value.trim(); }
+  function isValidLength(t) { return typeof t === 'string' && t.length >= 1 && t.length <= MAX; }
+
+  // ── 저장소 ──────────────────────────────────────────────────────────────
+  function showNotice(msg) { el.notice.textContent = msg; show(el.notice); }
+  function hideNotice() { el.notice.textContent = ''; hide(el.notice); }
+
+  function isWellFormed(d) {
+    return !!d && d.v === 1
+      && typeof d.text === 'string' && isValidLength(d.text)
+      && typeof d.createdAt === 'number' && isFinite(d.createdAt)
+      && typeof d.updatedAt === 'number' && isFinite(d.updatedAt)
+      && d.updatedAt <= Date.now() + SKEW_MS;   // 먼 미래 타임스탬프는 손상 취급
+  }
+
+  function isExpired(d) { return Date.now() - d.updatedAt > TTL_MS; }
+
+  function parseRaw(raw) {
+    if (!raw) return null;
+    var d = null;
+    try { d = JSON.parse(raw); } catch (e) { return null; }
+    if (!isWellFormed(d)) return null;
+    if (typeof d.returnAnchor !== 'string') d.returnAnchor = '';
+    return d;
+  }
+
+  // 부수효과 없는 조회. 쓰기 직전 stale 검사에 쓴다.
+  function peekStored() {
+    var raw;
+    try { raw = localStorage.getItem(KEY); }
+    catch (e) { return { readable: false, draft: null }; }
+    return { readable: true, draft: parseRaw(raw) };
+  }
+
+  // 성공 true / 실패 false. 실패를 성공처럼 다루지 않는다.
+  // 성공했다는 것은 이 세션에서 저장소 조작이 실제로 가능하다는 증거이므로
+  // 이전 실패로 내려둔 storageOk 를 여기서 복구한다(실패 중인데 무조건 올리지는 않는다).
+  function removeStored() {
+    try { localStorage.removeItem(KEY); state.storageOk = true; return true; }
+    catch (e) { return false; }
+  }
+
+  function writeStored(d) {
+    if (!state.storageOk) return false;
+    try { localStorage.setItem(KEY, JSON.stringify(d)); return true; }
+    catch (e) { state.storageOk = false; showNotice(MSG_SAVE_FAIL); return false; }
+  }
+
+  function currentAnchor() {
+    var h = (location.hash || '').replace('#', '');
+    return /^part[1-9][0-9]*$/.test(h) ? h : '';
+  }
+
+  // ── 표시 ────────────────────────────────────────────────────────────────
+  function renderCount(t) {
+    el.count.textContent = t.length + ' / ' + MAX;
+    el.count.setAttribute('data-over', t.length > MAX ? 'true' : 'false');
+    el.copy.disabled = !isValidLength(t);
+  }
+
+  function relativeTime(ts) {
+    var diff = Date.now() - ts;
+    if (diff < 60 * 1000) return '방금';
+    if (diff < 60 * 60 * 1000) return Math.floor(diff / 60000) + '분 전';
+    if (diff < 24 * 60 * 60 * 1000) return Math.floor(diff / 3600000) + '시간 전';
+    var days = Math.floor(diff / 86400000);
+    return days === 1 ? '어제' : days + '일 전';
+  }
+
+  function expiryLine(ts) {
+    var left = TTL_MS - (Date.now() - ts);
+    if (left <= 24 * 60 * 60 * 1000) {
+      return '하루 안에 만료돼요. 지나면 다음 방문 때 이 기기에서 지워져요.';
+    }
+    return '72시간이 지나면 다음 방문 때 이 기기에서 지워져요.';
+  }
+
+  // 보관본이 있을 때의 공통 표시 — 최초 저장 직후에도 즉시 나타난다.
+  function renderPersisted(d) {
+    el.meta.textContent = relativeTime(d.updatedAt) + ' 저장 · ' + expiryLine(d.updatedAt);
+    show(el.meta);
+    show(el.sub);
+  }
+
+  function clearPersistedUi() {
+    hide(el.meta); hide(el.sub); hide(el.restored);
+    el.meta.textContent = '';
+  }
+
+  // ── 저장 ────────────────────────────────────────────────────────────────
+  // updatedAt 은 내용이 실제로 바뀐 편집에서만 갱신한다.
+  // 빈 입력은 보관본을 지우지 않는다 — 삭제는 명시적 확인으로만.
+  function commitSave(t) {
+    if (!t) return true;
+    if (!state.storageOk) return false;
+    if (!isValidLength(t)) return false;
+    if (state.draft && state.draft.text === t) return true;
+
+    var cur = peekStored();
+    if (cur.readable && cur.draft && cur.draft.updatedAt !== state.baselineUpdatedAt) {
+      showConflict(cur.draft);          // 다른 탭이 먼저 썼다 → 조용히 덮어쓰지 않는다
+      return false;
+    }
+
+    var now = Date.now();
+    var d = {
+      v: 1,
+      text: t,
+      createdAt: state.draft ? state.draft.createdAt : now,
+      updatedAt: now,
+      returnAnchor: state.draft ? state.draft.returnAnchor : currentAnchor()
+    };
+    if (!writeStored(d)) return false;
+    state.draft = d;
+    state.baselineUpdatedAt = d.updatedAt;
+    renderPersisted(d);
+    return true;
+  }
+
+  function cancelPending() {
+    if (state.saveTimer) { clearTimeout(state.saveTimer); state.saveTimer = null; }
+    state.saveGen++;                    // 이미 큐에 들어간 콜백도 무효화한다
+  }
+
+  function flushSave() {
+    cancelPending();
+    return commitSave(trimmedValue());
+  }
+
+  el.text.addEventListener('input', function () {
+    var t = trimmedValue();
+    renderCount(t);
+    if (state.saveTimer) clearTimeout(state.saveTimer);
+    var gen = state.saveGen;
+    state.saveTimer = setTimeout(function () {
+      state.saveTimer = null;
+      if (gen !== state.saveGen) return;   // 그 사이 삭제/flush 가 있었다면 되살리지 않는다
+      commitSave(t);
+    }, SAVE_DEBOUNCE_MS);
+  });
+
+  // ── 맘곁 이동: 이동 직전 동기 flush ─────────────────────────────────────
+  function onGoClick(e) {
+    var t = trimmedValue();
+    var ok = flushSave();
+    if (!ok && t && !state.navWarned) {
+      e.preventDefault();
+      state.navWarned = true;            // 한 번만 막고, 다시 누르면 그대로 이동한다
+      if (el.conflict.hidden) showNotice(MSG_SAVE_FAIL);
+      return;
+    }
+  }
+  var goLinks = root.querySelectorAll('.td-go');
+  for (var i = 0; i < goLinks.length; i++) {
+    goLinks[i].addEventListener('click', onGoClick);
+  }
+
+  // ── 다른 탭과의 충돌 ────────────────────────────────────────────────────
+  // 어떤 경로로 들어오든 pending 콜백을 먼저 끊는다.
+  // 그러지 않으면 500ms 뒤 stale text 가 사용자의 선택을 덮어쓴다.
+  function showConflict(incoming) {
+    cancelPending();
+    state.incoming = incoming;
+    state.conflictKind = incoming ? 'update' : 'delete';
+    if (incoming) {
+      el.cTitle.textContent = '다른 탭에서 태담이 바뀌었어요';
+      el.cBody.textContent = '이 탭에는 아직 반영하지 않은 내용이 있어요. 어느 쪽을 쓸지 골라주세요.';
+      el.cLoad.textContent = '다른 탭의 최신 태담 불러오기';
+    } else {
+      el.cTitle.textContent = '다른 탭에서 태담을 지웠어요';
+      el.cBody.textContent = '이 탭에는 아직 반영하지 않은 내용이 있어요. 어느 쪽으로 할지 골라주세요.';
+      el.cLoad.textContent = '삭제된 상태 유지';
+    }
+    show(el.conflict);
+  }
+
+  function hideConflict() {
+    state.incoming = null;
+    state.conflictKind = null;
+    hide(el.conflict);
+  }
+
+  function adoptIncoming(d) {
+    cancelPending();                 // 1. 예약된 stale 저장부터 무효화
+    if (!d) return;                  // 2. 유효성
+    state.draft = d;                 // 3
+    state.baselineUpdatedAt = d.updatedAt;  // 4
+    el.text.value = d.text;          // 5
+    renderCount(trimmedValue());
+    renderPersisted(d);
+    hideConflict();                  // 6
+  }
+
+  // 다른 탭의 삭제를 이 탭에 반영한다.
+  // editor 값까지 비워야 이후 어떤 CTA 의 flush 도 지워진 draft 를 되살리지 못한다.
+  function applyDeletion() {
+    cancelPending();
+    state.draft = null;
+    state.baselineUpdatedAt = null;
+    el.text.value = '';
+    renderCount('');
+    clearPersistedUi();
+  }
+
+  // 충돌 화면에서 '삭제된 상태 유지' 를 고른 경우. 저장소에 자동으로 다시 만들지 않는다.
+  function keepDeleted() { applyDeletion(); hideConflict(); }
+
+  el.cKeep.addEventListener('click', function () {
+    // 이 탭 내용을 쓴다 — 사용자의 명시적 선택.
+    // baseline 을 현재 저장소 실제 상태에 맞춘 뒤에야 저장을 허용한다.
+    cancelPending();
+    var cur = peekStored();
+    var live = (cur.readable && cur.draft) ? cur.draft : null;
+    state.draft = live;
+    state.baselineUpdatedAt = live ? live.updatedAt : null;
+    hideConflict();
+    flushSave();
+    el.text.focus();
+  });
+
+  el.cLoad.addEventListener('click', function () {
+    if (state.conflictKind === 'delete') keepDeleted();
+    else if (state.incoming) adoptIncoming(state.incoming);
+    else hideConflict();
+    el.text.focus();
+  });
+
+  window.addEventListener('storage', function (e) {
+    if (e.key !== KEY) return;
+    cancelPending();                 // 어떤 분기로 가든 stale 콜백을 먼저 끊는다
+    var incoming = parseRaw(e.newValue);
+    var localText = trimmedValue();
+    var known = state.draft ? state.draft.text : '';
+    var diverged = !!localText && localText !== known;
+    var resolving = !el.conflict.hidden;   // 사용자가 아직 고르는 중
+
+    if (!incoming) {                       // 다른 탭이 지웠다
+      // 편집 중이면 사용자가 고르게 한다. 편집 중이 아니면 삭제를 그대로 수용한다.
+      if (diverged || resolving) { showConflict(null); return; }
+      applyDeletion();
+      return;
+    }
+    // 해소 중에 제3의 write 가 오면 조용히 덮어쓰지 않고 최신값으로 다시 묻는다
+    if (diverged || resolving) { showConflict(incoming); return; }
+    adoptIncoming(incoming);
+  });
+
+  // ── 확인 다이얼로그 ─────────────────────────────────────────────────────
+  var BG_NODES = [el.restored, el.notice, el.edit, el.conflict, el.success, el.manual];
+
+  function setBackgroundInert(on) {
+    for (var i = 0; i < BG_NODES.length; i++) {
+      var n = BG_NODES[i];
+      if (!n) continue;
+      try { n.inert = on; } catch (err) {}
+      if (on) n.setAttribute('aria-hidden', 'true');
+      else n.removeAttribute('aria-hidden');
+    }
+  }
+
+  function openDialog(title, body, okLabel, onConfirm) {
+    el.dlgT.textContent = title;
+    el.dlgB.textContent = body;
+    el.dlgOk.textContent = okLabel;
+    state.onConfirm = onConfirm;
+    state.lastFocus = document.activeElement;
+    show(el.dialog);
+    setBackgroundInert(true);
+    el.dlgCancel.focus();      // 파괴적 버튼에는 초기 포커스를 주지 않는다
+  }
+
+  function closeDialog() {
+    hide(el.dialog);
+    setBackgroundInert(false);
+    state.onConfirm = null;
+    var back = state.lastFocus;
+    state.lastFocus = null;
+    if (back && back.focus && document.contains(back) && !back.hidden) back.focus();
+    else el.text.focus();
+  }
+
+  el.dlgCancel.addEventListener('click', closeDialog);
+  el.dlgOk.addEventListener('click', function () {
+    var fn = state.onConfirm;
+    closeDialog();
+    if (fn) fn();
+  });
+  el.dialog.addEventListener('click', function (e) { if (e.target === el.dialog) closeDialog(); });
+
+  // 최소 focus trap — 다이얼로그 안에서만 Tab 이 순환한다.
+  document.addEventListener('keydown', function (e) {
+    if (el.dialog.hidden) return;
+    if (e.key === 'Escape' || e.key === 'Esc') { closeDialog(); return; }
+    if (e.key !== 'Tab') return;
+    var focusables = [el.dlgCancel, el.dlgOk];
+    var first = focusables[0], last = focusables[focusables.length - 1];
+    var active = document.activeElement;
+    if (e.shiftKey) {
+      if (active === first || focusables.indexOf(active) === -1) { e.preventDefault(); last.focus(); }
+    } else {
+      if (active === last || focusables.indexOf(active) === -1) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  // ── 삭제 / 새로 쓰기 ────────────────────────────────────────────────────
+  function discardDraft() {
+    cancelPending();                       // pending 콜백이 되살리지 못하게 먼저 끊는다
+    if (!removeStored()) {                 // 지우지 못했으면 지웠다고 말하지 않는다
+      state.storageOk = false;
+      showNotice(MSG_DELETE_FAIL);
+      return;
+    }
+    hideNotice();
+    state.draft = null;
+    state.baselineUpdatedAt = null;
+    state.navWarned = false;
+    el.text.value = '';
+    clearPersistedUi();
+    hideConflict();
+    hide(el.success);
+    hide(el.manual);
+    show(el.edit);
+    renderCount('');
+    el.text.focus();
+  }
+
+  el.delBtn.addEventListener('click', function () {
+    openDialog(
+      '이 기기에서 임시 태담을 지울까요?',
+      '맘곁에 저장됐는지는 여기서 확인할 수 없어요.\n이 기기의 임시 태담을 지우면 다시 복구할 수 없습니다.',
+      '지우기',
+      discardDraft
+    );
+  });
+
+  el.newBtn.addEventListener('click', function () {
+    openDialog(
+      '기존 태담을 지우고 새로 쓸까요?',
+      '맘곁에 저장됐는지는 여기서 확인할 수 없어요.\n지금 보관된 태담은 다시 복구할 수 없습니다.',
+      '지우고 새로 쓰기',
+      discardDraft
+    );
+  });
+
+  // ── 클립보드 ────────────────────────────────────────────────────────────
+  function onCopySuccess() {
+    hide(el.manual);
+    hide(el.edit);
+    show(el.success);
+    // 숨겨진 버튼에 포커스가 남지 않도록 성공 화면의 첫 CTA 로 옮긴다.
+    if (el.go && el.go.focus) el.go.focus();
+    else el.successH.focus();
+  }
+
+  function showManual(t) {
+    hide(el.success);
+    el.manualTx.value = t;
+    show(el.manual);
+    try {
+      el.manualTx.focus();
+      el.manualTx.setSelectionRange(0, t.length);
+    } catch (e) {}
+  }
+
+  // best-effort. 항상 성공한다고 가정하지 않는다.
+  function tryExecCommand(t) {
+    var ok = false;
+    var ta = document.createElement('textarea');
+    ta.value = t;
+    ta.setAttribute('aria-hidden', 'true');
+    ta.style.position = 'fixed';
+    ta.style.top = '0';
+    ta.style.left = '0';
+    ta.style.width = '1px';
+    ta.style.height = '1px';
+    ta.style.padding = '0';
+    ta.style.border = 'none';
+    ta.style.opacity = '0';
+    ta.contentEditable = 'true';     // iOS Safari 선택 허용
+    ta.readOnly = false;
+    document.body.appendChild(ta);
+    try {
+      ta.focus();
+      var range = document.createRange();
+      range.selectNodeContents(ta);
+      var sel = window.getSelection();
+      if (sel) { sel.removeAllRanges(); sel.addRange(range); }
+      ta.setSelectionRange(0, t.length);
+      ok = document.execCommand('copy');
+    } catch (e) { ok = false; }
+    if (ta.parentNode) ta.parentNode.removeChild(ta);
+    if (ok) onCopySuccess(); else showManual(t);
+  }
+
+  function doCopy() {
+    var t = trimmedValue();
+    if (!isValidLength(t)) return;
+
+    // user gesture 안에서 즉시 호출한다. 앞서 어떤 비동기도 await 하지 않는다.
+    var p = null;
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        p = navigator.clipboard.writeText(t);
+      }
+    } catch (e) { p = null; }
+
+    if (p && typeof p.then === 'function') {
+      // resolve 이후에만 "복사했어요" 를 표시한다.
+      p.then(function () { onCopySuccess(); }, function () { tryExecCommand(t); });
+    } else {
+      tryExecCommand(t);
+    }
+
+    flushSave();   // 동기 저장. gesture 를 소비하지 않는다.
+  }
+
+  el.copy.addEventListener('click', doCopy);
+  el.retry.addEventListener('click', function () { hide(el.manual); doCopy(); });
+  el.later.addEventListener('click', function () {
+    hide(el.success);
+    show(el.edit);
+    el.text.focus();
+  });
+
+  // ── iframe: 클립보드 자동 성공을 가정하지 않는다 ────────────────────────
+  var inFrame = true;
+  try { inFrame = (window.top !== window.self); } catch (e) { inFrame = true; }
+  if (inFrame) { el.newwin.href = location.href; show(el.newwin); }
+
+  // ── 초기화: 유효 draft 자동 복원 (자동 overwrite 없음) ───────────────────
+  (function init() {
+    var cur = peekStored();
+    if (!cur.readable) {
+      state.storageOk = false;
+      showNotice(MSG_SAVE_FAIL);
+    } else {
+      var raw = null;
+      try { raw = localStorage.getItem(KEY); } catch (e) { raw = null; }
+      if (raw && !cur.draft) {                   // 손상 → 제거 + 안내
+        removeStored();
+        showNotice(MSG_SAVE_FAIL);
+      } else if (cur.draft && isExpired(cur.draft)) {
+        removeStored();                          // 만료 → 조용히 제거, 표시하지 않음
+      } else if (cur.draft) {
+        state.draft = cur.draft;
+        state.baselineUpdatedAt = cur.draft.updatedAt;
+        el.text.value = cur.draft.text;          // 프로그램 설정 → input 없음 → updatedAt 불변
+        show(el.restored);
+        renderPersisted(cur.draft);
+      }
+    }
+    renderCount(trimmedValue());
+  })();
+})();
+</script>
 </body>
 </html>
