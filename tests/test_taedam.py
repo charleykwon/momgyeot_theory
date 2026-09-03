@@ -67,9 +67,10 @@ def test(num, name):
 class Ctx:
     """테스트마다 새 브라우저 컨텍스트를 준다."""
 
-    def __init__(self, browser, base):
+    def __init__(self, browser, base, pw=None):
         self.browser = browser
         self.base = base
+        self.pw = pw          # webkit 등 다른 엔진이 필요한 테스트용
 
     def page(self, init_scripts=(), seed=None, seed_raw=None, clipboard=True):
         ctx = self.browser.new_context()
@@ -714,7 +715,7 @@ def t38(c):
 @test(39, "textarea exposes an accessible name")
 def t39(c):
     page = c.page()
-    assert page.get_by_label("한 줄 태담").count() == 1
+    assert page.get_by_label("한 줄 태담", exact=True).count() == 1
     name = page.evaluate("""() => {
       const t = document.getElementById('td-text');
       const l = document.querySelector('label[for="td-text"]');
@@ -1107,6 +1108,133 @@ def t61(c):
     ctx.close()
 
 
+# ── 10. Task 3 Revision 3 — 파트 진입 CTA (발견성) ──────────────────────────
+JUMP_PARTS = ["part1", "part2", "part3", "part4", "part5"]
+
+
+def _section(html, pid):
+    import re
+    m = re.search(r'<section id="%s" class="chapter">(.*?)</section>' % pid, html, re.S)
+    return m.group(1) if m else None
+
+
+@test(62, "jump CTA appears exactly once in each of part1..part5")
+def t62(c):
+    html = (DOCS / PAGE).read_text(encoding="utf-8")
+    assert html.count('class="td-jump"') == 5, html.count('class="td-jump"')
+    for pid in JUMP_PARTS:
+        body = _section(html, pid)
+        assert body is not None, f"{pid} 섹션 없음"
+        assert body.count('class="td-jump"') == 1, f"{pid}: {body.count('class=\"td-jump\"')}개"
+    for pid in ("prologue", "epilogue"):
+        body = _section(html, pid)
+        assert body is not None and body.count('class="td-jump"') == 0, f"{pid} 에 CTA 가 들어감"
+
+
+@test(63, "every jump CTA href is exactly #td-widget")
+def t63(c):
+    import re
+    html = (DOCS / PAGE).read_text(encoding="utf-8")
+    hrefs = re.findall(r'class="td-jump-link" href="([^"]*)"', html)
+    assert len(hrefs) == 5, hrefs
+    assert all(h == "#td-widget" for h in hrefs), hrefs
+
+
+@test(64, "jump CTA sits immediately after the chapter header")
+def t64(c):
+    import re
+    html = (DOCS / PAGE).read_text(encoding="utf-8")
+    for pid in JUMP_PARTS:
+        body = _section(html, pid)
+        assert re.search(r'</header>\s*<aside class="td-jump"', body), f"{pid}: header 직후가 아님"
+
+
+@test(65, "clicking the CTA brings the widget into the viewport (Chromium + WebKit)")
+def t65(c):
+    def check(browser, label):
+        ctx = browser.new_context(viewport={"width": 390, "height": 844},
+                                  is_mobile=True, has_touch=True)
+        page = ctx.new_page(); page.set_default_timeout(25000)
+        page.goto(f"{c.base}/{PAGE}#part3", wait_until="load")
+        page.wait_for_selector("#td-widget")
+        page.wait_for_timeout(1200)                      # 레이아웃 안정 대기
+        page.click('#part3 .td-jump-link')
+        # html { scroll-behavior: smooth } 때문에 6만px 스크롤이 애니메이션된다.
+        # 고정 대기 대신 scrollY 가 멈출 때까지 기다린다 (Chromium ~1.8s, WebKit ~0.5s).
+        prev, settled = -1, False
+        for _ in range(40):
+            page.wait_for_timeout(250)
+            y = page.evaluate("() => Math.round(scrollY)")
+            if y == prev:
+                settled = True
+                break
+            prev = y
+        assert settled, f"{label}: 스크롤이 10초 안에 멈추지 않음"
+        r = page.evaluate("""() => {
+          const w = document.getElementById('td-widget');
+          const b = w.getBoundingClientRect();
+          const el = document.elementFromPoint(b.x + b.width / 2, b.y + 30);
+          return { inViewport: b.top < innerHeight && b.bottom > 0,
+                   y: Math.round(b.y),
+                   inside: el ? w.contains(el) : false,
+                   hit: el ? (el.id || el.tagName) : null };
+        }""")
+        ctx.close()
+        assert r["inViewport"], f"{label}: 위젯이 뷰포트 밖 {r}"
+        assert r["inside"], f"{label}: hit-test 가 위젯 밖 {r}"
+    check(c.browser, "chromium")
+    wk = c.pw.webkit.launch()
+    try:
+        check(wk, "webkit")
+    finally:
+        wk.close()
+
+
+@test(66, "jump CTA is absent from the theory book and the classic layout")
+def t66(c):
+    for name in ("book-modern.html", "book.html", "practice.html", "index.html"):
+        html = (DOCS / name).read_text(encoding="utf-8")
+        assert 'class="td-jump"' not in html, f"{name} 에 CTA 가 들어감"
+        assert "TAEDAM_JUMP" not in html, f"{name} 에 placeholder 잔여"
+
+
+@test(67, "jump CTA text meets WCAG AA contrast in light and dark")
+def t67(c):
+    js = """() => {
+      const P = v => v.match(/\\d+(\\.\\d+)?/g).slice(0, 3).map(Number);
+      const L = r => { const f = r.map(v => { v /= 255;
+        return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+        return 0.2126 * f[0] + 0.7152 * f[1] + 0.0722 * f[2]; };
+      const ratio = (x, y) => { const a = L(P(x)), b = L(P(y));
+        return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05); };
+      const card = document.querySelector('.td-jump');
+      const bg = getComputedStyle(card).backgroundColor;
+      return {
+        link: ratio(getComputedStyle(card.querySelector('.td-jump-link')).color, bg),
+        head: ratio(getComputedStyle(card.querySelector('.td-jump-h')).color, bg),
+        body: ratio(getComputedStyle(card.querySelector('.td-jump-b')).color, bg),
+      };
+    }"""
+    for theme in ("light", "dark"):
+        page = c.page(init_scripts=[
+            "try{localStorage.setItem('mamgyeot-theme', %s);}catch(e){}" % json.dumps(theme)])
+        r = page.evaluate(js)
+        for k, v in r.items():
+            assert v >= 4.5, f"{theme} .td-jump-{k} 대비 {v:.2f}:1 (AA 4.5 미달)"
+
+
+@test(68, "widget remains a single instance and its logic is untouched")
+def t68(c):
+    html = (DOCS / PAGE).read_text(encoding="utf-8")
+    assert html.count('id="td-widget"') == 1
+    assert html.count("mg_taegyo_draft_v1") == 1
+    # CTA 는 JS 를 추가하지 않는다
+    import re
+    for m in re.finditer(r'<aside class="td-jump".*?</aside>', html, re.S):
+        blk = m.group(0)
+        assert "<script" not in blk and "onclick" not in blk, "CTA 에 JS 가 붙음"
+
+
 # ── 러너 ─────────────────────────────────────────────────────────────────────
 def main(argv):
     try:
@@ -1125,7 +1253,7 @@ def main(argv):
     try:
         with sync_playwright() as pw:
             browser = pw.chromium.launch()
-            c = Ctx(browser, base)
+            c = Ctx(browser, base, pw)
             for num, name, fn in TESTS:
                 if wanted and num not in wanted:
                     continue

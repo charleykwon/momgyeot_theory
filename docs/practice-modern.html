@@ -1976,7 +1976,21 @@ table.data tr:last-child td { border-bottom: none; }
             margin: 0 0 1.1rem; white-space: pre-line; }
 .td-dlg-actions { display: flex; gap: .5rem; justify-content: flex-end; }
 .td [hidden] { display: none !important; }
-@media print { .td { display: none !important; } }
+
+/* 파트 진입 CTA — 본문 읽기를 압도하지 않는 작은 안내 카드 */
+:root { --td-link: #5f7355; }
+:root.dark { --td-link: var(--accent-sage); }
+.td-jump { margin: 0 0 1.6rem; padding: .85rem 1rem; border-radius: 12px;
+           background: var(--bg-soft); border: 1px solid var(--line);
+           border-left: 3px solid var(--accent-sage); font-family: var(--sans); }
+.td-jump-h { font-size: .95rem; font-weight: 600; color: var(--text); margin: 0 0 .3rem; }
+.td-jump-b { font-size: .85rem; line-height: 1.6; color: var(--text-soft); margin: 0 0 .6rem; }
+.td-jump-link { display: inline-block; font-size: .88rem; font-weight: 500;
+                color: var(--td-link); text-decoration: underline;
+                text-underline-offset: 3px; padding: .25rem 0; }
+.td-jump-link:hover { text-decoration-thickness: 2px; }
+.td-jump-link:focus-visible { outline: 2px solid var(--td-link); outline-offset: 3px; border-radius: 4px; }
+@media print { .td { display: none !important; } .td-jump { display: none !important; } }
 </style>
 </head>
 <body>
@@ -2105,6 +2119,11 @@ table.data tr:last-child td { border-bottom: none; }
 </section>
 <section id="part1" class="chapter">
 <header class="chapter-header"><span class="chapter-num">PART 1</span><h2 class="chapter-title">태아 이전의 마음 준비</h2></header>
+<aside class="td-jump" aria-label="태담 남기기 안내">
+  <p class="td-jump-h">✍️ 오늘 아기에게 한 줄 남겨보세요</p>
+  <p class="td-jump-b">태교를 읽은 뒤, 지금 마음을 태담으로 남길 수 있어요.</p>
+  <a class="td-jump-link" href="#td-widget">한 줄 태담 남기기 →</a>
+</aside>
 <div class="chapter-body">
 <p>"아이의 시작점은 부모의 마음이 시작되는 순간이다"</p>
 <h3 id="part1-s1" class="subhead">교육의 시작점을 다시 보다</h3>
@@ -2502,6 +2521,11 @@ table.data tr:last-child td { border-bottom: none; }
 </section>
 <section id="part2" class="chapter">
 <header class="chapter-header"><span class="chapter-num">PART 2</span><h2 class="chapter-title">임신 초기 태교</h2></header>
+<aside class="td-jump" aria-label="태담 남기기 안내">
+  <p class="td-jump-h">✍️ 오늘 아기에게 한 줄 남겨보세요</p>
+  <p class="td-jump-b">태교를 읽은 뒤, 지금 마음을 태담으로 남길 수 있어요.</p>
+  <a class="td-jump-link" href="#td-widget">한 줄 태담 남기기 →</a>
+</aside>
 <div class="chapter-body">
 <p>"보이지 않기 때문에, 더 먼저 대화를 시작합니다"<br>
 1 - 3 개월</p>
@@ -2808,6 +2832,11 @@ table.data tr:last-child td { border-bottom: none; }
 </section>
 <section id="part3" class="chapter">
 <header class="chapter-header"><span class="chapter-num">PART 3</span><h2 class="chapter-title">임신 중기 태교</h2></header>
+<aside class="td-jump" aria-label="태담 남기기 안내">
+  <p class="td-jump-h">✍️ 오늘 아기에게 한 줄 남겨보세요</p>
+  <p class="td-jump-b">태교를 읽은 뒤, 지금 마음을 태담으로 남길 수 있어요.</p>
+  <a class="td-jump-link" href="#td-widget">한 줄 태담 남기기 →</a>
+</aside>
 <div class="chapter-body">
 <p>"태동이 시작되면, 대화도 깊어진다"</p>
 <h3 id="part3-s1" class="subhead">태동, 아기가 보내는 첫 번째 신호</h3>
@@ -3122,6 +3151,11 @@ table.data tr:last-child td { border-bottom: none; }
 </section>
 <section id="part4" class="chapter">
 <header class="chapter-header"><span class="chapter-num">PART 4</span><h2 class="chapter-title">임신 후기 태교</h2></header>
+<aside class="td-jump" aria-label="태담 남기기 안내">
+  <p class="td-jump-h">✍️ 오늘 아기에게 한 줄 남겨보세요</p>
+  <p class="td-jump-b">태교를 읽은 뒤, 지금 마음을 태담으로 남길 수 있어요.</p>
+  <a class="td-jump-link" href="#td-widget">한 줄 태담 남기기 →</a>
+</aside>
 <div class="chapter-body">
 <p>🌙<br>
 "만남을 준비하며, 마지막 대화를 나눈다"</p>
@@ -3474,6 +3508,11 @@ table.data tr:last-child td { border-bottom: none; }
 </section>
 <section id="part5" class="chapter">
 <header class="chapter-header"><span class="chapter-num">PART 5</span><h2 class="chapter-title">출산과 첫 만남</h2></header>
+<aside class="td-jump" aria-label="태담 남기기 안내">
+  <p class="td-jump-h">✍️ 오늘 아기에게 한 줄 남겨보세요</p>
+  <p class="td-jump-b">태교를 읽은 뒤, 지금 마음을 태담으로 남길 수 있어요.</p>
+  <a class="td-jump-link" href="#td-widget">한 줄 태담 남기기 →</a>
+</aside>
 <div class="chapter-body">
 <p>10달의 기다림 끝에, 드디어<br>
 👶<br>
