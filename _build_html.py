@@ -5855,7 +5855,7 @@ TAEDAM_WIDGET = """
     <p class="td-meta" id="td-meta" hidden></p>
     <div class="td-actions">
       <button type="button" class="td-btn td-btn-primary" id="td-copy" disabled>태담 복사하기</button>
-      <a class="td-btn td-btn-ghost td-go" id="td-go-edit" href="https://www.momgyeot.com/login" rel="noopener">맘곁으로 계속</a>
+      <a class="td-btn td-btn-ghost td-go" id="td-go-edit" href="https://www.momgyeot.com/tadam?mode=write&amp;entry=taegyo" rel="noopener">맘곁으로 계속</a>
     </div>
     <a class="td-newwin" id="td-newwin" href="#" target="_blank" rel="noopener" hidden>새 창에서 열고 복사하기</a>
     <div class="td-actions td-actions-sub" id="td-sub" hidden>
@@ -5877,7 +5877,7 @@ TAEDAM_WIDGET = """
     <h3 class="td-panel-h" id="td-success-h" tabindex="-1">✓ 태담을 복사했어요</h3>
     <p class="td-panel-b">맘곁에 가입한 뒤 태담 화면에서<br>길게 눌러 붙여넣으면 기록돼요.</p>
     <div class="td-actions">
-      <a class="td-btn td-btn-primary td-go" id="td-go" href="https://www.momgyeot.com/login" rel="noopener">맘곁으로 계속</a>
+      <a class="td-btn td-btn-primary td-go" id="td-go" href="https://www.momgyeot.com/tadam?mode=write&amp;entry=taegyo" rel="noopener">맘곁으로 계속</a>
       <button type="button" class="td-btn td-btn-ghost" id="td-later">나중에 할게요</button>
     </div>
   </div>
@@ -5889,7 +5889,7 @@ TAEDAM_WIDGET = """
     <textarea id="td-manual-text" rows="3" readonly></textarea>
     <div class="td-actions" style="margin-top:.8rem">
       <button type="button" class="td-btn td-btn-ghost" id="td-retry">다시 복사해보기</button>
-      <a class="td-btn td-btn-primary td-go" href="https://www.momgyeot.com/login" rel="noopener">맘곁으로 계속</a>
+      <a class="td-btn td-btn-primary td-go" href="https://www.momgyeot.com/tadam?mode=write&amp;entry=taegyo" rel="noopener">맘곁으로 계속</a>
     </div>
   </div>
 

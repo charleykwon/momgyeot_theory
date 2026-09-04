@@ -26,7 +26,9 @@ PAGE = "practice-modern.html"
 KEY = "mg_taegyo_draft_v1"
 HOUR = 60 * 60 * 1000
 
-LOGIN_URL = "https://www.momgyeot.com/login"
+# 태담을 이어 쓸 맘곁 화면. 로그인을 먼저 요구하지 않고 입력창으로 바로 보낸다.
+# 쿼리는 고정 상수뿐이다 — 사용자가 쓴 본문은 절대 여기 실리지 않는다.
+CONTINUE_URL = "https://www.momgyeot.com/tadam?mode=write&entry=taegyo"
 
 # 위젯이 절대 담아서는 안 되는 문구 — taegyo 는 맘곁 저장 여부를 알 수 없다.
 FORBIDDEN_PHRASES = ["기록했어요", "저장 완료", "맘곁에 저장했어요", "저장했어요"]
@@ -381,8 +383,10 @@ def t18(c):
     assert page.is_hidden("#td-manual")
     assert "복사했어요" in page.inner_text("#td-success")
     assert page.evaluate("() => navigator.clipboard.readText()") == "오늘 네 발차기를 처음 느꼈어."
-    # 링크는 파라미터 없는 평문 로그인 URL
-    assert page.get_attribute("#td-go", "href") == LOGIN_URL
+    # 링크는 고정 URL. 본문이 섞여 들어가지 않는다.
+    href = page.get_attribute("#td-go", "href")
+    assert href == CONTINUE_URL, href
+    assert "오늘 네 발차기를 처음 느꼈어." not in href
     # 되돌아가기
     page.click("#td-later")
     page.wait_for_selector("#td-edit:not([hidden])")
@@ -461,7 +465,11 @@ def t22(c):
     assert secret not in page.evaluate("() => location.hash")
     assert external == [], f"외부 요청 발생: {external}"
     for sel in ["#td-go", "#td-go-edit"]:
-        assert page.get_attribute(sel, "href") == LOGIN_URL
+        href = page.get_attribute(sel, "href")
+        assert href == CONTINUE_URL, f"{sel}: {href}"
+        # 고정 쿼리 외에 어떤 값도 붙지 않는다.
+        assert secret not in href, href
+        assert "prefill" not in href and "text=" not in href, href
 
 
 @test(23, "expiry notice within 24h, calm wording otherwise")
