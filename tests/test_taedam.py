@@ -1243,6 +1243,103 @@ def t68(c):
         assert "<script" not in blk and "onclick" not in blk, "CTA 에 JS 가 붙음"
 
 
+# ── 10. 상단 빠른 체험 경로 ─────────────────────────────────────────────────
+
+@test(69, "top quick-entry CTA exists once, above the widget")
+def t69(c):
+    html = (DOCS / PAGE).read_text(encoding="utf-8")
+    assert html.count('class="td-top"') == 1, "상단 CTA 는 하나여야 한다"
+    top = html.index('class="td-top"')
+    widget = html.index('id="td-widget"')
+    assert top < widget, "상단 CTA 가 위젯보다 뒤에 있다"
+    # 본문(첫 파트)보다도 앞이어야 읽기 전에 보인다
+    assert top < html.index('id="part1"'), "상단 CTA 가 본문 뒤에 있다"
+
+
+@test(70, "top CTA points at the existing widget and does not duplicate it")
+def t70(c):
+    html = (DOCS / PAGE).read_text(encoding="utf-8")
+    import re
+    m = re.search(r'<aside class="td-top".*?</aside>', html, re.S)
+    assert m, "상단 CTA 마크업을 찾지 못했다"
+    blk = m.group(0)
+    assert 'href="#td-widget"' in blk, blk
+    # 위젯은 여전히 하나뿐이다 — 복제하지 않았다
+    assert html.count('id="td-widget"') == 1
+    assert html.count("mg_taegyo_draft_v1") == 1
+    # CTA 에 JS·본문·개인정보가 붙지 않는다
+    assert "<script" not in blk and "onclick" not in blk
+    assert "textarea" not in blk
+    assert "http" not in blk, "상단 CTA 는 외부로 나가지 않는다"
+
+
+@test(71, "top CTA renders and scrolls to the widget (Chromium)")
+def t71(c):
+    page = c.page()
+    link = page.locator("aside.td-top a.td-top-link")
+    assert link.count() == 1
+    assert link.is_visible()
+    page.goto(f"{c.base}/{PAGE}", wait_until="domcontentloaded")
+    page.wait_for_selector("aside.td-top")
+    page.click("aside.td-top a.td-top-link")
+    page.wait_for_function(
+        "() => { const e = document.getElementById('td-widget');"
+        " if (!e) return false; const r = e.getBoundingClientRect();"
+        " return r.top < window.innerHeight && r.bottom > 0; }",
+        timeout=8000,
+    )
+
+
+@test(72, "adding the top CTA removed no existing content")
+def t72(c):
+    html = (DOCS / PAGE).read_text(encoding="utf-8")
+    # 기존 구조가 모두 그대로 있다
+    for anchor in ["prologue", "part1", "part2", "part3", "part4", "part5", "td-widget"]:
+        assert f'id="{anchor}"' in html, f"{anchor} 가 사라졌다"
+    # 파트별 진입 CTA 5개도 그대로다
+    assert html.count('class="td-jump"') == 5, html.count('class="td-jump"')
+    # 위젯의 무-네트워크 계약 유지
+    for banned in ["fetch(", "XMLHttpRequest", "sendBeacon", "clipboard.readText"]:
+        assert banned not in html, banned
+
+
+@test(73, "the top CTA is absent from the theory book and the classic layout")
+def t73(c):
+    for other in ["book-modern.html", "book.html", "practice.html", "index.html"]:
+        path = DOCS / other
+        if not path.exists():
+            continue
+        html = path.read_text(encoding="utf-8")
+        assert "td-top" not in html, f"{other} 에 상단 CTA 가 들어갔다"
+        assert 'id="td-widget"' not in html, f"{other} 에 위젯이 들어갔다"
+
+
+@test(74, "top CTA text meets WCAG AA contrast in light and dark")
+def t74(c):
+    # 67 번과 같은 계산을 상단 CTA 카드에 적용한다.
+    js = """() => {
+      const P = v => v.match(/\\d+(\\.\\d+)?/g).slice(0, 3).map(Number);
+      const L = r => { const f = r.map(v => { v /= 255;
+        return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+        return 0.2126 * f[0] + 0.7152 * f[1] + 0.0722 * f[2]; };
+      const ratio = (x, y) => { const a = L(P(x)), b = L(P(y));
+        return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05); };
+      const card = document.querySelector('aside.td-top');
+      const bg = getComputedStyle(card).backgroundColor;
+      return {
+        link: ratio(getComputedStyle(card.querySelector('.td-top-link')).color, bg),
+        head: ratio(getComputedStyle(card.querySelector('.td-top-h')).color, bg),
+        body: ratio(getComputedStyle(card.querySelector('.td-top-b')).color, bg),
+      };
+    }"""
+    for theme in ("light", "dark"):
+        page = c.page(init_scripts=[
+            "try{localStorage.setItem('mamgyeot-theme', %s);}catch(e){}" % json.dumps(theme)])
+        r = page.evaluate(js)
+        for k, v in r.items():
+            assert v >= 4.5, f"{theme} {k}: {v:.2f}:1"
+
+
 # ── 러너 ─────────────────────────────────────────────────────────────────────
 def main(argv):
     try:

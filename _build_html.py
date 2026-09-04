@@ -570,6 +570,7 @@ def build_book(*, chapters, classic_filename, modern_filename,
         for token, value in (("{{TAEDAM_STYLE}}", TAEDAM_STYLE),
                              ("{{TAEDAM_WIDGET}}", TAEDAM_WIDGET),
                              ("{{TAEDAM_SCRIPT}}", TAEDAM_SCRIPT),
+                             ("{{TAEDAM_TOP}}", TAEDAM_TOP),
                              ("{{TAEDAM_JUMP}}", TAEDAM_JUMP)):
             out = out.replace(token + "\n", (value + "\n") if use_taedam else "")
         return out
@@ -5476,6 +5477,7 @@ table.data tr:last-child td { border-bottom: none; }
   </p>
 </section>
 
+{{TAEDAM_TOP}}
 {{TOC}}
 {{CHAPTERS}}
 {{TAEDAM_WIDGET}}
@@ -5812,22 +5814,32 @@ TAEDAM_STYLE = """<style>
 /* 파트 진입 CTA — 본문 읽기를 압도하지 않는 작은 안내 카드 */
 :root { --td-link: #5f7355; }
 :root.dark { --td-link: var(--accent-sage); }
-.td-jump { margin: 0 0 1.6rem; padding: .85rem 1rem; border-radius: 12px;
+.td-jump, .td-top { margin: 0 0 1.6rem; padding: .85rem 1rem; border-radius: 12px;
            background: var(--bg-soft); border: 1px solid var(--line);
            border-left: 3px solid var(--accent-sage); font-family: var(--sans); }
-.td-jump-h { font-size: .95rem; font-weight: 600; color: var(--text); margin: 0 0 .3rem; }
-.td-jump-b { font-size: .85rem; line-height: 1.6; color: var(--text-soft); margin: 0 0 .6rem; }
-.td-jump-link { display: inline-block; font-size: .88rem; font-weight: 500;
+.td-jump-h, .td-top-h { font-size: .95rem; font-weight: 600; color: var(--text); margin: 0 0 .3rem; }
+.td-jump-b, .td-top-b { font-size: .85rem; line-height: 1.6; color: var(--text-soft); margin: 0 0 .6rem; }
+.td-jump-link, .td-top-link { display: inline-block; font-size: .88rem; font-weight: 500;
                 color: var(--td-link); text-decoration: underline;
                 text-underline-offset: 3px; padding: .25rem 0; }
-.td-jump-link:hover { text-decoration-thickness: 2px; }
-.td-jump-link:focus-visible { outline: 2px solid var(--td-link); outline-offset: 3px; border-radius: 4px; }
-@media print { .td { display: none !important; } .td-jump { display: none !important; } }
+.td-jump-link:hover, .td-top-link:hover { text-decoration-thickness: 2px; }
+.td-jump-link:focus-visible, .td-top-link:focus-visible { outline: 2px solid var(--td-link); outline-offset: 3px; border-radius: 4px; }
+.td-top { margin: 1.4rem auto 2rem !important; max-width: var(--wrap, 46rem); }
+@media print { .td { display: none !important; } .td-jump, .td-top { display: none !important; } }
 </style>"""
 
 
 # 파트 진입 CTA — PART 1~5 의 chapter-header 바로 아래에 1개씩.
 # 위젯(#td-widget)은 단일 인스턴스 그대로 두고, 발견성만 올린다. JS 없음.
+# 본문을 읽기 전에 먼저 보이는 빠른 체험 경로. 위젯은 문서 끝에 있어서
+# 처음 온 사람은 사실상 도달하지 못한다. 콘텐츠를 줄이는 대신 지름길 하나를 낸다.
+# 같은 #td-widget 으로 보낸다 — 위젯을 복제하지 않는다.
+TAEDAM_TOP = """<aside class="td-top" aria-label="빠른 태담 체험">
+  <p class="td-top-h">\U0001f331 오늘 아기와 1분 이야기해볼까요?</p>
+  <p class="td-top-b">로그인 없이 바로 시작할 수 있어요. 천천히 읽고 싶으시면 아래 목차부터 보셔도 됩니다.</p>
+  <a class="td-top-link" href="#td-widget">아기에게 한마디 남기기 \u2192</a>
+</aside>"""
+
 TAEDAM_JUMP_PARTS = ("part1", "part2", "part3", "part4", "part5")
 
 TAEDAM_JUMP = """<aside class="td-jump" aria-label="태담 남기기 안내">

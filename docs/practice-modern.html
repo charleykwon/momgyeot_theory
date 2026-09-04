@@ -1980,17 +1980,18 @@ table.data tr:last-child td { border-bottom: none; }
 /* 파트 진입 CTA — 본문 읽기를 압도하지 않는 작은 안내 카드 */
 :root { --td-link: #5f7355; }
 :root.dark { --td-link: var(--accent-sage); }
-.td-jump { margin: 0 0 1.6rem; padding: .85rem 1rem; border-radius: 12px;
+.td-jump, .td-top { margin: 0 0 1.6rem; padding: .85rem 1rem; border-radius: 12px;
            background: var(--bg-soft); border: 1px solid var(--line);
            border-left: 3px solid var(--accent-sage); font-family: var(--sans); }
-.td-jump-h { font-size: .95rem; font-weight: 600; color: var(--text); margin: 0 0 .3rem; }
-.td-jump-b { font-size: .85rem; line-height: 1.6; color: var(--text-soft); margin: 0 0 .6rem; }
-.td-jump-link { display: inline-block; font-size: .88rem; font-weight: 500;
+.td-jump-h, .td-top-h { font-size: .95rem; font-weight: 600; color: var(--text); margin: 0 0 .3rem; }
+.td-jump-b, .td-top-b { font-size: .85rem; line-height: 1.6; color: var(--text-soft); margin: 0 0 .6rem; }
+.td-jump-link, .td-top-link { display: inline-block; font-size: .88rem; font-weight: 500;
                 color: var(--td-link); text-decoration: underline;
                 text-underline-offset: 3px; padding: .25rem 0; }
-.td-jump-link:hover { text-decoration-thickness: 2px; }
-.td-jump-link:focus-visible { outline: 2px solid var(--td-link); outline-offset: 3px; border-radius: 4px; }
-@media print { .td { display: none !important; } .td-jump { display: none !important; } }
+.td-jump-link:hover, .td-top-link:hover { text-decoration-thickness: 2px; }
+.td-jump-link:focus-visible, .td-top-link:focus-visible { outline: 2px solid var(--td-link); outline-offset: 3px; border-radius: 4px; }
+.td-top { margin: 1.4rem auto 2rem !important; max-width: var(--wrap, 46rem); }
+@media print { .td { display: none !important; } .td-jump, .td-top { display: none !important; } }
 </style>
 </head>
 <body>
@@ -2070,6 +2071,11 @@ table.data tr:last-child td { border-bottom: none; }
   </p>
 </section>
 
+<aside class="td-top" aria-label="빠른 태담 체험">
+  <p class="td-top-h">🌱 오늘 아기와 1분 이야기해볼까요?</p>
+  <p class="td-top-b">로그인 없이 바로 시작할 수 있어요. 천천히 읽고 싶으시면 아래 목차부터 보셔도 됩니다.</p>
+  <a class="td-top-link" href="#td-widget">아기에게 한마디 남기기 →</a>
+</aside>
 <nav class="toc">
   <h2>차례</h2>
   <div class="toc-group">
